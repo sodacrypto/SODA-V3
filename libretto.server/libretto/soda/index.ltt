@@ -24,6 +24,18 @@ def lk = jetx/out: {
 
 		<body>
 			<div class="overlay"></div>
+			<div class="pop-up open">
+				<div class="pop-up__content">
+					<div class="pop-up__head-text">
+						#{locale("connect-wallet--title")}
+					</div>
+					<div class="icon-connect"></div>
+
+					<div class="connect-button connect--metamask pop-up__text">
+						#{locale("metamask")}
+					</div>
+				</div>
+			</div>
 			<div class="sidebar">
 				<div class="sidebar__header">
 					<div id="sidebar__user-dropdown" class="user-box hide-on-all-computers">

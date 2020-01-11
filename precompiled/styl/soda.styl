@@ -13,11 +13,101 @@
 // @media screen and (min-width 1300px)
 
 
+.connect-button
+	padding: 15px 15px 15px 34px;
+	text-align: center;
+	// border: 1px solid black;
+	// border-radius: 4px;
+	margin-top: 20px;
+	background: linear-gradient(180deg, #FFFFFF 0%, #ECF4F9 100%), #EEF2FC;
+	border: 1px solid #C2C0CB;
+	box-sizing: border-box;
+	border-radius: 5px;
+	cursor pointer
+	position relative
+	&.connect--metamask
+		&:before
+			content ""
+			position absolute
+			height 100%
+			margin-top: -15px;
+			width: 24px;
+			background url("/images/metaMask.png")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			margin-left -34px
+	// &:hover
+	// 	background: rgba(0, 0, 0, 0.05);
+	// &:hover
+	// 	// transform: translateY(-1px);
+	// 	transform scale(1.01)
+	// 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+	// &:active
+	// 	transform scale(1)
+	// 	// transform: translateY(1px);
+	// 	box-shadow: none;
+	&:hover
+		transform: translateY(-1px);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+	&:active
+		transform: translateY(1px);
+		box-shadow: none;
+
+
+
+.icon-connect
+	height 25px
+	width 25px
+	margin 0 auto
+	background url("/images/connect.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 
 .pop-up.open
 	background: rgba(238, 242, 252, .85);
 	// opacity: .85;
-
+.pop-up__content
+	width 350px
+	padding:  40px 40px 30px 40px
+	flex-direction: column;
+	justify-content: space-between;
+	// >div
+	// 	flex 1
+	.button--blue
+		margin-top: 20px;
+.pop-up__button-box
+	display: unquote('flex');
+.pop-up__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 33px;
+	font-size: 21px;
+	color: #221B48;
+	text-align center
+.pop-up__head-text
+	text-align: center;
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 33px;
+	color: #221B48;
+	margin-bottom: 10px;
+.pop-up__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	text-align: center;
+	color: #4A4469;
+	// &:nth-child(2)
+	// 	margin-top 20px
+	&.bold
+		font-weight 600
 // .pop-up.take-loan
 // 	.pop-up__content
 // 		min-width 585px

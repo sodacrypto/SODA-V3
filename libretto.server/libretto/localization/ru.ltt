@@ -704,4 +704,17 @@ def ru = <locale lang="ru">
   <!--   <- team   -->  
 
 
+  <!-- -> connect wallet -->
+  <string id="connect-wallet">
+    Connect wallet
+  </string>
+  <string id="connect-wallet--title">
+    Connect Wallet <br/> 
+    to start using SODA!
+  </string>
+  <string id="metamask">
+    MetaMask
+  </string>
+  <!-- <- connect wallet -->
+
 </locale>
