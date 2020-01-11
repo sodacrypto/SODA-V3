@@ -26,3 +26,22 @@ document.querySelectorAll(".lang-box").forEach(x => x.addEventListener('click', 
 	thisElem.querySelector(".lang-dropdown").classList.add("open")
 
 }))
+
+
+window.openSection = openSection
+
+document.querySelectorAll('[data-page]').forEach(
+	x => x.addEventListener('click', function(){
+		openSection(this.dataset.page)
+		document.querySelector('.overlay').classList.remove('open')
+		document.querySelector('.sidebar').classList.remove('open')
+	})
+)
+
+function openSection(str) {
+	document.querySelectorAll(".section").forEach(x => x.classList.add("hide"));
+	document.querySelectorAll(".menu-submenu__elem").forEach(x => x.classList.remove("selected"));
+
+	document.querySelector(`.section--${str}`).classList.remove('hide');
+	document.querySelector(`.menu-submenu__elem[data-page=${str}]`).classList.add("selected")
+}

@@ -21,6 +21,16 @@ def lk = jetx/out: {
 			<link rel="stylesheet" href="/styles/soda.css"/>
 			<script src="/scripts/index.js" defer=""/>
 		</head>
+		<style>
+			.pop-up{
+				visibility: hidden;
+				opacity: 0;
+			}
+			.pop-up.open{
+				visibility: visible;
+				opacity 1
+			}
+		</style>
 
 		<body>
 			<div class="overlay"></div>
@@ -65,17 +75,17 @@ def lk = jetx/out: {
 								<label class="menu-tab__text">#{locale("menu-nav-tab__first")}</label>
 							</div>
 							<ul class="menu-submenu">
-								<li class="menu-submenu__elem" data-click="section--convert-btc">
+								<li class="menu-submenu__elem" data-page="convert-btc">
 									<div class="menu-submenu__box menu-icon icon-take-loan">
 										<label class="menu-submenu__text">#{locale("menu-nav-submenu__third")}</label>
 									</div>
 								</li>
-								<li class="menu-submenu__elem selected" data-click="section--take-loan">
+								<li class="menu-submenu__elem selected" data-page="take-loan">
 									<div class="menu-submenu__box menu-icon icon-take-loan">
 										<label class="menu-submenu__text">#{locale("menu-nav-submenu__first")}</label>
 									</div>
 								</li>
-								<li class="menu-submenu__elem" data-click="section--withdraw-repay">
+								<li class="menu-submenu__elem" data-page="withdraw-repay">
 									<div class="menu-submenu__box menu-icon icon-withdraw-repay">
 										<label class="menu-submenu__text">#{locale("menu-nav-submenu__second")}</label>
 									</div>
@@ -156,7 +166,7 @@ def lk = jetx/out: {
 
 						<div id="user-box--main-header" class="user-box">
 							<div class="header__profile-data">user@example.com</div>
-							<div class="user-panel__down"></div>
+							<!--div class="user-panel__down"></div-->
 							<div class="user-dropdown">
 								<div class="user-dropdown__elem edit-profile hide">#{locale("edit-profile")}</div>
 								<a href=#{s"/#{localization/currentLocale}/sign_out"}><div class="user-dropdown__elem logout">#{locale("logout")}</div></a>								
