@@ -1,0 +1,454 @@
+@import 'nib'
+@import 'normalize-stylus'
+@import '_styl/general-part'
+
+
+body 
+	flex-direction: column;
+	min-width: 320px;
+	>div:last-child
+		@media screen and (max-width 959px)
+			transform: scale(0.8);
+.main
+	// min-height 735px
+	flex 1
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: unquote('flex');
+	flex-direction: column;	
+	background: linear-gradient(180.04deg, #F6F8FD 0.06%, #EAF0FE 99.94%);
+	@media screen and (max-width 959px)
+		height auto
+		// background white
+		background: #F6F8FD
+
+.main__content
+	display unquote('flex')
+	flex 1
+	@media screen and (max-width 959px)
+		flex-direction column
+
+
+
+.big-titles
+	// @media screen and (max-width 959px)
+	// 	text-align center
+	&[data-type="sign-up"]
+		.title--sign-up
+			display unquote('block')
+	&[data-type="sign-in"]
+		.title--sign-in
+			display unquote('block')
+	&[data-type="sign-up-with-amount"]
+		.title--sign-up-with-amount
+			display unquote('block')
+	&[data-type="sign-in-with-amount"]
+		.title--sign-in-with-amount
+			display unquote('block')
+	&[data-type="email-confirmed"]
+		.title--email-confirmed
+			display unquote('block')
+		~.email-confirmed__text
+			display unquote('block')
+	&[data-type="email-confirmed--change-password"]
+		.title--email-confirmed
+			display unquote('block')
+		~.email-confirmed__text-change-password
+			display unquote('block')
+.big-title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 46px;
+	color: #221B48;
+	display none
+	@media screen and (max-width 959px)
+		font-size: 26px;
+		line-height: 33px;
+		text-align: center;
+		color: #221B48;
+.title--email-confirmed
+	position relative
+	margin-left 50px
+	&:before
+		content ""
+		position absolute
+		height 100%
+		width 30px
+		background url("/images/success.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-left -50px
+
+.email-confirmed__text, .email-confirmed__text-change-password
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 18px;
+	line-height: 27px;
+	color: #4A4469;
+	margin-top 25px
+	display none
+	@media screen and (max-width 959px)	
+		font-size: 12px;
+		line-height: 18px;
+		text-align: center;
+		color: #4A4469;
+
+
+
+.tabs
+	display unquote('flex')
+	height 60px
+.tab-box
+	background: #F5F9FD;
+	display unquote('flex')
+	box-shadow: inset 2px -2px 10px rgba(6, 14, 87, 0.05);
+	cursor pointer
+	flex 1
+.tab-title
+	margin auto
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+	color: #221B48;
+	opacity: 0.2;
+
+.forms-main
+	display unquote('flex')
+	flex 1
+	flex-direction: column;
+.form-sign-up, .form-sign-in, .form-sign-recovery, .form-confirmed
+	flex 1
+	flex-direction column
+	padding 40px
+	.button--yellow
+		margin-right 0
+		margin-left 0
+		margin-top: 15px;
+	@media screen and (max-width 959px)
+		padding 30px 20px
+// .form-sign-up
+// 	height: 336px;
+// 	box-sizing: border-box;
+
+.box-with-text, .box-with-form
+	display unquote('flex')
+	flex 1
+	position relative
+	padding 40px 20px
+	@media screen and (max-width 959px)
+		flex none
+.box-with-form
+	@media screen and (max-width 959px)
+		padding-top 10px
+.box-with-text__content
+	width 445px
+	margin auto
+	@media screen and (min-width 960px) and (max-width 1299px)
+		width 344px
+
+.box-with-form__content
+	background: #FFFFFF
+	box-shadow: 0px 8px 20px rgba(34, 27, 72, 0.15);
+	border-radius: 5px;
+	// height 400px
+	min-width 455px
+	width: 65%;
+	margin auto
+	// margin auto 100px auto auto
+	display: unquote('flex');
+	flex-direction: column;
+	overflow hidden
+	&[data-type="sign-up"]
+		.tab-box.sign-up
+			background #FFFFFF
+			box-shadow: none;
+			font-style: normal;
+			font-weight: 600;
+			.tab-title
+				opacity 1
+		.form-sign-up
+			display unquote('flex');
+		.form-sign-in, .form-sign-recovery
+			display none
+	&[data-type="sign-in"]
+		.tab-box.sign-in
+			background #FFFFFF
+			box-shadow: none;
+			font-style: normal;
+			font-weight: 600;
+			.tab-title
+				opacity 1
+		.form-sign-in
+			display unquote('flex');
+		.form-sign-up, .form-sign-recovery
+			display none
+	&[data-type="sign-recovery"]
+		.tab-box.sign-in
+			background #FFFFFF
+			box-shadow: none;
+			font-style: normal;
+			font-weight: 600;
+			.tab-title
+				opacity 1
+		.form-sign-recovery
+			display unquote('flex');
+		.form-sign-up, .form-sign-in
+			display none
+	&[data-type="confirmed"]
+		.form-confirmed
+			display unquote('flex');
+	// .button--yellow
+	// 	margin-right 40px
+	// 	margin-left 40px
+	// 	@media screen and (max-width 959px)
+	// 		margin-right 20px
+	// 		margin-left 20px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		// margin-right 30px
+		min-width 334px
+		// height 691px
+	@media screen and (max-width 959px)
+		margin auto
+		// width 100%
+		min-width 280px
+		// border-radius 0
+		// min-height 720px
+		// box-shadow none
+		// background white
+
+.bullets
+	margin-top 40px
+	@media screen and (max-width 959px)
+		display unquote('flex')
+		justify-content: space-around;
+.bullet
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 18px;
+	line-height: 27px;
+	color: #4A4469;
+	position relative
+	margin-left 28px
+	@media screen and (max-width 959px)
+		text-align center
+		margin 30px 0 0 0
+		font-size: 12px;
+		line-height: 18px;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		br
+			display none
+	@media screen and (min-width 1300px)
+		br
+			display none
+	&:before
+		content ""
+		height 13px
+		width 13px
+		position absolute
+		background: linear-gradient(271.26deg, #EC930F 0%, #FFD200 100%);
+		border-radius 13px
+		margin: 8px 0 0 -28px;
+		@media screen and (max-width 959px)
+			left: 50%;
+			margin -20px 0 0 0
+			transform: translate(-50%, -50%);
+	&:nth-child(2)
+		margin-top 10px
+		margin-bottom 10px
+		@media screen and (max-width 959px)
+			margin-top 30px
+			margin-bottom 0px
+		
+
+
+.form__content--forgot-pass
+	cursor pointer
+
+.form__content
+	// flex 1
+	display unquote('flex')
+	flex-direction: column;
+	&.min-fix
+		margin-top: 10px;
+.form__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+	margin-bottom 5px
+
+.form__text--forgot
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 21px;
+	text-align: center;
+	color: #9A97AB;
+	margin auto
+	margin-top: 15px;
+	span
+		border-bottom: 1px dashed #9A97AB;
+		
+
+.form__content--recaptcha
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+	color: #9A97AB;
+	margin-top 10px
+	margin-bottom 0
+	a
+		color: #9A97AB;
+
+
+// .g-recaptcha, .g-recaptcha div
+// 	overflow: hidden; 
+// 	min-width: 100%;
+
+// .g-recaptcha iframe, body > div[style]:last-of-type
+// 	transform: scale(0.75);
+// 	transform-origin: left top;
+ 
+
+
+.icon-logo
+	margin auto 0 auto 101px
+	height 60px
+	width 45px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin-left 30px
+	@media screen and (max-width 959px)
+		margin-left 20px
+
+.footer, .main__header
+	min-height 90px
+	height 90px
+	max-height 90px
+.footer
+	display unquote('flex')
+	justify-content: space-between;
+	@media screen and (max-width 959px)
+		flex-direction: column-reverse;
+		height 216px
+		min-height 216px
+		max-height 216px
+		background: linear-gradient(180deg, #E0E9FD 0%, #EFF2FC 8.8%);
+.main__header
+	display unquote('flex')
+	justify-content: space-between;
+	@media screen and (max-width 959px)
+		background white
+.footer__right-block, .footer__left-block
+	flex 1
+	display unquote('flex')
+	position relative
+.footer__right-block
+	justify-content: flex-end;
+	@media screen and (max-width 959px)
+		flex 3
+
+.footer__right-block-box
+	display unquote('flex')
+	min-width 495px
+	width 70%
+	margin-right 100px
+	@media screen and (max-width 959px)
+		flex-direction column
+		width 100%
+		min-width 280px
+		margin 40px 0 0 0
+.footer__left-block
+	margin auto 0 auto 101px
+	@media screen and (max-width 959px)
+		margin: auto;
+		text-align center
+		flex 1
+		display unquote('block')
+.sidebar__socials--darc, .sidebar__socials
+	width 225px
+	margin auto 0 auto auto
+	padding 20px 0
+	@media screen and (max-width 959px)
+		margin: auto;
+		// width 100%
+.footer__support
+	// display unquote('flex')
+	margin auto auto auto 0
+	@media screen and (max-width 959px)
+		margin: auto;
+		text-align: center;
+.support__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+.support__email
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	color: #4A4469;
+
+
+
+
+
+
+
+
+.pop-up__content
+	width 305px
+	padding:  40px 40px 30px 40px
+	flex-direction: column;
+	justify-content: space-between;
+	>div
+		flex 1
+	.button--blue
+		margin-top: 20px;
+.pop-up__button-box
+	display: unquote('flex');
+.pop-up__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 33px;
+	font-size: 21px;
+	color: #221B48;
+	text-align center
+.pop-up__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	text-align: center;
+	color: #4A4469;
+	&:nth-child(2)
+		margin-top 20px
+	span.email
+		font-weight bold
+		overflow-wrap: break-word;
+	&.bold
+		font-weight 600
+
+
+.sidebar__socials--darc
+	width 240px

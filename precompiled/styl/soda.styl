@@ -1,0 +1,1892 @@
+@import 'nib'
+@import 'normalize-stylus'
+@import '_styl/general-part'
+// @import '../node_modules/ion-rangeslider/css/ion.rangeSlider.min.css'
+[hidden] 
+	display: none !important
+.section--denis-test
+	@import './index'
+// @media screen and (max-width 959px)
+
+// @media screen and (min-width 960px) and (max-width 1299px)
+
+// @media screen and (min-width 1300px)
+
+
+
+.pop-up.open
+	background: rgba(238, 242, 252, .85);
+	// opacity: .85;
+
+// .pop-up.take-loan
+// 	.pop-up__content
+// 		min-width 585px
+// 		padding 0
+// 		@media screen and (max-width 360px)
+// 			width 100%
+// 			max-width 585px
+// 			min-width 280px
+// 			margin auto 20px
+// 		@media screen and (min-width 360px) and (max-width 625px)
+// 			width 100%
+// 			max-width 585px
+// 			min-width 280px
+// 			margin auto 30px
+// 		@media screen and (min-width 625px) and (max-width 959px)
+// 			width 100%
+// 			max-width 585px
+// 			min-width 280px
+// 			margin auto
+// 	.pop-up__main
+// 		display unquote('block')	
+// 		// flex 1
+// 	.pop-up__cansel-box
+// 		display unquote('flex')	
+// 		background: linear-gradient(180deg, #E6EDFF 0%, rgba(237, 242, 252, 0) 11.38%), #F3F8FB;
+// 		border-radius: 0px 0px 5px 5px;
+// 		.button--blue
+// 			margin: 30px 40px 25px 40px;
+// 			@media screen and (max-width 959px)
+// 				margin 20px
+.overlay
+	// display none
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #EEF2FC;
+	// opacity: 0.85;
+	z-index: 2;
+	visibility: hidden;
+	opacity: 0;
+	// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	// filter: alpha(opacity=0);
+	// transition: all 0.4s;
+	transition: opacity 0.4s, visibility 0.4s
+	
+	&.open
+		// display block
+		opacity: .85;
+		// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+		// filter: alpha(opacity=85);
+		visibility: visible;
+	@media screen and (min-width 1300px)
+		display none
+
+.sidebar
+	flex 1
+	width: 270px;
+	min-width: 270px;
+	max-width: 270px;
+	background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+	display: unquote('flex')
+	flex-direction: column;
+	position: relative;
+	@media screen and (max-width 959px)
+		margin-left: -310px; /* ширина контейнера + 40px запаса для тени на всякий случай */
+		// width: 0;
+		display: block;
+		position: absolute;
+		overflow-y: auto;
+		overflow-x: hidden;
+		top: 0;
+		height: 100%;
+		z-index: 2;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		left: 0;
+		transition: margin 0.4s;
+		// display none
+		&.open
+			margin-left: 0;
+			// display: unquote('flex');
+			// position: absolute;
+			// z-index: 2;
+			// min-height: 100%;
+			// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+.sidebar__header
+	height: 80px;
+	min-height: 80px;
+	display unquote('flex')
+	@media screen and (max-width 959px)
+		height 65px
+		min-height 65px
+		justify-content: space-between;
+		.icon-logo
+			display none
+	@media screen and (min-width 960px) and (max-width 1299px)
+		.arrow-icon
+			display none
+	@media screen and (min-width 1300px)
+		.arrow-icon
+			display none
+
+.sidebar__footer
+	// position: absolute;
+	// bottom: 0;
+	// width: 100%;
+	@media screen and (max-width 959px)
+		display none
+// .icon-logo
+// 	margin: auto 0 auto 20px;
+// 	height 40px
+// 	width 30px
+// 	background url("/images/logo.svg")
+// 	background-size: contain;
+// 	background-repeat: no-repeat;
+
+.menu-tab
+	color #EEF2FC
+	list-style:none;
+	padding 0
+	margin 0
+.menu-tab__box
+	height 50px
+	display unquote('flex')
+	flex-direction: row;
+	cursor pointer
+	&:hover
+		background: rgba(0, 0, 0, 0.15);
+.menu-tab__elem
+	&.selected
+		>.menu-tab__box
+			background: rgba(0, 0, 0, 0.2);
+		.menu-submenu
+			display unquote('list-item;')
+		.menu-tab__text
+			font-family: Futura PT;
+			font-style: normal;
+			// font-weight: 600;
+			font-weight: bold;
+			font-size: 14px;
+.menu-tab__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	margin auto 15px
+	cursor pointer
+
+.menu-submenu__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 14px;
+	line-height: 18px;
+	margin auto 55px
+	cursor pointer	
+	
+.menu-submenu
+	padding 0
+	list-style: none;
+	display none
+.menu-submenu__elem
+	position: relative;
+	background: rgba(0, 0, 0, 0.1);
+	&:hover
+		background: rgba(0, 0, 0, 0.15)
+	&.selected
+		background: rgba(0, 0, 0, 0.15);
+		&:before		
+			content: "";
+			position absolute
+			background-color #0FE7DC
+			height: 100%;
+			width: 5px;
+			margin 0
+.select
+	margin-top 10px
+.menu-submenu__box
+	height 50px
+	display unquote('flex')
+	cursor pointer
+
+.menu-header
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: #EEF2FC;
+	padding: 20px 20px 10px 20px;
+	margin: 0 auto;
+
+.icon-loans
+	&:before		
+		content: "";
+		background url("/images/loan.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin auto
+
+.icon-leverage
+	&:before		
+		content: "";
+		background url("/images/leverage.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin auto
+	
+.icon-faq
+	&:before		
+		content: "";
+		background url("/images/FAQ.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin auto
+		
+.icon-lend
+	&:before		
+		content: "";
+		background url("/images/lend.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin auto
+		
+.icon-video
+	&:before		
+		content: "";
+		background url("/images/video.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin auto
+		
+.icon-media
+	&:before		
+		content: "";
+		background url("/images/media.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin auto
+
+.menu-icon
+	&:before
+		margin: auto 0 auto 20px
+		display unquote('block')
+		height 20px
+		width 20px
+.soon
+	&:after
+		content: "";
+		background url("/images/soon.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		margin: auto 20px auto auto
+		display unquote('block')
+		height: 20px;
+		width: 48px;
+
+
+
+
+
+.main
+	flex 5
+	display: unquote('flex')
+	flex-direction: column;
+	background-color #EEF2FC
+	// @media screen and (max-width 959px)
+	min-width: 320px;
+
+.main__header
+	height: 80px;
+	min-height: 80px;
+	width 100%
+	background: linear-gradient(180deg, #FFFFFF 0%, #F8FCFF 100%), #EEF2FC;
+	box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+	display: unquote('flex')
+	flex-direction: row;
+	justify-content: flex-end;
+	@media screen and (max-width 959px)
+		height 65px
+		min-height 65px
+		justify-content: space-between
+		background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+		.icon-logo
+			margin: auto 0 auto 15px;
+
+
+
+.user-panel
+	display unquote('flex')
+	flex-direction: row
+	//{--костыль
+	.lang-en
+		margin auto 0
+	//}
+		
+	@media screen and (max-width 959px)
+		.user-box
+			display none
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin: 0;
+	@media screen and (min-width 1300px)
+		margin: 0 30px;
+.header__logo
+	display none
+	@media screen and (max-width 959px)
+		display unquote('flex')
+		flex: 1;
+.header__profile-data
+	margin: auto 8px
+
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	color: #4A4469;
+
+
+
+		
+
+.top-bar--loan-history
+	display none
+	cursor pointer
+	@media screen and (max-width 959px)
+		display unquote('flex')
+	@media screen and (min-width 960px) and (max-width 1299px)
+		display unquote('flex')	
+.top-bar__ic-loan-history
+	width: 21px;
+	height: 21px;
+	margin auto 15px auto 15px;
+	background url("/images/loan-history.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	@media screen and (max-width 959px)
+		background url("/images/loan-history--white.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+
+.top-bar--menu
+	display none
+	cursor pointer
+	@media screen and (max-width 959px)
+		display unquote('flex')
+.top-bar__ic-menu
+	width: 18px
+	height: 18px
+	margin auto 15px auto 15px;
+	background url("/images/menu.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+
+.main__content
+	flex 1
+	display: unquote('flex')
+	padding: 10px 30px 40px 30px
+	@media screen and (max-width 959px)
+		padding: 0
+	
+.section
+	flex 2
+	display unquote('flex')
+	flex-direction: column;
+	@media screen and (min-width 1300px)
+		min-width 670px
+.section--take-loan
+	.take-loan--consent
+		display none
+	&[data-outstanding-loan]
+		.take-loan__calculator, .button--take-loan
+			display none
+		.take-loan--consent
+			display unquote('block')
+		
+
+.section__title
+	@media screen and (max-width 959px)
+		// margin-left: 20px;
+		margin: 30px auto 20px 20px;
+		
+.top-announce
+	height 152px
+	background: #EEF2FC;
+	border-radius: 5px 5px 0px 0px;
+	display unquote('flex')
+	@media screen and (max-width 959px)
+		height 165px
+
+.takeloan-illustration
+	position
+	height 132px
+	width 172px
+	margin 20px 0 0 39px
+	background url("/images/takeloan-illustration.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	@media screen and (max-width 959px)
+		margin 29px 0 0 -68px
+.announce-grid
+	flex 1
+	margin 45px 40px 45px 64px
+	display unquote('flex')
+	flex-direction: column;
+	// display: grid;
+	// grid-template-columns: 1fr 1fr;
+	@media screen and (max-width 959px)
+		// flex none
+		// margin 30px 20px 30px 12px
+		margin 31px 20px 22px 12px
+		// margin 30px auto 30px auto
+		// grid-template-columns: 1fr;
+.announce-grid__elems-box
+	display unquote('flex')
+	flex-direction row
+	&:nth-child(1)
+		margin-bottom 20px
+	@media screen and (max-width 959px)
+		flex-direction column
+		&:nth-child(1)
+			margin-bottom 0
+.announce-grid__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+	// margin: auto 0;
+	// margin: 10px 0 auto 21px;
+	position relative
+	margin: auto 0 0 21px;
+	flex 1
+	// &:nth-child(-n+2)
+	@media screen and (max-width 959px)
+		margin 0 0 7px 21px 
+	&:before
+		content ""
+		height 11px
+		width 11px
+		position absolute
+		background #FFD200
+		border-radius 6px
+		margin 4px -21px 0 -21px
+
+
+
+.calculator__content
+	display unquote('flex')
+	position relative
+	&:nth-child(-n+2)
+		margin-top 5px
+	&.range 
+		display unquote("block")
+		margin-top 15px
+		@media screen and (max-width 959px)
+			margin-top 5px
+	.count
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 24px;
+		color: #221B48;
+		margin-bottom 0
+		&[data-currency="DAI"]
+			&:before
+				margin: 2px auto auto -30px;
+		&[data-currency="BTC"]
+			&:before
+				margin: 2px auto auto -30px;
+
+.w-r-loan-selector__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+		
+//пока "в разработке..."
+.w-r-loan-selector__select-box
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #b9c2d9;
+
+.take-loan__calculator
+	margin 30px 40px 0 40px
+	display unquote('flex')
+	flex-direction column
+	// display: grid;
+	// grid-template-columns: 1fr 1fr;
+	// grid-column-gap: 75px;
+	// grid-row-gap: 15px;
+	@media screen and (max-width 959px)
+		display unquote('block')
+		margin 30px 20px 0 20px
+		// grid-template-columns: 1fr;
+.button-box
+	display unquote('flex')
+	.button--yellow
+		margin 30px 40px
+		@media screen and (max-width 959px)
+			margin 30px 20px
+.calculator__elems-box
+	display unquote('flex')
+	flex 1
+	&:nth-child(1)
+		margin-bottom 15px;
+	@media screen and (max-width 959px)
+		flex-direction: column;
+.calculator__elem-box
+	display unquote('flex')
+	flex 1
+	flex-direction column
+	&:nth-child(1)
+		margin-right 75px;
+		@media screen and (max-width 959px)
+			margin-right 0;
+	@media screen and (max-width 959px)
+		&:nth-child(2)
+			margin-top 10px
+		&.min-fix
+			margin-top 20px
+
+
+
+.loan-take-form
+	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+	// box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
+	// border-radius: 5px;
+	// height 203px
+	// margin 30px 40px
+	padding 15px 40px 15px 40px
+	flex 1
+	display: unquote('flex')
+	flex-direction: column;
+	@media screen and (max-width 959px)
+		// height 255px
+		// margin  30px 0
+		border-radius 0
+		padding 5px 20px 5px 20px
+		// padding 29px 20px 10px 20px
+.loan-take-form__step
+	position relative
+	flex 1
+	&:before
+		content: attr(data-count);
+		height: 10px;
+		width: 10px;
+		border-radius: 10px;
+		background: #CCD9F8;
+		color #593A99
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 11px;
+		position: absolute;
+		margin: auto;
+		text-align: center;
+		padding: 5px
+	&.min-fix
+		margin-top 15px
+.loan-take-form__content
+	display unquote('flex')
+	margin-left 40px
+	&.min-fix
+		margin-top 15px
+	.button--yellow 
+		margin 15px 0
+
+.loan-take-form__header
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 33px;
+	color: #221B48;
+
+
+.loan-take-form__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+	margin-left: 40px;
+	overflow-wrap: break-word;
+	&.min-fix
+		text-align: justify;
+		color: #9a97ab;
+
+.repay-box__refill-header, .repay-box__repay-header, .collateral-box__top-up-header, .collateral-box__withdraw-header
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 27px;
+	color: #FFFFFF;
+	margin-top 30px
+
+.collateral-box__top-up-header
+	margin-top 10px
+
+
+.w-c-input__title, .repay-box__refill-title, .repay-box__repay-title, .collateral-box__top-up-title, .collateral-box__withdraw-title
+	margin-bottom: 5px;
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #EEF2FC;
+	overflow-wrap: break-word;
+
+	label
+		font-weight 600
+// .repay-content__input-title
+// 	margin 20px 30px
+// 	@media screen and (max-width 959px)
+// 		margin 20px
+
+label[data-currency]
+	font-weight 600
+	&:after
+		content attr(data-currency)
+		margin-left .25em
+
+.loans-history__title
+	@media screen and (max-width 959px)
+		padding 0 20px
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		color: #EEF2FC;
+		margin auto 0
+	@media screen and (min-width 960px) and (max-width 1299px)
+		padding 0 20px
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		color: #EEF2FC;
+		flex: 1;
+		margin: auto;
+
+.loans-history__box-title
+	@media screen and (max-width 959px)
+		height: 65px;
+		min-height: 65px;
+		background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+		box-shadow: 0px 3px 10px rgba(113, 98, 231, 0.7);
+		display unquote('flex')
+		flex-direction: row;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		flex-direction: row;
+		display unquote('flex')
+		height: 80px;
+		min-height: 80px;
+		background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+		box-shadow: 0px 3px 10px rgba(113, 98, 231, 0.7);
+.section__container
+	box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+	background: #FFFFFF;
+	// flex 1
+	min-height 25em
+	@media screen and (max-width 959px)
+		margin-bottom 30px
+		border-radius: 0;
+		// z-index: 1;
+
+.loans-history
+	flex 1
+	margin-left: 30px;
+	display unquote('flex')
+	flex-direction: column;
+	min-width: 270px;
+	@media screen and (max-width 959px)
+		display unquote('block')
+		margin-right: -310px; 
+		width: 0;
+		position: fixed;
+		overflow-y: auto;
+		overflow-x: hidden;
+		top: 0;
+		height: 100%;
+		background: #eef2fc;
+		z-index: 2;
+		box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+		width: 270px;
+		right: 0;
+		transition: margin 0.4s;
+		&.open
+			margin-right: 0;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		display unquote('block')
+		margin-right: -460px; /* ширина контейнера + 40px запаса для тени на всякий случай */
+		width: 0;
+		position: fixed;
+		overflow-y: auto;
+		overflow-x: hidden;
+		top: 0;
+		height: 100%;
+		background: #eef2fc;
+		z-index: 2;
+		box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+		width: 420px;
+		right: 0;
+		transition: margin 0.4s;
+		&.open
+			margin-right: 0;
+.loan-history__header
+	background: #CCD9F8;
+	position relative
+	cursor pointer
+	@media screen and (max-width 959px)
+		background: #EEF2FC;
+		cursor auto
+		&:after
+			display none
+	&:after
+		content ""
+		height: 4px;
+		width: 10px;
+		background url("/images/down.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position absolute
+		top: 18px;
+		right: 10px;
+		// transform: translate(0,60%);
+	&.show
+		&:after
+			transform: rotate(180deg);
+		&~.loan-history__storyline
+			display unquote('block')
+
+.loans-history__container
+	flex: 1;
+	display unquote('flex')
+	flex-direction: column;
+	@media screen and (max-width 959px)
+		padding: 20px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		padding: 20px
+	&:empty
+		&:before
+			content attr(data-empty)
+			background: #FFFFFF;
+			box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+			border-radius: 5px;
+			padding 25px 30px
+			font-family: Futura PT;
+			font-style: normal;
+			font-weight: 450;
+			font-size: 14px;
+			line-height: 21px;
+			color: #9A97AB;
+			// margin-bottom 20px
+
+
+
+.withdraw-repay__storyline--status-title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 27px;
+	color: #221B48;
+	display none
+
+//-->loan
+
+states-count = 7
+status-after-which-the-output-is-activated = 5
+// tuuuut
+
+for $i in 1..states-count
+	.select-elem__status[data-status=\'{$i}\']
+		if ($i == states-count)
+			// height 20px
+			width 16px
+			background url("/images/closed.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			// position absolute
+			// right: 20px
+			// top: 24px
+			background-position center
+			margin-right 40px
+		else if ($i < status-after-which-the-output-is-activated)
+			// height 20px
+			width 16px
+			background url("/images/waiting.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			// position absolute
+			// right: 20px
+			// top: 24px
+			background-position center
+			margin-right 40px	
+		else if ($i >= status-after-which-the-output-is-activated && $i != states-count)
+			// height 20px
+			width 16px
+			background url("/images/success.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			// position absolute
+			// right: 20px
+			// top: 24px
+			background-position center
+			margin-right 40px
+
+.w-r-loan-status-box[data-status=waiting]
+	.withdraw-repay__storyline--status-title:last-child
+		display unquote('block')
+for $i in 1..states-count
+	.loan-history[data-status=\'{$i}\'], .w-r-loan-status-box[data-status=\'{$i}\']// .withdraw-repay__storyline		
+		for $j in 1..states-count
+			if $i == states-count
+				opacity .5
+				// .loan-history__status-bar hide-on-phone
+				// 	padding-top 5px
+				.loan-history__button-box
+					display none
+				.loan-history__icon-status--for-mobile
+					@media screen and (max-width 959px)
+						height 20px
+						width 20px
+						background url("/images/closed.svg")
+						background-size: contain;
+						background-repeat: no-repeat;
+						position absolute
+						right: 20px
+						top: 24px	
+			if $i == $j
+				.loan-history-header__status:nth-child({$i})
+					display unquote('block')
+				.withdraw-repay__storyline--status-title:nth-child({$i})
+					display unquote('block')
+			if $i < status-after-which-the-output-is-activated
+				.loan-history__icon-status--for-mobile
+					@media screen and (max-width 959px)
+						height 20px
+						width 20px
+						background url("/images/waiting.svg")
+						background-size: contain;
+						background-repeat: no-repeat;
+						position absolute
+						right: 20px
+						top: 24px					
+				.loan-history__button-box
+					display none
+			else if ($i >= status-after-which-the-output-is-activated && $i != states-count)
+				.loan-history__icon-status--for-mobile
+					@media screen and (max-width 959px)
+						height 20px
+						width 20px
+						background url("/images/success.svg")
+						background-size: contain;
+						background-repeat: no-repeat;
+						position absolute
+						right: 20px
+						top: 24px	
+				.loan-history__wd-block
+					display none
+			else				
+				.loan-history__wd-block
+					display none
+			.loan-history-storyline__status:nth-child({$j}), .withdraw-repay__storyline>.loan-history-storyline__status:nth-child({$j})
+				if $i < $j
+					{}
+				else if $i == $j
+					font-family: Futura PT;
+					font-style: normal;
+					font-weight: 600;
+					color: #4A4469;
+					&:before
+						background #4A4469;
+				else
+					text-decoration-line: line-through;
+					color: #9A97AB;
+					&:before
+						background #9A97AB;
+						border-color #9A97AB;
+
+.loan-history
+	background: #FFFFFF;
+	box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+	display: unquote('flex')
+	flex-direction: column;
+	margin-bottom: 20px
+	overflow auto
+	&:last-child
+		margin-bottom 0
+.loan-history__main
+	display: unquote('flex')
+	flex-direction: column;
+	position relative
+	padding: 20px
+
+.loan-main__stats
+	display: unquote('flex')
+	flex-direction: column;
+.stats-box
+	flex 1
+	display: unquote('flex')
+	margin-bottom: 10px;
+	&:last-child
+		margin-bottom: 0;
+.stats-box__elem
+	flex 1
+	margin-right: 20px;
+	&:last-child
+		margin-right: 0;
+	@media screen and (max-width 959px)
+		display: unquote('flex');
+		flex-direction: row;
+
+.header__user-img
+	width 20px
+	height 100%
+	background url("/images/user.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+.stats-elem__title, .w-r-loan-status__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 18px;
+	color: #9A97AB;
+.stats-elem__content
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 12px;
+	line-height: 18px;
+	color: #4A4469;
+	@media screen and (max-width 959px)
+		margin-left: .4em;
+.loan-history__wd-block
+	margin-top 5px
+	padding: 18px 0;
+	text-align: center;
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 18px;
+	color: #B89970;
+	background: #FFF7DF;
+	border-top 1px solid #B89970;
+	border-bottom 1px solid #B89970;
+	@media screen and (max-width 959px)
+		display none
+
+
+.loan-history__button-box
+	display unquote('flex')
+	margin-bottom: 10px;
+	@media screen and (max-width 959px)
+		display none
+.loan-history__storyline
+	background: #EEF2FC;
+	display none
+	padding-top 20px
+	padding-bottom 20px
+.loan-history__status-bar
+	display: unquote('flex')
+	flex-direction: column;
+	
+.loan-history-header__status
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 12px;
+	color: #4A4469;
+	padding 14px 20px
+	position relative
+	display none
+	&:before
+		content attr(data-title)
+		color #9A97AB
+		margin-right: .2em;
+.loan-history-storyline__status
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 12px;
+	color: #4A4469;
+	margin-left 50px
+	margin-bottom 10px
+	transition: font-weight .4s;
+	&:last-child
+		margin-bottom 0
+	&:before
+		content ""
+		height 10px
+		width 10px
+		border-radius 5px
+		border: 1px solid #4A4469;
+		// background white
+		box-sizing: border-box;
+		position: absolute;
+		margin: 1px -25px auto -25px
+		transition: background .4s;
+
+//loan<--
+
+
+.history-transactions
+	box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
+	background: #EEF2FC;
+	margin-top: 10px;
+.history-transaction
+	min-height 40px
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 18px;
+	color: #4A4469;
+	padding: 11px;
+	box-sizing: border-box;
+	word-wrap: break-word;
+	border-bottom: 1px solid #C2C0CB;
+	overflow: hidden;
+	&:last-child
+		border-bottom none
+a.link--transaction
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 12px;
+	line-height: 18px;
+	color: #4A4469;
+	padding-left 15px
+	// position relative
+	text-decoration none
+	border-bottom: 1px dashed #4A4469;
+	// margin-left: .25em;
+	// margin-right: .25em;
+	&:before
+		content ""
+		position absolute
+		height 10px
+		width 10px
+		background url("/images/link.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-left: -15px;
+		transform: translate(0, 50%);
+
+
+
+
+
+.withdraw-repay__storyline
+	.loan-history-storyline__status
+		&:before
+			background #fff
+	@media screen and (max-width 959px)
+		margin-top 10px
+		.loan-history-storyline__status
+			margin-left: 25px
+			font-size 14px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		justify-content: space-between;
+		display unquote('flex')
+		margin: 60px 0 30px 0;
+		position relative
+		&:before
+			content: "";
+			position: absolute;
+			height: 1px;
+			border-bottom: 1px dashed #C2C0CB;
+			margin: 0 30px;
+			width: 100%;
+			display: unquote('flex');
+			top: -18px;
+			transform: translate(0, -50%);
+		.loan-history-storyline__status
+			width 59px
+			text-align: center;
+			margin 0
+			position relative
+			&:last-child
+				&:after
+					content: "";
+					display:  unquote('flex');
+					height: 10px
+					background: white;
+					width: 100%;
+					top: -23px;
+					position: absolute;
+					transform: translate(50%,0);
+			&:before
+				transform: translate(-50%,0);
+				margin: -25px 0 0 0;
+				left: 50%;
+				z-index 1
+				height: 14px;
+				width: 14px;
+				border-radius: 14px;
+	@media screen and (min-width 1300px)
+		justify-content: space-between;
+		display unquote('flex')
+		margin: 60px 0 30px 0;
+		position relative
+		&:before
+			content: "";
+			position: absolute;
+			height: 1px;
+			border-bottom: 1px dashed #C2C0CB;
+			margin: 0 30px;
+			width: 100%;
+			display: unquote('flex');
+			top: -18px;
+			transform: translate(0, -50%);
+		.loan-history-storyline__status
+			width 59px
+			text-align: center;
+			margin 0
+			position relative
+			&:last-child
+				&:after
+					content: "";
+					display:  unquote('flex');
+					height: 10px;
+					background: white;
+					width: 100%;
+					top: -23px;
+					position: absolute;
+					transform: translate(50%,0);
+			&:before
+				transform: translate(-50%, 0);
+				margin: -25px 0 0 0;
+				left: 50%;
+				z-index 1
+				height: 14px;
+				width: 14px;
+				border-radius: 14px;
+
+
+
+
+
+
+.main__footer
+	min-height: 100px;
+	width 100%
+	background: #CCD9F8;
+	display: unquote('flex')
+	justify-content: space-between;
+	@media screen and (max-width 959px)
+		flex-direction: column-reverse;
+		padding: 30px 0 0 0;
+		.sidebar__support
+			text-align center
+		.support__email
+			font-family: Futura PT;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 18px;
+			line-height: 27px;
+			color: #4A4469;
+
+	@media screen and (min-width 960px) and (max-width 1299px)
+		.sidebar__support, .sidebar__socials--darc
+			display none		
+	@media screen and (min-width 1300px)
+		.sidebar__support, .sidebar__socials--darc
+			display none
+.footer__git-hub
+	@media screen and (max-width 959px)
+		flex-direction column
+.footer__copyright, .footer__git-hub
+	display: unquote('flex')
+.git-hub__icon
+	height: 40px;
+	width: 40px;
+	background url("/images/git-hub.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin auto
+
+
+.copyright__text
+	margin auto 40px
+	@media screen and (max-width 959px)
+		// margin 0 auto
+		margin: 20px auto;
+
+.git-hub__text
+	margin auto 40px auto 15px
+	@media screen and (max-width 959px)
+		text-align: center;
+		margin 20px auto
+
+
+
+.sidebar__menu
+	flex 1
+
+.sidebar__support
+	height 50px
+	padding: 25px 0;
+	background: rgba(6, 0, 0, 0.1);
+	display: unquote('flex')
+	flex-direction: column;
+	@media screen and (max-width 959px)
+		background: none;
+		padding: 0;
+		height auto
+	
+
+
+
+.support__text, .support__email
+	// flex 1
+	margin auto
+	text-align center
+.support__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: #EEF2FC;
+.support__email
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	color: #0FE7DC;
+
+
+
+
+	
+.arrow-right
+	display unquote('flex')
+	cursor pointer
+	@media screen and (min-width 1300px)
+		display none
+.arrow-left
+	cursor pointer
+	display unquote('flex')
+	transform: rotate(180deg);
+	@media screen and (min-width 960px) and (max-width 1299px)
+		display none
+	@media screen and (min-width 1300px)
+		display none
+.arrow-icon
+	background url("/images/arrow.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 10px;
+	width: 30px;
+	margin: auto 0 auto 20px
+
+
+
+.collateral-content__history--top-up, .collateral-content__history--withdraw, .repay-content__history--refill, .repay-content__history--repay, .withdraw-content__history
+	margin-top 10px
+
+
+.w-r-loan-selector-box, .w-r-loan-status-box, .w-r-loan-deals-box
+	margin 30px 40px 0 40px
+	@media screen and (max-width 959px)
+		margin-left 20px
+		margin-right 20px
+.w-r-loan-deals-box
+	margin-bottom 25px
+
+.r-b-repay__content, .c-b-top-up__content
+	display unquote('flex');
+	@media screen and (max-width 959px)
+		flex-direction column
+.c-b-top-up__content-2
+	margin-top 20px
+.r-b-repay__elem, .c-b-top-up__elem
+	flex 2
+	&:last-child
+		flex 1
+		margin-left 40px
+		display: unquote('flex');
+		flex-direction: column;
+		@media screen and (max-width 959px)
+			margin-left 0
+			margin-top 10px
+		.count
+			margin-top: auto;
+			margin-bottom: auto;
+.w-r-loan-deals__title, .title--change-password, .title--faq
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 27px;
+	color: #221B48;
+	// @media screen and (max-width 959px)
+	// 	margin-left 20px
+.title--change-password
+	margin-left 40px
+// .withdraw__content, .repay__content
+// 	border-radius 5px
+// 	box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
+// 	display:  unquote('block');
+// 	flex-direction: column;
+// 	@media screen and (max-width 959px)
+// 		border-radius 0
+// 	.count
+// 		font-family: Futura PT;
+// 		font-style: normal;
+// 		font-weight: 600;
+// 		font-size: 22px;
+// 		line-height: 33px;
+// 		color: #FFFFFF;
+// 		margin 5px auto 0 60px
+// 		&:before
+// 			margin 5px auto auto -30px
+// 		@media screen and (max-width 959px)
+// 			margin 5px auto 0 50px
+// 	// .repay-content__input-title
+// 	// 	margin 20px 30px
+// 	.input-with-copy
+// 		margin 0 30px
+// 		@media screen and (max-width 959px)
+// 			margin 0 20px
+		
+
+// .withdraw__button
+// 	margin 15px 30px 40px 30px
+.withdraw__button-box, .repay__button-box, .collateral__button-box
+	display unquote('flex');
+	.button--yellow
+		margin 15px 30px 10px 30px
+		@media screen and (max-width 959px)
+			margin 15px 20px 10px 20px
+
+
+.section--faq
+	.section__container
+		padding 30px 40px 30px 40px
+		// padding 10px 40px 30px 40px
+		@media screen and (max-width 959px)
+			padding 30px 20px
+
+
+
+
+
+
+		
+// .withdraw__content, .repay__content
+// 	background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+// 	// background-size: cover;
+// 	position relative
+// 	z-index 0
+// 	&:after
+// 		content ""
+// 		background url("/images/background.png")
+// 		// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+// 		background-size: cover;
+// 		background-repeat: no-repeat;
+// 		position: absolute;
+// 		opacity: .35;
+// 		height: 100%;
+// 		width: 100%;
+// 		top: 0;
+// 		z-index: -1;
+// .repay__content
+// 	&:after
+// 		transform: rotate(180deg);
+// .withdraw__content
+// 	height 295px
+// 	// background url("/images/background-1.svg")
+// 	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+// 	// background-size: cover;
+// 	// background-repeat: no-repeat;
+// 	@media screen and (max-width 959px)
+// 		height 380px
+// .repay__content
+// 	height 350px
+// 	// background url("/images/background-2.png")
+// 	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+// 	// background-size: cover;
+// 	// background-repeat: no-repeat;
+
+
+.loader-box
+	display unquote('flex')
+	padding-top 10px 
+	margin 50px 40px 20px 40px
+	border-top: 1px solid #C2C0CB;
+	min-height 145px
+	@media screen and (max-width 959px)
+		margin-left 20px 
+		margin-right 20px 
+		flex-direction column
+		padding-top 40px
+.loader
+	// flex 1
+	margin 10px
+	position relative
+	min-width 95px
+	min-height 95px
+	@media screen and (max-width 959px)
+		// margin 0 auto
+		display: block;
+		text-align: center;
+	&:before
+		content ""
+		height 100%
+		width 95px
+		background url("/images/loader.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position absolute
+		@media screen and (max-width 959px)
+			transform: translate(-50%, 0);
+		// left: 50%;
+		// transform: translate(-50%, 0);
+		// transform: scale(.85);
+		// animation: pulse 2s ease-in-out infinite;
+.loader__text-box
+	flex 1
+	margin-left 40px
+	@media screen and (max-width 959px)
+		margin-left 0
+	// margin-top 40px
+.loader__bit-title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 27px;
+	color: #221B48;
+	@media screen and (max-width 959px)
+		text-align center
+.loader__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+.consent__cansel-box
+	display unquote('flex')	
+	background: linear-gradient(180deg, #E6EDFF 0%, rgba(237, 242, 252, 0) 11.38%), #F3F8FB;
+	border-radius: 0px 0px 5px 5px;
+	.button--blue
+		margin: 30px 40px 25px 40px;
+		@media screen and (max-width 959px)
+			margin 20px
+
+// @keyframes pulse {
+// 	from {
+// 		transform: scale(.85);
+// 	}
+// 	50% {
+// 		transform: scale(1);
+// 	}
+// 	to {
+// 		transform: scale(.85);
+// 	}
+// }
+
+.withdraw-content__title, .r-b-info-box__title, .repay-content__title, .c-b-info-box__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 18px;
+	color: #FFFFFF;
+	// padding 30px 0 0 0
+	// @media screen and (max-width 959px)
+	// 	padding 20px 0 0 0
+
+.withdraw-content__inputs-box
+	display unquote('flex')
+	// margin 0 30px
+	@media screen and (max-width 959px)
+		// flex-direction column
+		display block
+		// margin 0 20px
+.w-c-inputs-box__elem
+	display unquote('flex')
+	flex 1
+	padding-top 10px
+	flex-direction: column;
+	justify-content: space-between;
+	&:last-child
+		flex 2	
+		margin-left 20px
+		@media screen and (max-width 959px)
+			margin-left 0
+		
+		
+
+
+
+.details__min-header
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 0.15em;
+	color: #C2C0CB;
+	text-transform: uppercase;
+	padding-bottom 5px
+	border-bottom 1px solid #C2C0CB;
+
+.details-box
+	display: unquote('flex')
+	@media screen and (max-width 959px)
+		flex-flow: row wrap;
+		position relative
+		margin-bottom 25px
+
+.detail-box
+	flex 1
+	margin: 15px 15px 20px 0;
+	@media screen and (max-width 959px)
+		flex none
+		width 50%
+		margin 15px 0 5px 0
+.detail-box__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+	margin-bottom: 5px;
+.detail-box__content
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	color: #221B48;
+
+	
+.sidebar__lang-picker
+	display: unquote('flex')
+	.lang-en
+		margin: auto 18px auto 5px;
+	.lang-ru
+		margin: auto 5px auto 18px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		display none
+	@media screen and (min-width 1300px)
+		display none
+	&[data-lang='en']
+		.icon-en
+			&:before
+				content ''
+				position: absolute;
+				height 30px
+				width 40px
+				margin: -5px 10px 10px -10px;
+				border: 2px solid #0FE7DC;
+				box-sizing: border-box;
+				border-radius: 1px;
+	&[data-lang='ru']
+		.icon-ru
+			&:before
+				content ''
+				position: absolute;
+				height 30px
+				width 40px
+				margin: -5px 10px 10px -10px;
+				border: 2px solid #0FE7DC;
+				box-sizing: border-box;
+				border-radius: 1px;
+
+
+
+
+
+.box-withdraw-repay-collateral__tabs
+	display unquote('flex')
+.box-withdraw-repay-collateral__tab
+	padding 15px 30px
+	display unquote('flex')
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 14px;
+	line-height: 21px;
+	color: #9A97AB;
+	position relative
+	border-radius 5px 5px 0 0
+	cursor pointer
+	@media screen and (max-width 959px)
+		padding 40px 20px 15px 20px
+		border-radius 0
+	span
+		border-bottom: 1px dashed #9A97AB;
+		padding-left: 16px;
+		@media screen and (max-width 959px)
+			padding-left 0
+	&:before
+		content ""
+		position absolute
+		height 100%
+		width 11px
+		transform: translate(0, -15px);
+		// margin-left: -16px;
+		@media screen and (max-width 959px)
+			top 15px
+			height 19px
+			width 100%
+			transform: translate(-20px, 0);
+	&.tab-withdraw
+		&:before
+			background url("/images/arrow--repay-withdraw--gray.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			transform: rotate(180deg) translate(0,15px)
+			@media screen and (max-width 959px)
+				transform: rotate(180deg) translate(20px,0)
+	&.tab-repay
+		&:before
+			background url("/images/arrow--repay-withdraw--gray.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.tab-collateral
+		&:before
+			background url("/images/collateral.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+
+
+.repay-box__info, .collateral-box__info
+	display unquote('flex')
+	flex-wrap: wrap;
+	@media screen and (max-width 959px)
+		// flex-direction column
+		display unquote('block')
+	
+.r-b-info-box, .c-b-info-box
+	flex 1
+	margin-right: 10px;
+.box-withdraw-repay-collateral
+	display unquote('flex')
+	flex-direction: column;
+	margin 0 40px
+	@media screen and (max-width 959px)
+		margin 40px 0
+		width 100vw
+		min-width 320px
+	&[data-withdraw="1"]
+		.withdraw-box
+			.notification
+				display none
+	&[data-withdraw="2"]
+		.withdraw-box
+			.withdraw-content__title, .count, .withdraw-content__inputs-box, .withdraw__button-box, .withdraw-content__history
+				display none
+
+	&[data-repay="1"]
+		.repay-box
+			.notification
+				&.t-2, &.t-3
+					display none
+	&[data-repay="2"]
+		.repay-box
+			.repay-box__refill
+				display none
+			.notification
+				&.t-1, &.t-3
+					display none
+	&[data-repay="3"]
+		.repay-box
+			.notification
+				margin: 0 0 15px 0
+				&.t-1, &.t-2
+					display none
+		.repay-box__refill, .repay-box__repay, .repay-box__info
+			display none
+	&[data-collateral="1"]
+		.collateral-box
+			.notification
+				&.t-3
+					display none
+			.collateral-box__withdraw-title, .collateral-box__withdraw .input-box, .collateral__button-box, .collateral-content__history--withdraw
+				display none
+	&[data-collateral="2"]
+		.collateral-box
+			.notification
+				&.t-1, &.t-3
+					display none
+			.collateral-box__top-up
+				display none
+				.notification
+					display none
+			.collateral-box__withdraw-header
+				margin-top 10px
+	&[data-collateral="3"]
+		.collateral-box
+			.collateral-box__info, .collateral-box__top-up, .collateral-box__withdraw
+				display none
+			.notification
+				&.t-1
+					display none
+			// .collateral-box__withdraw
+			// 	display none
+	&[data-action="withdraw"]
+		.tab-withdraw
+			background: #4776E6;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 21px;
+			color: #FFFFFF;
+			span
+				border none
+			&:before
+				background url("/images/arrow--repay-withdraw.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				transform: rotate(180deg) translate(0,15px)
+				@media screen and (max-width 959px)
+					transform: rotate(180deg) translate(20px,0)
+		.withdraw-box
+			display unquote('flex')
+	&[data-action="repay"]
+		.tab-repay
+			background: #4776E6;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 21px;
+			color: #FFFFFF;
+			span
+				border none
+			&:before
+				background url("/images/arrow--repay-withdraw.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+		.repay-box
+			display unquote('flex')
+	&[data-action="collateral"]
+		.tab-collateral
+			background: #4776E6;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 21px;
+			color: #FFFFFF;
+			span
+				border none
+			&:before
+				background url("/images/collateral--white.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+		.collateral-box
+			display unquote('flex')
+
+
+.withdraw-box, .collateral-box
+	.notification
+			margin 0 0 15px 0
+.repay-box
+	.notification
+		margin 0
+
+.withdraw-box, .repay-box, .collateral-box
+	display none
+	background: linear-gradient(180deg, #4776E6 0%, #5754E9 100%);
+	box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
+	border-radius: 5px;
+	min-height 50px
+	flex-direction: column;
+	padding 30px 30px 15px 30px
+	@media screen and (max-width 959px)
+		border-radius 0
+		padding 30px 20px 15px 20px
+	.button--yellow
+		margin-left 0
+		margin-right 0
+	.count
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 22px;
+		line-height: 33px;
+		color: #FFFFFF;
+		// margin 5px auto 0 60px
+		&:before
+			margin 5px auto auto -30px
+		// @media screen and (max-width 959px)
+		// 	margin 5px auto 0 50px
+.withdraw-box
+	border-radius 0 5px 5px 5px
+	@media screen and (max-width 959px)
+		border-radius 0
+	// .notification
+	// 	margin-bottom 0
+
+
+
+
+
+
+	
+
+@media screen and (max-width 959px)
+	.hide-on-phone
+		display none
+		
+@media screen and (min-width 960px) and (max-width 1299px)
+	.hide-on-all-computers
+		display none
+
+@media screen and (min-width 1300px)
+	.hide-on-all-computers
+		display none
+
+
+.loan-history
+	&[data-status='0']
+		display none
+	@media screen and (min-width 960px) and (max-width 1299px)
+		.count
+			font-size: 21px;
+		.stats-elem__title, .loan-history__wd-block, .stats-elem__content
+			font-size: 14px;
+			line-height: 21px;
+		.loan-history-header__status, .loan-history-storyline__status
+			font-size: 14px;
+			line-height: 14px;
+	@media screen and (min-width 1300px)
+		.count
+			font-size: 21px;
+		.stats-elem__title, .loan-history__wd-block, .stats-elem__content
+			font-size: 14px;
+			line-height: 21px;
+		.loan-history-header__status, .loan-history-storyline__status
+			font-size: 14px;
+			line-height: 14px;
+			
+.w-r-loan-status-box:not([data-status]) 
+	display: none;
+

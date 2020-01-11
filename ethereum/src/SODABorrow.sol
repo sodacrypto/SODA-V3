@@ -102,8 +102,8 @@ contract SODABorrow is Ownable {
     function liquidate(uint loan_id) public {
         Loan storage _loan = loan[loan_id];
         require(_loan.state == LoanState.Active, "the loan isn't active");
-        if(_loan.taken + 90 days < now)
-            _liquidate(loan_id, "loan was taken more then 90 days ago");
+        if(_loan.taken + 365 days < now)
+            _liquidate(loan_id, "loan was taken more then 365 days ago");
         else {
             require( 
                 _loan.collateralAmount.mul(uint( btcPriceAggregator.latestAnswer() )).mul(1e3) 

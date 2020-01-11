@@ -1,0 +1,34 @@
+package model/signer
+	use control
+	use libretto/net
+	use libretto/mem
+	use libretto/web/app
+	use libretto/util
+	use com/teacode/json
+
+def memTx(#do):type(do!) = mem/w: do!
+
+struct Timed(value:Any+, stamp:Int!, ttl:Int!)
+
+def daiRates = memTx: app/context!'daiRates.*{
+	case x:Timed! if util/ms - x.stamp < x.ttl => x.value dyn #mem/Map!
+	case y => daiRatesRecount() as daiRates {
+		app/context!'daiRates = Timed(daiRates,util/ms, 300_000)
+	}	
+} as map.#Map#[String!,Real!](){
+	def `=`(x,y) = error: "map is read only"  
+	def `!`(x,y) = memTx:  map!y dyn #Real?
+	def `!`(x) = memTx:  map!x dyn #Real!
+	def keys = memTx:  map.keys dyn #String*
+}
+
+def daiRatesRecount() = mem/map() as map {
+  net/http("https://api.loanscan.io/v1/interest-rates?tokenFilter=DAI").
+    header("x-api-key","ags0vk3r7O3HmznZWYEYkDAKduaaiuS5JbxGtbC2").
+    get().
+    text().json/parseArray.contents.?json/Object.{
+      fix provider = getString('provider) dyn #!
+      fix value = getArray('borrow).getObject(0).get('rate).*dyn(#(Int|Real)).real
+      map!(provider) = (value * 10000).util/round(util/HalfUpRounding()) div 100.0
+    }
+}

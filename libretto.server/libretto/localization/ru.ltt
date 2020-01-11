@@ -1,0 +1,701 @@
+package localization
+
+def ru = <locale lang="ru">
+  <string id="html-title"> 
+    SODA — Займы под залог Биткоина
+  </string>
+  <string id="copyright__text"> 
+    © 2019 SODA Foundation.
+  </string>
+  <string id="cancel"> 
+    Отмена
+  </string>
+  <string id="edit-profile"> 
+    Изменить профиль
+  </string>
+  <string id="logout"> 
+    Выйти
+  </string>
+  <string id="change-password">
+    Смена пароля
+  </string>
+  <string id="loader__bit-title">
+    Ваш займ в процессе выдачи...
+  </string>
+  <string id="loader__text">
+    Транзакции, связанные с займом, будут отображены ниже.<br/>
+    Процесс может занять <span class="bold">20-30 минут</span>  <br class="hide-on-all-computers"/>
+    прежде чем Вы сможете вывести заемные средства.<br/>
+    Обратите внимание на статус займа выше, чтобы узнать текущий этап.
+  </string>
+  <!-- ->   lk     -->
+  <string id="menu-nav-tab__first"> 
+    Получить займ
+  </string>
+  <string id="menu-nav-tab__second"> 
+    Кредитное плечо
+  </string>
+  <string id="menu-nav-tab__third"> 
+    Получить доход
+  </string>
+
+  <string id="menu-nav-submenu__first"> 
+    Получите займ
+  </string>
+  <string id="menu-nav-submenu__second"> 
+    Вывод &amp; возврат
+  </string>
+
+  <string id="menu-header"> 
+    Документация
+  </string>
+
+  <string id="menu-doc-tab__first"> 
+    Видео-гайд
+  </string>
+  <string id="menu-doc-tab__second"> 
+    Ответы на вопросы
+  </string>
+  <string id="menu-doc-tab__third"> 
+    Медиа о нас
+  </string>
+
+  <string id="section__title--empty"> 
+    Название секции
+  </string>
+  <string id="section__title--take-loan"> 
+    Получите займ
+  </string>
+  <string id="section__title--withdraw-repay"> 
+    Вывод &amp; возврат
+  </string>
+
+  <string id="announce-grid__text-1"> 
+    Ставка на DAI: <span class="bold" data-attr="apr">3</span>% год.
+  </string>
+  <string id="announce-grid__text-2"> 
+    % начисляется раз в день
+  </string>
+  <string id="announce-grid__text-3"> 
+    Нет лимитов по срокам
+  </string>
+  <string id="announce-grid__text-4"> 
+    Нет KYC / проверок
+  </string>
+
+  <string id="take-loan__notification--neutral"> 
+    Interest for the loan period will be automatically
+    paid from your collateral in Bitcoins (BTC)
+  </string>  
+  <string id="calculator__title--you-are-borrowing"> 
+    Сумма займа
+  </string>
+  <string id="calculator__title--choose-collateral-ratio"> 
+    Выберите размер залога
+  </string>
+  <string id="calculator__title--daily-interest"> 
+    Процент по займу / день
+  </string>
+  <string id="calculator__title--collateral-in-BTC"> 
+    Необходимый залог в Биткоинах
+  </string> 
+
+  <string id="take-loan__calculator-input-placeholder"> 
+    Доступный лимит по займу: &nbsp;
+  </string>
+
+  <string id="loan-take-form__header">
+    Отправьте залог в BTC
+  </string>
+  <string id="loan-take-form__title-1"> 
+    Отправьте <label id="collateral-amount-2" data-currency="BTC">...</label>
+    на данный мульти-сиг Биткоин-адрес и получите займ
+    <label id="loan-amount-2" data-currency="DAI">1000</label>
+  </string>
+  <string id="loan-take-form__title-additionally"> 
+    Вы получите займ на Ваш персональный кошелёк на SODA. После этого Вы сможете перевести средства на любой Ethereum-адрес. Вы сможете вывести средства на любую биржу, DEX, кошелёк (Coinbase Wallet, MyEtherWallet, MyCrypto, другие), аппаратный кошелёк (Trezor, Ledger, KeepKey, другие) и др.
+  </string>
+  <string id="loan-take-form__title-2"> 
+    После отправки залога в Биткоинах нажмите на кнопку ниже, чтобы получить Ваш займ
+  </string>
+  <string id="loan-take-form__button--receive-DAI"> 
+    Получить DAI →
+  </string>
+  <string id="loan-take-form__button--i-sent"> 
+    Я отправил указанную сумму залога в BTC →
+  </string>
+
+
+
+  <string id="loans-history__title"> 
+    История займов
+  </string>
+
+  <string id="loan-history__text--no-loans"> 
+    У Вас пока нет активных займов
+  </string>
+
+  <string id="git-hub__text"> 
+    SODA — сервис с открытым исходным кодом.
+  </string>
+
+  <string id="withdraw-content__history-title"> 
+    История выводов
+  </string>
+
+
+  <string id="support__text"> 
+    Есть вопросы или возникли проблемы? Напишите нам
+  </string>
+
+  <string id="loan-history__stats-title--taken"> 
+    Займ получен
+  </string>
+  <string id="loan-history__stats-title--collateral"> 
+    Размер залога
+  </string>
+  <string id="loan-history__stats-title--daily-interest"> 
+    Процент в день
+  </string>
+  <string id="loan-history__stats-title--collateral-status"> 
+    Статус залога
+  </string>
+
+  <string id="loan-history__wd-block"> 
+    Вывод &amp; возврат станут доступны<br/>
+    на Шаге 5/7 (Займ получен)
+   </string>
+  <string id="loan-history__button--withdraw-and-repay"> 
+    Вывод &amp; возврат
+  </string>
+  <string id="loan-history__status-1"> 
+    Ожидание депозита
+  </string>
+  <string id="loan-history__status-2"> 
+    Выпуск SODABTC
+  </string>
+  <string id="loan-history__status-3"> 
+    Оценка залога
+  </string>
+  <string id="loan-history__status-4"> 
+    Выдача займа
+  </string>
+  <string id="loan-history__status-5"> 
+    Займ получен
+  </string>
+  <string id="loan-history__status-6"> 
+    Частично погашен
+  </string>
+  <string id="loan-history__status-7"> 
+    Погашен на 100%
+  </string>
+  <string id="loan-history__status-waiting"> 
+    Ожидание...
+  </string>
+  <string id="text-status"> 
+    Статус
+  </string>
+  <string id="w-r-loan-selector__title"> 
+    Выберите займ для управления
+  </string>
+  <string id="w-r-loan-status__title"> 
+    Текущий статус
+  </string>
+  <string id="withdraw__title"> 
+    Вывести
+  </string>
+  <string id="repay__title"> 
+    Вернуть
+  </string>
+  <string id="collateral__title"> 
+    Залог
+  </string>
+  <string id="w-r-loan-deals__title"> 
+    Следите за данными по займу
+  </string>
+  <string id="withdraw__title-loan-balance"> 
+    Баланс
+  </string>
+  <string id="repay__left-title"> 
+    Осталось
+  </string>
+  <string id="repay__title--repayments-history"> 
+    История возвратов:
+  </string>
+
+  <string id="w-c-input__title--DAI-to-withdraw"> 
+    Сумма DAI к выводу
+  </string>
+  <string id="w-c-input__placeholder--DAI-to-withdraw"> 
+    Введите сумму
+  </string>
+  <string id="w-c-input__title--e-address-to-receive-DAI"> 
+    Ethereum-адрес, на который Вы получите DAI
+  </string>
+
+  <string id="w-c-input__placeholder--e-address-to-receive-DAI"> 
+    Ethereum-адрес
+  </string>
+  <string id="withdraw__button"> 
+    Вывести DAI
+  </string>
+  <string id="repay-content__input-title--send-DAI"> 
+    Отправьте DAI на данный Ethereum-адрес для погашения займа (частично или полностью)
+  </string>
+  <string id="details__min-header--INTEREST"> 
+    ПРОЦЕНТ
+  </string>
+  <string id="details__min-header-COLLATERAL"> 
+    ЗАЛОГ
+  </string>
+  <string id="details__min-header-RISKS"> 
+    РИСКИ
+  </string>
+
+  <!--     INTEREST     -->
+  <string id="detail-box__title--loan-is-active-for"> 
+   Активен (дней)
+  </string>
+  <string id="detail-box__title--interest-to-be-paid"> 
+    Процент к оплате
+  </string>
+  <string id="detail-box__title--DAI-daily-borrow-rate"> 
+   Процент на DAI / день
+  </string>
+  <string id="detail-box__title--DAI-APR"> 
+   Процент на DAI / год.
+  </string>
+
+  <!--     Collateral      -->
+  <string id="detail-box__title--collateral-BTC"> 
+    Залог (BTC)
+  </string>
+  <string id="detail-box__title--collateral-DAI"> 
+    Залог (DAI)
+  </string>
+  <string id="detail-box__title--collateral-interest"> 
+    Залог минус процент
+  </string>
+  <!--         Risks     -->
+  <string id="detail-box__title--risk-status"> 
+    Уровень риска
+  </string>
+  <string id="detail-box__title--real-time-BTC-price"> 
+    Текущая цена BTC
+  </string>
+  <string id="detail-box__title--liquidation-price"> 
+    Ликвидация залога (цена BTC)
+  </string>    
+  <string id="withdraw__notification--loan-is-repaid"> 
+    Займ полностью погашаен. Выведите Ваш залог в BTC на вкладке: Залог.
+  </string>
+
+  <string id="repay__notification--t-1"> 
+    Пополните Ваш баланс на SODA до суммы, необходимой для возврата займа. Вы также можете пополнить баланс для частичного возврата займа, если Вы хотите снизить Ваш суточный процент.
+  </string>
+  <string id="repay__notification--t-2"> 
+    Вашего баланса на SODA достаточно, чтобы полностью погасить займ и вывести Ваш залог в BTC!
+  </string> 
+  <string id="repay__notification--t-3"> 
+    Займ полностью погашаен. Выведите Ваш залог в BTC на вкладке: Залог.
+  </string> 
+
+  <string id="repay-content__history-title-1">
+    История
+  </string>
+  <string id="repay-content__history-title-2">
+    История возвратов
+  </string>
+
+  <string id="repay-box__refill-header">
+    Пополнить баланс
+  </string>
+  <string id="repay-box__refill-title">
+    Отправьте DAI на данный Ethereum-адрес для пополнения баланса (<label data-type="loan-refill" data-currency="DAI">10.322</label> для полного возврата займа)
+  </string>
+  <string id="repay-box__repay-header">
+    Вернуть
+  </string>
+  <string id="repay-box__repay-title-1">
+    Сумма
+  </string>
+  <string id="repay-box__repay-title-2">
+    Суточный процент изменится на
+  </string>
+  <string id="repay__button">
+    Вернуть
+  </string>
+
+
+
+  <string id="collateral-box__top-up-header">
+    Пополнить залог
+  </string>
+  <string id="collateral-box__top-up-title-1">
+    Введите сумму в BTC, чтобы увидеть уровень риска после пополнения
+  </string>
+  <string id="collateral-box__top-up-title-2">
+    Уровень риска изменится на
+  </string>
+  <string id="collateral-box__top-up-title-3">
+    Отправьте <label data-type="top-up-amount" data-currency="BTC">0.1</label> на данный Bitcoin-адрес для уменьшения уровня риска ликвидации залога:
+  </string>
+  <string id="collateral__notification--returned-BTC"> 
+    Залог был отправлен на Ваш Bitcoin-адрес.
+  </string>
+
+  <string id="collateral-box__withdraw-header">
+    Вывести
+  </string>
+
+  <string id="collateral-box__withdraw-title-1">
+    Введите Ваш Bitcoin-адрес для получения залога в BTC
+  </string>
+
+  <string id="collateral__button">
+    Вывести залог в BTC
+  </string>
+
+  <string id="collateral__notification--t-1">
+    Функция вывода залога в BTC станет доступна после полного погашения займа
+  </string>
+
+  <string id="repay-box__info-title--1">
+    Баланс
+  </string>
+  <string id="repay-box__info-title--2">
+    Осталось вернуть
+  </string>
+  <string id="repay-box__info-title--3">
+    Сумма для пополнения
+  </string>
+  <string id="collateral-box__info-title--1">
+    Залог
+  </string>
+  <string id="collateral-box__info-title--2">
+    Статус
+  </string>
+
+  <!--      <-   lk    -->  
+
+  <!--      ->  lp     -->          
+  <string id="take-loan__notification-0-first-day">
+    Попробуйте SODA БЕСПЛАТНО! <br class="hide-on-all-computers"/> 0% за первый день займа.
+  </string>
+
+
+  <string id="sign-in"> 
+    Войти
+  </string>
+  <string id="sign-up"> 
+    Регистрация
+  </string>
+
+  <string id="lp-contact-us"> 
+    Напишите нам
+  </string>
+  <string id="lp-calculator__title--you-are-borrowing"> 
+    Сколько DAI Вы хотите получить взаймы?
+  </string>  
+  <string id="lp-calculator__title--collateral"> 
+    Необходимый размер залога в BTC
+  </string>
+
+  <string id="lp-form-title"> 
+    Получите займ прямо сейчас
+  </string>
+  <string id="lp-services__title"> 
+    Получите займ в DAI <nobr>под залог Биткоина.</nobr><br/> 
+    <span class="blue"> По самой низкой % ставке.</span>  
+  </string>
+  <string id="lp-form-title"> 
+    Получить займ
+  </string>
+
+  <string id="lp-take-loan__button"> 
+    Получить займ →
+  </string>
+
+  <string id="lp-feature-1"> 
+    Текущая ставка: <br/> <span data-attr="apr">3</span>% год.   
+  </string>
+  <string id="lp-feature-2"> 
+    Нет лимитов <br/>по сроку займа
+  </string>
+  <string id="lp-feature-3"> 
+    <nobr>Процент начисляется</nobr> раз в день
+  </string>
+
+  <!--     <- lp    -->
+
+
+
+  <!--     -> FAQ   -->
+  <string id="section--faq__title"> 
+    Часто задаваемые вопросы
+  </string> 
+
+  <string id="faq-title--1"> 
+    Как получить займ на SODA?
+  </string>
+  <string id="faq-content--1"> 
+    <p>
+      Зарегистрируйтесь на <a href="https://www.soda.network/">https://www.soda.network/</a>, используя email и подтвердите его. В Вашем аккаунте выберите крипто-актив, который Вы хотите получить взаймы, сумму займа и размер залога. Переведите залог в Биткоинах на мульти-сиг Биткоин-адрес, который Вы увидите на экране. Вы можете пополнить залог, отправив Биткоины с любой биржи, кошелька или аппаратного кошелька. После отправки залога в Биткоинах нажмите на кнопку "Получить" и ожидайте подтверждения Биткоин-транзакции пополнения залога. Как только Биткоины поступят, будет автоматически инициирована процедура выдачи займа и Вы получите его на Ваш персональный кошелёк на SODA. 
+    </p>
+    <p>
+      После получения Вы сможете вывести Ваш займ на любую биржу, кошелёк (Coinbase Wallet, MyEtherWallet, MyCrypto, MetaMask, др.), аппаратный кошелёк (Trezor, Ledger, KeepKey, др.).
+    </p>
+  </string>
+
+  <string id="faq-title--2"> 
+    Куда я отправляю свой залог в Биткоинах?
+  </string>
+  <string id="faq-content--2"> 
+    <p>
+      Для хранения залогов SODA использует решение компании BitGo, позволяющее генерировать уникальные мульти-сиг кошельки для каждого заемщика. В распоряжении SODA находится админ ключ от кошелька, бэкап ключ находится у BitGo. После пополнения залога Биткоины будут храниться в SODA до момента полного возврата займа. Пожалуйста, помните, что на сегодня SODA является кастодиальным решением.
+    </p>
+  </string>
+
+  <string id="faq-title--3"> 
+    Какой размер залога я могу выбрать?
+  </string>
+  <string id="faq-content--3"> 
+    <p>
+      Минимальный размер залога: 140% от суммы займа в эквиваленте того актива, который берётся взаймы. Максимальный размер залога: 400%. Вы можете сами выбрать любой уровень начального обеспечения для Вашего займа: от 140% до 400%.
+    </p>
+  </string>
+
+  <string id="faq-title--4"> 
+    В каком случае мой залог может быть ликвидирован?
+  </string>
+  <string id="faq-content--4"> 
+    <p>
+      В случае, если стоимость залога упадает до 110% от суммы займа, залог ликвидируется и средства возвращаются на смарт-контракт кредитного пула. Например, если Вами был предоставлен залог в Биткоинах в эквиваленте 140 DAI (140%) и получен займ в 100 DAI, то ликвидация произойдёт в случае падения стоимости Биткоинов (залога) до 110 DAI (110% от суммы займа).
+    </p>
+  </string>
+
+  <string id="faq-title--5"> 
+    Из каких источников берутся данные о ценах для оценки залога и ликвидаций?
+  </string>
+  <string id="faq-content--5"> 
+    <p>
+      SODA использует оракулов Provable (бывш. Oraclize) для интеграции внешних данных о ценах в смарт-контракты. На шаге оценки стоимости предоставленного залога SODA отправляет запрос о цене Биткоина на биржу, получает данные о его текущей цене и интегрирует их в транзакцию выдачи займа.
+    </p>
+  </string>
+
+  <string id="faq-title--6"> 
+    Какие крипто-активы я могу взять займы?
+  </string>
+  <string id="faq-content--6"> 
+    <p>
+      Вы можете получить займы в стейблкоине DAI (Multi-collateral). В ближайшее время мы начнём добавлять новые крипто-активы такие как USDT, USDC и другие.
+    </p>
+  </string>
+
+  <string id="faq-title--7"> 
+    Каким образом устанавливается процент по займам?
+  </string>
+  <string id="faq-content--7"> 
+    <p>
+     Кредитный процент по займам на SODA всегда ниже средневзвешанного рыночного кредитного процента (SOBR). SOBR — Secured On-chain Borrowing Rate. Наши партнёры LoanScan.io рассчитывают показатель SOBR в режиме реального времени, используя on-chain данные. Смарт-контракты SODA устанавливают кредитный процент меньше уровня SOBR: средневзвешанного рыночного кредитного процента.
+    </p>
+    <p>
+      Текущий процент по займам:<br/>
+      DAI: <span data-attr="apr">3</span>% год.
+    </p>
+  </string>
+
+
+
+  <string id="faq-title--8"> 
+    Как мне оплатить кредитный процент по займу?
+  </string>
+  <string id="faq-content--8"> 
+    <p>
+      Во время пользования займом Вы будете видеть размер кредитного процента к оплате. Если Вы взяли займ в DAI, то кредитный процент будет начисляться ежедневно, так же в DAI. Для оплаты кредитного процента пополните Ваш персональный кошелёк на SODA и нажмите кнопку "Вернуть" на вкладке "Вывод и возврат".
+    </p>
+  </string>
+
+  <string id="faq-title--9"> 
+    Как мне вернуть займ?
+  </string>
+  <string id="faq-content--9"> 
+    <p>
+      Вы можете вернуть Ваш займ частично или полностью. При частичном возврате займа Вы уменьшите размер тела займа, таким образом уменьшив кредитный процент по займу. Для частичного или полного возврата займа пополните Ваш персональный кошелёк на SODA и нажмите кнопку "Вернуть" на вкладке "Вывод и возврат".
+    </p>
+  </string>
+
+  <string id="faq-title--10"> 
+    Необходимо ли предоставлять персональные данные?
+  </string>
+  <string id="faq-content--10"> 
+    <p>
+      Нет. SODA не запрашивает никаких персональных данных. Процедура KYC также отсутствует. Мы не проводим кредитные проверки заемщиков. Единственным требованием для получения займа на SODA является предоставление залога в Биткоинах (BTC).
+    </p>
+  </string>
+
+  <string id="faq-title--11"> 
+    Как именно происходит процедура выдачи займа, по шагам?
+  </string>
+  <string id="faq-content--11"> 
+    <p>
+      Для получения займа SODA генерирует уникальный Биткоин-адрес для заемщика, на который он переводит залог в BTC. Биткоин-адреса автоматически создаются по API BitGo, чьё решение по генерации мульти-сиг кошелькам использует SODA (админ ключ хранится в SODA, бэкап ключ у BitGo). Пожалуйста, помните, что на сегодня SODA является кастодиальным решением. После получения залога в Биткоинах смарт-контракт выпускает токен SODABTC в пропорции 1:1 от суммы в BTC. Токены SODABTC отправляются в качестве залога на смарт-контракт кредитного пула. Как только SODABTC поступили на смарт-контракт кредитного пула, оракул (Provable) производит запрос о текущей цене Биткоина, опираясь на данные биржевой пары BTC/DAI на бирже HitBTC. Полученные данные о цене Биткоина интегрируются в транзакцию выдачи займа. Вы получите займ на Ваш персональный кошелёк на SODA. После получения Вы сможете вывести Ваш займ на любую биржу, кошелёк (Coinbase Wallet, MyEtherWallet, MyCrypto, MetaMask, др.), аппаратный кошелёк (Trezor, Ledger, KeepKey, др.).
+    </p>
+  </string>
+
+  <!--     <- FAQ   -->
+
+
+
+
+  <!--     -> login -->
+  <string id="sign-up__email-title"> 
+    Введите Ваш email
+  </string>
+  <string id="sign-up__button-text"> 
+    Продолжить →
+  </string>
+
+  <string id="sign-in__email-title"> 
+    Email
+  </string>
+  <string id="sign-in__pass-title"> 
+    Пароль
+  </string>
+  <string id="sign-in__button-text"> 
+    Продолжить →
+  </string>
+
+
+  <string id="sign-recovery__email-title"> 
+    Введите Ваш email для восстановления доступа к аккаунту
+  </string>
+  <string id="sign-recovery__button-text"> 
+    Прололжить →
+  </string>
+  <string id="sign-in__forgot-pass-forward"> 
+    Забыли пароль?
+  </string>
+  <string id="sign-in__forgot-pass-back"> 
+    Вернуться на шаг авторизации
+  </string>
+
+  <string id="confirmed__email-title"> 
+    Email
+  </string>
+  <string id="confirmed__pass-title"> 
+    Пароль
+  </string>
+  <string id="confirmed__button-text"> 
+    Продолжить →
+  </string>
+
+
+  <string id="sign-up__bullet-1"> 
+    Самые низкие ставки <br/> по займам на рынке
+  </string>
+  <string id="sign-up__bullet-2"> 
+    Нет KYC / <br/> заморозки залога
+  </string>
+  <string id="sign-up__bullet-3"> 
+    Нет органичений <br/> по сроку займа
+  </string>
+
+
+  <string id="title--sign-up"> 
+    <span class="blue">Зарегистрируйтесь</span> и наслаждайтесь<br/>
+    займами без ограничений</string>
+  <string id="title--sign-up-with-amount"> 
+    <span class="blue"> Зарегистритуйтесь</span>
+    и получите займ
+  </string>
+  <string id="title--sign-in"> 
+    <span class="blue">Войдите</span>
+    <br/>и наслаждайтесь <br/>
+    займами без ограничений
+  </string>
+  <string id="title--sign-in-with-amount"> 
+    <span class="blue">Войдите</span>
+    и получите займ
+  </string>
+  <string id="close"> 
+    Закрыть
+  </string>
+  <string id="pop-up__with-email"> 
+    Вам было отправлено письмо <br/>
+    для верификации на<br/>
+    <span class="email">seriousfinanceguy@mail.ru</span>
+  </string>
+  <string id="pop-up__please-follow"> 
+    Перейдите по ссылке из письма,<br/> 
+    чтобы активировать Ваш аккаунт.
+  </string>
+  <string id="email-confirmed">
+    Ваш Email подтверждён
+  </string>
+  <string id="email-confirmed__text">
+    Выберите пароль для аккаунта и получите доступ<br/>
+    к платформе SODA!
+  </string>
+  <string id="email-confirmed__text-change-password">
+    Введите новый пароль для Вашего аккаунта<br/>
+    и завершите восстановление доступа
+  </string>
+
+  <!--   <- login   -->  
+  <!--   -> select states   -->  
+  <string id="selecet--withdrawal-title">Вывод</string>
+  <string id="selecet-state--1">Не доступно</string>
+  <string id="selecet-state--2">Не доступно</string>
+  <string id="selecet-state--3">Не доступно</string>
+  <string id="selecet-state--4">Не доступно</string>
+  <string id="selecet-state--5">Доступно</string>
+  <string id="selecet-state--6">Вывод залога</string>
+  <string id="selecet-state--7">Займ погашен</string>
+  <!--   <- select states   -->  
+  <string id="security-state--crashed">Ликвидирован</string>
+  <string id="security-state--liquidation">Ликвидация</string>
+  <string id="security-state--danger">Под угрозой</string>
+  <string id="security-state--safe">В безопасности</string>
+  <string id="security-state--very-safe">В полной безопасности</string>
+  <string id="security-state--waiting">Ожидание</string>
+  <string id="security-state--repaid">Займ погашен</string>
+  <string id="button-go-platform">Перейти в аккаунт →</string>
+
+  <string id="withdrawal-state-0">Loan is active, collateral withdrawals are unavailible.</string>
+  <string id="withdrawal-state-1">Collateral is not returned yet.</string>
+  <string id="withdrawal-state-2">Collateral withdrowing to</string>
+  <string id="announce--message">SODA V2 is live!</string>
+  <string id="announce--href">10 radical improvements of V2 →</string>
+  <string id="label-apr">год.</string>
+
+
+  <!--   -> team   --> 
+
+  <string id="team">Команда</string>
+  <string id="FAQ">FAQ</string>
+
+
+  <string id="max-tarasenko">Максим Тарасенко, Со-основатель &amp; генеральный директор</string>
+  <string id="max-tarasenko--content">
+    Максим — управляющий партнер и директор по инвестициям фонда GT Blockchain Investments, работающего с криптоактивами (алгоритмический трейдинг и инвестиции) с $2.000.000 под управлением. В 2017 году основал платформу Nimfamoney по предоставлению кредитного плеча в токенах. Выпускник программы Оксфорда: Oxford Blockchain Strategy Programme.
+  </string>
+
+  <string id="pavel-tarasenko">Павел Тарасенко, Со-основатель &amp; арт-директор</string>
+  <string id="pavel-tarasenko--content">
+    Павел является UI/UX-дизайнером с 6+ годами опыта в web-разработке и графическом дизайне. Он также был победителем официального конкурса по разработка шаблонов для мессенджера Telegram: <a target="_blank" href="https://instantview.telegram.org/contest/winners2017">Telegram’s Instant View Contest (2017)</a> и занял второе место на <a target="_blank" href="https://instantview.telegram.org/contest/winners2019">Telegram’s Instant View Contest (2019)</a>.
+  </string>
+
+  <string id="dan-gavrilin">Денис Гаврилин, Со-основатель &amp; технический директор</string>
+  <string id="dan-gavrilin--content">
+    Денис — разработчик, владеющий такими языками программирования как: Solidity, React.js, Node.js, C# с 8+ годами опыта разработки. Денис также является ключевым участником организации Libretto Labs: создателями языка программирования Libretto.
+  </string>
+
+  <string id="daria-gavrilina">Дарья Гаврилина, Lead-разработчик</string>
+  <string id="daria-gavrilina--content">
+    Дарья — фронт-энд разработчик (Webpack, React.js, Stylus, JavaScript) с 4+ годами опыта в web-разработке. Дарья также является ключевой участницей организации Libretto Labs: создателями языка программирования Libretto.
+  </string>
+  <!--   <- team   -->  
+
+
+</locale>

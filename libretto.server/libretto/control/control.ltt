@@ -12,12 +12,19 @@ package control
 	use com/teacode/html
 	use com/teacode/json
 	use libretto/data
-
+	use localization
 def process = jetx/process:{
 	out: response/out
 	step: params/read
 	step: router/resolve:{
-		route("~"): packages: "url"
+		route("/:locale/~"): $ as route.{
+			fix locale = router/params.stringe:'locale
+			if(not locale in localization/accept_language ) 
+				router/Continue()
+			else 
+				localization/setLocale(locale): route.packages: 'soda
+		}
+		route("/"): jetx/redirect:s"/#{localization/currentLocale}"
 	}
 	step: response/send
 }

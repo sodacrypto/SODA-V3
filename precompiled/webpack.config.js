@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const public = {
   entry:{
     index:    "./scripts/public/index.js",
+    lp:    "./scripts/public/lp.js"
   },
   output:{
   	filename: '[name].js',
@@ -12,12 +13,11 @@ const public = {
   },
   plugins: [
     // new webpack.IgnorePlugin(/^(?:electron|ws)$/),
-    // new webpack.ProvidePlugin({
-    //     $: "jquery",
-    //     jQuery: "jquery",
-    //     "window.jQuery": "jquery",
-    //     Promise: 'es6-promise'
-    // })
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery"
+    })
   ],
   module: {
   	rules: [

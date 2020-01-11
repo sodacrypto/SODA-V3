@@ -40,19 +40,19 @@
 
 @media (max-width: 767px) {
     .fl-table {
-        display: block;
+        display: unqute('block');
         width: 100%;
     }
     .table-wrapper:before{
         content: "Scroll horizontally >";
-        display: block;
+        display: unqute('block');
         text-align: right;
         font-size: 11px;
         color: white;
         padding: 0 0 10px;
     }
     .fl-table thead, .fl-table tbody, .fl-table thead th {
-        display: block;
+        display: unqute('block');
     }
     .fl-table thead th:last-child{
         border-bottom: none;
@@ -81,7 +81,7 @@
         border-bottom: 1px solid #f7f7f9;
     }
     .fl-table tbody tr {
-        display: table-cell;
+        display: unqute('table-cell');
     }
     .fl-table tbody tr:nth-child(odd) {
         background: none;
@@ -97,20 +97,20 @@
         border-right: 1px solid #E6E4E4;
     }
     .fl-table tbody td {
-        display: block;
+        display: unqute('block')
         text-align: center;
     }
 }
 
 .loan__repay
 	input
-		display none
+		display unqute('none')
 	&.debt
-		display flex
+		display unqute('flex')
 		.loan__repay-input
 			flex 1
 		input
-			display unset
+			display unqute('unset')
 	&.repaid::before
 		content "repaid"
 	

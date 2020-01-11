@@ -1,0 +1,255 @@
+package soda
+	use model/signer
+
+def ym = <script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(56564485, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+
+def Real toFixed2 = (this * 100).int.s"#{$ div 100 }.#{$ div 10 mod 10}#{$ mod 10}"
+
+def home = jetx/out:
+	<html lang=#{localization/currentLocale}>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>#{localeText("html-title")}</title>
+			<meta name = "viewport" content = "width=device-width, initial-scale = 1"/>
+			<link rel="stylesheet" href="/styles/lp.css"/>
+			#{ym}
+			<script src="/scripts/lp.js" defer=""/>
+		</head>
+
+		<body>
+			<div class="main">
+				<div class="announce">
+					#{locale("announce--message")} <br class="hide-on-all-computers"/>
+					<a target="_blank" href="https://link.medium.com/OpHcPRfFc2">#{locale("announce--href")}</a>
+				</div>
+				<header class="main__header">
+					<a href=#{"/"+localization/currentLocale} class="icon-logo"></a>
+					<div class="user-panel">
+						<div class="lang-box">
+							<div class=#{localization/currentLocale.{
+								case "ru"	=> "icon-ru"
+								case "en"	=> "icon-en"
+								case "cn"	=> "icon-cn"
+								}}>	
+							</div>
+							<!--div class="user-panel__down triangle"></div-->
+							<div class="lang-dropdown">
+								<a href="/en" class="user-dropdown__elem">
+									<div class="icon icon-en"></div>
+								</a>
+								<a href="/ru" class="user-dropdown__elem">
+									<div class="icon icon-ru"></div>
+								</a>
+								<a href="/cn" class="user-dropdown__elem">
+									<div class="icon icon-cn"></div>
+								</a>							
+							</div>	
+						</div>
+					</div>
+					#{
+						<div class="sign-in-and-sign-up-box">
+							<button data-type="go-platform" class="button-go-platform button--blue">#{locale("button-go-platform")}</button>
+						</div>			
+					}
+				</header>
+
+				<div class="main__content">
+					<div class="box-with-services">
+						<div class="services">
+							<div class="services__title">#{locale("lp-services__title")}</div>
+							#{
+								fix rates = signer/daiRates
+								<div class="services-box">
+									<div class="service service-top" data-type="SODA">
+										<div class="service__title">SODA</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}><span data-attr="apr"/>%</div>
+									</div>
+									<div class="service" data-type="Maker">
+										<div class="service__title">Maker</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}>#{rates!'MakerDaoV2.toFixed2}%</div>
+									</div>
+									<div class="service" data-type="dYdX">
+										<div class="service__title">dYdX</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}>#{rates!'dYdX.toFixed2}%</div>
+									</div>
+									<div class="service" data-type="Compound">
+										<div class="service__title">Compound</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}>#{rates!'CompoundV2.toFixed2}%</div>
+									</div>
+									<div class="service" data-type="Fulcrum">
+										<div class="service__title">Fulcrum</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}>#{rates!'Fulcrum.toFixed2}%</div>
+									</div>
+									<div class="service" data-type="Nuo">
+										<div class="service__title">Nuo</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}>#{rates!'Nuo.toFixed2}%</div>
+									</div>
+									<!--div class="service" data-type="Nexo">
+										<div class="service__title">Nexo</div>
+										<div class="service__percent" data-type=#{localeText:"label-apr"}>11.90%</div>
+									</div-->
+								</div>
+							}
+						</div>
+					</div>
+
+					<div class="box-with-form">
+						<div class="form-take-loan">
+							<h2 class="form__title">#{locale("lp-form-title")}</h2>
+							#{takeLoanCalculatorLp}
+							<div class="take-loan__button-box">
+								<button  data-type="sign-up" class="button--yellow">#{locale("lp-take-loan__button")}</button>
+							</div>
+							<div class="take-loan__notification">
+								#{locale("take-loan__notification-0-first-day")}
+							</div>
+							<div class="features-container">
+								<div class="feature">#{locale("lp-feature-1")}</div>
+								<div class="feature">#{locale("lp-feature-2")}</div>
+								<div class="feature">#{locale("lp-feature-3")}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="additional-block" data-type="team">
+				<div class="additional-block__titles">
+					<div class="additional-block__title team" data-type="team">#{locale("team")}</div>
+					<div class="additional-block__title faq" data-type="faq">#{locale("FAQ")}</div>
+				</div>
+				<div class="additional-block__team">
+					<div class="team-person max-tarasenko">
+						<div class="team-person__name">#{locale("max-tarasenko")}</div>
+						<div class="team-person__content">#{locale("max-tarasenko--content")}</div>
+					</div>
+					<div class="team-person pavel-tarasenko">
+						<div class="team-person__name">#{locale("pavel-tarasenko")}</div>
+						<div class="team-person__content">#{locale("pavel-tarasenko--content")}</div>
+					</div>
+					<div class="team-person dan-gavrilin">
+						<div class="team-person__name">#{locale("dan-gavrilin")}</div>
+						<div class="team-person__content">#{locale("dan-gavrilin--content")}</div>
+					</div>
+					<div class="team-person daria-gavrilina">
+						<div class="team-person__name">#{locale("daria-gavrilina")}</div>
+						<div class="team-person__content">#{locale("daria-gavrilina--content")}</div>
+					</div>
+				</div>
+
+				<div class="additional-block__FAQ">
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--1")}</div>
+						<div class="faq-box__content">#{locale("faq-content--1")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--3")}</div>
+						<div class="faq-box__content">#{locale("faq-content--3")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--2")}</div>
+						<div class="faq-box__content">#{locale("faq-content--2")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--4")}</div>
+						<div class="faq-box__content">#{locale("faq-content--4")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--7")}</div>
+						<div class="faq-box__content">#{locale("faq-content--7")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--5")}</div>
+						<div class="faq-box__content">#{locale("faq-content--5")}</div>
+					</div>
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--10")}</div>
+						<div class="faq-box__content">#{locale("faq-content--10")}</div>
+					</div>
+					
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--8")}</div>
+						<div class="faq-box__content">#{locale("faq-content--8")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--6")}</div>
+						<div class="faq-box__content">#{locale("faq-content--6")}</div>
+					</div>
+
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--9")}</div>
+						<div class="faq-box__content">#{locale("faq-content--9")}</div>
+					</div>
+
+					<div class="faq-box">
+						<div class="faq-box__title">#{locale("faq-title--11")}</div>
+						<div class="faq-box__content">#{locale("faq-content--11")}</div>
+					</div>
+					
+				</div>
+			</div>
+
+			<footer class="footer">
+				<div class="footer__left-block copyright__text">#{locale("copyright__text")}</div>
+				<div class="footer__right-block">					
+					<div class="footer__right-block-box">						
+						<div class="footer__support">
+							<div class="support__text add-colon">#{locale("lp-contact-us")}</div>
+							<div class="support__email">love@soda.network</div>						
+						</div>
+						<div class="sidebar__socials--darc">
+							<a target="_blank" href="https://github.com/sodacrypto"><div class="socials-icon socials-icon--github"></div></a>
+							#{socials}
+						</div>
+					</div>
+				</div>
+			</footer>
+		</body>
+	</html>
+
+
+def takeLoanCalculatorLp =
+	<div class="take-loan__calculator">
+		<div class="calculator__elems-box">
+			<div class="calculator__elem-box">
+				<div class="calculator__title">#{locale("lp-calculator__title--you-are-borrowing")}</div>
+				<label class="input-with-currency" data-currency="DAI"><input id="loan-amount" required="" autocomplete="off" min="100" max="50000" type="number"  class="input" placeholder=#{localeText("take-loan__calculator-input-placeholder")}/></label>
+			</div>
+			<div class="calculator__elem-box">
+				<div class="calculator__title add-colon">#{locale("calculator__title--choose-collateral-ratio")}</div>
+				<div class="calculator__content range">
+					<input id="security-range" type="hidden"/>
+				</div>
+			</div>
+			
+		</div>
+		<div class="calculator__elems-box">
+			<div class="calculator__elem-box">
+				<div class="calculator__title add-colon">#{locale("calculator__title--daily-interest")}</div>
+				<div class="calculator__content"><div id="daily-interest" class="count" data-currency="DAI">100</div></div>
+			</div>
+			<div class="calculator__elem-box min-fix">
+				<div class="calculator__title add-colon">#{locale("lp-calculator__title--collateral")}</div>
+				<div class="calculator__content"><div  id="required-collateral" class="count" data-currency="BTC">8.7</div></div>
+			</div>
+			
+		</div>
+	</div>

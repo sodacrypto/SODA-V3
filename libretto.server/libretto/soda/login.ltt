@@ -1,0 +1,219 @@
+package soda
+
+def sign_in = jetx/out: login("sign-in")
+def sign_up = jetx/out: login("sign-up")
+def recovery = jetx/out: login("sign-recovery")
+
+def login(state:String!) = {
+	<html lang=#{localization/currentLocale}>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>#{localeText("html-title")}</title>
+			<meta name = "viewport" content = "width=device-width, initial-scale = 1"/>
+			<link rel="stylesheet" href="/styles/login.css"/>
+			<script id="g-recaptcha-script" src="https://www.google.com/recaptcha/api.js" async="" onload="this.dataset.ready = true"/>
+			<script src="/scripts/login.js" defer=""/>
+			<style>.pop-up {visibility: hidden;}</style>
+		</head>
+		<body>
+			<div class="pop-up">
+				<div class="pop-up__content">
+					<div class="pop-up__text">#{locale("pop-up__with-email")}</div>
+					<div class="pop-up__text bold">#{locale("pop-up__please-follow")}</div>
+					<div class="pop-up__button-box">
+						<button id="pop-up_close" class="button--blue">#{locale("close")}</button>
+					</div>
+				</div>
+			</div>
+			<div class="main">
+				<header class="main__header">
+					<a href=#{"/"+localization/currentLocale} class="icon-logo"></a>
+					<!--div class="sign-in-and-sign-up-box">
+						<div class="imitation-button--sign-in">
+							<div class="imitation-button__text--sign-in">#{locale("sign-in")}</div>
+						</div>
+						<button class="button-sign-up button--blue">#{locale("sign-up")}</button>
+					</div-->				
+				</header>
+
+				<div class="main__content">
+					<div class="box-with-text">
+						<div class="box-with-text__content">
+							<div id="big-titles" class="big-titles">
+								<div class="big-title title--sign-up">#{locale("title--sign-up")}</div>
+								<div class="big-title title--sign-up-with-amount">#{locale("title--sign-up-with-amount")} <span data-type="amount" class="with-currency" data-currency="DAI">...</span></div>
+								<div class="big-title title--sign-in">#{locale("title--sign-in")}</div>
+								<div class="big-title title--sign-in-with-amount">#{locale("title--sign-in-with-amount")} <span data-type="amount" class="with-currency" data-currency="DAI">...</span></div>
+							</div>
+							<div class="bullets">
+								<div class="bullet">#{locale("sign-up__bullet-1")}</div>
+								<div class="bullet">#{locale("sign-up__bullet-2")}</div>
+								<div class="bullet">#{locale("sign-up__bullet-3")}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="box-with-form">
+						<div class="box-with-form__content" data-type=#{state}>
+							<div class="tabs">
+								<div class="tab-box sign-up">
+									<div class="tab-title">#{locale("sign-up")}</div>
+								</div>
+								<div class="tab-box sign-in">
+									<div class="tab-title">#{locale("sign-in")}</div>
+								</div>
+							</div>
+							<div class="forms-main">
+								<form id="sign-up" class="form-sign-up">
+									<div class="form__content">
+										<div class="form__text add-colon">#{locale("sign-up__email-title")}</div>
+										<label id="js-sign-up-label" class="input-box">
+											<input type="email" name="email" required="" class="input"/>
+										</label>
+									</div>
+									<div class="form__content">
+										<div style="display:none"  data-callback="signupSubmitHandler" />
+										<button class="button--yellow ">#{locale("sign-up__button-text")}</button>
+									</div>
+									<div class="form__text form__content--recaptcha">
+      									<!--div class="g-recaptcha"  data-sitekey="6Lcj7MQUAAAAAGvQm9uN-JqDvroaE9LtUiZC5Cmo"/-->
+										This site is protected by reCAPTCHA and the <br/>										
+									    <a target="_blank" href="https://policies.google.com/privacy">Google Privacy Policy</a> and
+									    <a target="_blank" href="https://policies.google.com/terms">Terms of Service</a> Apply.
+									</div>
+								</form>
+								<form id="js-sign-in" class="form-sign-in">
+									<div class="form__content">
+										<div class="form__text add-colon">#{locale("sign-in__email-title")}</div>
+										<label class="input-box">
+											<input type="email" name="email" required="" class="input"/>
+										</label>
+									</div>
+									<div class="form__content min-fix">
+										<div class="form__text add-colon">#{locale("sign-in__pass-title")}</div>
+										<label id="js-sign-in-password-label" class="input-box">
+											<input type="password" name="password" required="" class="input"/>
+										</label>
+									</div>
+									<div class="form__content">
+										<button class="button--yellow">#{locale("sign-in__button-text")}</button>
+									</div>
+									<div id="form__content--forgot-pass-forward" class="form__content form__content--forgot-pass">
+										<div class="form__text--forgot">#{locale("sign-in__forgot-pass-forward")}</div>
+									</div>
+								</form>
+								<form id="js-recovery" class="form-sign-recovery">
+									<div class="form__content">
+										<div class="form__text add-colon">#{locale("sign-recovery__email-title")}</div>
+										<label class="input-box">
+											<input name="email" type="email" required="" class="input"/>
+										</label>
+									</div>
+									<div class="form__content">
+										<button name="submit" class="button--yellow">#{locale("sign-recovery__button-text")}</button>
+									</div>
+									<div id="form__content--forgot-pass-back" class="form__content form__content--forgot-pass">
+										<div class="form__text--forgot">#{locale("sign-in__forgot-pass-back")}</div>
+									</div>									
+								</form>														
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="footer__left-block copyright__text">#{locale("copyright__text")}</div>
+				<div class="footer__right-block">					
+					<div class="footer__right-block-box">						
+						<div class="footer__support">
+							<div class="support__text add-colon">#{locale("lp-contact-us")}</div>
+							<div class="support__email">love@soda.network</div>						
+						</div>
+						<div class="sidebar__socials--darc">
+							<a target="_blank" href="https://github.com/sodacrypto"><div class="socials-icon socials-icon--github"></div></a>
+							#{socials}
+						</div>
+					</div>
+				</div>
+			</footer>
+		</body>
+	</html>
+}
+def confirmed(email:String!, recovery:Unit?) = 
+	<html lang=#{localization/currentLocale}>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>#{localeText("html-title")}</title>
+			<meta name = "viewport" content = "width=device-width, initial-scale = 1"/>
+			<link rel="stylesheet" href="/styles/login.css"/>
+			<script src="/scripts/confirm.js" defer="defer"/>
+		</head>
+		<body>
+			<div class="main">
+				<header class="main__header">
+					<a href=#{"/"+localization/currentLocale} class="icon-logo"></a>
+					<!--div class="sign-in-and-sign-up-box">
+						<div class="imitation-button--sign-in">
+							<div class="imitation-button__text--sign-in">#{locale("sign-in")}</div>
+						</div>
+						<button class="button-sign-up button--blue">#{locale("sign-up")}</button>
+					</div-->				
+				</header>
+
+				<div class="main__content">
+					<div class="box-with-text">
+						<div class="box-with-text__content">
+							<div class="big-titles" data-type=#{s"email-confirmed#{recovery."--change-password"}"}>
+								<div class="big-title title--email-confirmed">#{locale("email-confirmed")}</div>
+							</div>
+							<div class="email-confirmed__text ">#{locale("email-confirmed__text")}</div>
+							<div class="email-confirmed__text-change-password">#{locale("email-confirmed__text-change-password")}</div>
+						</div>
+					</div>
+
+					<div class="box-with-form">
+						<div class="box-with-form__content" data-type="confirmed">
+							<div class="forms-main">								
+								<form id="registration" action=#{} class="form-confirmed" method="POST">
+									<div class="form__content"> 
+										<div class="form__text add-colon">#{locale("confirmed__email-title")}</div>
+										<label class="input-box">
+											<input value=#{email} type="email" name="email" disabled="" class="input"/>
+										</label>
+									</div>
+									<div class="form__content">
+										<div class="form__text add-colon">#{locale("confirmed__pass-title")}</div>
+										<label id="pass-label" class="input-box">
+											<input type="password" required="" name="password" class="input"/>
+										</label>
+									</div>
+									<div class="form__content">
+										<button class="button--yellow">#{locale("confirmed__button-text")}</button>
+									</div>
+								</form>														
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="footer__left-block copyright__text">#{locale("copyright__text")}</div>
+				<div class="footer__right-block">					
+					<div class="footer__right-block-box">						
+						<div class="footer__support">
+							<div class="support__text add-colon">#{locale("lp-contact-us")}</div>
+							<div class="support__email">love@soda.network</div>						
+						</div>
+						<div class="sidebar__socials--darc">
+							<a target="_blank" href="https://github.com/sodacrypto"><div class="socials-icon socials-icon--github"></div></a>
+							#{socials}
+						</div>
+					</div>
+				</div>
+			</footer>
+		</body>
+	</html>
+
+

@@ -1,0 +1,44 @@
+package soda
+
+def inputWithCopy() = inputWithCopy((), "",())
+def inputWithCopy(class) = inputWithCopy((), class,())
+def inputWithCopy(id, class) = inputWithCopy(id, class,())
+def inputWithCopy(id:String?, class, name:String?) = 
+	<div  class=#{("input-with-copy",class).*util/join(" ")}>
+		<input id=#{id} type="text" name=#{name}  disabled="true" value="Random text to copy, random text to copy, rando..."/>
+		<div class="input-with-copy__button"><label>Copy</label></div>
+	</div>
+
+
+def socials = (
+	<a target="_blank" href="https://t.me/sodacrypto"><div class="socials-icon socials-icon--telegram"></div></a>,
+	<a target="_blank" href="https://www.facebook.com/sodacrypto"><div class="socials-icon socials-icon--facebook"></div></a>,
+	<a target="_blank" href="https://twitter.com/sodacrypto"><div class="socials-icon socials-icon--twitter"></div></a>,
+	<a target="_blank" href="https://www.reddit.com/r/sodacrypto"><div class="socials-icon socials-icon--reddit"></div></a>,
+	<a target="_blank" href="https://medium.com/@sodacrypto"><div class="socials-icon socials-icon--medium"></div></a>,
+	<a target="_blank" href="https://discord.gg/9tnVPrY"><div class="socials-icon socials-icon--discord"></div></a>
+)
+
+def gitHab = {
+	<a target="_blank" href="https://github.com/sodacrypto" class="git-hub__icon"></a>
+}
+
+
+
+
+// #{locale("take-loan__notification--neutral")}
+def notification(x,y) = notification(x,y,())
+def notification(type, text, id) = {
+	// type:
+	// 	- neutral
+	// 	- error
+	// 	- warning
+	<div id=#{id} class=#{"notification " + type}>
+		<div class="notification-text">#{text}</div>
+	</div>
+}
+
+
+// <div class="history-transactions">
+// 	<div class="history-transaction">тут будет таблица <a href="/" class="link--transaction">tetetetettest</a></div>										
+// </div>

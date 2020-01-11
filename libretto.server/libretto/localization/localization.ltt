@@ -1,0 +1,67 @@
+package localization
+	use libretto/util
+	use libretto/util/strbuf
+	use libretto/xml
+	use libretto/web/in
+struct LocaleKey
+
+def accept_language = ('en, 'ru, 'cn)
+def currentLocale = util/context(LocaleKey())!.*cast(#String!,responseLocale)
+def setLocale(locale:String!, #do):type(do!) = 
+	util/context(LocaleKey()).with(locale, do)
+
+
+def responseLocale:String! = in/headers!"accept-language".{
+  var buf = strbuf/new()
+  fix chars = util/chars
+  var wait_for_comma:Unit?
+  var skip_space:Unit?
+  chars.{
+    case " " if skip_space => ()
+    case "," if wait_for_comma => {
+      wait_for_comma = ()
+      skip_space = unit
+    }
+    case x if skip_space => {
+      skip_space = ()
+      buf = strbuf/new()
+    }
+    case x if wait_for_comma => ()
+    case "-" if buf.string in accept_language => return buf.string
+    case ";" if buf.string in accept_language => return buf.string
+    case "-" => {
+      wait_for_comma = unit
+    }
+    case x =>buf.append:x
+  }
+}.*onEmpty:'en
+
+
+
+def locale(id:String!) = currentLocale.{
+	case 'ru => localeMap(ru)
+  case 'en => localeMap(en)
+	case 'cn => localeMap(cn)
+	case _   => localeMap(en)
+}. <span data-locale-id=#{id}>#{$!id}</span>
+
+def localeText(id:String!) = currentLocale.{
+	case 'ru => localeMap(ru)
+	case 'en => localeMap(en)
+  case 'cn => localeMap(cn)
+	case _   => localeMap(en)
+}!id.*dyn(#xml/Text).string(unit)
+
+def localeMap(xml:xml/Elem!) = map#[String!, xml/Node*]() as map {
+  xml.contents.?xml/Elem as el.{
+    fix id = el.attrs.where(name=='id).value dyn #!
+    fix value = contents
+    map!id = value
+  }
+}
+def localeMap(lang:String!) = lang.{
+	case 'ru => localeMap(ru)
+	case 'en => localeMap(en)
+  case 'cn => localeMap(cn)
+	case _   => localeMap(en)
+}

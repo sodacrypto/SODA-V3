@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./scripts/public/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./scripts/public/lp.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -119,14 +119,14 @@ eval("/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals 
 
 /***/ }),
 
-/***/ "./scripts/public/index.js":
-/*!*********************************!*\
-  !*** ./scripts/public/index.js ***!
-  \*********************************/
+/***/ "./scripts/public/lp.js":
+/*!******************************!*\
+  !*** ./scripts/public/lp.js ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(/*! ion-rangeslider */ \"./node_modules/ion-rangeslider/js/ion.rangeSlider.js\");\n\n$(\"#security-range\").ionRangeSlider({\n  skin: 'round',\n  min: 140,\n  max: 400,\n  from: 170,\n  step: 5,\n  prettify: function prettify(x) {\n    return \"\".concat(x, \"%\");\n  }\n});\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./scripts/public/index.js?");
+eval("/* WEBPACK VAR INJECTION */(function($) {__webpack_require__(/*! ion-rangeslider */ \"./node_modules/ion-rangeslider/js/ion.rangeSlider.js\");\n\n$(\"#security-range\").ionRangeSlider({\n  skin: 'round',\n  min: 140,\n  max: 400,\n  from: 170,\n  step: 5,\n  prettify: function prettify(x) {\n    return \"\".concat(x, \"%\");\n  }\n});\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\")))\n\n//# sourceURL=webpack:///./scripts/public/lp.js?");
 
 /***/ })
 

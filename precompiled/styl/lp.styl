@@ -1,0 +1,794 @@
+@import 'nib'
+@import 'normalize-stylus'
+@import '_styl/general-part'
+
+// @media screen and (max-width 959px)
+
+// @media screen and (min-width 960px) and (max-width 1299px)
+
+// @media screen and (min-width 1300px)
+
+body 
+	flex-direction: column;
+	min-width: 320px;
+.main
+	min-height 934px
+	flex 1
+	background url("/images/lp-bg.svg")
+	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: unquote('flex');
+	flex-direction: column;
+	@media screen and (max-width 959px)
+		height auto
+		background white
+
+.announce
+	// height 38px
+	// background #5163E8
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 14px;
+	color: #221B48;
+	text-align center
+	padding 10px 0 0 0
+	// padding 10px 0 14px 0
+	// box-sizing: border-box;
+	// color white
+	a
+		color #5163E8
+		text-decoration: none
+		border-bottom: 1px dashed #5163E8;
+	@media screen and (max-width 959px)
+		background #5163E8
+		color white
+		padding 10px 0 14px 0
+		a
+			color #0FE7DC
+			text-decoration: none
+			border-bottom: 1px dashed #0FE7DC;
+
+
+.main__content
+	display unquote('flex')
+	flex 1
+	@media screen and (max-width 959px)
+		flex-direction column
+.range
+	margin-top: 15px;
+.icon-logo
+	margin auto 0 auto 101px
+	height 60px
+	width 45px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin-left 30px
+	@media screen and (max-width 959px)
+		margin-left 20px
+.footer, .main__header
+	min-height 90px
+	height 90px
+	max-height 90px
+.footer
+	margin-top 60px
+	background: linear-gradient(180deg, #E0E9FD 0%, #EFF2FC 8.8%);
+	display unquote('flex')
+	justify-content: space-between;
+	@media screen and (max-width 959px)
+		margin-top 30px
+		flex-direction: column-reverse;
+		height 216px
+		min-height 216px
+		max-height 216px
+		background: linear-gradient(180deg, #E0E9FD 0%, #EFF2FC 8.8%);
+.main__header
+	display unquote('flex')
+	justify-content: space-between;
+	@media screen and (max-width 959px)
+		background white
+.button-sign-up, .button-go-platform
+	margin auto 100px auto 25px
+	font-size: 16px;
+	line-height: 24px;
+	color: #EEF2FC;
+	padding-left 30px
+	padding-right 30px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin-right 30px
+	@media screen and (max-width 959px)
+		margin-right 20px
+		margin-left 10px
+		padding-left 10px
+		padding-right 10px
+
+	
+.footer__right-block, .footer__left-block
+	flex 1
+	display unquote('flex')
+	position relative
+.footer__right-block
+	justify-content: flex-end;
+	@media screen and (max-width 959px)
+		flex 3
+
+.footer__right-block-box
+	display unquote('flex')
+	// min-width 495px
+	// width 70%
+	flex 1
+	margin-right 100px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin-right 30px
+	@media screen and (max-width 959px)
+		flex-direction column
+		width 100%
+		min-width 280px
+		margin 40px 0 0 0
+.footer__left-block
+	margin auto -70px auto 101px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin auto 0 auto 30px
+	@media screen and (max-width 959px)
+		margin: auto;
+		text-align center
+		flex 1
+		display unquote('block')
+.sidebar__socials--darc, .sidebar__socials
+	width 225px
+	margin auto 0 auto auto
+	padding 20px 0
+	@media screen and (max-width 959px)
+		margin: auto;
+		// width 100%
+.footer__support
+	// display unquote('flex')
+	margin auto auto auto 0
+	@media screen and (max-width 959px)
+		margin: auto;
+		text-align: center;
+.support__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+.support__email
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	color: #4A4469;
+
+
+.sign-in-and-sign-up-box
+	display unquote('flex')
+.imitation-button--sign-in
+	height 45px
+	margin auto
+	display unquote('flex')
+	cursor pointer
+	margin auto 25px
+	@media screen and (max-width 959px)
+		margin auto 15px
+.imitation-button__text--sign-in
+	margin auto
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 24px;
+	color: #221B48;
+
+.box-with-services, .box-with-form
+	display unquote('flex')
+	flex 1
+	position relative
+	@media screen and (max-width 959px)
+		flex none
+.box-with-services
+	@media screen and (max-width 959px)
+		background url("/images/lp-bg.svg")
+		// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+		background-size: cover;
+		background-repeat: no-repeat;
+		height 649px
+
+.services
+	margin auto auto auto 101px
+	display: unquote('flex');
+	flex-direction: column;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin-left 30px
+	@media screen and (max-width 959px)
+		margin auto 20px auto 20px
+		// margin 50px 20px 60px 20px
+		flex 1
+
+.services__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 42px;
+	line-height: 54px;
+	color: #221B48;
+	@media screen and (max-width 959px)
+		// font-size: 28px;
+		font-size: 26px;
+		line-height: 36px;
+
+
+.services-box
+	margin-top 50px
+	flex: 1;
+	display: unquote('flex')
+	flex-direction: column;
+.service
+	margin-bottom 10px
+	width 70%
+	height 50px
+	min-width 360px
+	background: #F7FBFD;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	display: unquote('flex')
+	&:last-child
+		margin-bottom 0
+	&:nth-child(1)
+		height 60px
+		background: linear-gradient(180deg, #FFFFFF 0%, #F8FCFF 100%), #EEF2FC;
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+		border-radius: 5px;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		width 95%
+		min-width 95%
+		min-width 344px
+	@media screen and (max-width 959px)
+		width 100%
+		min-width 280px
+		height 40px
+
+
+.form-take-loan
+	background: white
+	// background: linear-gradient(180deg, #FFFFFF 0%, #F8FCFF 100%), #EEF2FC;
+	box-shadow: 0px 8px 20px rgba(34, 27, 72, 0.15);
+	border-radius: 5px;
+	// height 595px
+	min-width 455px
+	width: 70%;
+	margin auto 100px auto auto
+	display: unquote('flex');
+	flex-direction: column;
+	overflow hidden
+	.button--yellow
+		margin-right 40px
+		margin-left 40px
+		@media screen and (max-width 959px)
+			margin-right 20px
+			margin-left 20px
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin-right 30px
+		min-width 285px
+		// height 691px
+	@media screen and (max-width 959px)
+		margin 0
+		width 100%
+		min-width 280px
+		border-radius 0
+		min-height 720px
+		box-shadow none
+		background white
+		overflow visible
+.form__title
+	margin 30px 40px 0px 40px
+	@media screen and (max-width 959px)
+		margin 40px 20px 0 20px
+
+
+.take-loan__notification
+	background #5163E8
+	padding 10px 10px 11px 10px
+	text-align center
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 14px;
+	color white
+	margin-top 20px
+	// color: #221B48;
+	// padding 10px 0 14px 0
+	@media screen and (max-width 959px)
+		margin: 20px 20px 0 20px;
+		border-radius: 5px 5px 0 0;
+		line-height: 18px;
+		padding-bottom 10px
+
+.take-loan__calculator
+	margin: 0 40px 5px 40px
+	@media screen and (max-width 959px)
+		margin: 0 20px 5px 20px
+.take-loan__button-box
+	display unquote('flex')
+.input-with-currency
+	margin-top 10px
+.calculator__elem-box
+	flex 1
+	margin-top 20px
+.calculator__elems-box
+	margin-top 5px
+	&:nth-child(2)
+		flex-direction row
+		display unquote('flex')
+		@media screen and (min-width 960px) and (max-width 1299px)
+			flex-direction column
+			.calculator__elem-box:nth-child(1)
+				.count
+					margin-bottom 0
+		@media screen and (max-width 959px)
+			flex-direction column
+			.calculator__elem-box:nth-child(1)
+				.count
+					margin-bottom 0
+		.calculator__content
+			margin-top 10px
+.count[data-currency="BTC"]:before, .count[data-currency="DAI"]:before
+	margin: 4px auto auto -30px;
+.features-container
+	// margin-top 20px
+	flex 1
+	display unquote('flex') 
+	background: linear-gradient(180deg, #E6EDFF 0%, rgba(237, 242, 252, 0) 11.38%), #F3F8FB;
+	padding 50px 40px 20px 40px
+	// border-radius: 0px 0px 5px 5px;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		flex-direction column
+		padding 20px 30px 20px 45px
+		// padding 30px 30px 30px 45px
+	@media screen and (max-width 959px)
+		flex-direction column
+		min-height: 123px;
+		padding 20px 30px 20px 55px
+		margin 20px
+		background white
+		border: 1px solid #CCD9F8;
+		box-sizing: border-box;
+		// border-radius: 5px;
+		//new
+		margin-top: 0;
+	    border-radius: 0 0 5px 5px;
+
+.feature
+	flex 1
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	text-align: center;
+	color: #4A4469;
+	position relative
+	@media screen and (min-width 960px) and (max-width 1299px)
+		text-align left
+		margin-left: 20px;
+		br
+			display none
+	@media screen and (max-width 959px)
+		text-align left
+		br
+			display none
+	&:nth-child(2)
+		margin: 0 20px;
+		@media screen and (min-width 960px) and (max-width 1299px)
+			margin 10px 20px
+		@media screen and (max-width 959px)
+			margin 10px 0
+	&:before
+		content ""
+		height 10px
+		width 10px
+		position absolute
+		border-radius 5px
+		background #FFD200
+		left: 50%;
+		transform: translate(-50%, -50%);
+		top -15px
+		@media screen and (min-width 960px) and (max-width 1299px)
+			top 10px
+			left -20px
+		@media screen and (max-width 959px)
+			top 10px
+			left -20px
+			
+
+// ----------------------------------------
+
+
+.service
+	justify-content: space-between;
+	position relative
+	&:after
+		content ""
+		height 100%
+		width 10px
+		background url("/images/triangle-red.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: absolute;
+		margin-right: 10px;
+		right: 0;
+	&:before
+		width 55px
+		height 100%
+		position absolute
+		margin: 2px 0 0 2px;
+	&[data-type="SODA"]
+		&:before
+			content ""
+			background url("/images/service-SODA.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&[data-type="Maker"]
+		&:before
+			content ""
+			background url("/images/service-Maker.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&[data-type="dYdX"]
+		&:before
+			content ""
+			background url("/images/service-dYdX.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&[data-type="Nuo"]
+		&:before
+			content ""
+			background url("/images/service-Nuo.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&[data-type="Compound"]
+		&:before
+			content ""
+			background url("/images/service-Compound.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&[data-type="Fulcrum"]
+		&:before
+			content ""
+			background url("/images/service-Fulcrum.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&[data-type="Nexo"]
+		&:before
+			content ""
+			background url("/images/service-Nexo.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		
+.service-top
+	.service__title
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 24px;
+		color: #221B48;
+	.service__percent
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 24px;
+		color: #221B48;
+	&:after
+		background url("/images/triangle-green.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+
+.service__title
+	margin auto 0 auto 65px
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 16px;
+	line-height: 24px;
+	align-items: center;
+	color: #9F9EB2;
+
+.service__percent
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 18px;
+	line-height: 24px;
+	text-align: right;
+	color: #9F9EB2;
+	margin auto 35px auto 0
+	position relative
+	&[data-type]
+		&:after
+			content attr(data-type)
+			margin-left: .25em;
+			font-weight: 450;
+
+		
+
+
+
+
+
+.pop-up
+	display unquote('none')
+	background rgba(34,27,72,0.5)
+	z-index 15
+	&.open
+		position fixed
+		top 0
+		left 0
+		height 100%
+		width 100%
+		display unquote('flex')
+.waitlist
+	margin auto
+	// height 275px
+	width 305px
+	// width 285px
+	background: linear-gradient(180deg, #FFFFFF 0%, #ECF4F9 100%), #EEF2FC;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+	border-radius: 5px;
+	padding: 15px 15px 25px 15px
+	display: unquote('flex');
+	// @media screen and (max-width 959px)
+	// 	margin auto
+	// 	width 94%
+
+.waitlist__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 33px;
+	font-size: 21px;
+	color: #221B48;
+	text-align center
+
+
+#waitlist-form
+	flex 1
+	display: unquote('flex');
+	flex-direction: column;
+	justify-content: space-between;
+	.button--yellow, .button--blue
+		margin-left 0
+		margin-right 0
+	.button--blue
+		margin-top: 20px;
+	.calculator__title
+		text-align center
+	span.bold
+		font-weight 600
+		
+
+
+
+
+
+.lang-box
+	@media screen and (max-width 959px)
+		margin auto 0
+
+.user-panel
+	flex: 1;
+	display: unquote('flex');
+	justify-content: flex-end;
+
+
+.additional-block
+	margin: 50px 100px 20px 101px;
+	@media screen and (max-width 959px)
+		margin: 25px 20px 20px 20px;
+	@media screen and (min-width 960px) and (max-width 1299px)
+		margin: 35px 30px 20px 30px;
+	&[data-type="team"]
+		.additional-block__title.team
+			color: #4A6EE6;
+			border-bottom: 1px dashed #5163E8;
+		.additional-block__FAQ
+			display none
+	&[data-type="faq"]
+		.additional-block__title.faq
+			color: #4A6EE6;
+			border-bottom: 1px dashed #5163E8;
+		.additional-block__team
+			display none
+
+.additional-block__FAQ
+	margin-top 30px
+	@media screen and (max-width 959px)
+		margin-top 20px
+.additional-block__titles
+	display unquote('flex')
+.additional-block__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 23px;
+	color: #221B48;
+	margin-right 40px
+	cursor pointer
+	@media screen and (max-width 959px)
+		margin-right 30px
+	// &.select
+	// 	color: #4A6EE6;
+	// 	border-bottom: 1px dashed #5163E8;
+
+.additional-block__team
+	display unquote('flex')
+	flex-flow: row wrap;
+	margin-top: 50px;
+	@media screen and (max-width 959px)
+		margin-top 0
+.team-person
+	// flex 1
+	width: 50%;
+	box-sizing: border-box;
+	position relative
+	&:nth-child(n+3)
+		margin-top 75px
+	&:nth-child(2n+1)
+		padding-right: 20px;
+		padding-left 140px
+	&:nth-child(2n)
+		// padding-left 20px
+		padding-left 160px
+	@media screen and (max-width 959px)
+		width: 100%;
+		padding 0 !important
+		margin-top 170px  !important
+	&:before
+		content ""
+		height 118px
+		width 110px
+		position absolute
+		border-radius 5px
+		margin-left: -140px;
+		@media screen and (max-width 959px)
+			transform: translate(-50%, -100%);
+			margin-left 0
+			left 50%
+		@media screen and (max-width 959px)
+			height 128px
+			width 120px
+	&.max-tarasenko
+		&:before
+			background url("/images/max-tarasenko.png")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.pavel-tarasenko
+		&:before
+			background url("/images/pavel-tarasenko.png")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.dan-gavrilin
+		&:before
+			background url("/images/dan-gavrilin.png")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.daria-gavrilina
+		&:before
+			background url("/images/daria-gavrilina-rr55-3.png")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		
+	
+.team-person__name
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 27px;
+	color: #221b48;
+	@media screen and (max-width 959px)
+		margin-top: 15px;
+		margin-bottom: 5px;
+		text-align center
+
+
+.team-person__content
+	text-align: justify;
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4a4469;
+	a
+		word-wrap: break-word;
+		color #5163e8
+
+
+.faq-box
+	margin-top 10px
+	&.open
+		.faq-box__title
+			color: #5163E8;
+			border-color #5163E8
+			&:before
+				background url("/images/down--blue-top.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+		.faq-box__content
+			opacity 1
+			// visibility visible
+			display block
+			height: auto;
+
+.faq-box__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 16px;
+	line-height: 24px;
+	color: #221B48;
+	border-bottom: 1px dashed #221B48;
+	display: inline;
+	padding-left: 21px;
+	position relative
+	cursor pointer
+	transition: color 0.4s, border-color .4s
+	@media screen and (max-width 959px)
+		border-bottom none
+		display block
+	&:before
+		content ""
+		height 6px
+		width 11px
+		background url("/images/down.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position absolute
+		margin-left -21px
+		margin-top 9px
+		transition: background 0.4s
+
+.faq-box__content
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 24px;
+	color: #4A4469;
+	margin-top: 10px;
+	// visibility hidden
+	display none
+	opacity 0
+	height 0
+	transition: visibility 0.4s, height .4s
+	text-align: justify;
+	a
+		color #5163E8
+	.italic
+		font-style: italic;
+
+.sidebar__socials--darc
+	width 240px

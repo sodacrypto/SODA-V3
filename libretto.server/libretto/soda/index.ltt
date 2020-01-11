@@ -1,0 +1,733 @@
+package soda
+	use control
+	use libretto/util
+	use libretto/web/in
+	use com/teacode/date
+	use com/teacode/string
+	use com/teacode/jetx
+	use com/teacode/jetx/routes
+	use localization
+
+def locale(id) = localization/locale(id)
+def localeText(id) = localization/localeText(id).string/trim
+
+// def bienvenueLetter = jetx/out: view/bienvenueLetter
+def lk = jetx/out: {
+	<html lang=#{localization/currentLocale}>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>#{localeText("html-title")}</title>
+			<meta name = "viewport" content = "width=device-width, initial-scale = 1"/>
+			<link rel="stylesheet" href="/styles/soda.css"/>
+			<script src="/scripts/index.js" defer=""/>
+		</head>
+
+		<body>
+			<div class="overlay"></div>
+			<div class="sidebar">
+				<div class="sidebar__header">
+					<div id="sidebar__user-dropdown" class="user-box hide-on-all-computers">
+						<div class="header__user-img"></div>
+						<div class="user-dropdown">
+							<div class="user-dropdown__elem edit-profile hide">#{locale("edit-profile")}</div>
+							<a href=#{s"/#{localization/currentLocale}/sign_out"}><div class="user-dropdown__elem logout">#{locale("logout")}</div></a>								
+						</div>						
+					</div>
+					<a href=#{"/"+localization/currentLocale} class="icon-logo"></a>
+					<!--div class="sidebar__lang-picker hide" data-lang='en'>
+						<div class="lang-ru">
+							<div class="icon-ru"></div>
+						</div>						
+						<div class="lang-en">
+							<div class="icon-en"></div>
+						</div>
+					</div-->
+					<div class="arrow-left" onclick="document.querySelector('.overlay').classList.toggle('open'); document.querySelector('.sidebar').classList.toggle('open');">
+						<div class="arrow-icon"></div>
+					</div>
+				</div>
+				<div class="sidebar__menu">
+					<ul class="menu-tab">
+						<li class="menu-tab__elem active selected">
+							<div class="menu-tab__box menu-icon icon-loans">								
+								<label class="menu-tab__text">#{locale("menu-nav-tab__first")}</label>
+							</div>
+							<ul class="menu-submenu">
+								<li class="menu-submenu__elem selected" data-click="section--take-loan">
+									<div class="menu-submenu__box menu-icon icon-take-loan">
+										<label class="menu-submenu__text">#{locale("menu-nav-submenu__first")}</label>
+									</div>
+								</li>
+								<li class="menu-submenu__elem" data-click="section--withdraw-repay">
+									<div class="menu-submenu__box menu-icon icon-withdraw-repay">
+										<label class="menu-submenu__text">#{locale("menu-nav-submenu__second")}</label>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-tab__elem">
+							<div class="menu-tab__box menu-icon icon-leverage soon">
+								<label class="menu-tab__text">#{locale("menu-nav-tab__second")}</label>
+							</div>
+						</li>
+						<li class="menu-tab__elem">
+							<div class="menu-tab__box menu-icon icon-lend soon">
+								<label class="menu-tab__text">#{locale("menu-nav-tab__third")}</label>
+							</div>
+						</li>
+					</ul>
+					<!--h2 class="menu-header">#{locale("menu-header")}</h2>
+					<ul class="menu-tab">
+						<li class="menu-tab__elem hide">
+							<div class="menu-tab__box menu-icon icon-video">
+								<label class="menu-tab__text">#{locale("menu-doc-tab__first")}</label>
+							</div>
+						</li>
+						<li class="menu-tab__elem active faq">
+							<div class="menu-tab__box menu-icon icon-faq">
+								<label class="menu-tab__text">#{locale("menu-doc-tab__second")}</label>
+							</div>
+						</li>
+						<li class="menu-tab__elem hide">
+							<div class="menu-tab__box menu-icon icon-media">
+								<label class="menu-tab__text">#{locale("menu-doc-tab__third")}</label>
+							</div>
+						</li>
+					</ul-->
+				</div>
+				<footer class="sidebar__footer">					
+					<div class="sidebar__socials">
+						#{socials}
+					</div>
+					<div class="sidebar__support">
+						<div class="support__text add-colon">#{locale("support__text")}</div>
+						<div class="support__email">love@soda.network</div>						
+					</div>
+				</footer>
+			</div>
+
+
+			<div class="main">
+				<header class="main__header">
+					<div class="top-bar--menu" onclick="document.querySelector('.overlay').classList.toggle('open'); document.querySelector('.sidebar').classList.toggle('open');">
+						<div class="top-bar__ic-menu"></div>
+					</div>
+					<div class="header__logo">
+						<a href=#{"/"+localization/currentLocale} class="icon-logo"></a>
+					</div>
+					<div class="user-panel">
+						<div class="lang-box">
+							<div class=#{localization/currentLocale.{
+								case "ru"	=> "icon-ru"
+								case "en"	=> "icon-en"
+								case "cn"	=> "icon-cn"
+								}}>	
+							</div>
+							<!--div class="user-panel__down triangle"></div-->
+							<div class="lang-dropdown">
+								<a href="/en/lk" class="user-dropdown__elem">
+									<div class="icon icon-en"></div>
+								</a>
+								<a href="/ru/lk" class="user-dropdown__elem">
+									<div class="icon icon-ru"></div>
+								</a>
+								<a href="/cn/lk" class="user-dropdown__elem">
+									<div class="icon icon-cn"></div>
+								</a>								
+							</div>	
+						</div>
+
+						<div id="user-box--main-header" class="user-box">
+							<div class="header__profile-data">user@example.com</div>
+							<div class="user-panel__down"></div>
+							<div class="user-dropdown">
+								<div class="user-dropdown__elem edit-profile hide">#{locale("edit-profile")}</div>
+								<a href=#{s"/#{localization/currentLocale}/sign_out"}><div class="user-dropdown__elem logout">#{locale("logout")}</div></a>								
+							</div>							
+						</div>
+					</div>
+					<div class="top-bar--loan-history" onclick="document.querySelector('.overlay').classList.toggle('open'); document.querySelector('.loans-history').classList.toggle('open');">
+						<div class="top-bar__ic-loan-history"></div>
+					</div>
+				</header>
+				<div class="main__content">
+					#{
+						sections()
+					}
+					<div class="loans-history">
+						<div class="loans-history__box-title">
+							<div class="arrow-right" onclick="document.querySelector('.overlay').classList.toggle('open'); document.querySelector('.loans-history').classList.toggle('open');">
+								<div class="arrow-icon"></div>
+							</div>
+							<h2 class="loans-history__title">#{locale("loans-history__title")}</h2>
+						</div>
+						<div class="loans-history__container" data-empty=#{localeText("loan-history__text--no-loans")}>#{
+							1..3.loanHistory()
+						}</div>
+					</div>
+				</div>
+				<footer class="main__footer">
+					<div class="footer__copyright">
+						<div class="copyright__text ">#{locale("copyright__text")}</div>
+					</div>
+
+					<div class="sidebar__support">
+						<div class="support__email">love@soda.network</div>						
+					</div>
+					<div class="sidebar__socials--darc">
+						#{socials}
+					</div>
+
+					<div class="footer__git-hub">
+						#{gitHab}
+						<div class="git-hub__text">#{locale("git-hub__text")}</div>						
+					</div>
+				</footer>
+			</div>
+		</body>
+	</html>
+}
+
+def Int daiToString = (this div 1000000000000000000.0).util/plainString
+def Int stampToDate = date/Date(this*1000).s"#{date}/#{month}/#{year} #{hour}:#{min}"
+def Int btcToString = (this div 100000000.0).util/plainString
+
+def loanHistory() = {
+<div data-loanId="3" class="loan-history" data-status="1">
+	<div class="loan-history__main">
+		<div class="loan-history__icon-status--for-mobile"></div>
+		<div class="count" data-currency="DAI">123</div>
+		<div class="loan-main__stats">
+			<div class="stats-box">
+				<div class="stats-box__elem">
+					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--taken")}</div>
+					<div class="stats-elem__content">12\12\12</div>
+				</div>
+				<div class="stats-box__elem hide-on-phone">
+					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral")}</div>
+					<div class="stats-elem__content">1.3</div>
+				</div>
+			</div>
+			<div class="stats-box">
+				<div class="stats-box__elem hide-on-phone">
+					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--daily-interest")}</div>
+					<div class="stats-elem__content">10</div>
+				</div>
+				<div class="stats-box__elem">
+					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral-status")}</div>
+					<div class="stats-elem__content">Safe (15%)</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="loan-history__wd-block">#{locale("loan-history__wd-block")}</div>
+	<div class="loan-history__button-box">
+		<button class="button--yellow">#{locale("loan-history__button--withdraw-and-repay")}</button>
+	</div>
+	<div class="loan-history__status-bar hide-on-all-computers">
+		<div class="loan-history__header">
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(1/7) #{locale("loan-history__status-1")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(2/7) #{locale("loan-history__status-2")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(3/7) #{locale("loan-history__status-3")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(4/7) #{locale("loan-history__status-4")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(5/7) #{locale("loan-history__status-5")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(6/7) #{locale("loan-history__status-6")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(7/7) #{locale("loan-history__status-7")}</div>
+		</div>
+	</div> 
+	<div class="loan-history__status-bar hide-on-phone">
+		<div class="loan-history__header">
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(1/7) #{locale("loan-history__status-1")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(2/7) #{locale("loan-history__status-2")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(3/7) #{locale("loan-history__status-3")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(4/7) #{locale("loan-history__status-4")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(5/7) #{locale("loan-history__status-5")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(6/7) #{locale("loan-history__status-6")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(7/7) #{locale("loan-history__status-7")}</div>
+		</div>
+		<div class="loan-history__storyline">
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-1")}</div>
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-2")}</div>
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-3")}</div>
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-4")}</div>
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-5")}</div>
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-6")}</div>
+			<div class="loan-history-storyline__status">#{locale("loan-history__status-7")}</div>
+		</div>
+	</div>
+</div>
+}
+
+
+def sections() = {
+	(
+		<div class="section section--empty hide">
+			<h2 class="section__title">#{locale("section__title--empty")}</h2>
+			<div class="section__container"></div>
+		</div>,
+
+		<div class="section section--edit-profile hide">
+			<h2 class="section__title">#{locale("edit-profile")}</h2>
+			<div class="section__container">
+				<h3 class="title--change-password">#{locale("change-password")}</h3>
+				<form>
+					<div>
+						<div></div>
+						<div></div>
+					</div>
+					<div class="button-box">
+						<button class="button--yellow">ddd</button>
+					</div>
+				</form>
+			</div>
+		</div>,
+
+		<div class="section section--faq hide">
+			<h2 class="section__title">#{locale("section--faq__title")}</h2>
+			<div class="section__container">
+				<!--h3 class="title--faq">#{locale("change-password")}</h3>
+				
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--1")}</div>
+					<div class="faq-box__content">#{locale("faq-content--1")}</div>
+				</div>
+
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--2")}</div>
+					<div class="faq-box__content">#{locale("faq-content--2")}</div>
+				</div>
+
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--3")}</div>
+					<div class="faq-box__content">#{locale("faq-content--3")}</div>
+				</div>
+
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--4")}</div>
+					<div class="faq-box__content">#{locale("faq-content--4")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--5")}</div>
+					<div class="faq-box__content">#{locale("faq-content--5")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--6")}</div>
+					<div class="faq-box__content">#{locale("faq-content--6")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--7")}</div>
+					<div class="faq-box__content">#{locale("faq-content--7")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--8")}</div>
+					<div class="faq-box__content">#{locale("faq-content--8")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--9")}</div>
+					<div class="faq-box__content">#{locale("faq-content--9")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--10")}</div>
+					<div class="faq-box__content">#{locale("faq-content--10")}</div>
+				</div>
+				<div class="faq-box">
+					<div class="faq-box__title">#{locale("faq-title--11")}</div>
+					<div class="faq-box__content">#{locale("faq-content--11")}</div>
+				</div-->
+
+
+
+			</div>
+		</div>,
+
+		<form id="loan" class="section section--take-loan">
+			<h2 class="section__title">#{locale("section__title--take-loan")}</h2>
+			<div class="section__container">
+				<div class="top-announce">
+					<div class="takeloan-illustration"></div>
+					<div class="announce-grid">
+						<div class="announce-grid__elems-box">
+							<div class="announce-grid__text">#{locale("announce-grid__text-1")}</div>
+							<div class="announce-grid__text">#{locale("announce-grid__text-2")}</div>
+						</div>
+						<div class="announce-grid__elems-box">
+							<div class="announce-grid__text">#{locale("announce-grid__text-3")}</div>
+							<div class="announce-grid__text">#{locale("announce-grid__text-4")}</div>
+						</div>
+					</div>
+				</div>
+
+				#{
+					notification("error hide", locale("take-loan__notification--neutral"), "js-take-loan-error-box-js")
+				}
+
+
+				#{takeLoanCalculatorLk}
+				
+				<div class="button-box button--take-loan">
+					<button data-action="receive" class="button--yellow">#{locale("loan-take-form__button--receive-DAI")}</button>
+				</div>
+				<div class="take-loan--consent">
+					<div class="consent__main">		
+						<div class="loan-take-form">
+							<h2 class="loan-take-form__header">#{locale("loan-take-form__header")}</h2>
+							<div class="loan-take-form__step" data-count="1">
+								<div class="loan-take-form__title add-colon">#{locale("loan-take-form__title-1")}</div>
+								#{inputWithCopy( "collateral_address", " loan-take-form__content min-fix ")}
+								<!--div class="loan-take-form__content input-with-copy min-fix">
+									<input type="text" class="input" disabled="true" value="Random text to copy, random text to copy, rando..."/>
+									<div class="input-with-copy__button"><label>Copy</label></div>
+								</div-->	
+								<div class="loan-take-form__title min-fix">#{locale("loan-take-form__title-additionally")}</div>					
+							</div>
+							<div class="loan-take-form__step min-fix" data-count="2">
+								<div class="loan-take-form__title add-colon">#{locale("loan-take-form__title-2")}</div>
+								<div class="loan-take-form__content"><button type="button" data-action="js-goto-loan" class="button--yellow">#{locale("loan-take-form__button--i-sent")}</button></div>	
+							</div>
+						</div>			
+					</div>
+					<div  class="consent__cansel-box">
+						<button data-action="cancel" type="button" class="button--blue">#{locale("cancel")}</button>
+					</div>
+				</div>
+			</div>
+		</form>,
+
+		<div class="section section--withdraw-repay hide">
+			<h2 class="section__title">#{locale("section__title--withdraw-repay")}</h2>
+			<div class="section__container">
+				<div id="loan-select" class="w-r-loan-selector-box">
+					<div class="w-r-loan-selector__title add-colon">#{locale("w-r-loan-selector__title")}</div>
+					
+					<div class="w-r-loan-selector__select-box select">
+						<div class="select__selected" data-unselected=#{localeText("loan-history__text--no-loans")}/>
+						<div class="select__content"/>
+					</div>
+
+				</div>
+
+				#{
+					notification("warning hide js-waiting-loan-info", locale("loan-history__wd-block"), "js-loan-history__wd-block")
+				}
+
+
+				<div id="state-line" class="w-r-loan-status-box" data-status=#{}>
+					<div class="w-r-loan-status__title add-colon">#{locale("w-r-loan-status__title")}</div>
+					<div class="withdraw-repay__storyline-status-titles">
+						<h3 class="withdraw-repay__storyline--status-title">(1/7) #{locale("loan-history__status-1")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(2/7) #{locale("loan-history__status-2")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(3/7) #{locale("loan-history__status-3")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(4/7) #{locale("loan-history__status-4")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(5/7) #{locale("loan-history__status-5")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(6/7) #{locale("loan-history__status-6")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(7/7) #{locale("loan-history__status-7")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">#{locale("loan-history__status-waiting")}</h3>
+					</div>
+
+					<div class="withdraw-repay__storyline">
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-1")}</div>
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-2")}</div>
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-3")}</div>
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-4")}</div>
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-5")}</div>
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-6")}</div>
+						<div class="loan-history-storyline__status">#{locale("loan-history__status-7")}</div>
+					</div>
+
+				</div>
+
+				<div class="loader-box js-waiting-loan-info hide">
+					<div class="loader"></div>
+					<div class="loader__text-box">
+						<h3 class="loader__bit-title">#{locale("loader__bit-title")}</h3>
+						<h3 class="loader__text">#{locale("loader__text")}</h3>
+					</div>					
+				</div>
+
+				<div class="box-withdraw-repay-collateral hide" data-type="active-loan-info" data-action="withdraw" data-withdraw="1" data-repay="1" data-collateral="1">
+					<div class="box-withdraw-repay-collateral__tabs">
+						<div class="box-withdraw-repay-collateral__tab tab-withdraw" data-type="withdraw">#{locale("withdraw__title")}</div>
+						<div class="box-withdraw-repay-collateral__tab tab-repay" data-type="repay">#{locale("repay__title")}</div>
+						<div class="box-withdraw-repay-collateral__tab tab-collateral" data-type="collateral">#{locale("collateral__title")}</div>
+					</div>
+					#{
+						//туууууууууууууууууууууууууууут
+					}
+					<form id="loan-withdraw" class="withdraw-box">
+						#{
+							notification("neutral", locale("withdraw__notification--loan-is-repaid"))
+						}
+						<div class="withdraw-content__title add-colon">#{locale("withdraw__title-loan-balance")}</div>
+						<div data-type="loan-balance" class="count" data-currency="DAI">10000.77</div>
+						<div class="withdraw-content__inputs-box">
+							<div class="w-c-inputs-box__elem">
+								<div class="w-c-input__title add-colon">#{locale("w-c-input__title--DAI-to-withdraw")}</div>
+								<label class="input-box">
+									<input autocomplete="off" required="" name="amount" type="number" step="any" class="input" placeholder=#{localeText("w-c-input__placeholder--DAI-to-withdraw")}/>
+								</label>
+							</div>
+							<div class="w-c-inputs-box__elem">
+								<div class="w-c-input__title add-colon">#{locale("w-c-input__title--e-address-to-receive-DAI")}</div>
+								<label class="input-box">
+									<input required="" name="to" type="text" class="input" placeholder=#{localeText("w-c-input__placeholder--e-address-to-receive-DAI")}/>
+								</label>
+							</div>
+						</div>
+						<div class="withdraw__button-box">
+							<button name="submit" class="button--yellow">#{locale("withdraw__button")}</button>
+						</div>
+						<div class="withdraw-content__history">
+							<div class="withdraw-content__title add-colon">#{locale("withdraw-content__history-title")}</div>
+							<div class="history-transactions"/>
+						</div>
+					</form>	
+
+
+					<form id="loan-repay" class="repay-box">
+						<div class="repay-box__info">
+							<div class="r-b-info-box">
+								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--1")}</div>
+								<div data-type="loan-balance" class="count" data-currency="DAI">...</div>
+							</div>
+							<div class="r-b-info-box">
+								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--2")}</div>
+								<div data-type="loan-debt" class="count" data-currency="DAI">...</div>
+							</div>
+							<div class="r-b-info-box">
+								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--3")}</div>
+								<div data-type="loan-refill" class="count" data-currency="DAI">...</div>
+							</div>
+						</div>
+						#{
+							notification("neutral t-1", locale("repay__notification--t-1"))
+						}
+						#{
+							notification("neutral t-2", locale("repay__notification--t-2"))
+						}
+						#{
+							notification("neutral t-3", locale("repay__notification--t-3"))
+						}
+
+						<div class="repay-box__refill">
+							<h3 class="repay-box__refill-header">#{locale("repay-box__refill-header")}</h3>
+							<div class="repay-box__refill-title add-colon">#{locale("repay-box__refill-title")}</div>
+							<div></div>
+							#{
+								inputWithCopy((),"","refill-address")
+							}
+							
+							<div class="repay-content__history--refill hide">
+								<div class="repay-content__title add-colon">#{locale("repay-content__history-title-1")}</div>
+								<div class="history-transactions">
+									<div class="history-transaction">
+										<a href=#{"/"+localization/currentLocale} class="link--transaction">tetetetettest</a>
+									</div>										
+								</div>
+							</div>
+						</div>
+
+
+						<div class="repay-box__repay">
+							<h3 class="repay-box__repay-header">#{locale("repay-box__repay-header")}</h3>
+							<div class="r-b-repay__content">
+								<div class="r-b-repay__elem">
+									<div class="repay-box__repay-title add-colon">#{locale("repay-box__repay-title-1")}</div>
+									<label class="input-box" data-currency="DAI">
+										<input required="" autocomplete="off" placeholder=#{localeText("w-c-input__placeholder--DAI-to-withdraw")} name="amount" min="0" step="any" type="number" class="input"/>
+									</label>
+								</div>
+								<div class="r-b-repay__elem">
+									<div class="repay-box__repay-title add-colon">#{locale("repay-box__repay-title-2")}</div>
+									<div data-attr="changed-interest" class="count" data-currency="DAI">0</div>									
+								</div>
+							</div>
+							<div class="repay__button-box">
+								<button name="submit" class="button--yellow">#{locale("repay__button")}</button>
+							</div>
+							
+							<div class="repay-content__history--repay">
+								<div class="repay-content__title add-colon">#{locale("repay-content__history-title-2")}</div>
+								<div class="history-transactions"/>
+							</div>
+						</div>
+
+
+					</form>			
+					<form id="collateral-withdraw"  class="collateral-box">
+						<div class="collateral-box__info">
+							<div class="c-b-info-box">
+								<div class="c-b-info-box__title add-colon">#{locale("collateral-box__info-title--1")}</div>
+								<div data-attr="SBTC-amount" class="count" data-currency="BTC">...</div>
+							</div>
+							<div class="c-b-info-box">
+								<div class="c-b-info-box__title add-colon">#{locale("collateral-box__info-title--2")}</div>
+								<div data-attr="loan-security" class="count">Safe (170%)</div>
+							</div>
+							<div class="r-b-info-box"></div>
+						</div>
+						#{
+							notification("neutral t-3", locale("collateral__notification--returned-BTC"))
+						}
+						<div class="collateral-box__top-up">
+							<h3 class="collateral-box__top-up-header">#{locale("collateral-box__top-up-header")}</h3>
+
+							<div class="c-b-top-up__content">
+								<div class="c-b-top-up__elem">
+									<div class="collateral-box__top-up-title add-colon">#{locale("collateral-box__top-up-title-1")}</div>
+									<label class="input-box" data-currency="BTC">
+										<input data-attr="topUpCounter" step="0.00001" placeholder=#{localeText("w-c-input__placeholder--DAI-to-withdraw")} type="number" class="input"/>
+									</label>
+								</div>
+								<div class="c-b-top-up__elem">
+									<div class="collateral-box__top-up-title add-colon">#{locale("collateral-box__top-up-title-2")}</div>
+									<div data-attr="riskAfterTopUp" class="count"/>									
+								</div>
+							</div>
+							<div class="c-b-top-up__content-2">
+								<div class="collateral-box__top-up-title add-colon">#{locale("collateral-box__top-up-title-3")}</div>
+								#{
+									inputWithCopy((),"","address")
+								}
+
+								<div class="collateral-content__history--top-up hide">
+									<div class="repay-content__title add-colon">#{locale("repay-content__history-title-1")}</div>
+									<div class="history-transactions">
+										<div class="history-transaction">тут будет таблица <a href=#{"/"+localization/currentLocale} class="link--transaction">tetetetettest</a></div>										
+									</div>
+								</div>
+							</div>							
+						</div>
+
+
+						<div class="collateral-box__withdraw">
+
+							<h3 class="collateral-box__withdraw-header">#{locale("collateral-box__withdraw-header")}</h3>
+							#{
+								notification("warning t-1", locale("collateral__notification--t-1"))
+							}
+
+							<div class="collateral-box__withdraw-title add-colon">#{locale("collateral-box__withdraw-title-1")}</div>
+							<label data-attr="destination-label" class="input-box">
+								<input required="" name="to" type="text" class="input"/>
+							</label>
+
+							<div class="collateral__button-box">
+								<button name="submit" class="button--yellow">#{locale("collateral__button")}</button>
+							</div>
+
+
+						</div>
+						<div class="collateral-content__history--withdraw">
+							<div class="repay-content__title add-colon">#{locale("repay-content__history-title-1")}</div>
+							<div class="history-transactions">
+								<div class="history-transaction" data-attr="collateral-withdraw-info" />
+							</div>
+						</div>							
+					</form>			
+				</div>
+
+				#{monitorLoan("DAI")}
+			</div>
+		</div>
+	)
+}
+
+
+def monitorLoan(currency) = {
+	<div class="w-r-loan-deals-box hide" data-type="active-loan-info">
+					<h3 class="w-r-loan-deals__title">#{locale("w-r-loan-deals__title")}</h3>
+					<div class="w-r-loan-deals__content">
+						<div class="details__min-header">#{locale("details__min-header--INTEREST")}</div>
+						<div class="details-box">
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--loan-is-active-for")}</div>
+								<div data-attr="loan-duration" class="detail-box__content">7 days</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--interest-to-be-paid")}</div>
+								<div data-attr="loan-interest" class="detail-box__content with-currency" data-currency=#{currency}>1.35</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--DAI-daily-borrow-rate")}</div>
+								<div data-attr="loan-daily-rate" class="detail-box__content with-currency" data-currency=#{currency}>>1.35</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--DAI-APR")}</div>
+								<div data-attr="apr"  class="detail-box__content add-percent">3.0</div>
+							</div>
+						</div>
+						<div class="details__min-header">#{locale("details__min-header-COLLATERAL")}</div>
+						<div class="details-box">
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--collateral-BTC")}</div>
+								<div data-attr="SBTC-amount" class="detail-box__content with-currency" data-currency="BTC">0.15</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--collateral-DAI")}</div>
+								<div data-attr="collateral-dai" class="detail-box__content with-currency" data-currency=#{currency}>1350</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--collateral-interest")}</div>
+								<div  data-attr="collateral-sub-interest"  class="detail-box__content with-currency" data-currency=#{currency}>1348.65</div>
+							</div>
+							<div class="detail-box">
+								<div></div>
+								<div class="detail-box__content"></div>
+							</div>
+						</div>						
+						
+						<div class="details__min-header">#{locale("details__min-header-RISKS")}</div>
+						<div class="details-box">
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--risk-status")}</div>
+								<div data-attr="loan-security" class="detail-box__content">...</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--real-time-BTC-price")}</div>
+								<div data-attr="btc-price" class="detail-box__content add-dollar">...</div>
+							</div>
+							<div class="detail-box">
+								<div class="detail-box__title add-colon">#{locale("detail-box__title--liquidation-price")}</div>
+								<div data-attr="liquidation-price" class="detail-box__content add-dollar" >...</div>
+							</div>
+							<div class="detail-box">
+								<div></div>
+								<div class="detail-box__content"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+}
+
+
+def takeLoanCalculatorLk =
+	<div class="take-loan__calculator">
+		<div class="calculator__elems-box">
+			<div class="calculator__elem-box">
+				<div class="calculator__title add-colon">#{locale("calculator__title--you-are-borrowing")}</div>
+				<label class="input-box" data-currency="DAI">
+					<input id="loan-amount" required="" autocomplete="off" name="amount" min="1" max="50000" type="number"  class="input" placeholder=#{localeText("take-loan__calculator-input-placeholder")}/>
+				</label>
+			</div>
+			<div class="calculator__elem-box">
+				<div class="calculator__title add-colon">#{locale("calculator__title--choose-collateral-ratio")}</div>
+				<div class="calculator__content range">
+					<input type="hidden" name="currency" value="DAI"/>
+					<input id="security-range" name="security" type="hidden"/>
+				</div>
+			</div>
+			
+		</div>
+		<div class="calculator__elems-box">
+			<div class="calculator__elem-box">
+				<div class="calculator__title add-colon">#{locale("calculator__title--daily-interest")}</div>
+				<div class="calculator__content"><div id="daily-interest" class="count" data-currency="DAI">...</div></div>
+			</div>
+			<div class="calculator__elem-box min-fix">
+				<div class="calculator__title add-colon">#{locale("calculator__title--collateral-in-BTC")}</div>
+				<div class="calculator__content"><div  id="required-collateral" class="count" data-currency="BTC">...</div></div>
+			</div>
+			
+		</div>
+	</div>
+

@@ -1,0 +1,723 @@
+package localization
+
+def en = <locale lang="en">
+  <string id="html-title"> 
+    SODA — Best Place to Borrow Crypto
+  </string>
+  <string id="copyright__text"> 
+    © 2019 SODA Foundation.
+  </string>
+  <string id="cancel"> 
+    Cancel
+  </string>
+  <string id="edit-profile"> 
+    Edit profile
+  </string>
+  <string id="logout"> 
+    Logout
+  </string>
+  <string id="change-password">
+    Change password
+  </string>
+  <string id="loader__bit-title">
+    We are processing your loan...
+  </string>
+  <string id="loader__text">
+    We will show all the related transactions below. <br/>
+    The process may take <span class="bold">20-30 minutes</span>  <br class="hide-on-all-computers"/>
+    before you can withdraw your loan.<br/>
+    Look at the status bar to check current loan status.
+  </string>
+  <!-- ->   lk     -->
+  <string id="menu-nav-tab__first"> 
+    Loans
+  </string>
+  <string id="menu-nav-tab__second"> 
+    Leverage
+  </string>
+  <string id="menu-nav-tab__third"> 
+    Lending
+  </string>
+
+  <string id="menu-nav-submenu__first"> 
+    Take out a loan
+  </string>
+  <string id="menu-nav-submenu__second"> 
+    Withdraw &amp; Repay
+  </string>
+
+  <string id="menu-header"> 
+    DOCS
+  </string>
+
+  <string id="menu-doc-tab__first"> 
+    Video Guide
+  </string>
+  <string id="menu-doc-tab__second"> 
+    FAQ
+  </string>
+  <string id="menu-doc-tab__third"> 
+    Media on us
+  </string>
+
+  <string id="section__title--empty"> 
+    Section Title
+  </string>
+  <string id="section__title--take-loan"> 
+    Take out a loan
+  </string>
+  <string id="section__title--withdraw-repay"> 
+    Withdraw &amp; Repay
+  </string>
+
+  <string id="announce-grid__text-1"> 
+    DAI Borrow APR: <span class="bold" data-attr="apr">3</span>%
+  </string>
+  <string id="announce-grid__text-2"> 
+    Interest is accrued daily
+  </string>
+  <string id="announce-grid__text-3"> 
+    No period limits for loans
+  </string>
+  <string id="announce-grid__text-4"> 
+    No collateral lock-up / KYC
+  </string>
+
+  <string id="take-loan__notification--neutral"> 
+    Interest for the loan period will be automatically
+    paid from your collateral in Bitcoins (BTC)
+  </string>  
+  <string id="calculator__title--you-are-borrowing"> 
+    You are borrowing
+  </string>
+  <string id="calculator__title--choose-collateral-ratio"> 
+    Choose the collateral ratio
+  </string>
+  <string id="calculator__title--daily-interest"> 
+    Daily interest
+  </string>
+  <string id="calculator__title--collateral-in-BTC"> 
+    Collateral in Bitcoins required for the loan
+  </string> 
+
+  <string id="take-loan__calculator-input-placeholder"> 
+    Available to borrow:&nbsp;
+  </string>
+
+  <string id="loan-take-form__header">
+    Send your collateral
+  </string>
+  <string id="loan-take-form__title-1"> 
+    Send at least <label id="collateral-amount-2" data-currency="BTC">...</label>
+    to this multi-sig Bitcoin-address and receive your loan of
+    <label id="loan-amount-2" data-currency="DAI">1000</label>
+  </string>
+  <string id="loan-take-form__title-additionally"> 
+    You will receive your loan to your personal wallet on SODA. After that, you will be able to send it to any Ethereum-address. You can withdraw your loan to any exchange, DEX, wallet (Coinbase Wallet, MyEtherWallet, MyCrypto, other), hardware wallet (Trezor, Ledger, KeepKey, other) etc.
+  </string>
+  <string id="loan-take-form__title-2"> 
+    After sending your collateral in Bitcoins click on this button to take out your loan
+  </string>
+  <string id="loan-take-form__button--receive-DAI"> 
+    Receive DAI
+  </string>
+  <string id="loan-take-form__button--i-sent"> 
+    I sent exactly this amount →
+  </string>
+
+
+
+  <string id="loans-history__title"> 
+    Loans History
+  </string>
+
+  <string id="loan-history__text--no-loans"> 
+    You have no active loans
+  </string>
+
+  <string id="git-hub__text"> 
+    SODA is an open-source service.
+  </string>
+
+  <string id="withdraw-content__history-title"> 
+    Withdrawals History
+  </string>
+
+
+  <string id="support__text"> 
+    Any problems or questions? Contact us
+  </string>
+
+  <string id="loan-history__stats-title--taken"> 
+    Taken&nbsp;out
+  </string>
+  <string id="loan-history__stats-title--collateral"> 
+    Collateral
+  </string>
+  <string id="loan-history__stats-title--daily-interest"> 
+    Daily Interest
+  </string>
+  <string id="loan-history__stats-title--collateral-status"> 
+    Collateral Status
+  </string>
+
+  <string id="loan-history__wd-block"> 
+    Withdrawal &amp; repayment will be availible<br/>
+    on Stage 5/7 (“Loan is active”)
+   </string>
+  <string id="loan-history__button--withdraw-and-repay"> 
+    Withdraw &amp; Repay
+  </string>
+  <string id="loan-history__status-1"> 
+    Waiting for deposit
+  </string>
+  <string id="loan-history__status-2"> 
+    Minting SODABTC
+  </string>
+  <string id="loan-history__status-3"> 
+    Evaluating collateral
+  </string>
+  <string id="loan-history__status-4"> 
+    Issuing the loan
+  </string>
+  <string id="loan-history__status-5"> 
+    Loan is active
+  </string>
+  <string id="loan-history__status-6"> 
+    Partly repaid
+  </string>
+  <string id="loan-history__status-7"> 
+    Paid off
+  </string>
+  <string id="loan-history__status-waiting"> 
+    Waiting...
+  </string>
+  <string id="text-status"> 
+    Status
+  </string>
+  <string id="w-r-loan-selector__title"> 
+    Select a loan to manage
+  </string>
+  <string id="w-r-loan-status__title"> 
+    Current status
+  </string>
+  <string id="withdraw__title"> 
+    Withdraw
+  </string>
+  <string id="repay__title"> 
+    Repay
+  </string>
+  <string id="collateral__title"> 
+    Collateral
+  </string>
+  <string id="w-r-loan-deals__title"> 
+    Monitor your loan details
+  </string>
+  <string id="withdraw__title-loan-balance"> 
+    Loan Balance
+  </string>
+  <string id="repay__left-title"> 
+    Left
+  </string>
+  <string id="repay__title--repayments-history"> 
+    Repayments History:
+  </string>
+
+  <string id="w-c-input__title--DAI-to-withdraw"> 
+    Amount of DAI to withdraw
+  </string>
+  <string id="w-c-input__placeholder--DAI-to-withdraw"> 
+    Enter amount
+  </string>
+  <string id="w-c-input__title--e-address-to-receive-DAI"> 
+    Ethereum-address that you want to receive DAI to
+  </string>
+
+  <string id="w-c-input__placeholder--e-address-to-receive-DAI"> 
+    Ethereum-address
+  </string>
+  <string id="withdraw__button"> 
+    Withdraw DAI
+  </string>
+  <string id="repay-content__input-title--send-DAI"> 
+    Send DAI to this Ethereum-address to repay the loan (partly or fully)
+  </string>
+  <string id="details__min-header--INTEREST"> 
+    INTEREST
+  </string>
+  <string id="details__min-header-COLLATERAL"> 
+    COLLATERAL
+  </string>
+  <string id="details__min-header-RISKS"> 
+    RISKS
+  </string>
+
+  <!--     INTEREST     -->
+  <string id="detail-box__title--loan-is-active-for"> 
+    Loan is Active For
+  </string>
+  <string id="detail-box__title--interest-to-be-paid"> 
+    Interest to Be Paid
+  </string>
+  <string id="detail-box__title--DAI-daily-borrow-rate"> 
+    DAI Daily Borrow Rate
+  </string>
+  <string id="detail-box__title--DAI-APR"> 
+    DAI APR
+  </string>
+
+  <!--     Collateral      -->
+  <string id="detail-box__title--collateral-BTC"> 
+    Collateral (BTC)
+  </string>
+  <string id="detail-box__title--collateral-DAI"> 
+    Collateral (DAI)
+  </string>
+  <string id="detail-box__title--collateral-interest"> 
+    Collateral Minus Interest
+  </string>
+  <!--         Risks     -->
+  <string id="detail-box__title--risk-status"> 
+    Risk Status
+  </string>
+  <string id="detail-box__title--real-time-BTC-price"> 
+    Real-time BTC Price
+  </string>
+  <string id="detail-box__title--liquidation-price"> 
+    Liquidation Price
+  </string>    
+  <string id="withdraw__notification--loan-is-repaid"> 
+    Loan is closed. You can now withdraw your collateral on the “Collateral” tab.
+  </string>
+
+  <string id="repay__notification--t-1"> 
+    Refill the balance to the amount that is needed for repayment. You can also use your balance for partial repayments if you want to recount your loan interest.
+  </string>
+  <string id="repay__notification--t-2"> 
+    Your balance is enough to fully repay your loan and withdraw the collateral!
+  </string> 
+  <string id="repay__notification--t-3"> 
+    This loan is successfully paid off. You can now withdraw your collateral on the “Collateral” tab.
+  </string> 
+
+  <string id="repay-content__history-title-1">
+    History
+  </string>
+  <string id="repay-content__history-title-2">
+    Repayments History
+  </string>
+
+  <string id="repay-box__refill-header">
+    Refill
+  </string>
+  <string id="repay-box__refill-title">
+    Send DAI to this Ethereum-address to refill your balance (<label data-type="loan-refill" data-currency="DAI">10.322</label> to full loan repayment)
+  </string>
+  <string id="repay-box__repay-header">
+    Repay
+  </string>
+  <string id="repay-box__repay-title-1">
+    Amount
+  </string>
+  <string id="repay-box__repay-title-2">
+    Interest will be changed to
+  </string>
+  <string id="repay__button">
+    Repay
+  </string>
+
+
+
+  <string id="collateral-box__top-up-header">
+    Top Up
+  </string>
+  <string id="collateral-box__top-up-title-1">
+    Enter the amount to see new risk status after you top up
+  </string>
+  <string id="collateral-box__top-up-title-2">
+    Risk Status Change
+  </string>
+  <string id="collateral-box__top-up-title-3">
+    Send <label data-type="top-up-amount" data-currency="BTC">0.1</label> to this Bitcoin-address to reduce the risk of collateral liquidation:
+  </string>
+  <string id="collateral__notification--returned-BTC"> 
+    Collateral was returned to your Bitcoin-address.
+  </string>
+
+  <string id="collateral-box__withdraw-header">
+    Withdraw
+  </string>
+
+  <string id="collateral-box__withdraw-title-1">
+    Enter your Bitcoin-address to receive your collateral
+  </string>
+
+  <string id="collateral__button">
+    Withdraw the collateral
+  </string>
+
+  <string id="collateral__notification--t-1">
+    Withdrawal of the collateral will be availible after the full repayment of this loan.
+  </string>
+
+  <string id="repay-box__info-title--1">
+    Loan Balance
+  </string>
+  <string id="repay-box__info-title--2">
+    To repay
+  </string>
+  <string id="repay-box__info-title--3">
+    Amount to Refill
+  </string>
+  <string id="collateral-box__info-title--1">
+    Collateral
+  </string>
+  <string id="collateral-box__info-title--2">
+    Status
+  </string>
+
+  <!--      <-   lk    -->  
+
+  <!--      ->  lp     -->          
+  <string id="take-loan__notification-0-first-day">
+    Try SODA for FREE. <br class="hide-on-all-computers"/> 0% interest for the first day.
+  </string>
+
+
+  <string id="sign-in"> 
+    Sign In
+  </string>
+  <string id="sign-up"> 
+    Sign Up
+  </string>
+
+  <string id="lp-contact-us"> 
+    Contact us
+  </string>
+  <string id="lp-calculator__title--you-are-borrowing"> 
+    How much DAI do you want to borrow?
+  </string>  
+  <string id="lp-calculator__title--collateral"> 
+    Collateral required for the loan
+  </string>
+
+  <string id="lp-form-title"> 
+    Take out a loan
+  </string>
+  <string id="lp-services__title"> 
+    Borrow DAI with  <nobr>Bitcoin as a collateral.</nobr><br/> 
+    <span class="blue"> Best rates guarantee.</span>  
+  </string>
+  <string id="lp-form-title"> 
+    Take out a loan
+  </string>
+
+  <string id="lp-take-loan__button"> 
+    Borrow →
+  </string>
+
+  <string id="lp-feature-1"> 
+    Current rate: <br/> <span data-attr="apr">3</span>% APR   
+  </string>
+  <string id="lp-feature-2"> 
+    Unlimited <br/>loan period 
+  </string>
+  <string id="lp-feature-3"> 
+    Interest <br/> is accrued daily 
+  </string>
+
+  <!--     <- lp    -->
+
+
+
+  <!--     -> FAQ   -->
+  <string id="section--faq__title"> 
+    Frequently Asked Questions
+  </string> 
+
+  <string id="faq-title--1"> 
+    How to start borrowing on SODA?
+  </string>
+  <string id="faq-content--1"> 
+    <p>
+      Register on <a href="https://www.soda.network/">https://soda.network/</a> using your email and confirm it. In your account choose the crypto-asset that you want to borrow, amount and collateral ratio. You will see a Bitcoin-address that you will need to send the collateral to. You can send your collateral in Bitcoins from any exchange, wallet, hardware wallet etc. After sending the collateral, click the Receive button and wait for your transaction to be confirmed. As long as Bitcoins are received, you will see that the loan is issued for you. 
+    </p>
+    <p>
+      You can withdraw your loan to any exchange, wallet (Coinbase Wallet, MyEtherWallet, MyCrypto, MetaMask, others), hardware wallet (Trezor, Ledger, KeepKey, others) etc.
+    </p>
+  </string>
+
+  <string id="faq-title--2"> 
+    Where do I send my collateral in Bitcoins to?
+  </string>
+  <string id="faq-content--2"> 
+    <p>
+      We are using a solution by BitGo* for generating multi-sig BTC-addresses for our borrowers. SODA controls an admin key and BitGo holds the backup key. The system automatically generates a unique BTC-address for each borrower. After sending the collateral it will be safekeeped by SODA until the loan is paid off. Please keep in mind that SODA is a custodial solution at this moment of time.
+    </p>
+    <p class="italic">
+      *BitGo is the world’s largest processor of Bitcoin transactions and has an average monthly transaction volume of $15 billion in cryptocurrencies. The company’s investors include Goldman Sachs and Galaxy Digital Ventures. BitGo’s platform is SOC 2 Type 2 certified.
+    </p>
+  </string>
+
+  <string id="faq-title--3"> 
+    What collateral ratio can I choose?
+  </string>
+  <string id="faq-content--3"> 
+    <p>
+      The minimum collateral’s equivalent is 140% from the loan amount. The maxim collateral ratio is 400%. You can choose any collateral ratio in between 140% — 400%.
+    </p>
+  </string>
+
+  <string id="faq-title--4"> 
+    In what case will my collateral be liquidated?
+  </string>
+  <string id="faq-content--4"> 
+    <p>
+      When the collateral’s price falls down to 110% of the loan’s equivalent, it gets liquidated.
+    </p>
+  </string>
+
+  <string id="faq-title--5"> 
+    How does the price feed work?
+  </string>
+  <string id="faq-content--5"> 
+    <p>
+      We are using Provable** (ex. Oraclize) oracles to integrate external price data to our smart contracts. On the step of evaluating the collateral we are sending the price request to exchange, receive the current price data and integrate it into the transaction to issue a loan.
+    </p>
+    <p class="italic">
+      **Provable (ex. Oraclize) is an oracle service for smart contracts and dApps.
+    </p>
+  </string>
+
+  <string id="faq-title--6"> 
+    Which crypto-assets can I borrow?
+  </string>
+  <string id="faq-content--6"> 
+    <p>
+      You can borrow DAI (Multi-collateral) at this moment of time. We will be adding new crypto-assets such as USDT, USDC and many more soon.
+    </p>
+  </string>
+
+  <string id="faq-title--7"> 
+    How are interest rates set?
+  </string>
+  <string id="faq-content--7"> 
+    <p>
+      Borrowing rates on SODA are always lower than the market weighted average. Our partners LoanScan.io are calculating SOBR (Secured On-demand Borrowing Rate) metric. SODA smart contract sets the interest rate lower based on the current SOBR date. As a result, SODA users get to benefit from the best interest rates possible.
+    </p>
+    <p>
+      Current borrowing rate:<br/>
+      DAI = <span data-attr="apr">3</span>% APR
+    </p>
+  </string>
+
+
+
+  <string id="faq-title--8"> 
+    How do I pay the interest?
+  </string>
+  <string id="faq-content--8"> 
+    <p>
+      Interest is accumulated on a daily basis. You will pay the interest using the same crypto-assets that you are borrowing. 
+    </p>
+  </string>
+
+  <string id="faq-title--9"> 
+    How do I repay loan?
+  </string>
+  <string id="faq-content--9"> 
+    <p>
+      You can pay back your loans in parts and or pay back the full loan at once. After paying back your loan partly your interest will be calculated to the new amount.
+    </p>
+  </string>
+
+  <string id="faq-title--10"> 
+    Do I need to share my personal information?
+  </string>
+  <string id="faq-content--10"> 
+    <p>
+      No, you don’t need to send any of your personal information. There is no KYC on SODA. We do not conduct credit score checks. Borrowing on SODA won’t impact your credit score.
+    </p>
+  </string>
+
+  <string id="faq-title--11"> 
+    How exactly does the borrowing process work?
+  </string>
+  <string id="faq-content--11"> 
+    <p>
+      After you verify email we are generating a unique Bitcoin-address for you. The collateral need to be sent to this address in order to take out a loan. We are using a solution by BitGo* for generating multi-sig BTC-addresses for our borrowers. SODA controls an admin key and BitGo holds the backup key.
+    </p>
+    <p class="italic">
+      *BitGo is a digital asset trust company and security company. They offer a multisignature Bitcoin wallet service, where keys are divided among a number of owners to manage risk.
+    </p>
+    <p>
+      When the Bitcoins are received from you, we are minting SODABTC (ERC-20) token in 1:1 proportion. We are using this one in order to interact with the credit pool smart contract. We will automatically send SODABTC on your behalf as a collateral and request smart contract to issue a loan for you.
+    </p>
+    <p>
+      SODABTC have been sent. You have provided your collateral. Now we are using oracles by Provable** to request the price from the exchange to evaluate your collateral (we are using HitBTC's BTC/DAI trading pair).
+    </p>
+    <p class="italic">
+      **Provable (ex. Oraclize) is an oracle service for smart contracts and dApps.
+    </p>
+    <p>
+      As long as the oracle's price request has been processed, this data is integrated into the transaction of issuing a loan. Smart contract will transfer your loan to a pre-registered ETH-address that is linked to your account. After that you will be able to withdraw the funds to any Ethereum-address: exchanges, wallets (Coinbase Wallet, MyEtherWallet, MyCrypto, MetaMask, others), hardware wallets (Trezor, Ledger, KeepKey, others) etc.
+    </p>
+  </string>
+
+  <!--     <- FAQ   -->
+
+
+
+
+  <!--     -> login -->
+  <string id="sign-up__email-title"> 
+    Enter your email
+  </string>
+  <string id="sign-up__button-text"> 
+    Continue →
+  </string>
+
+  <string id="sign-in__email-title"> 
+    Email
+  </string>
+  <string id="sign-in__pass-title"> 
+    Password
+  </string>
+  <string id="sign-in__button-text"> 
+    Continue →
+  </string>
+
+
+  <string id="sign-recovery__email-title"> 
+    Enter your email to recover an access to the account
+  </string>
+  <string id="sign-recovery__button-text"> 
+    Continue →
+  </string>
+  <string id="sign-in__forgot-pass-forward"> 
+    Forgot your password?
+  </string>
+  <string id="sign-in__forgot-pass-back"> 
+    Return to authorization step
+  </string>
+
+  <string id="confirmed__email-title"> 
+    Email
+  </string>
+  <string id="confirmed__pass-title"> 
+    Password
+  </string>
+  <string id="confirmed__button-text"> 
+    Continue →
+  </string>
+
+
+  <string id="sign-up__bullet-1"> 
+    Lowest rates <br/> on the market
+  </string>
+  <string id="sign-up__bullet-2"> 
+    No KYC / <br/> Collateral lock-up
+  </string>
+  <string id="sign-up__bullet-3"> 
+    Unlimited <br/> loan period 
+  </string>
+
+
+  <string id="title--sign-up"> 
+    <span class="blue">Sign up</span> to enjoy<br/>
+    the best borrowing experience </string>
+  <string id="title--sign-up-with-amount"> 
+    <span class="blue"> Sign up </span>
+    to receive 
+  </string>
+  <string id="title--sign-in"> 
+    <span class="blue">Sign in</span>
+    to enjoy <br/>
+    all SODA features
+  </string>
+  <string id="title--sign-in-with-amount"> 
+    <span class="blue">Sign in</span>
+    to receive
+  </string>
+  <string id="close"> 
+    Close
+  </string>
+  <string id="pop-up__with-email"> 
+    We sent a confirmation request <br/>
+    to your email <br/>
+    <span class="email">seriousfinanceguy@mail.ru</span>
+  </string>
+  <string id="pop-up__please-follow"> 
+    Please follow the link from the email <br/> 
+    to activate your account.
+  </string>
+  <string id="email-confirmed">
+    Email confirmed
+  </string>
+  <string id="email-confirmed__text">
+    Choose your password to complete registration <br/>
+    and enjoy your personal experience of using SODA!
+  </string>
+  <string id="email-confirmed__text-change-password">
+    Enter a new password for your account <br/>
+    to complete the recovery and use SODA
+  </string>
+
+  <!--   <- login   -->  
+  <!--   -> select states   -->  
+  <string id="selecet--withdrawal-title">Withdrawal</string>
+  <string id="selecet-state--1">Not available</string>
+  <string id="selecet-state--2">Not available</string>
+  <string id="selecet-state--3">Not available</string>
+  <string id="selecet-state--4">Not available</string>
+  <string id="selecet-state--5">Available</string>
+  <string id="selecet-state--6">Collateral only</string>
+  <string id="selecet-state--7">Loan is paid off</string>
+  <!--   <- select states   -->  
+  <string id="security-state--crashed">Crashed</string>
+  <string id="security-state--liquidation">Liquidation</string>
+  <string id="security-state--danger">In Danger</string>
+  <string id="security-state--safe">Safe</string>
+  <string id="security-state--very-safe">Very Safe</string>
+  <string id="security-state--waiting">Waiting</string>
+  <string id="security-state--repaid">Repaid</string>
+  <string id="button-go-platform">Go to the platform →</string>
+
+  <string id="withdrawal-state-0">Loan is active, collateral withdrawals are unavailible.</string>
+  <string id="withdrawal-state-1">Collateral is not returned yet.</string>
+  <string id="withdrawal-state-2">Collateral withdrowing to</string>
+  <string id="announce--message">SODA V2 is live!</string>
+  <string id="announce--href">10 radical improvements of V2 →</string>
+  <string id="label-apr">APR</string>
+
+
+  <!--   -> team   --> 
+
+  <string id="team">Team</string>
+  <string id="FAQ">FAQ</string>
+
+
+  <string id="max-tarasenko">Max Tarasenko, Co-founder &amp; CEO</string>
+  <string id="max-tarasenko--content">
+    Max is a Managing Partner &amp; Chief Investment Officer of GT Blockchain Investments, cryptoasset-focused investment fund with $2,000,000 assets under their management. He has been previously involved in the crypto-lending venture as the Founder of Nimfamoney in 2017–2018. Oxford Blockchain Strategy Programme Alumni.
+  </string>
+
+  <string id="pavel-tarasenko">Pavel Tarasenko, Co-founder &amp; Chief Design Officer</string>
+  <string id="pavel-tarasenko--content">
+    Pavel is a UI/UX designer with 6+ years of web-development and design experience. 
+    He is also the winner of <a target="_blank" href="https://instantview.telegram.org/contest/winners2017">Telegram’s Instant View Contest (2017)</a> and #2 of <a target="_blank" href="https://instantview.telegram.org/contest/winners2019">Telegram’s Instant View Contest (2019)</a>.
+  </string>
+
+  <string id="dan-gavrilin">Dan Gavrilin, Co-founder &amp; CTO</string>
+  <string id="dan-gavrilin--content">
+    Dan is a full-stack developer (Solidity, React.js, Node.js, C#) with solid 8+ years of development experience. He previously worked on the implementation of ERP systems in medium-sized businesses. Dan is also a member of Libretto Labs, the creators of Libretto programming language.
+  </string>
+
+  <string id="daria-gavrilina">Daria Gavrilina, Lead Developer</string>
+  <string id="daria-gavrilina--content">
+    Daria is a front-end developer (Webpack, React.js, Stylus, JavaScript) with 4+ years of development experience. Daria is a member of Libretto Labs, the creators of Libretto programming language.
+  </string>
+  <!--   <- team   -->  
+
+
+</locale>
