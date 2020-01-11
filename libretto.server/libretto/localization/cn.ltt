@@ -44,6 +44,9 @@ def cn = <locale lang="cn">
   <string id="menu-nav-submenu__second"> 
     提取&amp;偿还
   </string>
+  <string id="menu-nav-submenu__third"> 
+    Convert Bitcoins
+  </string>
 
   <string id="menu-header"> 
     文档
@@ -67,6 +70,9 @@ def cn = <locale lang="cn">
   </string>
   <string id="section__title--withdraw-repay"> 
     提取&amp;偿还
+  </string>
+  <string id="section__title--convert-btc"> 
+    Convert Bitcoins
   </string>
 
   <string id="announce-grid__text-1"> 

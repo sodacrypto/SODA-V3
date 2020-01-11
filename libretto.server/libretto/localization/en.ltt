@@ -45,6 +45,9 @@ def en = <locale lang="en">
   <string id="menu-nav-submenu__second"> 
     Withdraw &amp; Repay
   </string>
+  <string id="menu-nav-submenu__third"> 
+    Convert Bitcoins
+  </string>
 
   <string id="menu-header"> 
     DOCS
@@ -68,6 +71,9 @@ def en = <locale lang="en">
   </string>
   <string id="section__title--withdraw-repay"> 
     Withdraw &amp; Repay
+  </string>
+  <string id="section__title--convert-btc"> 
+    Convert Bitcoins
   </string>
 
   <string id="announce-grid__text-1"> 

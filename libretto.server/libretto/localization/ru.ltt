@@ -45,6 +45,9 @@ def ru = <locale lang="ru">
   <string id="menu-nav-submenu__second"> 
     Вывод &amp; возврат
   </string>
+  <string id="menu-nav-submenu__third"> 
+    Convert Bitcoins
+  </string>
 
   <string id="menu-header"> 
     Документация
@@ -68,6 +71,9 @@ def ru = <locale lang="ru">
   </string>
   <string id="section__title--withdraw-repay"> 
     Вывод &amp; возврат
+  </string>
+  <string id="section__title--convert-btc"> 
+    Convert Bitcoins
   </string>
 
   <string id="announce-grid__text-1"> 
