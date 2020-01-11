@@ -1,0 +1,901 @@
+@import '../node_modules/ion-rangeslider/css/ion.rangeSlider.min.css'
+
+	
+@font-face {
+	font-family: 'Futura PT'
+	src: url('../fonts/FuturaPT-Bold.ttf') format('truetype')
+	// url('../fonts/FuturaPT-Bold.woff') format('woff'),
+	font-weight: bold
+	font-style: normal
+}
+@font-face {
+	font-family: 'Futura PT'
+	src: url('../fonts/FuturaPT-Demi.woff') format('woff'),
+		url('../fonts/FuturaPT-Demi.ttf') format('truetype')
+	font-weight: 600
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Futura PT'
+	src: url('../fonts/FuturaPT-Book.ttf') format('truetype')
+	// url('../fonts/FuturaPT-Light.woff') format('woff'),
+	font-weight: normal
+	font-style: normal
+}
+@font-face {
+	font-family: 'Futura PT'
+	src: url('../fonts/FuturaPT-Medium.woff') format('woff'),
+		url('../fonts/FuturaPT-Medium.ttf') format('truetype')
+	font-weight: 450
+	font-style: normal
+}
+
+body
+	margin 0
+	// height 100%
+	overflow: auto;
+	display unquote('flex')
+	flex 1
+	position: relative;
+	min-height: max-content;
+
+html
+	display unquote('flex')
+	min-height: 100vh;
+	*
+		&::-webkit-scrollbar 
+			width: .4em;
+		&::-webkit-scrollbar-track-piece
+			background #CCD9F7
+		&::-webkit-scrollbar-thumb
+			border-radius .15em
+			background-color: #979dbe
+span.blue
+	color: #4776e6;
+span.bold
+	font-weight 600
+.section__title, .loans-history__title, .form__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 33px;
+	font-size: 22px;
+	color: #221B48;
+
+.input-with-copy
+	display unquote('flex')
+	margin: 10px 0;
+	// margin-left 40px
+	input
+		box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.25);
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #4A4469;
+		padding 12px 15px
+		background: #FFFFFF;
+		border: 1px solid #C2C0CB;
+		box-sizing: border-box;
+		outline none
+		flex 1
+		// text-overflow: ellipsis;
+		height 45px
+		max-height 45px
+		position relative 		
+		margin 0
+		border-radius 5px 0 0 5px
+		// box-shadow none
+		border-right 0
+	.input-with-copy__button
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 21px;
+		align-items: center;
+		color: #4A4469;
+		display unquote('flex')
+		width: 130px;
+		background: linear-gradient(180deg, #FFFFFF 0%, #ECF4F9 100%), #EEF2FC;
+		border: 1px solid #C2C0CB;
+		box-sizing: border-box;
+		border-radius: 0px 5px 5px 0px;
+		cursor pointer
+		position relative
+		&:hover
+			// transform: translateY(-1px);
+			transform scale(1.01)
+			box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+		&:active
+			transform scale(1)
+			// transform: translateY(1px);
+			box-shadow: none;
+		@media screen and (max-width 959px)
+			width 45px
+		label
+			margin auto
+			cursor pointer
+			transform: translate(25%, 0%);
+			@media screen and (max-width 959px)
+				display none
+		&:before
+			content ""
+			margin-left: 35px;
+			height 100%
+			width 15px
+			cursor pointer
+			background url("/images/copy.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			position absolute
+			@media screen and (max-width 959px)
+				margin-left: 15px;
+
+.hide
+	display none !important
+
+.icon-logo
+	margin: auto 0 auto 20px;
+	height 40px
+	width 30px
+	background url("/images/logo.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+
+.add-point
+	&:after
+		content "."	
+.add-colon
+	&:after
+		content ":"
+		margin-left -.2em
+.copyright__text, .git-hub__text
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+.button--yellow
+	background: linear-gradient(278.63deg, #EC930F 0%, #FFD200 100%);
+.button--blue
+	background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+.button--yellow, .button--blue
+	// box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 21px;
+	text-align: center;
+	color: #EEF2FC;
+	text-shadow: 0px 0px 15px rgba(30, 20, 145, 0.6);
+	border: none;
+	outline: none;
+	flex: 1;
+	height: 45px;
+	min-height: 45px;
+	margin: 5px 20px 10px 20px
+	cursor: pointer;
+	// transition: margin 0.4s, font-size 0.4s, width 0.4s;
+	transition: margin-left 0.4s, margin-right 0.4s,font-size 0.4s, width 0.4s
+	position relative
+	&:hover
+		transform: translateY(-1px);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+	&:active
+		transform: translateY(1px);
+		box-shadow: none;
+	&.loading
+		font-size 0
+		&:before
+			content ""
+			height 100%
+			width 48px
+			position absolute
+			// background red
+			background: url(/images/dots-loader.svg);
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			top: 0;
+			transform: translate(-50%,0);
+			
+
+.input
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+	padding 12px 15px
+	background: #FFFFFF;
+	border: 1px solid #C2C0CB;
+	box-sizing: border-box;
+	box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	margin 10px 0
+	outline none
+	flex 1
+	// text-overflow: ellipsis;
+	height 45px
+	max-height 45px
+	position relative 
+	&:disabled
+		background: #EEEEEE;
+		color: #C4C4C4;
+	&:placeholder
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #C2C0CB;
+	&::-webkit-input-placeholder
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #C2C0CB;
+	&:-moz-placeholder
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #C2C0CB;
+	&::-moz-placeholder
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #C2C0CB;
+	&:-ms-input-placeholder
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #C2C0CB;
+
+
+
+//--> socials
+.socials-icon
+	height: 25px;
+	width: 25px;
+	opacity .4
+	cursor pointer
+	&:hover
+		opacity 1
+.sidebar__socials, .sidebar__socials--darc
+	display unquote('flex')
+	justify-content: space-between;
+	padding: 20px;
+.sidebar__socials--darc
+	width: 280px;
+	margin 0 auto
+	.socials-icon--telegram
+		background url("/images/telegram--dark.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+	.socials-icon--facebook
+		background url("/images/facebook--dark.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+	.socials-icon--twitter
+		background url("/images/twitter--dark.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+	.socials-icon--reddit
+		background url("/images/reddit--dark.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+	.socials-icon--medium
+		background url("/images/medium--dark.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+	.socials-icon--discord
+		background url("/images/discord--dark.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+.socials-icon--telegram
+	background url("/images/telegram.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.socials-icon--facebook
+	background url("/images/facebook.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.socials-icon--twitter
+	background url("/images/twitter.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.socials-icon--reddit
+	background url("/images/reddit.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.socials-icon--medium
+	background url("/images/medium.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.socials-icon--discord
+	background url("/images/discord.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.socials-icon--github
+	background url("/images/git-hub.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+//<-- socials
+
+
+
+.add-percent
+	&:after
+		content "%"
+.add-dollar
+	&:before
+		content "$"
+.with-currency
+	&:after
+		content attr(data-currency)
+		margin-left: .25em;
+
+//--> count
+.count
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 27px;
+	color: #221B48;
+	position: relative;
+	margin-bottom: 20px;
+	margin-top 0
+	&:after
+		content attr(data-currency)
+		margin-left: .25em;
+	&[data-currency]
+		margin-left: 30px;
+	&[data-currency="DAI"]
+		&:before
+			content ""
+			height 20px
+			width 20px
+			background url("/images/DAI.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: absolute;
+			margin: 2px auto auto -30px;
+			@media screen and (max-width 959px)
+				margin: 4px auto auto -30px;
+	&[data-currency="BTC"]
+		&:before
+			content ""
+			height 20px
+			width 20px
+			background url("/images/BTC.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: absolute;
+			margin: 2px auto auto -30px;
+			@media screen and (max-width 959px)
+				margin: 0px auto auto -30px;
+//<-- count
+
+//--> select
+.select
+	position relative
+	.count
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 16px;
+		color: #4A4469;
+		padding 12px 35px 0 35px
+		margin 0
+		&:before
+			height 10px
+			width 10px
+			margin 2px auto auto -15px
+	&.open
+		.select__content
+			z-index 11
+			display unquote('block')
+		.select__selected
+			&:after
+				transform: rotate(180deg);
+.select-elem-box
+	flex 1
+	&:last-child
+		text-align: end;
+.select-date-title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 12px;
+	line-height: 15px;
+	color: #9A97AB;
+	margin: 5px 20px;
+	&:before
+		content attr(data-title)
+		font-weight 600
+		margin-right .25em
+.select-elem-min-title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 15px;
+	color: #9A97AB;
+	margin 12px 40px 0 0
+.select-elem-status
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 16px;
+	color: #4A4469;
+	margin 5px 40px 0 0		
+
+.select__selected
+	height 60px
+	background: linear-gradient(180deg, #FFFFFF 0%, #ECF4F9 100%), #EEF2FC;
+	border: 1px solid #C2C0CB;
+	box-sizing: border-box;
+	box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	cursor pointer
+	display unquote('flex')
+	.select__elem
+		margin-right: -25px;
+		&:hover
+			background none
+	&:empty
+		&:before
+			content attr(data-unselected)
+			margin: auto 20px;
+			font-family: Futura PT;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 12px;
+			line-height: 15px;
+			color: #9A97AB;
+		&:after
+			display none
+	&:after
+		content: "";
+		height: 5px;
+		width: 10px;
+		background: url(/images/down.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		// position: absolute;
+		// top: 18px;
+		// right: 10px;
+		margin auto 15px auto auto
+
+.select__content
+	background: #FFFFFF;
+	border: 1px solid #9A97AB;
+	box-sizing: border-box;
+	border-radius: 5px;
+	position: absolute;
+	width: 100%;
+	margin-top: 5px;
+	max-height: 300px;
+	overflow: auto;
+	z-index: 11;
+	display none
+.select__elem
+	height 60px
+	cursor pointer
+	display unquote('flex')
+	flex 1
+	&:hover
+		background #EEF2FC80
+	&.selected
+		background #EEF2FC
+
+//select <--
+
+
+@media screen and (max-width 959px)
+	.hide-on-phone
+		display none
+		
+@media screen and (min-width 960px) and (max-width 1299px)
+	.hide-on-all-computers
+		display none
+
+@media screen and (min-width 1300px)
+	.hide-on-all-computers
+		display none
+
+.range 
+	display unquote('block')
+	padding 0 45px
+
+//--> slider
+.irs--round .irs-handle
+	border none
+	box-shadow  0 0 4px rgba(0, 0, 0, 0.5)
+	height 18px
+	width 18px
+	cursor pointer
+.irs-single
+	background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px !important
+	line-height: 18px !important
+	border-radius 5px !important
+	top 1px !important
+	padding 0 6px !important
+	color #EEEEEE !important
+ .irs-bar.irs-bar--single
+	background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+	border-radius: 5px;
+	height 2px
+.irs-line
+	background: #C4C4C4 !important
+	border-radius: 5px !important
+	height 2px !important
+
+.irs-min, .irs-max
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 12px !important
+	line-height: 18px !important
+	color: #9A97AB !important
+	background-color: #fff0 !important;
+.irs-min
+	visibility: visible !important
+	left: -50px !important
+	top: 25px !important
+.irs-max
+	visibility: visible !important
+	right: -50px !important
+	top: 25px !important
+.irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single
+	&::before
+		position: absolute;
+		display: block;
+		content: "";
+		bottom: -9px;
+		left: 50%;
+		// margin-left: -3px;
+		overflow: hidden;
+		border-style: solid;
+		// border-width: 15px 2px 15px 2px
+		// border-width: 4px;
+		border-width: 5px 3px 5px 3px
+		border-color: #4f65e7 transparent transparent transparent;	
+		// transform: translate(-25%, 0%);
+.irs-hidden-input
+	opacity 0
+//<-- slider
+
+
+//удалить
+label.input-with-currency
+	cursor text
+	display unquote('flex')
+	position relative
+	&[data-currency]
+		&:after
+			font-family: Futura PT;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 12px;
+			line-height: 21px;
+			color: #4A4469;
+			content attr(data-currency)
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translate(0%,-50%);
+		.input
+			padding 12px 45px 12px 15px
+
+label.input-box
+	cursor text
+	display unquote('flex')
+	position relative
+	&[data-currency]
+		&:after
+			font-family: Futura PT;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 12px;
+			line-height: 21px;
+			color: #4A4469;
+			content attr(data-currency)
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translate(0%,-50%);
+		.input
+			padding 12px 45px 12px 15px
+	&[data-error]
+		margin-bottom: 14px;
+		&:before
+			content attr(data-error)
+			font-family: Futura PT;
+			font-style: normal;
+			font-weight: 450;
+			font-size: 12px;
+			line-height: 24px;
+			color: #FF9A9A;
+			position absolute
+			bottom 0
+			transform: translate(0, 50%);
+		.input
+			border: 1px solid #FF9A9A;
+			box-shadow: inset 0px 0px 6px rgba(230, 0, 0, 0.65);
+.calculator__title
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+.notification
+	box-sizing: border-box;
+	border-radius: 5px;
+	// height 61px
+	padding 20px 0
+	margin 30px 35px
+	position relative
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	display unquote('flex')
+	position relative
+	transition: background .4s, padding .4s;
+	&:before
+		height 100%
+		width 40px
+		position absolute
+		margin 0 20px
+		transform: translate(0%, -20px);	
+	&.neutral
+		background: #ECFFFE;
+		border: 1px solid #A5CBC9;
+		color: #7B9290;
+		&:before
+			content ""			
+			background url("/images/notification--neutral.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.error
+		background: #FFECEC;
+		border: 1px solid #CBA5A5;
+		color: #927B7B;
+		&:before
+			content ""
+			background url("/images/notification--error.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.warning
+		background: #FFF7DF;
+		border: 1px solid #E1C6A2;
+		color: #B89970;
+		&:before
+			content ""
+			background url("/images/notification--warning.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	@media screen and (max-width 959px)
+		margin 30px 20px
+		// height 103px
+		
+.notification-text
+	margin auto 20px auto 80px
+	br
+		display none
+
+
+
+
+
+.pop-up
+	// display unquote('none')
+	z-index 15
+	overflow: auto;
+	position fixed
+	top 0
+	left 0
+	height: 100%;
+	width: 100%;
+	display unquote('flex')
+	visibility: hidden;
+	// transition: all 0.4s;
+	opacity 0
+	transition: opacity 0.4s, visibility 0.4s
+	// opacity: 0;
+	&.open
+		visibility: visible;
+		opacity 1
+		background rgba(34,27,72,0.5)
+		// opacity: .85
+	.button--yellow, .button--blue
+		margin-left 0
+		margin-right 0
+.pop-up__content
+	margin auto
+	box-sizing: border-box;
+	background: linear-gradient(180deg, #FFFFFF 0%, #ECF4F9 100%), #EEF2FC;
+	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+	border-radius: 5px;
+	padding:  40px 40px 30px 40px
+	display: unquote('flex');
+	flex-direction: column;
+
+
+
+
+
+
+
+
+
+
+
+
+
+.overlay-dyn
+	// display none
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	// background: #EEF2FC;
+	// opacity: 0.85;
+	z-index: 10;
+	top 0
+	left 0
+	// visibility: visibility;
+	// opacity: 0;
+	// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	// filter: alpha(opacity=0);
+	// transition: all 0.4s;
+
+
+.lang-en, .lang-ru, .icon-cn
+	display unquote('flex')
+	cursor pointer
+.icon-en, .icon-ru, .lang-cn
+	height 25px
+	width 25px
+	margin auto
+	margin: 10px;
+	position: relative;
+.icon-en
+	background url("/images/EN.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.icon-ru
+	background url("/images/RU.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+.icon-cn
+	height 28px
+	width 28px
+	background url("/images/CN.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+
+.user-box
+	display unquote('flex')
+	position relative
+	cursor pointer
+	&#sidebar__user-dropdown
+		padding: 0 20px;
+		.user-dropdown
+			left 20px
+			width 200px
+			overflow hidden
+	// @media screen and (max-width 959px)
+	// 	display none
+.lang-box
+	display unquote('flex')
+	margin: auto 5px auto 0
+	position relative
+	cursor pointer
+	.lang-dropdown
+		width 44px
+		bottom -11px
+	.user-dropdown__elem
+		width 100%
+		height 40px
+		.icon
+			margin auto
+
+.user-dropdown, .lang-dropdown
+	position absolute
+	bottom: 10px;
+	transform: translate(0%, 100%);
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+	background: #FFFFFF;
+	border-radius: 5px;
+	right: 0;
+	display none
+	overflow auto
+	a
+		text-decoration none
+		display unquote('flex')
+	&.open
+		display unquote('block')
+		z-index 11
+
+
+.user-dropdown__elem
+	height 50px
+	display unquote('flex')
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: 450;
+	font-size: 14px;
+	line-height: 21px;
+	color: #221B48;
+	width 200px
+	cursor pointer
+	position relative
+	&:hover
+		background: #EEF2FC;
+	span
+		margin auto auto auto 45px
+	&:before
+		position absolute
+		width 20px
+		height 100%
+		margin-left: 15px;
+	&.logout
+		&:before
+			content ""
+			background url("/images/logout.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	&.edit-profile
+		&:before
+			content ""
+			background url("/images/edit-profile.svg")
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+	
+
+.user-panel__down
+	width: 10px;
+	height: 4px;
+	margin auto 0
+	background url("/images/down.svg")
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translate(0, 30%);
+	&.triangle
+		background url("/images/down-triangle.svg")
+		background-size: contain;
+		background-repeat: no-repeat;
+		transform: translate(0, 30%);

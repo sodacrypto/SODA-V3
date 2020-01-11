@@ -1,0 +1,7 @@
+version: "2"
+services:
+  libretto:
+    build: libretto.server
+    restart: always
+    ports:
+      - 1245:8080

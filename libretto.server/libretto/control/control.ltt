@@ -1,0 +1,116 @@
+package control
+	use com/teacode/jetx
+	use com/teacode/jetx/response
+	use com/teacode/jetx/router
+	use com/teacode/jetx/params
+	use libretto/web/in
+	use libretto/web/out
+	use libretto/web/app
+	use libretto/util/strbuf
+	use libretto/util
+	use libretto/net
+	use com/teacode/html
+	use com/teacode/json
+	use libretto/data
+
+def process = jetx/process:{
+	out: response/out
+	step: params/read
+	step: router/resolve:{
+		route("~"): packages: "url"
+	}
+	step: response/send
+}
+
+package url
+	use com/teacode/jetx
+def home = jetx/out: <html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<script src="/scripts/index.js"/>
+	<link rel="stylesheet" type="text/css" href="/styles/index.css"/>
+	<title>Document</title>
+</head>
+<body>
+	<template id="template__loan">
+		<tr>
+		    <td><span data-type="id"/></td>
+		    <td><span data-type="borrower"/></td>
+		    <td><span data-type="interest"/></td>
+		    <td><span data-type="amount"/></td>
+		    <td>
+		    	<form class="loan__repay" data-type="debt">
+			    	<input class="loan__repay-input" step="any" type="number" name="amount"/>
+			    	<input type="submit" value="repay"/>
+		    	</form>
+		    </td>
+		    <td><span data-type="collateral"/></td>
+		    <td><span data-type="security"/>%</td>
+		    <td>$<span data-type="liquidation-price"/></td>
+		</tr>
+	</template>
+	<div>
+		<h3>DAI</h3>
+		<div>Balance: <span data-type="dai-balance"/></div>
+		<form data-type="contract-send" data-contract="DAI" data-action="mint">
+				<input step="any" placeholder="amount to mint" type="number" name="amount"/>
+				<input type="submit" name="action" value="mint"/>
+		</form>
+		<form data-type="contract-send" data-contract="DAI" data-action="burn">
+				<input step="any" placeholder="amount to burn" type="number" name="amount"/>
+				<input type="submit" name="action" value="burn"/>
+		</form>
+	</div>
+	<div>
+		<h3>(DEFI) BTC</h3>
+		<div>Balance: <span data-type="btc-balance"/></div>
+		<form data-type="contract-send" data-contract="BTC" data-action="mint">
+				<input step="any" placeholder="amount to mint" type="number" name="amount"/>
+				<input type="submit" name="action" value="mint"/>
+		</form>
+		<form data-type="contract-send" data-contract="BTC" data-action="burn">
+				<input step="any" placeholder="amount to burn" type="number" name="amount"/>
+				<input type="submit" name="action" value="burn"/>
+		</form>
+	</div>
+	<div>
+		<h3>(SODA DAO) DAI</h3>
+		<div>Balance: <span data-type="dao-balance"/></div>
+		<form data-type="lend" data-contract="Lend" data-action="lend">
+				<input step="any" placeholder="amount to lend" type="number" name="amount"/>
+				<input type="submit" name="action" value="lend"/>
+		</form>
+		<form data-type="contract-send" data-contract="Lend" data-action="withdraw">
+				<input step="any" placeholder="amount to withdraw" type="number" name="amount"/>
+				<input type="submit" name="action" value="withdraw"/>
+		</form>
+	</div>
+	<div>
+		<h2>LOANS (DAI)</h2>
+		<div>Pool Balance: <span data-type="pool-balance"/></div>
+		<div>current price: $<span data-type="btc-price"/></div>
+
+		<form data-type="borrow" data-contract="Borrow" data-action="borrow">
+				<input step="any" placeholder="amount to borrow" type="number" name="amount"/>
+				<input step="any" placeholder="collateral" type="number" name="collateral"/>
+				<input type="submit" name="action" value="borrow"/>
+		</form>
+		<table class="fl-table" style="width:100%">
+			<thead>
+				
+			  <tr>
+			    <th>id</th>
+			    <th>borrower</th>
+			    <th>interest</th>
+			    <th>amount</th>
+			    <th>debt</th>
+			    <th>collateral</th>
+			    <th>security</th>
+			    <th>liquidation-price</th>
+			  </tr>
+			</thead>
+			<tbody id="loans"/>
+		</table>
+	</div>
+</body>
+</html>

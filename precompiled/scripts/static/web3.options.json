@@ -1,0 +1,8 @@
+{
+    "defaultBlock": "latest",
+    "defaultGas": 21000,
+    "defaultGasPrice": 0,
+    "transactionBlockTimeout": 50,
+    "transactionConfirmationBlocks": 1,
+    "transactionPollingTimeout": 480
+}

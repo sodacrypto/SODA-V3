@@ -1,0 +1,238 @@
+.pop-up
+	display none
+	position absolute
+	// position fixed
+	background-color #9effeb3d
+	height 100%
+	width 100%
+	overflow height
+	z-index 200
+	cursor pointer
+	*
+		font-family Futura-Medium
+	&.open
+		display flex
+	.pop-up-step
+		height 100vh
+		width 100%
+		z-index 250
+		display flex
+		cursor: default;
+		.box
+			margin auto
+			height: 95vh;
+			max-height 900px
+			width: 95%;
+			background-color: #ffffff;
+			border-radius: 4px;
+			background-color white
+			display: flex;
+			flex-direction: column;
+			box-shadow: 0px 0px 10px 1px #6d6d6d;
+			overflow: auto;
+			.step-head
+				border-radius: 4px 4px 0 0;
+				text-align center
+				padding .8em
+				background-color #fee570
+				font-family: Futura-Demi
+				font-size 17px
+				>span
+					font-family: Futura-Demi
+					font-size 17px
+			.steps
+				display flex
+				.step
+					flex 1
+					border-top: 3px solid black;
+					border-left: 3px solid black;
+					border-bottom: 3px solid black;
+					padding .5em					
+					&:nth-child(1)
+						border-left none
+					// &:nth-child(4)
+					// 	border-right 3px solid black;
+					&.open
+						background-color #ffdf00
+					b
+						font-family Futura-ExtraBold
+						font-size: 14px;
+			.main-box
+				display flex
+				padding 1.5em
+				flex 1 
+				height: 100%;
+				overflow: auto;
+				margin-bottom .9em
+				>div
+					flex 1
+					display flex
+					flex-direction: column;
+				.left
+					.title
+						font-size 34px
+						font-family Futura-ExtraBold
+						white-space: nowrap;
+					.small-descriptions
+						display flex
+						flex-direction: column;
+						flex 1
+						.description
+							flex 1
+							white-space: nowrap;
+							margin: .9em 0 .9em 5em;
+							display flex
+							b
+								font-family Futura-ExtraBold
+								font-size: 14px;
+							>div
+								position: relative;
+								margin auto 0
+							&.btc
+								>div::before								
+									content ""
+									height 70%
+									top 15%
+									width 4em
+									// background-color red
+									position: absolute;
+									left: -5em;
+									background: center url(/assets/images/lp-rub/btc-coin.svg);
+									background-size: contain;
+									background-repeat: no-repeat;
+							&.bit-go
+								>div::before
+									content ""
+									height 70%
+									top 15%
+									width 4em
+									// background-color red
+									position: absolute;
+									left: -5em;
+									background: center url(/assets/images/lp-rub/BitGo.png);
+									background-size: contain;
+									background-repeat: no-repeat;
+							&.card
+								>div::before
+									content ""
+									height 70%
+									top 15%
+									width 4em
+									// background-color red
+									position: absolute;
+									left: -5em;
+									background: center url(/assets/images/lp-rub/credit-card.svg);
+									background-size: contain;
+									background-repeat: no-repeat;
+							&.cb
+								>div::before
+									content ""
+									height 70%
+									top 15%
+									width 4em
+									// background-color red
+									position: absolute;
+									left: -5em;
+									background: center url(/assets/images/lp-rub/lessthan10.svg);
+									background-size: contain;
+									background-repeat: no-repeat;
+				.right
+					display flex
+					.slider
+						display: flex;
+						flex-direction: column;
+						.amount, .period
+							margin 1em 0
+							display flex
+							>div
+								&:nth-child(1)
+									flex 2
+								&:nth-child(2)
+									flex 1
+									display flex
+									position relative
+									input
+										margin: auto 0 auto auto;
+										padding: .3em;
+										border-radius: 4px;
+										border: 1px solid #969696;
+										outline: none;
+										font-size: 14px;
+										width: 80%;
+					.center
+						display flex
+						flex-direction: column;			
+						input
+							padding .3em
+							border-radius: 4px;
+							border: 1px solid #969696;
+							margin: .5em 0;	
+							outline none	
+							font-size 14px
+							width 100%
+							&:focus
+								box-shadow: 0px 0px 2px 0px #ff901d;
+						.moreover
+							font-size 14px
+							color gray
+							margin: -.2em 0 1em .5em;
+							line-height: .9;
+							span
+								color black
+					button
+						background-color: #ffdf00;
+						border: none;
+						padding: .4em;
+						font-size: 16px;
+						border-radius: 4px;
+						margin: .2em 0;
+					.consent
+						display flex
+						padding: 1em 0.5em;
+						background: #e8e8e8;
+						margin: .5em 0 1em;
+						border-radius: 4px;
+						label
+							display flex
+							cursor pointer
+							input
+								margin auto 1em auto .8em
+					.total
+						display flex
+						border-top: 2px solid #dee4ec//#dedede;
+						margin: 1em 0;
+						>div
+							width: 25%;
+							margin: .5em;
+							height: 3em;
+							border-right: 1px solid #dee4ec//#dedede;
+							white-space: nowrap;
+							&:nth-child(4)
+								border-right none
+							>div:nth-child(2)
+								font-family: Futura-Extrabold;
+								font-size: 14px;
+	.head
+		font-size 44px
+		margin: auto auto auto 0;
+		span
+			font-family Futura-ExtraBold
+			display: inline-block;
+			position: relative;
+			z-index: 1;
+			font-size: 36px;
+			line-height: 132%;
+			letter-spacing: .12em;
+			font-weight: 900;
+			margin-top: 0;
+			margin-bottom: 8px;
+			text-transform: uppercase;
+			&:after
+				position: absolute;
+				content: "";
+				height: 16px;
+				width: calc(100% + 16px);
+				background-color: #fadb00;
+				bottom: 6px;
+				left: -8px;
+				z-index: -1;

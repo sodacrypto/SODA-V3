@@ -1,0 +1,20 @@
+{
+	"3":"0x882906a758207FeA9F21e0bb7d2f24E561bd0981",
+	"ABI": [
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "latestAnswer",
+			"outputs": [
+				{
+					"internalType": "int256",
+					"name": "",
+					"type": "int256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}

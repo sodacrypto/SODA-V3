@@ -1,0 +1,22 @@
+version: "3"
+services:
+  libretto:
+    image: librettolang/jetty-server
+    restart: always
+    volumes:
+      - ./libretto.server:/usr/src/app
+    ports:
+      - 8080:8080
+  precompiled:
+    image: "node"
+    volumes:
+      - ./:/home/node/app
+    working_dir: "/home/node/app/precompiled"
+    command: "npm start"
+  remixd:
+    build: ethereum
+    restart: always
+    ports:
+      - 65520:65520
+    volumes:
+      - ./ethereum/src:/app
