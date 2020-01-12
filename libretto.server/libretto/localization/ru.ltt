@@ -169,7 +169,7 @@ def ru = <locale lang="ru">
 
   <string id="loan-history__wd-block"> 
     Вывод &amp; возврат станут доступны<br/>
-    на Шаге 5/7 (Займ получен)
+    на Шаге 3/5 (Займ получен)
    </string>
   <string id="loan-history__button--withdraw-and-repay"> 
     Вывод &amp; возврат

@@ -169,7 +169,7 @@ def en = <locale lang="en">
 
   <string id="loan-history__wd-block"> 
     Withdrawal &amp; repayment will be availible<br/>
-    on Stage 5/7 (“Loan is active”)
+    on Stage 3/5 (“Loan is active”)
    </string>
   <string id="loan-history__button--withdraw-and-repay"> 
     Withdraw &amp; Repay
