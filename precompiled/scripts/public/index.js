@@ -1,5 +1,14 @@
 require('ion-rangeslider');
 
+ethereum.on('accountsChanged', function (accounts) {
+  if(accounts.length > 0) start(accounts)
+  else {
+  	document.querySelectorAll('[data-type=account]').forEach(x=>{
+		x.innerText = null
+	})
+  	document.querySelector('.pop-up').classList.add('open')
+  }
+})
 
 $("#security-range").ionRangeSlider({
     skin:'round',
@@ -8,6 +17,14 @@ $("#security-range").ionRangeSlider({
     from: 170,
     step: 5,
     prettify: x =>`${x}%`
+})
+
+document.querySelector('.connect-wallet--button').addEventListener('click', () => {
+  document.querySelector('.pop-up').classList.add('open')
+})
+
+document.querySelector('.connect--metamask').addEventListener('click', () => {
+	ethereum.enable()
 })
 
 document.querySelectorAll(".lang-box").forEach(x => x.addEventListener('click', function(){
@@ -45,3 +62,12 @@ function openSection(str) {
 	document.querySelector(`.section--${str}`).classList.remove('hide');
 	document.querySelector(`.menu-submenu__elem[data-page=${str}]`).classList.add("selected")
 }
+
+function start([address]){
+	document.querySelector('.pop-up').classList.remove('open')
+	document.querySelectorAll('[data-type=account]').forEach(x=>{
+		x.innerText = address
+	})
+	console.log(address)
+}
+

@@ -30,11 +30,17 @@ def lk = jetx/out: {
 				visibility: visible;
 				opacity 1
 			}
+			.connect-wallet--button{
+				display: none;
+			}
+			.user-account:empty+.connect-wallet--button{
+				display: block;
+			}
 		</style>
 
 		<body>
 			<div class="overlay"></div>
-			<div class="pop-up open">
+			<div class="pop-up">
 				<div class="pop-up__content">
 					<div class="pop-up__head-text">
 						#{locale("connect-wallet--title")}
@@ -165,7 +171,10 @@ def lk = jetx/out: {
 						</div>
 
 						<div id="user-box--main-header" class="user-box">
-							<div class="header__profile-data">user@example.com</div>
+							<div class="header__profile-data">
+								<span class="user-account" data-type="account"/>
+								<button class="button--blue connect-wallet--button">Connect Wallet</button>
+							</div>
 							<!--div class="user-panel__down"></div-->
 							<div class="user-dropdown">
 								<div class="user-dropdown__elem edit-profile hide">#{locale("edit-profile")}</div>
