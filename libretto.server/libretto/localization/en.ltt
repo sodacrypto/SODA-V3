@@ -169,32 +169,27 @@ def en = <locale lang="en">
 
   <string id="loan-history__wd-block"> 
     Withdrawal &amp; repayment will be availible<br/>
-    on Stage 5/7 (“Loan is active”)
+    on Stage 3/5 (“Loan is active”)
    </string>
   <string id="loan-history__button--withdraw-and-repay"> 
     Withdraw &amp; Repay
   </string>
   <string id="loan-history__status-1"> 
-    Waiting for deposit
+    Approve renBTC
   </string>
   <string id="loan-history__status-2"> 
-    Minting SODABTC
-  </string>
-  <string id="loan-history__status-3"> 
-    Evaluating collateral
-  </string>
-  <string id="loan-history__status-4"> 
     Issuing the loan
   </string>
-  <string id="loan-history__status-5"> 
+  <string id="loan-history__status-3"> 
     Loan is active
   </string>
-  <string id="loan-history__status-6"> 
+  <string id="loan-history__status-4"> 
     Partly repaid
   </string>
-  <string id="loan-history__status-7"> 
+  <string id="loan-history__status-5"> 
     Paid off
   </string>
+
   <string id="loan-history__status-waiting"> 
     Waiting...
   </string>

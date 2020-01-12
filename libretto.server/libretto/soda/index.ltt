@@ -262,24 +262,20 @@ def loanHistory() = {
 	</div>
 	<div class="loan-history__status-bar hide-on-all-computers">
 		<div class="loan-history__header">
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(1/7) #{locale("loan-history__status-1")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(2/7) #{locale("loan-history__status-2")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(3/7) #{locale("loan-history__status-3")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(4/7) #{locale("loan-history__status-4")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(5/7) #{locale("loan-history__status-5")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(6/7) #{locale("loan-history__status-6")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(7/7) #{locale("loan-history__status-7")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(1/5) #{locale("loan-history__status-1")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(2/5) #{locale("loan-history__status-2")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(3/5) #{locale("loan-history__status-3")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(4/5) #{locale("loan-history__status-4")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(5/5) #{locale("loan-history__status-5")}</div>
 		</div>
 	</div> 
 	<div class="loan-history__status-bar hide-on-phone">
 		<div class="loan-history__header">
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(1/7) #{locale("loan-history__status-1")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(2/7) #{locale("loan-history__status-2")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(3/7) #{locale("loan-history__status-3")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(4/7) #{locale("loan-history__status-4")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(5/7) #{locale("loan-history__status-5")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(6/7) #{locale("loan-history__status-6")}</div>
-			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(7/7) #{locale("loan-history__status-7")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(1/5) #{locale("loan-history__status-1")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(2/5) #{locale("loan-history__status-2")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(3/5) #{locale("loan-history__status-3")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(4/5) #{locale("loan-history__status-4")}</div>
+			<div class="loan-history-header__status" data-title=#{localeText("text-status") + ":"}>(5/5) #{locale("loan-history__status-5")}</div>
 		</div>
 		<div class="loan-history__storyline">
 			<div class="loan-history-storyline__status">#{locale("loan-history__status-1")}</div>
@@ -287,8 +283,6 @@ def loanHistory() = {
 			<div class="loan-history-storyline__status">#{locale("loan-history__status-3")}</div>
 			<div class="loan-history-storyline__status">#{locale("loan-history__status-4")}</div>
 			<div class="loan-history-storyline__status">#{locale("loan-history__status-5")}</div>
-			<div class="loan-history-storyline__status">#{locale("loan-history__status-6")}</div>
-			<div class="loan-history-storyline__status">#{locale("loan-history__status-7")}</div>
 		</div>
 	</div>
 </div>
@@ -395,13 +389,11 @@ def sections() = {
 				<div id="state-line" class="w-r-loan-status-box" data-status=#{}>
 					<div class="w-r-loan-status__title add-colon">#{locale("w-r-loan-status__title")}</div>
 					<div class="withdraw-repay__storyline-status-titles">
-						<h3 class="withdraw-repay__storyline--status-title">(1/7) #{locale("loan-history__status-1")}</h3>
-						<h3 class="withdraw-repay__storyline--status-title">(2/7) #{locale("loan-history__status-2")}</h3>
-						<h3 class="withdraw-repay__storyline--status-title">(3/7) #{locale("loan-history__status-3")}</h3>
-						<h3 class="withdraw-repay__storyline--status-title">(4/7) #{locale("loan-history__status-4")}</h3>
-						<h3 class="withdraw-repay__storyline--status-title">(5/7) #{locale("loan-history__status-5")}</h3>
-						<h3 class="withdraw-repay__storyline--status-title">(6/7) #{locale("loan-history__status-6")}</h3>
-						<h3 class="withdraw-repay__storyline--status-title">(7/7) #{locale("loan-history__status-7")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(1/5) #{locale("loan-history__status-1")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(2/5) #{locale("loan-history__status-2")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(3/5) #{locale("loan-history__status-3")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(4/5) #{locale("loan-history__status-4")}</h3>
+						<h3 class="withdraw-repay__storyline--status-title">(5/5) #{locale("loan-history__status-5")}</h3>
 						<h3 class="withdraw-repay__storyline--status-title">#{locale("loan-history__status-waiting")}</h3>
 					</div>
 
@@ -411,8 +403,6 @@ def sections() = {
 						<div class="loan-history-storyline__status">#{locale("loan-history__status-3")}</div>
 						<div class="loan-history-storyline__status">#{locale("loan-history__status-4")}</div>
 						<div class="loan-history-storyline__status">#{locale("loan-history__status-5")}</div>
-						<div class="loan-history-storyline__status">#{locale("loan-history__status-6")}</div>
-						<div class="loan-history-storyline__status">#{locale("loan-history__status-7")}</div>
 					</div>
 
 				</div>

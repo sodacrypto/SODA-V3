@@ -71,3 +71,8 @@ function start([address]){
 	console.log(address)
 }
 
+document.querySelectorAll('.loan-history__header').forEach(x =>
+	x.addEventListener('click', function(){
+		x.classList.toggle('show')
+	})
+)
