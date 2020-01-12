@@ -45,3 +45,10 @@ function openSection(str) {
 	document.querySelector(`.section--${str}`).classList.remove('hide');
 	document.querySelector(`.menu-submenu__elem[data-page=${str}]`).classList.add("selected")
 }
+
+
+document.querySelectorAll('.loan-history__header').forEach(x =>
+	x.addEventListener('click', function(){
+		x.classList.toggle('show')
+	})
+)

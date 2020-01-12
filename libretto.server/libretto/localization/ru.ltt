@@ -175,24 +175,18 @@ def ru = <locale lang="ru">
     Вывод &amp; возврат
   </string>
   <string id="loan-history__status-1"> 
-    Ожидание депозита
+    Approve renBTC
   </string>
   <string id="loan-history__status-2"> 
-    Выпуск SODABTC
+    Issuing the loan
   </string>
   <string id="loan-history__status-3"> 
-    Оценка залога
-  </string>
-  <string id="loan-history__status-4"> 
-    Выдача займа
-  </string>
-  <string id="loan-history__status-5"> 
     Займ получен
   </string>
-  <string id="loan-history__status-6"> 
+  <string id="loan-history__status-4"> 
     Частично погашен
   </string>
-  <string id="loan-history__status-7"> 
+  <string id="loan-history__status-5"> 
     Погашен на 100%
   </string>
   <string id="loan-history__status-waiting"> 

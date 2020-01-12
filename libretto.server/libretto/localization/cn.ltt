@@ -175,24 +175,18 @@ def cn = <locale lang="cn">
     提取&amp;偿还
   </string>
   <string id="loan-history__status-1"> 
-    正在等待存入
+    Approve renBTC
   </string>
   <string id="loan-history__status-2"> 
-    生成SODABTC中
+    Issuing the loan
   </string>
   <string id="loan-history__status-3"> 
-    抵押物估值中
-  </string>
-  <string id="loan-history__status-4"> 
-    发放贷款中
-  </string>
-  <string id="loan-history__status-5"> 
     贷款生效中
   </string>
-  <string id="loan-history__status-6"> 
+  <string id="loan-history__status-4"> 
     部分还款
   </string>
-  <string id="loan-history__status-7"> 
+  <string id="loan-history__status-5"> 
     偿清
   </string>
   <string id="loan-history__status-waiting"> 
