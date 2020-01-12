@@ -38,6 +38,9 @@ def ru = <locale lang="ru">
   <string id="menu-nav-tab__third"> 
     Получить доход
   </string>
+  <string id="menu-nav-tab__fourth"> 
+    Convert Bitcoins
+  </string>
 
   <string id="menu-nav-submenu__first"> 
     Получите займ
@@ -45,9 +48,7 @@ def ru = <locale lang="ru">
   <string id="menu-nav-submenu__second"> 
     Вывод &amp; возврат
   </string>
-  <string id="menu-nav-submenu__third"> 
-    Convert Bitcoins
-  </string>
+
 
   <string id="menu-header"> 
     Документация

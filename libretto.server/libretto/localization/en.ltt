@@ -38,15 +38,15 @@ def en = <locale lang="en">
   <string id="menu-nav-tab__third"> 
     Lending
   </string>
+  <string id="menu-nav-tab__fourth"> 
+    Convert Bitcoins
+  </string>
 
   <string id="menu-nav-submenu__first"> 
     Take out a loan
   </string>
   <string id="menu-nav-submenu__second"> 
     Withdraw &amp; Repay
-  </string>
-  <string id="menu-nav-submenu__third"> 
-    Convert Bitcoins
   </string>
 
   <string id="menu-header"> 

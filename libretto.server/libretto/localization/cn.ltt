@@ -37,15 +37,15 @@ def cn = <locale lang="cn">
   <string id="menu-nav-tab__third"> 
     出借
   </string>
+  <string id="menu-nav-tab__fourth"> 
+    Convert Bitcoins
+  </string>
 
   <string id="menu-nav-submenu__first"> 
     借出一笔贷款
   </string>
   <string id="menu-nav-submenu__second"> 
     提取&amp;偿还
-  </string>
-  <string id="menu-nav-submenu__third"> 
-    Convert Bitcoins
   </string>
 
   <string id="menu-header"> 
