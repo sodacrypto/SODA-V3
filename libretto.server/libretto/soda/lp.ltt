@@ -57,11 +57,11 @@ def home = jetx/out:
 							</div>	
 						</div>
 					</div>
-					#{
+					<a href=#{s"/#{localization/currentLocale}/lk"}>
 						<div class="sign-in-and-sign-up-box">
 							<button data-type="go-platform" class="button-go-platform button--blue">#{locale("button-go-platform")}</button>
 						</div>			
-					}
+					</a>
 				</header>
 
 				<div class="main__content">
