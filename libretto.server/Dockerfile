@@ -6,7 +6,7 @@ RUN java -Xss10m -Xmx16G -classpath "/usr/bin/libretto-run.jar"\
 	org.librettolang.run.ServletGenerator app /usr/src/servlet.zip &&\
 	unzip servlet.zip -d /usr/src/distr/ROOT && ls -l distr &&\
 	mkdir -p /usr/src/distr/ROOT/WEB-INF/data/file 
-COPY db /usr/src/distr/ROOT/WEB-INF/data/storage/main/db
+# COPY db /usr/src/distr/ROOT/WEB-INF/data/storage/main/db
 
 FROM tomcat:jdk8-slim
 RUN rm -R /usr/local/tomcat/webapps/*
