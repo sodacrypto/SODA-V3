@@ -76,16 +76,16 @@ def lk = jetx/out: {
 				</div>
 				<div class="sidebar__menu">
 					<ul class="menu-tab">
-						<li class="menu-tab__elem" data-tab-page="convert-btc">
-							<div class="menu-tab__box menu-icon icon-convert-btc">
-								<label class="menu-tab__text">#{locale("menu-nav-tab__fourth")}</label>
-							</div>
-						</li>
-						<li class="menu-tab__elem active selected" data-tab="loans">
+						<li class="menu-tab__elem active selected">
 							<div class="menu-tab__box menu-icon icon-loans">								
 								<label class="menu-tab__text">#{locale("menu-nav-tab__first")}</label>
 							</div>
 							<ul class="menu-submenu">
+								<li class="menu-submenu__elem" data-page="convert-btc">
+									<div class="menu-submenu__box menu-icon icon-take-loan">
+										<label class="menu-submenu__text">#{locale("menu-nav-submenu__third")}</label>
+									</div>
+								</li>
 								<li class="menu-submenu__elem selected" data-page="take-loan">
 									<div class="menu-submenu__box menu-icon icon-take-loan">
 										<label class="menu-submenu__text">#{locale("menu-nav-submenu__first")}</label>
