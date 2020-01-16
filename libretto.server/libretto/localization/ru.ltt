@@ -68,7 +68,7 @@ def ru = <locale lang="ru">
     Название секции
   </string>
   <string id="section__title--take-loan"> 
-    Получите займ
+    Получить займ
   </string>
   <string id="section__title--withdraw-repay"> 
     Вывод &amp; возврат
@@ -119,7 +119,7 @@ def ru = <locale lang="ru">
   </string>
 
   <string id="loan-take-form__header">
-    Отправьте залог в BTC
+    Получение займа
   </string>
   <string id="loan-take-form__title-1"> 
     Отправьте <label id="collateral-amount-2" data-currency="BTC">...</label>
@@ -130,7 +130,10 @@ def ru = <locale lang="ru">
     Вы получите займ на Ваш персональный кошелёк на SODA. После этого Вы сможете перевести средства на любой Ethereum-адрес. Вы сможете вывести средства на любую биржу, DEX, кошелёк (Coinbase Wallet, MyEtherWallet, MyCrypto, другие), аппаратный кошелёк (Trezor, Ledger, KeepKey, другие) и др.
   </string>
   <string id="loan-take-form__title-2"> 
-    После отправки залога в Биткоинах нажмите на кнопку ниже, чтобы получить Ваш займ
+    Borrow...
+  </string>
+  <string id="loan-take-form__title-3"> 
+    Approve ...
   </string>
   <string id="loan-take-form__button--receive-DAI"> 
     Получить DAI →

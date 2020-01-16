@@ -112,13 +112,13 @@ def en = <locale lang="en">
   <string id="loan-settings--text-loan-type">
     Select  loan type:
   </string>
-  
+
   <string id="take-loan__calculator-input-placeholder"> 
     Available to borrow:&nbsp;
   </string>
 
   <string id="loan-take-form__header">
-    Send your collateral
+    Получение займа
   </string>
   <string id="loan-take-form__title-1"> 
     Send at least <label id="collateral-amount-2" data-currency="BTC">...</label>
@@ -129,7 +129,10 @@ def en = <locale lang="en">
     You will receive your loan to your personal wallet on SODA. After that, you will be able to send it to any Ethereum-address. You can withdraw your loan to any exchange, DEX, wallet (Coinbase Wallet, MyEtherWallet, MyCrypto, other), hardware wallet (Trezor, Ledger, KeepKey, other) etc.
   </string>
   <string id="loan-take-form__title-2"> 
-    After sending your collateral in Bitcoins click on this button to take out your loan
+    Borrow...
+  </string>
+  <string id="loan-take-form__title-3"> 
+    Approve ...
   </string>
   <string id="loan-take-form__button--receive-DAI"> 
     Receive DAI

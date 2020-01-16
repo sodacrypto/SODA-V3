@@ -117,7 +117,7 @@ def cn = <locale lang="cn">
   </string>
 
   <string id="loan-take-form__header">
-    发送
+    Получение займа
   </string>
   <string id="loan-take-form__title-1"> 
     发送 <label id="collateral-amount-2" data-currency="BTC">...</label>
@@ -128,7 +128,10 @@ def cn = <locale lang="cn">
     您的贷款将发放至您的SODA钱包中。发放完成后，即可将其发送至任意以太坊地址。您可以将您的贷款提现至任意交易所，去中心化交易所，热钱包 （Coinbase Wallet，MyEtherWallet, MyCrypto，及其他）或冷钱包(Trezor, Ledger, KeepKey, 及其他)。
   </string>
   <string id="loan-take-form__title-2"> 
-    发送完成后点击此按钮取出贷款
+    Borrow...
+  </string>
+  <string id="loan-take-form__title-3"> 
+    Approve ...
   </string>
   <string id="loan-take-form__button--receive-DAI"> 
     获得DAI
