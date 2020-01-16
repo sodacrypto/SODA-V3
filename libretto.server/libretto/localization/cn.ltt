@@ -136,8 +136,8 @@ def cn = <locale lang="cn">
   <string id="loan-take-form__button--receive-DAI"> 
     获得DAI
   </string>
-  <string id="loan-take-form__button--i-sent"> 
-    我已发送准确数量→
+  <string id="loan-take-form__button--continue"> 
+    continue →
   </string>
 
 

@@ -17,6 +17,7 @@ def process = jetx/process:{
 	out: response/out
 	step: params/read
 	step: router/resolve:{
+		route("test/~"): packages: 'url
 		route("/:locale/~"): $ as route.{
 			fix locale = router/params.stringe:'locale
 			if(not locale in localization/accept_language ) 
@@ -34,7 +35,7 @@ package url
 def home = jetx/out: <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<script src="/scripts/index.js"/>
+	<script src="/scripts/index_test.js"/>
 	<link rel="stylesheet" type="text/css" href="/styles/index.css"/>
 	<title>Document</title>
 </head>

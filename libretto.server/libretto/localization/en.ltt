@@ -137,8 +137,8 @@ def en = <locale lang="en">
   <string id="loan-take-form__button--receive-DAI"> 
     Receive DAI
   </string>
-  <string id="loan-take-form__button--i-sent"> 
-    I sent exactly this amount →
+  <string id="loan-take-form__button--continue"> 
+    continue →
   </string>
 
 

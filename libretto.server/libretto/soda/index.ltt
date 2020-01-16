@@ -784,7 +784,7 @@ def takeLoanCalculatorLk =
 			<div class="calculator__elem-box">
 				<div class="calculator__title add-colon">#{locale("calculator__title--you-are-borrowing")}</div>
 				<label class="input-box" data-currency="DAI">
-					<input id="loan-amount" required="" autocomplete="off" name="amount" min="1" max="50000" type="number"  class="input" placeholder=#{localeText("take-loan__calculator-input-placeholder")}/>
+					<input id="loan-amount" required="" autocomplete="off" name="amount" min="1" max="50000" type="number"  class="input" data-placeholder=#{localeText("take-loan__calculator-input-placeholder")}/>
 				</label>
 			</div>
 			<div class="calculator__elem-box">

@@ -115,7 +115,7 @@ def ru = <locale lang="ru">
   </string>
 
   <string id="take-loan__calculator-input-placeholder"> 
-    Доступный лимит по займу: &nbsp;
+    Доступно: &nbsp;
   </string>
 
   <string id="loan-take-form__header">
@@ -138,8 +138,8 @@ def ru = <locale lang="ru">
   <string id="loan-take-form__button--receive-DAI"> 
     Получить DAI →
   </string>
-  <string id="loan-take-form__button--i-sent"> 
-    Я отправил указанную сумму залога в BTC →
+  <string id="loan-take-form__button--continue"> 
+    Продолжить →
   </string>
 
 
