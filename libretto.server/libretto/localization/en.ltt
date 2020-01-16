@@ -106,6 +106,13 @@ def en = <locale lang="en">
     Collateral in Bitcoins required for the loan
   </string> 
 
+  <string id="loan-settings--text-collateral-type">
+    Select collateral type:
+  </string>
+  <string id="loan-settings--text-loan-type">
+    Select  loan type:
+  </string>
+  
   <string id="take-loan__calculator-input-placeholder"> 
     Available to borrow:&nbsp;
   </string>

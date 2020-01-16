@@ -105,6 +105,13 @@ def cn = <locale lang="cn">
     该贷款需要抵押比特币Bitcoin
   </string> 
 
+  <string id="loan-settings--text-collateral-type">
+    Select collateral type:
+  </string>
+  <string id="loan-settings--text-loan-type">
+    Select  loan type:
+  </string>
+
   <string id="take-loan__calculator-input-placeholder"> 
     可用：&nbsp;
   </string>

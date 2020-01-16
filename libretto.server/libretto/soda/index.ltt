@@ -402,24 +402,6 @@ def sections() = {
 					notification("error hide", locale("take-loan__notification--neutral"), "js-take-loan-error-box-js")
 				}
 
-				<div class="loan-settings">
-					<div class="text-default">jfgbjkerbgjkr</div>
-					<div>
-						<select>
-							<option value="">TBTC</option>
-							<option value="">renBTC</option>
-						</select>
-					</div>
-					<div class="text-default">jfgbjkerbgjkr</div>
-					<div>
-						<select>
-							<option value="">DAI</option>
-							<option value="">TUSD</option>
-							<option value="">USDC</option>
-						</select>
-					</div>
-				</div>
-
 				#{takeLoanCalculatorLk}
 				
 				<div class="button-box button--take-loan">
@@ -760,6 +742,23 @@ def monitorLoan(currency) = {
 
 def takeLoanCalculatorLk =
 	<div class="take-loan__calculator">
+		<div class="calculator__elems-box">
+			<div class="calculator__elem-box">
+				<div class="text-default">#{locale("loan-settings--text-loan-type")}</div>
+				<select class="select-type-amount text-default loan-settings__select">
+					<option value="DAI">DAI</option>
+					<option value="TUSD">TUSD</option>
+					<option value="USDC">USDC</option>
+				</select>						
+			</div>
+			<div class="calculator__elem-box">
+				<div class="text-default">#{locale("loan-settings--text-collateral-type")}</div>
+				<select class="select-type-amount text-default loan-settings__select">
+					<option value="TBTC">TBTC</option>
+					<option value="renBTC">renBTC</option>
+				</select>						
+			</div>
+		</div>
 		<div class="calculator__elems-box">
 			<div class="calculator__elem-box">
 				<div class="calculator__title add-colon">#{locale("calculator__title--you-are-borrowing")}</div>

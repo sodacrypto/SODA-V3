@@ -107,6 +107,13 @@ def ru = <locale lang="ru">
     Необходимый залог в Биткоинах
   </string> 
 
+  <string id="loan-settings--text-collateral-type">
+    Select collateral type:
+  </string>
+  <string id="loan-settings--text-loan-type">
+    Select  loan type:
+  </string>
+
   <string id="take-loan__calculator-input-placeholder"> 
     Доступный лимит по займу: &nbsp;
   </string>

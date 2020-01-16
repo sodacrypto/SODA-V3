@@ -497,13 +497,10 @@
 
 
 
-.loan-settings
-	margin 30px 40px
-	display unquote('flex')
-	flex-direction: row;
-	@media screen and (max-width 959px)
-		margin 20px 20px 22px 12px
 
+.loan-settings__select
+	flex 1
+	margin-top 10px
 
 .calculator__content
 	display unquote('flex')
@@ -564,6 +561,9 @@
 	display unquote('flex')
 	flex 1
 	flex-direction column
+	&.row
+		justify-content: space-between;
+		flex-direction row
 	&:nth-child(1)
 		margin-right 75px;
 		@media screen and (max-width 959px)
