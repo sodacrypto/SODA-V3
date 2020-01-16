@@ -625,7 +625,10 @@ def en = <locale lang="en">
 
 
   <string id="title--sign-up"> 
-    <span class="blue">Sign up</span> to enjoy<br/>
+    <span class="blue">Sign up</span> to enjoy <br/>
+    the best borrowing experience </string>
+  <string id="title--connect"> 
+    <span class="blue">Connect Wallet</span> <nobr>to enjoy</nobr>
     the best borrowing experience </string>
   <string id="title--sign-up-with-amount"> 
     <span class="blue"> Sign up </span>
@@ -726,8 +729,7 @@ def en = <locale lang="en">
     Connect wallet
   </string>
   <string id="connect-wallet--title">
-    Connect Wallet <br/> 
-    to start using SODA!
+    Available providers
   </string>
   <string id="metamask">
     MetaMask

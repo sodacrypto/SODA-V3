@@ -1,18 +1,7 @@
 package soda
 	use model/signer
 
-def ym = <script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(56564485, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-</script>
+def ym = <script type="text/javascript" />
 
 def Real toFixed2 = (this * 100).int.s"#{$ div 100 }.#{$ div 10 mod 10}#{$ mod 10}"
 

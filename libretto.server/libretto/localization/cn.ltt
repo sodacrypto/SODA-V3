@@ -626,6 +626,9 @@ def cn = <locale lang="cn">
   <string id="title--sign-up"> 
     <span class="blue">开始注册</span><br/>
     并享受最佳的借贷体验</string>
+  <string id="title--connect"> 
+    <span class="blue">Connect Wallet</span> to enjoy<br/>
+    the best borrowing experience </string>
   <string id="title--sign-up-with-amount"> 
     <span class="blue"> 登录以获得 </span>
   </string>
@@ -720,8 +723,7 @@ def cn = <locale lang="cn">
     Connect wallet
   </string>
   <string id="connect-wallet--title">
-    Connect Wallet <br/> 
-    to start using SODA!
+    Connect Wallet to start using SODA!
   </string>
   <string id="metamask">
     MetaMask

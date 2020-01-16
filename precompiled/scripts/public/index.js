@@ -1,5 +1,7 @@
 require('ion-rangeslider');
 
+if(ethereum) ethereum.autoRefreshOnNetworkChange = false
+
 ethereum.on('accountsChanged', function (accounts) {
   if(accounts.length > 0) start(accounts)
   else {

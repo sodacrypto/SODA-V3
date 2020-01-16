@@ -606,6 +606,9 @@ def ru = <locale lang="ru">
   <string id="title--sign-up"> 
     <span class="blue">Зарегистрируйтесь</span> и наслаждайтесь<br/>
     займами без ограничений</string>
+  <string id="title--connect"> 
+    <span class="blue">Connect Wallet </span> <nobr>to enjoy the best</nobr>
+    borrowing experience </string>
   <string id="title--sign-up-with-amount"> 
     <span class="blue"> Зарегистритуйтесь</span>
     и получите займ
@@ -704,8 +707,7 @@ def ru = <locale lang="ru">
     Connect wallet
   </string>
   <string id="connect-wallet--title">
-    Connect Wallet <br/> 
-    to start using SODA!
+    Connect Wallet to start using SODA!
   </string>
   <string id="metamask">
     MetaMask

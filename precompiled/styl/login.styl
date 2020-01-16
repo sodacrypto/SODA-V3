@@ -1,6 +1,5 @@
 @import 'nib'
 @import 'normalize-stylus'
-@import '_styl/general-part'
 
 
 body 
@@ -10,6 +9,8 @@ body
 		@media screen and (max-width 959px)
 			transform: scale(0.8);
 .main
+	margin 100px
+	border-radius 4px
 	// min-height 735px
 	flex 1
 	background-size: cover;
@@ -18,6 +19,8 @@ body
 	flex-direction: column;	
 	background: linear-gradient(180.04deg, #F6F8FD 0.06%, #EAF0FE 99.94%);
 	@media screen and (max-width 959px)
+		margin 0
+		border-radius 0
 		height auto
 		// background white
 		background: #F6F8FD
@@ -33,6 +36,8 @@ body
 .big-titles
 	// @media screen and (max-width 959px)
 	// 	text-align center
+	.title--connect
+		display unquote('block')
 	&[data-type="sign-up"]
 		.title--sign-up
 			display unquote('block')
@@ -117,7 +122,8 @@ body
 	line-height: 24px;
 	text-align: center;
 	color: #221B48;
-	opacity: 0.2;
+	// opacity .2 поправил денис
+	opacity: 0.4;
 
 .forms-main
 	display unquote('flex')

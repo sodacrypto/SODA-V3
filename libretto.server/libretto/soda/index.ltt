@@ -40,15 +40,84 @@ def lk = jetx/out: {
 
 		<body>
 			<div class="overlay"></div>
-			<div class="pop-up">
-				<div class="pop-up__content">
-					<div class="pop-up__head-text">
-						#{locale("connect-wallet--title")}
-					</div>
-					<div class="icon-connect"></div>
+			<div class="connection-pop-up pop-up open">
+				<!--div class="pop-up__content">
+				</div-->
 
-					<div class="connect-button connect--metamask pop-up__text">
-						#{locale("metamask")}
+				<div class="main">
+					<div class="main__content">
+						<div class="box-with-text">
+							<div class="box-with-text__content">
+								<div id="big-titles" class="big-titles">
+									<div class="big-title title--connect">#{locale("title--connect")}</div>
+									</div>
+								<div class="bullets">
+									<div class="bullet">#{locale("sign-up__bullet-1")}</div>
+									<div class="bullet">#{locale("sign-up__bullet-2")}</div>
+									<div class="bullet">#{locale("sign-up__bullet-3")}</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-with-form">
+							<div class="box-with-form__content" data-type="sign-up">
+								<div class="tabs">
+									<div class="tab-box sign-in">
+										<div class="tab-title">#{locale("connect-wallet--title")}</div>
+									</div>
+								</div>
+								<div class="forms-main">
+									<form id="sign-up" class="form-sign-up">
+										<div class="form__content">
+											
+											<!--div class="pop-up__head-text">
+												
+											</div-->
+											<!--div class="icon-connect"/-->
+
+											<div class="connect-button connect--metamask pop-up__text">
+												#{locale("metamask")}
+											</div>
+										</div>
+									</form>
+									<form id="js-sign-in" class="form-sign-in">
+										<div class="form__content">
+											<div class="form__text add-colon">#{locale("sign-in__email-title")}</div>
+											<label class="input-box">
+												<input type="email" name="email" required="" class="input"/>
+											</label>
+										</div>
+										<div class="form__content min-fix">
+											<div class="form__text add-colon">#{locale("sign-in__pass-title")}</div>
+											<label id="js-sign-in-password-label" class="input-box">
+												<input type="password" name="password" required="" class="input"/>
+											</label>
+										</div>
+										<div class="form__content">
+											<button class="button--yellow">#{locale("sign-in__button-text")}</button>
+										</div>
+										<div id="form__content--forgot-pass-forward" class="form__content form__content--forgot-pass">
+											<div class="form__text--forgot">#{locale("sign-in__forgot-pass-forward")}</div>
+										</div>
+									</form>
+									<form id="js-recovery" class="form-sign-recovery">
+										<div class="form__content">
+											<div class="form__text add-colon">#{locale("sign-recovery__email-title")}</div>
+											<label class="input-box">
+												<input name="email" type="email" required="" class="input"/>
+											</label>
+										</div>
+										<div class="form__content">
+											<button name="submit" class="button--yellow">#{locale("sign-recovery__button-text")}</button>
+										</div>
+										<div id="form__content--forgot-pass-back" class="form__content form__content--forgot-pass">
+											<div class="form__text--forgot">#{locale("sign-in__forgot-pass-back")}</div>
+										</div>									
+									</form>														
+								</div>
+								
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -173,7 +242,7 @@ def lk = jetx/out: {
 						<div id="user-box--main-header" class="user-box">
 							<div class="header__profile-data">
 								<span class="user-account" data-type="account"/>
-								<button class="button--blue connect-wallet--button">Connect Wallet</button>
+								<span class="connect-wallet--button">Ethereum address</span>
 							</div>
 							<!--div class="user-panel__down"></div-->
 							<div class="user-dropdown">
@@ -311,7 +380,8 @@ def sections() = {
 				</form>
 			</div>
 		</div>,
-		<form id="loan" class="section section--take-loan">
+
+		<form id="loan" class="section section--take-loan hide">
 			<h2 class="section__title">#{locale("section__title--take-loan")}</h2>
 			<div class="section__container">
 				<div class="top-announce">
@@ -368,7 +438,7 @@ def sections() = {
 			<div class="section__container">
 			</div>
 		</div>,
-		<div class="section section--withdraw-repay hide">
+		<div class="section section--withdraw-repay">
 			<h2 class="section__title">#{locale("section__title--withdraw-repay")}</h2>
 			<div class="section__container">
 				<div id="loan-select" class="w-r-loan-selector-box">
