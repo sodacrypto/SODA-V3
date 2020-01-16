@@ -397,6 +397,7 @@ def sections() = {
 						</div>
 					</div>
 				</div>
+				
 
 				#{
 					notification("error hide", locale("take-loan__notification--neutral"), "js-take-loan-error-box-js")
