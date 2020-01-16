@@ -30,7 +30,7 @@ def ru = <locale lang="ru">
   </string>
   <!-- ->   lk     -->
   <string id="menu-nav-tab__first"> 
-    Получить займ
+    Займы
   </string>
   <string id="menu-nav-tab__second"> 
     Кредитное плечо
@@ -43,7 +43,7 @@ def ru = <locale lang="ru">
   </string>
 
   <string id="menu-nav-submenu__first"> 
-    Получите займ
+    Получить займ
   </string>
   <string id="menu-nav-submenu__second"> 
     Вывод &amp; возврат
