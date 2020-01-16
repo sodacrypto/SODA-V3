@@ -75,7 +75,7 @@ def lk = jetx/out: {
 											</div-->
 											<!--div class="icon-connect"/-->
 
-											<div class="connect-button connect--metamask pop-up__text">
+											<div class="connect-button connect--metamask text-default">
 												#{locale("metamask")}
 											</div>
 										</div>
@@ -381,19 +381,19 @@ def sections() = {
 			</div>
 		</div>,
 
-		<form id="loan" class="section section--take-loan hide">
+		<form id="loan" class="section section--take-loan">
 			<h2 class="section__title">#{locale("section__title--take-loan")}</h2>
 			<div class="section__container">
 				<div class="top-announce">
 					<div class="takeloan-illustration"></div>
 					<div class="announce-grid">
 						<div class="announce-grid__elems-box">
-							<div class="announce-grid__text">#{locale("announce-grid__text-1")}</div>
-							<div class="announce-grid__text">#{locale("announce-grid__text-2")}</div>
+							<div class="announce-grid__text text-default">#{locale("announce-grid__text-1")}</div>
+							<div class="announce-grid__text text-default">#{locale("announce-grid__text-2")}</div>
 						</div>
 						<div class="announce-grid__elems-box">
-							<div class="announce-grid__text">#{locale("announce-grid__text-3")}</div>
-							<div class="announce-grid__text">#{locale("announce-grid__text-4")}</div>
+							<div class="announce-grid__text text-default">#{locale("announce-grid__text-3")}</div>
+							<div class="announce-grid__text text-default">#{locale("announce-grid__text-4")}</div>
 						</div>
 					</div>
 				</div>
@@ -402,6 +402,23 @@ def sections() = {
 					notification("error hide", locale("take-loan__notification--neutral"), "js-take-loan-error-box-js")
 				}
 
+				<div class="loan-settings">
+					<div class="text-default">jfgbjkerbgjkr</div>
+					<div>
+						<select>
+							<option value="">TBTC</option>
+							<option value="">renBTC</option>
+						</select>
+					</div>
+					<div class="text-default">jfgbjkerbgjkr</div>
+					<div>
+						<select>
+							<option value="">DAI</option>
+							<option value="">TUSD</option>
+							<option value="">USDC</option>
+						</select>
+					</div>
+				</div>
 
 				#{takeLoanCalculatorLk}
 				
@@ -413,16 +430,16 @@ def sections() = {
 						<div class="loan-take-form">
 							<h2 class="loan-take-form__header">#{locale("loan-take-form__header")}</h2>
 							<div class="loan-take-form__step" data-count="1">
-								<div class="loan-take-form__title add-colon">#{locale("loan-take-form__title-1")}</div>
+								<div class="loan-take-form__title text-default add-colon">#{locale("loan-take-form__title-1")}</div>
 								#{inputWithCopy( "collateral_address", " loan-take-form__content min-fix ")}
 								<!--div class="loan-take-form__content input-with-copy min-fix">
 									<input type="text" class="input" disabled="true" value="Random text to copy, random text to copy, rando..."/>
 									<div class="input-with-copy__button"><label>Copy</label></div>
 								</div-->	
-								<div class="loan-take-form__title min-fix">#{locale("loan-take-form__title-additionally")}</div>					
+								<div class="loan-take-form__title text-default min-fix">#{locale("loan-take-form__title-additionally")}</div>					
 							</div>
 							<div class="loan-take-form__step min-fix" data-count="2">
-								<div class="loan-take-form__title add-colon">#{locale("loan-take-form__title-2")}</div>
+								<div class="loan-take-form__title text-default add-colon">#{locale("loan-take-form__title-2")}</div>
 								<div class="loan-take-form__content"><button type="button" data-action="js-goto-loan" class="button--yellow">#{locale("loan-take-form__button--i-sent")}</button></div>	
 							</div>
 						</div>			
@@ -438,11 +455,11 @@ def sections() = {
 			<div class="section__container">
 			</div>
 		</div>,
-		<div class="section section--withdraw-repay">
+		<div class="section section--withdraw-repay hide">
 			<h2 class="section__title">#{locale("section__title--withdraw-repay")}</h2>
 			<div class="section__container">
 				<div id="loan-select" class="w-r-loan-selector-box">
-					<div class="w-r-loan-selector__title add-colon">#{locale("w-r-loan-selector__title")}</div>
+					<div class="text-default add-colon">#{locale("w-r-loan-selector__title")}</div>
 					
 					<div class="w-r-loan-selector__select-box select">
 						<div class="select__selected" data-unselected=#{localeText("loan-history__text--no-loans")}/>
@@ -481,7 +498,7 @@ def sections() = {
 					<div class="loader"></div>
 					<div class="loader__text-box">
 						<h3 class="loader__bit-title">#{locale("loader__bit-title")}</h3>
-						<h3 class="loader__text">#{locale("loader__text")}</h3>
+						<h3 class="text-default">#{locale("loader__text")}</h3>
 					</div>					
 				</div>
 
@@ -681,34 +698,34 @@ def monitorLoan(currency) = {
 						<div class="details__min-header">#{locale("details__min-header--INTEREST")}</div>
 						<div class="details-box">
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--loan-is-active-for")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--loan-is-active-for")}</div>
 								<div data-attr="loan-duration" class="detail-box__content">7 days</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--interest-to-be-paid")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--interest-to-be-paid")}</div>
 								<div data-attr="loan-interest" class="detail-box__content with-currency" data-currency=#{currency}>1.35</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--DAI-daily-borrow-rate")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--DAI-daily-borrow-rate")}</div>
 								<div data-attr="loan-daily-rate" class="detail-box__content with-currency" data-currency=#{currency}>>1.35</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--DAI-APR")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--DAI-APR")}</div>
 								<div data-attr="apr"  class="detail-box__content add-percent">3.0</div>
 							</div>
 						</div>
 						<div class="details__min-header">#{locale("details__min-header-COLLATERAL")}</div>
 						<div class="details-box">
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--collateral-BTC")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--collateral-BTC")}</div>
 								<div data-attr="SBTC-amount" class="detail-box__content with-currency" data-currency="BTC">0.15</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--collateral-DAI")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--collateral-DAI")}</div>
 								<div data-attr="collateral-dai" class="detail-box__content with-currency" data-currency=#{currency}>1350</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--collateral-interest")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--collateral-interest")}</div>
 								<div  data-attr="collateral-sub-interest"  class="detail-box__content with-currency" data-currency=#{currency}>1348.65</div>
 							</div>
 							<div class="detail-box">
@@ -720,15 +737,15 @@ def monitorLoan(currency) = {
 						<div class="details__min-header">#{locale("details__min-header-RISKS")}</div>
 						<div class="details-box">
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--risk-status")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--risk-status")}</div>
 								<div data-attr="loan-security" class="detail-box__content">...</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--real-time-BTC-price")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--real-time-BTC-price")}</div>
 								<div data-attr="btc-price" class="detail-box__content add-dollar">...</div>
 							</div>
 							<div class="detail-box">
-								<div class="detail-box__title add-colon">#{locale("detail-box__title--liquidation-price")}</div>
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--liquidation-price")}</div>
 								<div data-attr="liquidation-price" class="detail-box__content add-dollar" >...</div>
 							</div>
 							<div class="detail-box">

@@ -18,8 +18,8 @@ def login(state:String!) = {
 		<body>
 			<div class="pop-up">
 				<div class="pop-up__content">
-					<div class="pop-up__text">#{locale("pop-up__with-email")}</div>
-					<div class="pop-up__text bold">#{locale("pop-up__please-follow")}</div>
+					<div class="text-default">#{locale("pop-up__with-email")}</div>
+					<div class="text-default bold">#{locale("pop-up__please-follow")}</div>
 					<div class="pop-up__button-box">
 						<button id="pop-up_close" class="button--blue">#{locale("close")}</button>
 					</div>

@@ -3,20 +3,29 @@
 @import '_styl/general-part'
 
 // @import '../node_modules/ion-rangeslider/css/ion.rangeSlider.min.css'
+
 [hidden] 
 	display: none !important
+	
 // @media screen and (max-width 959px)
 
 // @media screen and (min-width 960px) and (max-width 1299px)
 
 // @media screen and (min-width 1300px)
 
+.text-default
+	font-family: Futura PT;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 21px;
+	color: #4A4469;
+
+
 
 .connect-button
 	padding: 15px 15px 15px 34px;
 	text-align: center;
-	// border: 1px solid black;
-	// border-radius: 4px;
 	margin-top 20px
 	&:first-child
 		margin-top 0
@@ -39,16 +48,6 @@
 			background-repeat: no-repeat;
 			background-position: center;
 			margin-left -34px
-	// &:hover
-	// 	background: rgba(0, 0, 0, 0.05);
-	// &:hover
-	// 	// transform: translateY(-1px);
-	// 	transform scale(1.01)
-	// 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
-	// &:active
-	// 	transform scale(1)
-	// 	// transform: translateY(1px);
-	// 	box-shadow: none;
 	&:hover
 		transform: translateY(-1px);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -69,15 +68,12 @@
 
 .pop-up.open
 	background: #91949cc4;
-	// opacity: .85;
 .pop-up__content
 	margin 100px
 	width 350px
 	padding:  40px 40px 30px 40px
 	flex-direction: column;
 	justify-content: space-between;
-	// >div
-	// 	flex 1
 	.button--blue
 		margin-top: 20px;
 .pop-up__button-box
@@ -107,60 +103,20 @@
 	line-height: 21px;
 	text-align: center;
 	color: #4A4469;
-	// &:nth-child(2)
-	// 	margin-top 20px
 	&.bold
 		font-weight 600
-// .pop-up.take-loan
-// 	.pop-up__content
-// 		min-width 585px
-// 		padding 0
-// 		@media screen and (max-width 360px)
-// 			width 100%
-// 			max-width 585px
-// 			min-width 280px
-// 			margin auto 20px
-// 		@media screen and (min-width 360px) and (max-width 625px)
-// 			width 100%
-// 			max-width 585px
-// 			min-width 280px
-// 			margin auto 30px
-// 		@media screen and (min-width 625px) and (max-width 959px)
-// 			width 100%
-// 			max-width 585px
-// 			min-width 280px
-// 			margin auto
-// 	.pop-up__main
-// 		display unquote('block')	
-// 		// flex 1
-// 	.pop-up__cansel-box
-// 		display unquote('flex')	
-// 		background: linear-gradient(180deg, #E6EDFF 0%, rgba(237, 242, 252, 0) 11.38%), #F3F8FB;
-// 		border-radius: 0px 0px 5px 5px;
-// 		.button--blue
-// 			margin: 30px 40px 25px 40px;
-// 			@media screen and (max-width 959px)
-// 				margin 20px
+
 .overlay
-	// display none
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	background: #EEF2FC;
-	// opacity: 0.85;
 	z-index: 2;
 	visibility: hidden;
 	opacity: 0;
-	// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	// filter: alpha(opacity=0);
-	// transition: all 0.4s;
 	transition: opacity 0.4s, visibility 0.4s
-	
 	&.open
-		// display block
-		opacity: .85;
-		// -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
-		// filter: alpha(opacity=85);
+		opacity: .85
 		visibility: visible;
 	@media screen and (min-width 1300px)
 		display none
@@ -187,14 +143,8 @@
 		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 		left: 0;
 		transition: margin 0.4s;
-		// display none
 		&.open
 			margin-left: 0;
-			// display: unquote('flex');
-			// position: absolute;
-			// z-index: 2;
-			// min-height: 100%;
-			// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 .sidebar__header
 	height: 80px;
@@ -214,18 +164,8 @@
 			display none
 
 .sidebar__footer
-	// position: absolute;
-	// bottom: 0;
-	// width: 100%;
 	@media screen and (max-width 959px)
 		display none
-// .icon-logo
-// 	margin: auto 0 auto 20px;
-// 	height 40px
-// 	width 30px
-// 	background url("/images/logo.svg")
-// 	background-size: contain;
-// 	background-repeat: no-repeat;
 
 .menu-tab
 	color #EEF2FC
@@ -390,7 +330,6 @@
 	display: unquote('flex')
 	flex-direction: column;
 	background-color #EEF2FC
-	// @media screen and (max-width 959px)
 	min-width: 320px;
 
 .main__header
@@ -503,7 +442,6 @@
 
 .section__title
 	@media screen and (max-width 959px)
-		// margin-left: 20px;
 		margin: 30px auto 20px 20px;
 		
 .top-announce
@@ -530,14 +468,8 @@
 	margin 45px 40px 45px 64px
 	display unquote('flex')
 	flex-direction: column;
-	// display: grid;
-	// grid-template-columns: 1fr 1fr;
 	@media screen and (max-width 959px)
-		// flex none
-		// margin 30px 20px 30px 12px
 		margin 31px 20px 22px 12px
-		// margin 30px auto 30px auto
-		// grid-template-columns: 1fr;
 .announce-grid__elems-box
 	display unquote('flex')
 	flex-direction row
@@ -548,14 +480,6 @@
 		&:nth-child(1)
 			margin-bottom 0
 .announce-grid__text
-	font-family: Futura PT;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 21px;
-	color: #4A4469;
-	// margin: auto 0;
-	// margin: 10px 0 auto 21px;
 	position relative
 	margin: auto 0 0 21px;
 	flex 1
@@ -571,6 +495,14 @@
 		border-radius 6px
 		margin 4px -21px 0 -21px
 
+
+
+.loan-settings
+	margin 30px 40px
+	display unquote('flex')
+	flex-direction: row;
+	@media screen and (max-width 959px)
+		margin 20px 20px 22px 12px
 
 
 .calculator__content
@@ -598,14 +530,6 @@
 			&:before
 				margin: 2px auto auto -30px;
 
-.w-r-loan-selector__title
-	font-family: Futura PT;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 21px;
-	color: #4A4469;
-
 		
 //пока "в разработке..."
 .w-r-loan-selector__select-box
@@ -620,14 +544,9 @@
 	margin 30px 40px 0 40px
 	display unquote('flex')
 	flex-direction column
-	// display: grid;
-	// grid-template-columns: 1fr 1fr;
-	// grid-column-gap: 75px;
-	// grid-row-gap: 15px;
 	@media screen and (max-width 959px)
 		display unquote('block')
 		margin 30px 20px 0 20px
-		// grid-template-columns: 1fr;
 .button-box
 	display unquote('flex')
 	.button--yellow
@@ -658,21 +577,13 @@
 
 
 .loan-take-form
-	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
-	// box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
-	// border-radius: 5px;
-	// height 203px
-	// margin 30px 40px
 	padding 15px 40px 15px 40px
 	flex 1
 	display: unquote('flex')
 	flex-direction: column;
 	@media screen and (max-width 959px)
-		// height 255px
-		// margin  30px 0
 		border-radius 0
 		padding 5px 20px 5px 20px
-		// padding 29px 20px 10px 20px
 .loan-take-form__step
 	position relative
 	flex 1
@@ -712,12 +623,6 @@
 
 
 .loan-take-form__title
-	font-family: Futura PT;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 21px;
-	color: #4A4469;
 	margin-left: 40px;
 	overflow-wrap: break-word;
 	&.min-fix
@@ -749,10 +654,6 @@
 
 	label
 		font-weight 600
-// .repay-content__input-title
-// 	margin 20px 30px
-// 	@media screen and (max-width 959px)
-// 		margin 20px
 
 label[data-currency]
 	font-weight 600
@@ -798,12 +699,10 @@ label[data-currency]
 	box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
 	border-radius: 5px;
 	background: #FFFFFF;
-	// flex 1
 	min-height 25em
 	@media screen and (max-width 959px)
 		margin-bottom 30px
 		border-radius: 0;
-		// z-index: 1;
 
 .loans-history
 	flex 1
@@ -865,7 +764,6 @@ label[data-currency]
 		position absolute
 		top: 18px;
 		right: 10px;
-		// transform: translate(0,60%);
 	&.show
 		&:after
 			transform: rotate(180deg);
@@ -893,7 +791,6 @@ label[data-currency]
 			font-size: 14px;
 			line-height: 21px;
 			color: #9A97AB;
-			// margin-bottom 20px
 
 
 
@@ -1141,7 +1038,6 @@ for $i in 1..states-count
 		width 10px
 		border-radius 5px
 		border: 1px solid #4A4469;
-		// background white
 		box-sizing: border-box;
 		position: absolute;
 		margin: 1px -25px auto -25px
@@ -1177,11 +1073,8 @@ a.link--transaction
 	line-height: 18px;
 	color: #4A4469;
 	padding-left 15px
-	// position relative
 	text-decoration none
 	border-bottom: 1px dashed #4A4469;
-	// margin-left: .25em;
-	// margin-right: .25em;
 	&:before
 		content ""
 		position absolute
@@ -1441,39 +1334,8 @@ a.link--transaction
 	font-size: 18px;
 	line-height: 27px;
 	color: #221B48;
-	// @media screen and (max-width 959px)
-	// 	margin-left 20px
 .title--change-password
 	margin-left 40px
-// .withdraw__content, .repay__content
-// 	border-radius 5px
-// 	box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
-// 	display:  unquote('block');
-// 	flex-direction: column;
-// 	@media screen and (max-width 959px)
-// 		border-radius 0
-// 	.count
-// 		font-family: Futura PT;
-// 		font-style: normal;
-// 		font-weight: 600;
-// 		font-size: 22px;
-// 		line-height: 33px;
-// 		color: #FFFFFF;
-// 		margin 5px auto 0 60px
-// 		&:before
-// 			margin 5px auto auto -30px
-// 		@media screen and (max-width 959px)
-// 			margin 5px auto 0 50px
-// 	// .repay-content__input-title
-// 	// 	margin 20px 30px
-// 	.input-with-copy
-// 		margin 0 30px
-// 		@media screen and (max-width 959px)
-// 			margin 0 20px
-		
-
-// .withdraw__button
-// 	margin 15px 30px 40px 30px
 .withdraw__button-box, .repay__button-box, .collateral__button-box
 	display unquote('flex');
 	.button--yellow
@@ -1485,50 +1347,8 @@ a.link--transaction
 .section--faq
 	.section__container
 		padding 30px 40px 30px 40px
-		// padding 10px 40px 30px 40px
 		@media screen and (max-width 959px)
 			padding 30px 20px
-
-
-
-
-
-
-		
-// .withdraw__content, .repay__content
-// 	background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
-// 	// background-size: cover;
-// 	position relative
-// 	z-index 0
-// 	&:after
-// 		content ""
-// 		background url("/images/background.png")
-// 		// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
-// 		background-size: cover;
-// 		background-repeat: no-repeat;
-// 		position: absolute;
-// 		opacity: .35;
-// 		height: 100%;
-// 		width: 100%;
-// 		top: 0;
-// 		z-index: -1;
-// .repay__content
-// 	&:after
-// 		transform: rotate(180deg);
-// .withdraw__content
-// 	height 295px
-// 	// background url("/images/background-1.svg")
-// 	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
-// 	// background-size: cover;
-// 	// background-repeat: no-repeat;
-// 	@media screen and (max-width 959px)
-// 		height 380px
-// .repay__content
-// 	height 350px
-// 	// background url("/images/background-2.png")
-// 	// background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
-// 	// background-size: cover;
-// 	// background-repeat: no-repeat;
 
 
 .loader-box
@@ -1563,16 +1383,11 @@ a.link--transaction
 		position absolute
 		@media screen and (max-width 959px)
 			transform: translate(-50%, 0);
-		// left: 50%;
-		// transform: translate(-50%, 0);
-		// transform: scale(.85);
-		// animation: pulse 2s ease-in-out infinite;
 .loader__text-box
 	flex 1
 	margin-left 40px
 	@media screen and (max-width 959px)
 		margin-left 0
-	// margin-top 40px
 .loader__bit-title
 	font-family: Futura PT;
 	font-style: normal;
@@ -1582,13 +1397,7 @@ a.link--transaction
 	color: #221B48;
 	@media screen and (max-width 959px)
 		text-align center
-.loader__text
-	font-family: Futura PT;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 21px;
-	color: #4A4469;
+
 
 .consent__cansel-box
 	display unquote('flex')	
@@ -1599,17 +1408,6 @@ a.link--transaction
 		@media screen and (max-width 959px)
 			margin 20px
 
-// @keyframes pulse {
-// 	from {
-// 		transform: scale(.85);
-// 	}
-// 	50% {
-// 		transform: scale(1);
-// 	}
-// 	to {
-// 		transform: scale(.85);
-// 	}
-// }
 
 .withdraw-content__title, .r-b-info-box__title, .repay-content__title, .c-b-info-box__title
 	font-family: Futura PT;
@@ -1618,17 +1416,11 @@ a.link--transaction
 	font-size: 12px;
 	line-height: 18px;
 	color: #FFFFFF;
-	// padding 30px 0 0 0
-	// @media screen and (max-width 959px)
-	// 	padding 20px 0 0 0
 
 .withdraw-content__inputs-box
 	display unquote('flex')
-	// margin 0 30px
 	@media screen and (max-width 959px)
-		// flex-direction column
 		display block
-		// margin 0 20px
 .w-c-inputs-box__elem
 	display unquote('flex')
 	flex 1
@@ -1672,12 +1464,6 @@ a.link--transaction
 		width 50%
 		margin 15px 0 5px 0
 .detail-box__title
-	font-family: Futura PT;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 21px;
-	color: #4A4469;
 	margin-bottom: 5px;
 .detail-box__content
 	font-family: Futura PT;
@@ -1753,7 +1539,6 @@ a.link--transaction
 		height 100%
 		width 11px
 		transform: translate(0, -15px);
-		// margin-left: -16px;
 		@media screen and (max-width 959px)
 			top 15px
 			height 19px
@@ -1786,7 +1571,6 @@ a.link--transaction
 	display unquote('flex')
 	flex-wrap: wrap;
 	@media screen and (max-width 959px)
-		// flex-direction column
 		display unquote('block')
 	
 .r-b-info-box, .c-b-info-box
@@ -1854,8 +1638,6 @@ a.link--transaction
 			.notification
 				&.t-1
 					display none
-			// .collateral-box__withdraw
-			// 	display none
 	&[data-action="withdraw"]
 		.tab-withdraw
 			background: #4776E6;
@@ -1937,17 +1719,12 @@ a.link--transaction
 		font-size: 22px;
 		line-height: 33px;
 		color: #FFFFFF;
-		// margin 5px auto 0 60px
 		&:before
 			margin 5px auto auto -30px
-		// @media screen and (max-width 959px)
-		// 	margin 5px auto 0 50px
 .withdraw-box
 	border-radius 0 5px 5px 5px
 	@media screen and (max-width 959px)
 		border-radius 0
-	// .notification
-	// 	margin-bottom 0
 
 
 
