@@ -39,6 +39,7 @@ def lk = jetx/out: {
 		</style>
 
 		<body>
+			<template id="js_template__loan">#{loanHistory}</template>
 			<div class="overlay"></div>
 			<div class="connection-pop-up pop-up">
 				<!--div class="pop-up__content">
@@ -266,9 +267,7 @@ def lk = jetx/out: {
 							</div>
 							<h2 class="loans-history__title">#{locale("loans-history__title")}</h2>
 						</div>
-						<div class="loans-history__container" data-empty=#{localeText("loan-history__text--no-loans")}>#{
-							1..3.loanHistory()
-						}</div>
+						<div class="loans-history__container" data-empty=#{localeText("loan-history__text--no-loans")}/>
 					</div>
 				</div>
 				<footer class="main__footer">
@@ -297,16 +296,16 @@ def Int daiToString = (this div 1000000000000000000.0).util/plainString
 def Int stampToDate = date/Date(this*1000).s"#{date}/#{month}/#{year} #{hour}:#{min}"
 def Int btcToString = (this div 100000000.0).util/plainString
 
-def loanHistory() = {
+def loanHistory = 
 <div data-loanId="3" class="loan-history" data-status="1">
 	<div class="loan-history__main">
-		<div class="loan-history__icon-status--for-mobile"></div>
-		<div class="count" data-currency="DAI">123</div>
+		<div class="loan-history__icon-status--for-mobile"/>
+		<div class="count" data-currency="DAI" data-prop="amount" >123</div>
 		<div class="loan-main__stats">
 			<div class="stats-box">
 				<div class="stats-box__elem">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--taken")}</div>
-					<div class="stats-elem__content">12\12\12</div>
+					<div class="stats-elem__content" data-prop="taken">12\12\12</div>
 				</div>
 				<div class="stats-box__elem hide-on-phone">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral")}</div>
@@ -355,7 +354,6 @@ def loanHistory() = {
 		</div>
 	</div>
 </div>
-}
 
 
 def sections() = {

@@ -3,6 +3,19 @@ require('ion-rangeslider');
 const Web3 = require('web3')
 const BN = Web3.utils.BN
 
+const subsciptions = []
+
+Date.prototype.toMyString = function(){
+	return this.toLocaleString(undefined, {
+		hour12: false,
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit"
+	})
+}
+
 const enableEhereum = () => {
 	const web3 = new Web3(ethereum)
 	Promise.all([
@@ -103,6 +116,7 @@ if(ethereum) {
 
 
 function start([address, web3, chainID]){
+	document.querySelector('.loans-history__container').innerHTML = null
 	updater.clear()
 	handlers.clear()
 	const {DAI, testBTC, LendDAI, BorrowDAI, Price} = window.contracts = Object.keys(info)
@@ -195,6 +209,38 @@ function start([address, web3, chainID]){
 				document.getElementById('state-line-take').dataset.status = 3
 			)
 	})
+	subsciptions.push(
+		BorrowDAI.events.LoanIssued({fromBlock:0, filter:{borrower:address}}, (err,y,z) => {
+			const {id, borrower, amount, collateral} = y.returnValues
+			Promise.all([
+				contracts.BorrowDAI.methods.loan(id).call(),
+				web3.eth.getBlock(y.blockNumber)
+			]).then(([loan, block]) => {
+				const card = document.importNode(document.getElementById('js_template__loan').content.firstChild, true)
+				card.querySelector('[data-prop=amount]').innerText = (amount / 1e18).toFixed(2)
+				console.log(loan, amount)
+				card.dataset.taken = block.timestamp
+				card.dataset.status = 
+					loan.state == 0 ? 5 :
+					loan.loanAmount != amount ? 4 :3
+				card.querySelector('[data-prop=taken]').innerText =
+					new Date(block.timestamp*1000).toMyString()
+				
+				const container = document.querySelector('.loans-history__container')
+				if(container.childElementCount == 0) container.appendChild(card)
+				else {
+					let cur = container.firstElementChild
+					while(
+						cur.nextElementSibling && 
+						cur.dataset.taken > block.timestamp
+					) cur = cur.nextElementSibling
+					if(cur.dataset.taken > block.timestamp)
+						container.appendChild(card)
+					else container.insertBefore(card, cur)
+				} 
+			})
+		})
+	)
 }
 document.querySelector('[data-action=js-process-loan]')
 	.addEventListener('click', handlers.get('loan-start-process'))
