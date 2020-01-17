@@ -114,15 +114,15 @@ def en = <locale lang="en">
   </string>
 
   <string id="take-loan__calculator-input-placeholder"> 
-    Available to borrow:&nbsp;
+    Available:&nbsp;
   </string>
 
   <string id="loan-take-form__header">
     Получение займа
   </string>
   <string id="loan-take-form__title-1"> 
-    Send at least <label id="collateral-amount-2" data-currency="BTC">...</label>
-    to this multi-sig Bitcoin-address and receive your loan of
+    Required <label id="collateral-amount-2" data-currency="BTC"/>
+    to receive your loan of
     <label id="loan-amount-2" data-currency="DAI">1000</label>
   </string>
   <string id="loan-take-form__title-additionally"> 

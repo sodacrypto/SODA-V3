@@ -117,11 +117,11 @@ def cn = <locale lang="cn">
   </string>
 
   <string id="loan-take-form__header">
-    Получение займа
+    Take a loan
   </string>
   <string id="loan-take-form__title-1"> 
-    发送 <label id="collateral-amount-2" data-currency="BTC">...</label>
-    到此比特币多重签名地址以获得DAI贷款
+    Required <label id="collateral-amount-2" data-currency="BTC"/>
+    to receive your loan of
     <label id="loan-amount-2" data-currency="DAI">1000</label>
   </string>
   <string id="loan-take-form__title-additionally"> 

@@ -15,6 +15,7 @@ const enableEhereum = () => {
 
 function changeAccountsHandler(accounts){
 	updater.clear()
+	handlers.clear()
 	if (accounts.length > 0) enableEhereum()
 	else {
 		document.querySelectorAll('[data-type=account]')
@@ -44,19 +45,39 @@ const updater = new class Updater {
 		this.stop()
 		this.intervalID = setInterval(() => {
 			this.updaters.forEach((updater, id) => {
-				Promise.resolve( updater.getValue() )
-					.then(val =>  {
-						if(updater.onChange && val != this.requests[id]){
-							this.requests[id] = val
-							updater.onChange(val)
-						}
-					})
+				Promise.resolve( updater.getValue() ).then(val =>  {
+					if(updater.onChange && val != this.requests[id]){
+						this.requests[id] = val
+						updater.onChange(val)
+					}
+				})
 			})
 		}, this.interval);
 	}
 	stop(){ clearInterval(this.intervalID) }
 	clear(){ this.updaters = []}
 	push(getValue, onChange){ this.updaters.push({getValue, onChange}) }
+}
+
+const handlers = new class {
+	constructor(){
+		this.clear()
+	}
+	create(key, handler){
+		if(this.handlers.get(key)) throw "handler exists"
+		this.handlers.set(key, handler)
+	}
+	clear(){
+		this.handlers = new Map()
+	}
+	get(key){
+		const clz = this
+		return function (){
+			return (clz.handlers.get(key) || function() {
+				throw `there are no such handler ${key}`
+			}).apply(this, arguments)
+		}
+	}
 }
 
 if(ethereum) {
@@ -85,7 +106,6 @@ if(ethereum) {
 
 function start([address, web3, chainID]){
 	window.web3 = web3
-	console.log(chainID)
 	const {DAI, BTC, Lend, Borrow, Price} = window.contracts = Object.keys(info)
 		.reduce((r, x)=> {
 			r[x] = new web3.eth.Contract(info[x].ABI, info[x][chainID],{from: address})
@@ -93,11 +113,25 @@ function start([address, web3, chainID]){
 		},{}) 
 	updater.push(() => Lend.methods.getPoolBalance().call(),
 		value => {
+			params.poolBalance = value
 			const max = Math.floor(value / 1e16) / 1e2
 			const el = document.getElementById('loan-amount')
 			el.placeholder = el.dataset.placeholder + max
-			el.max = max				
+			el.max = max	
+			handlers.get('loan-params-recount').call()				
 		})
+	updater.push(() => Price.methods.latestAnswer().call(),
+		value => {
+			params.lastPrice = value / 1e8
+			console.log("btc price:",params.lastPrice)	
+			handlers.get('loan-params-recount').call()		
+		})
+	updater.push(() => Borrow.methods.lastRate().call(), rate => {
+		const apr = params.apr = (rate * 365 / 1e7).toFixed(2)
+		document.querySelectorAll('[data-attr=apr]')
+			.forEach(x => x.innerText = apr)
+		handlers.get('loan-params-recount').call()	
+	})
 	function approve(token, owner, spender, amount){
 		const max_amount = new BN(2).pow(new BN(256)).sub(new BN(1)).toString()
 		return token.methods.allowance(owner, spender).call()
@@ -112,26 +146,47 @@ function start([address, web3, chainID]){
 	document.querySelectorAll('[data-type=account]').forEach(x=>{
 		x.innerText = address
 	})
+	handlers.create('loan-submit', function (e){
+		e.preventDefault()
+		this.classList.add('confirm')
+	})
+	handlers.create('loan-cancel', function (e){
+		document.forms.loan.classList.remove('confirm')
+	})
+	handlers.create('loan-params-recount', () => {
+		const {lastPrice, apr, poolBalance} = params
+		const amount = document.forms.loan.amount.value || poolBalance / 1e18
+		const security = $("#security-range").data('from')
+		const requiredCollateral = (Math.ceil(amount * security / lastPrice * 100) /10000).toFixed(4)
+		document.getElementById('loan-amount-2').innerText = amount
+		document.getElementById('collateral-amount-2').innerText = requiredCollateral
+		document.getElementById('required-collateral').innerText = requiredCollateral
+		document.getElementById('daily-interest').innerText = 
+			(amount * apr / 36500).toFixed(4)
+
+	})
 }
 
+document.forms.loan.amount.addEventListener('change', handlers.get('loan-params-recount'));
+document.forms.loan.amount.addEventListener('keyup', handlers.get('loan-params-recount'));
+document.forms.loan.addEventListener('submit', handlers.get('loan-submit'));
+document.forms.loan.querySelector('[data-action=cancel]').addEventListener('click', handlers.get('loan-cancel'));
 
+document.querySelectorAll(".lang-box").forEach(x => x.addEventListener('click', function(){
+	if (document.querySelectorAll('.overlay-dyn'))
+		document.querySelectorAll('.overlay-dyn').forEach(y => document.body.removeChild(y))
+	const overlay = document.createElement("div")
+	this.appendChild(overlay)
+	overlay.classList.add("overlay-dyn")
+	overlay.addEventListener('click', function(event){
+		this.querySelector(".lang-dropdown").classList.remove("open")
+		this.removeChild(overlay)
+		event.stopPropagation();
+	})
 
-// document.querySelectorAll(".lang-box").forEach(x => x.addEventListener('click', function(){
-// 	const thisElem = x
-// 	if (document.querySelectorAll('.overlay-dyn'))
-// 		document.querySelectorAll('.overlay-dyn').forEach(y => document.body.removeChild(y))
-// 	const overlay = document.createElement("div")
-// 	thisElem.appendChild(overlay)
-// 	overlay.classList.add("overlay-dyn")
-// 	overlay.addEventListener('click', function(event){
-// 		thisElem.querySelector(".lang-dropdown").classList.remove("open")
-// 		thisElem.removeChild(overlay)
-// 		event.stopPropagation();
-// 	})
+	this.querySelector(".lang-dropdown").classList.add("open")
 
-// 	thisElem.querySelector(".lang-dropdown").classList.add("open")
-
-// }))
+}))
 
 
 
@@ -163,13 +218,15 @@ $("#security-range").ionRangeSlider({
     max: 400,
     from: 170,
     step: 5,
-    prettify: x =>`${x}%`
+    prettify: x =>`${x}%`,
+    onChange: handlers.get('loan-params-recount')
 });
 
 
 
 (function (stop){
 	if(stop) return;
+	window.params = params
 	window.BN = BN
 	window.info = info
 	window.updater = updater

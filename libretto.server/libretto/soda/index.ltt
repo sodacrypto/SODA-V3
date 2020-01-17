@@ -40,7 +40,7 @@ def lk = jetx/out: {
 
 		<body>
 			<div class="overlay"></div>
-			<div class="connection-pop-up pop-up open">
+			<div class="connection-pop-up pop-up">
 				<!--div class="pop-up__content">
 				</div-->
 
@@ -242,7 +242,7 @@ def lk = jetx/out: {
 						<div id="user-box--main-header" class="user-box">
 							<div class="header__profile-data">
 								<span class="user-account" data-type="account"/>
-								<span class="connect-wallet--button">Ethereum address</span>
+								<span class="connect-wallet--button">Loading...</span>
 							</div>
 							<!--div class="user-panel__down"></div-->
 							<div class="user-dropdown">
@@ -424,8 +424,9 @@ def sections() = {
 							</div>
 							<div class="loan-take-form__step min-fix" data-count="2">
 								<div class="loan-take-form__title text-default">#{locale("loan-take-form__title-2")}</div>
+								
 							</div>
-							<div id="state-line-take" class="w-r-loan-status-box take-loan-status-box" data-status="1">
+							<div id="state-line-take" class="w-r-loan-status-box take-loan-status-box" data-status="0">
 								<div class="w-r-loan-status__title add-colon">#{locale("w-r-loan-status__title")}</div>
 								<div class="withdraw-repay__storyline-status-titles">
 									<h3 class="withdraw-repay__storyline--status-title">(1/5) #{locale("loan-history__status-1")}</h3>
@@ -447,6 +448,7 @@ def sections() = {
 							</div>
 						</div>			
 					</div>
+					<div class="loan-take-form__content"><button type="button" data-action="js-goto-loan" class="button--yellow">#{locale("loan-take-form__button--continue")}</button></div>	
 					<div  class="consent__cansel-box">
 						<button data-action="cancel" type="button" class="button--blue">#{locale("cancel")}</button>
 					</div>

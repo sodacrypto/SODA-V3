@@ -122,8 +122,8 @@ def ru = <locale lang="ru">
     Получение займа
   </string>
   <string id="loan-take-form__title-1"> 
-    Отправьте <label id="collateral-amount-2" data-currency="BTC">...</label>
-    на данный мульти-сиг Биткоин-адрес и получите займ
+    Необходимо <label id="collateral-amount-2" data-currency="BTC"/>
+    чтобы получить займ
     <label id="loan-amount-2" data-currency="DAI">1000</label>
   </string>
   <string id="loan-take-form__title-additionally"> 
