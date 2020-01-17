@@ -214,18 +214,23 @@ function start([address, web3, chainID]){
 			const {id, borrower, amount, collateral} = y.returnValues
 			Promise.all([
 				contracts.BorrowDAI.methods.loan(id).call(),
-				web3.eth.getBlock(y.blockNumber)
-			]).then(([loan, block]) => {
+				web3.eth.getBlock(y.blockNumber),
+				contracts.BorrowDAI.methods.interestAmount(id).call(),
+				Price.methods.latestAnswer().call()
+			]).then(([loan, block, interest, price]) => {
 				const card = document.importNode(document.getElementById('js_template__loan').content.firstChild, true)
 				card.querySelector('[data-prop=amount]').innerText = (amount / 1e18).toFixed(2)
-				console.log(loan, amount)
 				card.dataset.taken = block.timestamp
 				card.dataset.status = 
 					loan.state == 0 ? 5 :
 					loan.loanAmount != amount ? 4 :3
 				card.querySelector('[data-prop=taken]').innerText =
-					new Date(block.timestamp*1000).toMyString()
-				
+					new Date(block.timestamp * 1e3).toMyString()
+				card.querySelector('[data-prop=collateral]').innerText = (loan.collateralAmount / 1e8).toFixed(8)		
+				card.querySelector('[data-prop=interest]').innerText = interest / 1e18		
+				card.querySelector('[data-prop=security]').innerText = 
+					(loan.collateralAmount * price * 1e4 / (interest + loan.loanAmount)).toFixed(2) 		
+
 				const container = document.querySelector('.loans-history__container')
 				if(container.childElementCount == 0) container.appendChild(card)
 				else {
@@ -238,6 +243,13 @@ function start([address, web3, chainID]){
 						container.appendChild(card)
 					else container.insertBefore(card, cur)
 				} 
+
+
+				card.querySelectorAll('.loan-history__header')
+					.forEach(x=>x.addEventListener('click', function(){
+						this.classList.toggle('show')
+					}))
+
 			})
 		})
 	)
@@ -282,12 +294,6 @@ function openSection(str) {
 	document.querySelector(`.section--${str}`).classList.remove('hide');
 	document.querySelector(`.menu-submenu__elem[data-page=${str}]`).classList.add("selected")
 }
-
-document.querySelectorAll('.loan-history__header').forEach(x =>
-	x.addEventListener('click', function(){
-		x.classList.toggle('show')
-	})
-)
 
 $("#security-range").ionRangeSlider({
     skin:'round',

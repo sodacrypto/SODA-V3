@@ -171,7 +171,7 @@ def en = <locale lang="en">
     Collateral
   </string>
   <string id="loan-history__stats-title--daily-interest"> 
-    Daily Interest
+    Interest
   </string>
   <string id="loan-history__stats-title--collateral-status"> 
     Collateral Status

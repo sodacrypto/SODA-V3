@@ -172,7 +172,7 @@ def ru = <locale lang="ru">
     Размер залога
   </string>
   <string id="loan-history__stats-title--daily-interest"> 
-    Процент в день
+    Процент
   </string>
   <string id="loan-history__stats-title--collateral-status"> 
     Статус залога

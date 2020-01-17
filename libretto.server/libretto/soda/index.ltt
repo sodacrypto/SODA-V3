@@ -309,17 +309,17 @@ def loanHistory =
 				</div>
 				<div class="stats-box__elem hide-on-phone">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral")}</div>
-					<div class="stats-elem__content">1.3</div>
+					<div class="stats-elem__content" data-prop="collateral"/>
 				</div>
 			</div>
 			<div class="stats-box">
 				<div class="stats-box__elem hide-on-phone">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--daily-interest")}</div>
-					<div class="stats-elem__content">10</div>
+					<div class="stats-elem__content" data-prop="interest"/>
 				</div>
 				<div class="stats-box__elem">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral-status")}</div>
-					<div class="stats-elem__content">Safe (15%)</div>
+					<div class="stats-elem__content"><span data-prop="security"/>%&nbsp;<span>(Safe)</span></div>
 				</div>
 			</div>
 		</div>
@@ -784,7 +784,7 @@ def takeLoanCalculatorLk =
 			<div class="calculator__elem-box">
 				<div class="calculator__title add-colon">#{locale("calculator__title--you-are-borrowing")}</div>
 				<label class="input-box" data-currency="DAI">
-					<input id="loan-amount" required="" autocomplete="off" name="amount" min="1" max="50000" type="number"  class="input" data-placeholder=#{localeText("take-loan__calculator-input-placeholder")}/>
+					<input id="loan-amount" required="" autocomplete="off" name="amount" min="1" step="any" type="number"  class="input" data-placeholder=#{localeText("take-loan__calculator-input-placeholder")}/>
 				</label>
 			</div>
 			<div class="calculator__elem-box">
