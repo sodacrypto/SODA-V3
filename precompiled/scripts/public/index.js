@@ -14,8 +14,6 @@ const enableEhereum = () => {
 }
 
 function changeAccountsHandler(accounts){
-	updater.clear()
-	handlers.clear()
 	if (accounts.length > 0) enableEhereum()
 	else {
 		document.querySelectorAll('[data-type=account]')
@@ -29,9 +27,9 @@ const params = {
 }
 const info = {
 	DAI:  require('../static/contracts/DAI.json'),
-	BTC:  require('../static/contracts/DeFiBTC.json'),
-	Lend: require('../static/contracts/SODALend.json'),
-	Borrow: require('../static/contracts/SODABorrow.json'),
+	testBTC:  require('../static/contracts/DeFiBTC.json'),
+	LendDAI: require('../static/contracts/SODALend.json'),
+	BorrowDAI: require('../static/contracts/SODABorrow.json'),
 	Price: require('../static/contracts/PriceAggregator.json'),
 }
 const updater = new class Updater {
@@ -105,13 +103,14 @@ if(ethereum) {
 
 
 function start([address, web3, chainID]){
-	window.web3 = web3
-	const {DAI, BTC, Lend, Borrow, Price} = window.contracts = Object.keys(info)
+	updater.clear()
+	handlers.clear()
+	const {DAI, testBTC, LendDAI, BorrowDAI, Price} = window.contracts = Object.keys(info)
 		.reduce((r, x)=> {
 			r[x] = new web3.eth.Contract(info[x].ABI, info[x][chainID],{from: address})
 			return r
 		},{}) 
-	updater.push(() => Lend.methods.getPoolBalance().call(),
+	updater.push(() => LendDAI.methods.getPoolBalance().call(),
 		value => {
 			params.poolBalance = value
 			const max = Math.floor(value / 1e16) / 1e2
@@ -126,7 +125,7 @@ function start([address, web3, chainID]){
 			console.log("btc price:",params.lastPrice)	
 			handlers.get('loan-params-recount').call()		
 		})
-	updater.push(() => Borrow.methods.lastRate().call(), rate => {
+	updater.push(() => BorrowDAI.methods.lastRate().call(), rate => {
 		const apr = params.apr = (rate * 365 / 1e7).toFixed(2)
 		document.querySelectorAll('[data-attr=apr]')
 			.forEach(x => x.innerText = apr)
@@ -149,6 +148,8 @@ function start([address, web3, chainID]){
 	handlers.create('loan-submit', function (e){
 		e.preventDefault()
 		this.classList.add('confirm')
+		delete document.getElementById('state-line-take').dataset.status 
+		document.querySelector('.consent__cansel-box').classList.remove('hide')
 	})
 	handlers.create('loan-cancel', function (e){
 		document.forms.loan.classList.remove('confirm')
@@ -163,10 +164,40 @@ function start([address, web3, chainID]){
 		document.getElementById('required-collateral').innerText = requiredCollateral
 		document.getElementById('daily-interest').innerText = 
 			(amount * apr / 36500).toFixed(4)
+		document.getElementById('daily-interest').dataset.currency = 
+			document.forms.loan.loan_token.value
+		document.getElementById('required-collateral').dataset.currency = 
+			document.forms.loan.collateral_token.value
+		document.getElementById('collateral-amount-2').dataset.currency = 
+			document.forms.loan.collateral_token.value
+		document.getElementById('loan-amount-2').dataset.currency = 
+			document.forms.loan.loan_token.value
+	})
+	handlers.create('loan-start-process',function(){
+		const {lastPrice, apr, poolBalance} = params
+		const amount = (document.forms.loan.amount.value * 1e18).toFixed()
+		const security = $("#security-range").data('from')
+		const collateral = Math.ceil(amount * security / lastPrice / 1e12).toFixed()
+		const _BTC = contracts[document.forms.loan.collateral_token.value]
+		const _Borrow = contracts['Borrow'+document.forms.loan.loan_token.value]
+		this.classList.add('loading')
+		document.querySelector('.consent__cansel-box').classList.add('hide')
 
+		document.getElementById('state-line-take').dataset.status = 'waiting'
+		approve(_BTC, address, _Borrow._address, amount)
+			.then(()=>
+				document.getElementById('state-line-take').dataset.status = 1
+			)
+			.then(() => _Borrow.methods.borrow(address,amount,collateral,_BTC._address)
+				.send(()=>document.getElementById('state-line-take').dataset.status = 2) 
+			)
+			.then(() => 
+				document.getElementById('state-line-take').dataset.status = 3
+			)
 	})
 }
-
+document.querySelector('[data-action=js-process-loan]')
+	.addEventListener('click', handlers.get('loan-start-process'))
 document.forms.loan.amount.addEventListener('change', handlers.get('loan-params-recount'));
 document.forms.loan.amount.addEventListener('keyup', handlers.get('loan-params-recount'));
 document.forms.loan.addEventListener('submit', handlers.get('loan-submit'));

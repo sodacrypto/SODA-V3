@@ -103,7 +103,7 @@ def en = <locale lang="en">
     Daily interest
   </string>
   <string id="calculator__title--collateral-in-BTC"> 
-    Collateral in Bitcoins required for the loan
+    Collateral required for the loan
   </string> 
 
   <string id="loan-settings--text-collateral-type">
@@ -185,7 +185,7 @@ def en = <locale lang="en">
     Withdraw &amp; Repay
   </string>
   <string id="loan-history__status-1"> 
-    Approve renBTC
+    Approve collateral
   </string>
   <string id="loan-history__status-2"> 
     Issuing the loan

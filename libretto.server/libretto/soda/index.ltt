@@ -448,7 +448,7 @@ def sections() = {
 							</div>
 						</div>			
 					</div>
-					<div class="loan-take-form__content"><button type="button" data-action="js-goto-loan" class="button--yellow">#{locale("loan-take-form__button--continue")}</button></div>	
+					<div class="loan-take-form__content"><button type="button" data-action="js-process-loan" class="button--yellow">#{locale("loan-take-form__button--continue")}</button></div>	
 					<div  class="consent__cansel-box">
 						<button data-action="cancel" type="button" class="button--blue">#{locale("cancel")}</button>
 					</div>
@@ -768,17 +768,17 @@ def takeLoanCalculatorLk =
 		<div class="calculator__elems-box">
 			<div class="calculator__elem-box">
 				<div class="text-default">#{locale("loan-settings--text-loan-type")}</div>
-				<select class="select-type-amount text-default loan-settings__select">
+				<select name="loan_token" class="select-type-amount text-default loan-settings__select">
 					<option value="DAI">DAI</option>
-					<option value="TUSD">TUSD</option>
-					<option value="USDC">USDC</option>
+					<!--option value="Borrow_TUSD">TUSD</option-->
+					<!--option value="Borrow_USDC">USDC</option-->
 				</select>						
 			</div>
 			<div class="calculator__elem-box">
 				<div class="text-default">#{locale("loan-settings--text-collateral-type")}</div>
-				<select class="select-type-amount text-default loan-settings__select">
-					<option value="TBTC">TBTC</option>
-					<option value="renBTC">renBTC</option>
+				<select name="collateral_token" class="select-type-amount text-default loan-settings__select">
+					<option value="testBTC">testBTC</option>
+					<!--option value="renBTC">renBTC</option-->
 				</select>						
 			</div>
 		</div>
@@ -805,7 +805,7 @@ def takeLoanCalculatorLk =
 			</div>
 			<div class="calculator__elem-box min-fix">
 				<div class="calculator__title add-colon">#{locale("calculator__title--collateral-in-BTC")}</div>
-				<div class="calculator__content"><div  id="required-collateral" class="count" data-currency="BTC">...</div></div>
+				<div class="calculator__content"><div  id="required-collateral" class="count">...</div></div>
 			</div>
 			
 		</div>

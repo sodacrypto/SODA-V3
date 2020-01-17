@@ -104,7 +104,7 @@ def ru = <locale lang="ru">
     Процент по займу / день
   </string>
   <string id="calculator__title--collateral-in-BTC"> 
-    Необходимый залог в Биткоинах
+    Необходимый залог
   </string> 
 
   <string id="loan-settings--text-collateral-type">
@@ -186,7 +186,7 @@ def ru = <locale lang="ru">
     Вывод &amp; возврат
   </string>
   <string id="loan-history__status-1"> 
-    Approve renBTC
+    Approve collateral
   </string>
   <string id="loan-history__status-2"> 
     Issuing the loan
