@@ -297,8 +297,17 @@ def Int daiToString = (this div 1000000000000000000.0).util/plainString
 def Int stampToDate = date/Date(this*1000).s"#{date}/#{month}/#{year} #{hour}:#{min}"
 def Int btcToString = (this div 100000000.0).util/plainString
 
+def security = <span class="security-view">
+	<span class="security-view__label" data-state="repaid">#{locale("security-state--repaid")}</span>
+	<span class="security-view__label" data-state="liquidation">#{locale("security-state--liquidation")}</span>
+	<span class="security-view__label" data-state="danger">#{locale("security-state--danger")}</span>
+	<span class="security-view__label" data-state="safe">#{locale("security-state--safe")}</span>
+	<span class="security-view__label" data-state="very-safe">#{locale("security-state--very-safe")}</span>
+	<span class="security-view__amount" data-value=#{}/>
+</span>
+
 def loanHistory = 
-<div data-loanId="3" class="loan-history" data-status="1">
+<div data-loan-id=#{} class="loan-history" data-status="1">
 	<div class="loan-history__main">
 		<div class="loan-history__icon-status--for-mobile"/>
 		<div class="count" data-currency="DAI" data-prop="amount" >123</div>
@@ -308,9 +317,9 @@ def loanHistory =
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--taken")}</div>
 					<div class="stats-elem__content" data-prop="taken">12\12\12</div>
 				</div>
-				<div class="stats-box__elem hide-on-phone">
-					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral")}</div>
-					<div class="stats-elem__content" data-prop="collateral"/>
+				<div class="stats-box__elem">
+					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral-status")}</div>
+					<div class="stats-elem__content">#{security}</div>
 				</div>
 			</div>
 			<div class="stats-box">
@@ -318,9 +327,9 @@ def loanHistory =
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--daily-interest")}</div>
 					<div class="stats-elem__content" data-prop="interest"/>
 				</div>
-				<div class="stats-box__elem">
-					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral-status")}</div>
-					<div class="stats-elem__content"><span data-prop="security"/>%&nbsp;<span>(Safe)</span></div>
+				<div class="stats-box__elem hide-on-phone">
+					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral")}</div>
+					<div class="stats-elem__content" data-prop="collateral"/>
 				</div>
 			</div>
 		</div>
@@ -636,9 +645,7 @@ def selectOption = <div class="select__elem" data-state="">
 	<div class="select-elem__status hide-on-all-computers js-withdrawal-icon" data-status="3"></div>
 	<div class="select-elem-box hide-on-phone">
 		<div class="select-elem-min-title">#{localeText("loan-history__stats-title--collateral-status")}</div>
-		<div class="select-elem-status">
-			<span data-prop="security"/>%
-		</div>
+		<div class="select-elem-status">#{security}</div>
 	</div>
 </div>
 

@@ -22,6 +22,28 @@ const templates = new class {
 	}
 }
 
+function setSecurity(security, status, sv){
+	if(!sv.classList.contains('security-view'))
+		throw "wromg security-view"
+	const state  =
+		status == 0 ? 'repaid' : 
+		status == 2 ? 'liqudated' : 
+		security < 110 ?  'liquidation' :
+		security < 180 ?  'danger' :
+		security < 250 ?  'safe' :
+						  'very-safe'
+	
+	sv.querySelector('.security-view__amount').innerText = 
+		parseFloat(security) ? security : null
+
+	sv.querySelectorAll('.security-view__label').forEach(label =>{
+		if(label.dataset.state == state)
+			label.classList.remove('hide')
+		else label.classList.add('hide')
+	})
+
+}
+
 const enableEhereum = () => {
 	const web3 = new Web3(ethereum)
 	Promise.all([
@@ -122,218 +144,268 @@ if(ethereum) {
 
 
 function start([address, web3, chainID]){
+	const loanTypes = ['DAI']
 	document.querySelector('.loans-history__container').innerHTML = null
 	updater.clear()
 	handlers.clear()
-	const {DAI, testBTC, LendDAI, BorrowDAI, Price} = window.contracts = Object.keys(info)
+	while(subsciptions.length) subsciptions.pop().unsubscribe()
+	
+	const {Price} = window.contracts = Object.keys(info)
 		.reduce((r, x)=> {
-			r[x] = new web3.eth.Contract(info[x].ABI, info[x][chainID],{from: address})
+			r[x] = new web3.eth.Contract(info[x].ABI, info[x][chainID],{from: address, gasPrice:20000000000})
 			return r
-		},{}) 
-	updater.push(() => LendDAI.methods.getPoolBalance().call(),
-		value => {
-			params.poolBalance = value
-			const max = Math.floor(value / 1e16) / 1e2
-			const el = document.getElementById('loan-amount')
-			el.placeholder = el.dataset.placeholder + max
-			el.max = max	
-			handlers.get('loan-params-recount').call()				
-		})
-	updater.push(() => Price.methods.latestAnswer().call(),
-		value => {
-			params.lastPrice = value / 1e8
-			console.log("btc price:",params.lastPrice)	
-			handlers.get('loan-params-recount').call()		
-		})
-	updater.push(() => BorrowDAI.methods.lastRate().call(), rate => {
-		const apr = params.apr = (rate * 365 / 1e7).toFixed(2)
-		document.querySelectorAll('[data-attr=apr]')
-			.forEach(x => x.innerText = apr)
-		handlers.get('loan-params-recount').call()	
-	})
-	function approve(token, owner, spender, amount){
-		const max_amount = new BN(2).pow(new BN(256)).sub(new BN(1)).toString()
-		return token.methods.allowance(owner, spender).call()
-			.then(web3.utils.toBN)
-			.then(x=>x.gte(new BN(amount)))
-			.then( enough =>
-				enough ? true : token.methods.approve(spender, max_amount).send()
-			)
-	}
+		},{})
 
-	document.querySelector('.pop-up').classList.remove('open')
-	document.querySelectorAll('[data-type=account]').forEach(x=>{
-		x.innerText = address
-	})
-	handlers.create('loan-submit', function (e){
-		e.preventDefault()
-		this.classList.add('confirm')
-		delete document.getElementById('state-line-take').dataset.status 
-		document.querySelector('.consent__cansel-box').classList.remove('hide')
-	})
-	handlers.create('loan-cancel', function (e){
-		document.forms.loan.classList.remove('confirm')
-	})
-	handlers.create('loan-params-recount', () => {
-		const {lastPrice, apr, poolBalance} = params
-		const amount = document.forms.loan.amount.value || poolBalance / 1e18
-		const security = $("#security-range").data('from')
-		const requiredCollateral = (Math.ceil(amount * security / lastPrice * 100) /10000).toFixed(4)
-		document.getElementById('loan-amount-2').innerText = amount
-		document.getElementById('collateral-amount-2').innerText = requiredCollateral
-		document.getElementById('required-collateral').innerText = requiredCollateral
-		document.getElementById('daily-interest').innerText = 
-			(amount * apr / 36500).toFixed(4)
-		document.getElementById('daily-interest').dataset.currency = 
-			document.forms.loan.loan_token.value
-		document.getElementById('required-collateral').dataset.currency = 
-			document.forms.loan.collateral_token.value
-		document.getElementById('collateral-amount-2').dataset.currency = 
-			document.forms.loan.collateral_token.value
-		document.getElementById('loan-amount-2').dataset.currency = 
-			document.forms.loan.loan_token.value
-	})
-	handlers.create('loan-start-process',function(){
-		const {lastPrice, apr, poolBalance} = params
-		const amount = (document.forms.loan.amount.value * 1e18).toFixed()
-		const security = $("#security-range").data('from')
-		const collateral = Math.ceil(amount * security / lastPrice / 1e12).toFixed()
-		const _BTC = contracts[document.forms.loan.collateral_token.value]
-		const _Borrow = contracts['Borrow'+document.forms.loan.loan_token.value]
-		this.classList.add('loading')
-		document.querySelector('.consent__cansel-box').classList.add('hide')
-
-		document.getElementById('state-line-take').dataset.status = 'waiting'
-		approve(_BTC, address, _Borrow._address, amount)
-			.then(()=>
-				document.getElementById('state-line-take').dataset.status = 1
-			)
-			.then(() => _Borrow.methods.borrow(address,amount,collateral,_BTC._address)
-				.send(()=>document.getElementById('state-line-take').dataset.status = 2) 
-			)
-			.then(() => 
-				document.getElementById('state-line-take').dataset.status = 3
-			)
-	})
-
-	handlers.create('loan-repay',function(e){
-		e.preventDefault()
-		const id = this.id.value
-		const token = contracts[this.token.value]
-		const borrow = contracts[`Borrow${this.token.value}`]
-		const amount = (this.amount.value * 1e18).toFixed()
-		this.submit.classList.add('loading')
-		approve(token, address, borrow._address, amount)
-			.then(() => borrow.methods.repay(id, amount).send() )
-			.then(tx => {
-				console.log(tx)
-				this.submit.classList.remove('loading')
+	loanTypes.forEach(type =>{
+		const Borrow = contracts[`Borrow${type}`]
+		const Lend = contracts[`Lend${type}`]
+		updater.push(() => Lend.methods.getPoolBalance().call(),
+			value => {
+				params.poolBalance = value
+				const max = Math.floor(value / 1e16) / 1e2
+				const el = document.getElementById('loan-amount')
+				el.placeholder = el.dataset.placeholder + max
+				el.max = max	
+				handlers.get('loan-params-recount').call()				
 			})
-	})
-	subsciptions.push(
-		BorrowDAI.events.LoanIssued({fromBlock:0, filter:{borrower:address}}, (err,y,z) => {
-			const {id, borrower, amount, collateral} = y.returnValues
-			Promise.all([
-				contracts.BorrowDAI.methods.loan(id).call(),
-				web3.eth.getBlock(y.blockNumber),
-				contracts.BorrowDAI.methods.interestAmount(id).call(),
-				Price.methods.latestAnswer().call()
-			]).then(([loan, block, interest, price]) => {
-				const card = templates.get('loans-history-card')
-				const security = (loan.collateralAmount * price * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
-				card.querySelector('[data-prop=amount]').innerText = (amount / 1e18).toFixed(2)
-				card.dataset.taken = block.timestamp
-				card.dataset.status = 
-					loan.state == 0 ? 5 :
-					loan.loanAmount != amount ? 4 :3
-				card.querySelector('[data-prop=taken]').innerText =
-					new Date(block.timestamp * 1e3).toMyString()
-				card.querySelector('[data-prop=collateral]').innerText = (loan.collateralAmount / 1e8).toFixed(8)		
-				card.querySelector('[data-prop=interest]').innerText = interest / 1e18		
-				card.querySelector('[data-prop=security]').innerText = security 		
+		updater.push(() => Price.methods.latestAnswer().call(),
+			value => {
+				params.lastPrice = value / 1e8
+				console.log("btc price:",params.lastPrice)	
+				handlers.get('loan-params-recount').call()		
+			})
+		updater.push(() => Borrow.methods.lastRate().call(), rate => {
+			const apr = params.apr = (rate * 365 / 1e7).toFixed(2)
+			document.querySelectorAll('[data-attr=apr]')
+				.forEach(x => x.innerText = apr)
+			handlers.get('loan-params-recount').call()	
+		})
+		function approve(token, owner, spender, amount){
+			const max_amount = new BN(2).pow(new BN(256)).sub(new BN(1)).toString()
+			return token.methods.allowance(owner, spender).call()
+				.then(web3.utils.toBN)
+				.then(x=>x.gte(new BN(amount)))
+				.then( enough =>
+					enough ? true : token.methods.approve(spender, max_amount).send()
+				)
+		}
 
-				const container = document.querySelector('.loans-history__container')
-				if(container.childElementCount == 0) container.appendChild(card)
-				else {
-					let cur = container.firstElementChild
-					while(
-						cur.nextElementSibling && 
-						cur.dataset.taken > block.timestamp
-					) cur = cur.nextElementSibling
-					if(cur.dataset.taken > block.timestamp)
-						container.appendChild(card)
-					else container.insertBefore(card, cur)
-				} 
+		document.querySelector('.pop-up').classList.remove('open')
+		document.querySelectorAll('[data-type=account]').forEach(x=>{
+			x.innerText = address
+		})
+		handlers.create('loan-submit', function (e){
+			e.preventDefault()
+			this.classList.add('confirm')
+			delete document.getElementById('state-line-take').dataset.status 
+			document.querySelector('.consent__cansel-box').classList.remove('hide')
+		})
+		handlers.create('loan-cancel', function (e){
+			document.forms.loan.classList.remove('confirm')
+		})
+		handlers.create('loan-params-recount', () => {
+			const {lastPrice, apr, poolBalance} = params
+			const amount = document.forms.loan.amount.value || poolBalance / 1e18
+			const security = $("#security-range").data('from')
+			const requiredCollateral = (Math.ceil(amount * security / lastPrice * 100) /10000).toFixed(4)
+			document.getElementById('loan-amount-2').innerText = amount
+			document.getElementById('collateral-amount-2').innerText = requiredCollateral
+			document.getElementById('required-collateral').innerText = requiredCollateral
+			document.getElementById('daily-interest').innerText = 
+				(amount * apr / 36500).toFixed(4)
+			document.getElementById('daily-interest').dataset.currency = 
+				document.forms.loan.loan_token.value
+			document.getElementById('required-collateral').dataset.currency = 
+				document.forms.loan.collateral_token.value
+			document.getElementById('collateral-amount-2').dataset.currency = 
+				document.forms.loan.collateral_token.value
+			document.getElementById('loan-amount-2').dataset.currency = 
+				document.forms.loan.loan_token.value
+		})
+		handlers.create('loan-start-process',function(){
+			const {lastPrice, apr, poolBalance} = params
+			const amount = (document.forms.loan.amount.value * 1e18).toFixed()
+			const security = $("#security-range").data('from')
+			const collateral = Math.ceil(amount * security / lastPrice / 1e12).toFixed()
+			const _BTC = contracts[document.forms.loan.collateral_token.value]
+			const _Borrow = contracts['Borrow'+document.forms.loan.loan_token.value]
+			this.classList.add('loading')
+			document.querySelector('.consent__cansel-box').classList.add('hide')
 
+			document.getElementById('state-line-take').dataset.status = 'waiting'
+			approve(_BTC, address, _Borrow._address, amount)
+				.then(()=>
+					document.getElementById('state-line-take').dataset.status = 1
+				)
+				.then(() => _Borrow.methods.borrow(address,amount,collateral,_BTC._address)
+					.send(()=>document.getElementById('state-line-take').dataset.status = 2) 
+				)
+				.then(() => 
+					document.getElementById('state-line-take').dataset.status = 3
+				)
+		})
 
-				card.querySelectorAll('.loan-history__header')
-					.forEach(x=>x.addEventListener('click', function(){
-						this.classList.toggle('show')
-					}))
-
-				
-				const selectContent = document.querySelector("#loan-select .select__content")
-				const option = templates.get('select-option')
-				option.querySelector('[data-prop=amount]').innerText = 
-					(amount / 1e18).toFixed(2)
-				option.querySelector('[data-prop=taken]').innerText = 
-					new Date(block.timestamp * 1e3).toMyString()
-				option.dataset.taken = block.timestamp
-				option.querySelector('[data-prop=security]').innerText = security
-
-				option.addEventListener('click', function(){
-					const selected = document.importNode(this, true)
-					const select = document.querySelector('.select')
-					selected.classList.remove('selected')
-					select.querySelector('.select__selected').innerHTML = ""
-					select.querySelector('.select__selected').appendChild(selected)
-					select.querySelectorAll('.select__content .select__elem').forEach(x => x.classList.remove("selected"))
-					this.classList.add("selected")
-					select.classList.remove("open")
-					document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
-					
-					DAI.methods.balanceOf(address).call()
-						.then( x => (x/1e18).toFixed(4) )
-						.then( amount => 
-							document.querySelector('[data-type=loan-user-balance]')
-								.innerText = amount
-						)
-					document.forms['loan-repay'].id.value = id
-					document.forms['loan-repay'].token.value = 'DAI'
-					document.getElementById('state-line').dataset.status = 'waiting'
-					document.querySelectorAll('[data-type=active-loan-info]').forEach(
-							x=>x.classList.remove('hide')
-						)
-					Promise.all([
-						BorrowDAI.methods.loan(id).call(),
-						BorrowDAI.methods.interestAmount(id).call()
-					]).then(([loan, interest]) => {
-						document.querySelector('.box-withdraw-repay-collateral')
-							.dataset.repay = loan.state > 0 ? 1 : 2
-						document.querySelectorAll('[data-type=loan-debt]').forEach(
-								x => x.innerText = ((loan.loanAmount - -interest) / 1e18).toFixed(4)
-							)
-						document.getElementById('state-line')
-							.dataset.status =
-								loan.state == 0 ? 5 :
-								loan.loanAmount != amount ? 4 :3
-					})
+		handlers.create('loan-repay',function(e){
+			e.preventDefault()
+			const id = this.id.value
+			const token = contracts[this.token.value]
+			const borrow = contracts[`Borrow${this.token.value}`]
+			const amount = (this.amount.value * 1e18).toFixed()
+			this.submit.classList.add('loading')
+			approve(token, address, borrow._address, amount)
+				.then(() => borrow.methods.repay(id, amount).send() )
+				.then(tx => {
+					console.log(tx)
+					this.submit.classList.remove('loading')
 				})
-				if(selectContent.childElementCount == 0) selectContent.appendChild(option)
-				else {
-					let cur = selectContent.firstElementChild
-					while(
-						cur.nextElementSibling && 
-						cur.dataset.taken > block.timestamp
-					) cur = cur.nextElementSibling
-					if(cur.dataset.taken > block.timestamp)
-						selectContent.appendChild(option)
-					else selectContent.insertBefore(option, cur)
-				} 
-
-			})
 		})
-	)
+		subsciptions.push(
+			Borrow.events.LoanRepayment({fromBlock:'latest', filter:{borrower:address}}, (err, event) => {
+				const {id, interestAmount, repaymentAmount} = event.returnValues
+				Promise.all([
+					Borrow.methods.loan(id).call(),
+					Price.methods.latestAnswer().call()
+				]).then(([loan, price]) => {
+					const container = document.querySelector('.loans-history__container')
+					const card = container.querySelector(`[data-loan-id=${type}_${id}]`)
+					const security = (loan.collateralAmount * price * 1e4 / loan.loanAmount).toFixed(2)
+					card.dataset.status = loan.state == 0 ? 5 : 4
+					card.querySelector('[data-prop=collateral]').innerText = (loan.collateralAmount / 1e8).toFixed(8)		
+					card.querySelector('[data-prop=interest]').innerText = 0	
+					setSecurity( security, loan.state, card.querySelector('.security-view') )
+					if(loan.state != 1 && container.childElementCount > 1){
+						container.removeChild(card)
+						let cur = container.firstElementChild
+						const status = loan.state > 0 ? 0 : 5
+						while(
+							cur.nextElementSibling && (
+								cur.dataset.status < status ||
+								cur.dataset.taken > card.dataset.taken
+							)
+						) cur = cur.nextElementSibling
+						if(cur.dataset.taken > card.dataset.taken)
+							container.appendChild(card)
+						else container.insertBefore(card, cur)
+					}
+				})
+			})
+		)
+		subsciptions.push(
+			Borrow.events.LoanIssued({fromBlock:0, filter:{borrower:address}}, (err,y,z) => {
+				const {id, borrower, amount, collateral} = y.returnValues
+				Promise.all([
+					Borrow.methods.loan(id).call(),
+					web3.eth.getBlock(y.blockNumber),
+					Borrow.methods.interestAmount(id).call(),
+					Price.methods.latestAnswer().call()
+				]).then(([loan, block, interest, price]) => {
+					const card = templates.get('loans-history-card')
+					const security = (loan.collateralAmount * price * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
+					card.querySelector('[data-prop=amount]').innerText = (amount / 1e18).toFixed(2)
+					card.dataset.loanId = `${type}_${id}`
+					card.dataset.taken = block.timestamp
+					card.dataset.status = 
+						loan.state == 0 ? 5 :
+						loan.loanAmount != amount ? 4 :3
+					card.querySelector('[data-prop=taken]').innerText =
+						new Date(block.timestamp * 1e3).toMyString()
+					card.querySelector('[data-prop=collateral]').innerText = (loan.collateralAmount / 1e8).toFixed(8)		
+					card.querySelector('[data-prop=interest]').innerText = interest / 1e18		
+					setSecurity( security, loan.state, card.querySelector('.security-view') )
+
+					const container = document.querySelector('.loans-history__container')
+					if(container.childElementCount == 0) container.appendChild(card)
+					else {
+						let cur = container.firstElementChild
+						const status = loan.state > 0 ? 0 : 5
+						while(
+							cur.nextElementSibling && (
+								cur.dataset.status < status ||
+								cur.dataset.taken > block.timestamp
+							)
+						) cur = cur.nextElementSibling
+						if(cur.dataset.taken > block.timestamp)
+							container.appendChild(card)
+						else container.insertBefore(card, cur)
+					} 
+
+
+					card.querySelectorAll('.loan-history__header')
+						.forEach(x=>x.addEventListener('click', function(){
+							this.classList.toggle('show')
+						}))
+
+					
+					const selectContent = document.querySelector("#loan-select .select__content")
+					const option = templates.get('select-option')
+					option.querySelector('[data-prop=amount]').innerText = 
+						(amount / 1e18).toFixed(2)
+					option.querySelector('[data-prop=taken]').innerText = 
+						new Date(block.timestamp * 1e3).toMyString()
+					option.dataset.taken = block.timestamp
+					setSecurity( security, loan.state, option.querySelector('.security-view') )
+
+					option.dataset.status = 
+						loan.state == 0 ? 5 :
+						loan.loanAmount != amount ? 4 :3
+					option.addEventListener('click', function(){
+						const selected = document.importNode(this, true)
+						const select = document.querySelector('.select')
+						selected.classList.remove('selected')
+						select.querySelector('.select__selected').innerHTML = ""
+						select.querySelector('.select__selected').appendChild(selected)
+						select.querySelectorAll('.select__content .select__elem').forEach(x => x.classList.remove("selected"))
+						this.classList.add("selected")
+						select.classList.remove("open")
+						document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
+						
+						contracts[type].methods.balanceOf(address).call()
+							.then( x => (x/1e18).toFixed(4) )
+							.then( amount => 
+								document.querySelector('[data-type=loan-user-balance]')
+									.innerText = amount
+							)
+						document.forms['loan-repay'].id.value = id
+						document.forms['loan-repay'].token.value = type
+						document.getElementById('state-line').dataset.status = 'waiting'
+						document.querySelectorAll('[data-type=active-loan-info]').forEach(
+								x=>x.classList.remove('hide')
+							)
+						Promise.all([
+							Borrow.methods.loan(id).call(),
+							Borrow.methods.interestAmount(id).call()
+						]).then(([loan, interest]) => {
+							document.querySelector('.box-withdraw-repay-collateral')
+								.dataset.repay = loan.state > 0 ? 1 : 2
+							document.querySelectorAll('[data-type=loan-debt]').forEach(
+									x => x.innerText = ((loan.loanAmount - -interest) / 1e18).toFixed(4)
+								)
+							document.getElementById('state-line')
+								.dataset.status =
+									loan.state == 0 ? 5 :
+									loan.loanAmount != amount ? 4 :3
+						})
+					})
+					if(selectContent.childElementCount == 0) selectContent.appendChild(option)
+					else {
+						const status = loan.state > 0 ? 0 : 5
+						let cur = selectContent.firstElementChild
+						while(
+							cur.nextElementSibling && (
+								cur.dataset.status < status ||
+								cur.dataset.taken > block.timestamp
+							)
+						) cur = cur.nextElementSibling
+						if(cur.dataset.taken > block.timestamp)
+							selectContent.appendChild(option)
+						else selectContent.insertBefore(option, cur)
+					} 
+
+				})
+			})
+		)
+
+	})
 }
 document.querySelector('[data-action=js-process-loan]')
 	.addEventListener('click', handlers.get('loan-start-process'))
@@ -422,4 +494,5 @@ $("#security-range").ionRangeSlider({
 	window.info = info
 	window.updater = updater
 	window.openSection = openSection
+	window.subsciptions = subsciptions
 })(false);

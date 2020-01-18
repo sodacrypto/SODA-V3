@@ -621,9 +621,9 @@ def ru = <locale lang="ru">
   <string id="security-state--liquidation">Ликвидация</string>
   <string id="security-state--danger">Под угрозой</string>
   <string id="security-state--safe">В безопасности</string>
-  <string id="security-state--very-safe">В полной безопасности</string>
+  <string id="security-state--very-safe">В безопасности</string>
   <string id="security-state--waiting">Ожидание</string>
-  <string id="security-state--repaid">Займ погашен</string>
+  <string id="security-state--repaid">Возвращен</string>
   <string id="button-go-platform">Перейти в аккаунт →</string>
 
   <string id="withdrawal-state-0">Loan is active, collateral withdrawals are unavailible.</string>

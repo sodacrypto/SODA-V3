@@ -855,6 +855,8 @@ for $i in 1..states-count
 		for $j in 1..states-count
 			if $i == states-count
 				opacity .5
+				.stats-box:nth-child(2)
+					display  unquote('none')
 				// .loan-history__status-bar hide-on-phone
 				// 	padding-top 5px
 				.loan-history__button-box
@@ -1718,3 +1720,9 @@ a.link--transaction
 	display unquote('flex')
 	flex-direction column
     
+.security-view
+	.security-view__amount:not(:empty)
+		&::before
+			content "("
+		&::after
+			content "%)"
