@@ -336,7 +336,7 @@ def en = <locale lang="en">
   </string>
 
   <string id="repay-box__info-title--1">
-    Loan Balance
+    Your Balance
   </string>
   <string id="repay-box__info-title--2">
     To repay

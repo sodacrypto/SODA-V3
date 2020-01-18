@@ -336,7 +336,7 @@ def cn = <locale lang="cn">
   </string>
 
   <string id="repay-box__info-title--1">
-    贷款余额
+    Your balance
   </string>
   <string id="repay-box__info-title--2">
     偿还
