@@ -551,7 +551,7 @@ def sections() = {
 						<div class="repay-box__info">
 							<div class="r-b-info-box">
 								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--1")}</div>
-								<div data-type="loan-balance" class="count" data-currency="DAI">...</div>
+								<div data-type="loan-user-balance" class="count" data-currency="DAI">...</div>
 							</div>
 							<div class="r-b-info-box">
 								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--2")}</div>
@@ -695,7 +695,7 @@ def sections() = {
 	)
 }
 
-def selectOption = <div class="select__elem">
+def selectOption = <div class="select__elem" data-state="">
 	<div class="select-elem-box">
 		<div class="count" data-currency="DAI" data-prop="amount"/>
 		<div class="select-date-title" data-prop="taken" data-title=#{localeText("loan-history__stats-title--taken")}/>
