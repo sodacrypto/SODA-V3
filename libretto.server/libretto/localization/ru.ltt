@@ -312,28 +312,17 @@ def ru = <locale lang="ru">
   <string id="collateral-box__top-up-title-2">
     Уровень риска изменится на
   </string>
-  <string id="collateral-box__top-up-title-3">
-    Отправьте <label data-type="top-up-amount" data-currency="BTC">0.1</label> на данный Bitcoin-адрес для уменьшения уровня риска ликвидации залога:
-  </string>
+
   <string id="collateral__notification--returned-BTC"> 
     Залог был отправлен на Ваш Bitcoin-адрес.
   </string>
 
-  <string id="collateral-box__withdraw-header">
-    Вывести
-  </string>
 
-  <string id="collateral-box__withdraw-title-1">
-    Введите Ваш Bitcoin-адрес для получения залога в BTC
-  </string>
 
   <string id="collateral__button">
     Вывести залог в BTC
   </string>
 
-  <string id="collateral__notification--t-1">
-    Функция вывода залога в BTC станет доступна после полного погашения займа
-  </string>
 
   <string id="repay-box__info-title--1">
     Баланс

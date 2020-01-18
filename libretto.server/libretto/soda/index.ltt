@@ -576,7 +576,7 @@ def sections() = {
 							<div class="r-b-info-box"></div>
 						</div>
 						#{
-							notification("neutral t-3", locale("collateral__notification--returned-BTC"))
+							notification("neutral t-2", locale("collateral__notification--returned-BTC"))
 						}
 						<div class="collateral-box__top-up">
 							<h3 class="collateral-box__top-up-header">#{locale("collateral-box__top-up-header")}</h3>
@@ -593,40 +593,13 @@ def sections() = {
 									<div data-attr="riskAfterTopUp" class="count"/>									
 								</div>
 							</div>
-							<div class="c-b-top-up__content-2">
-								<div class="collateral-box__top-up-title add-colon">#{locale("collateral-box__top-up-title-3")}</div>
-								#{
-									inputWithCopy((),"","address")
-								}
+					
+						</div>						
 
-								<div class="collateral-content__history--top-up hide">
-									<div class="repay-content__title add-colon">#{locale("repay-content__history-title")}</div>
-									<div class="history-transactions">
-										<div class="history-transaction">тут будет таблица <a href=#{"/"+localization/currentLocale} class="link--transaction">tetetetettest</a></div>										
-									</div>
-								</div>
-							</div>							
+						<div class="collateral__button-box">
+							<button name="submit" class="button--yellow">#{locale("collateral__button")}</button>
 						</div>
 
-
-						<div class="collateral-box__withdraw">
-
-							<h3 class="collateral-box__withdraw-header">#{locale("collateral-box__withdraw-header")}</h3>
-							#{
-								notification("warning t-1", locale("collateral__notification--t-1"))
-							}
-
-							<div class="collateral-box__withdraw-title add-colon">#{locale("collateral-box__withdraw-title-1")}</div>
-							<label data-attr="destination-label" class="input-box">
-								<input required="" name="to" type="text" class="input"/>
-							</label>
-
-							<div class="collateral__button-box">
-								<button name="submit" class="button--yellow">#{locale("collateral__button")}</button>
-							</div>
-
-
-						</div>
 						<div class="collateral-content__history--withdraw">
 							<div class="repay-content__title add-colon">#{locale("repay-content__history-title")}</div>
 							<div class="history-transactions">

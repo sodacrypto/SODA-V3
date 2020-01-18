@@ -312,28 +312,16 @@ def en = <locale lang="en">
   <string id="collateral-box__top-up-title-2">
     Risk Status Change
   </string>
-  <string id="collateral-box__top-up-title-3">
-    Send <label data-type="top-up-amount" data-currency="BTC">0.1</label> to this Bitcoin-address to reduce the risk of collateral liquidation:
-  </string>
+
   <string id="collateral__notification--returned-BTC"> 
     Collateral was returned to your Bitcoin-address.
   </string>
 
-  <string id="collateral-box__withdraw-header">
-    Withdraw
-  </string>
-
-  <string id="collateral-box__withdraw-title-1">
-    Enter your Bitcoin-address to receive your collateral
-  </string>
 
   <string id="collateral__button">
     Withdraw the collateral
   </string>
 
-  <string id="collateral__notification--t-1">
-    Withdrawal of the collateral will be availible after the full repayment of this loan.
-  </string>
 
   <string id="repay-box__info-title--1">
     Loan Balance

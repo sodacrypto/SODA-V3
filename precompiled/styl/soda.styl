@@ -631,7 +631,7 @@
 		text-align: justify;
 		color: #9a97ab;
 
-.repay-box__repay-header, .collateral-box__top-up-header, .collateral-box__withdraw-header
+.repay-box__repay-header, .collateral-box__top-up-header
 	font-family: Futura PT;
 	font-style: normal;
 	font-weight: 600;
@@ -644,7 +644,7 @@
 	margin-top 10px
 
 
-.repay-box__repay-title, .collateral-box__top-up-title, .collateral-box__withdraw-title
+.repay-box__repay-title, .collateral-box__top-up-title
 	margin-bottom: 5px;
 	font-family: Futura PT;
 	font-style: normal;
@@ -1315,8 +1315,7 @@ a.link--transaction
 	display unquote('flex');
 	@media screen and (max-width 959px)
 		flex-direction column
-.c-b-top-up__content-2
-	margin-top 20px
+
 .r-b-repay__elem, .c-b-top-up__elem
 	flex 2
 	&:last-child
@@ -1579,24 +1578,11 @@ a.link--transaction
 	&[data-collateral="1"]
 		.collateral-box
 			.notification
-				&.t-3
+				&.t-2
 					display none
-			.collateral-box__withdraw-title, .collateral-box__withdraw .input-box, .collateral__button-box, .collateral-content__history--withdraw
-				display none
 	&[data-collateral="2"]
 		.collateral-box
-			.notification
-				&.t-1, &.t-3
-					display none
-			.collateral-box__top-up
-				display none
-				.notification
-					display none
-			.collateral-box__withdraw-header
-				margin-top 10px
-	&[data-collateral="3"]
-		.collateral-box
-			.collateral-box__info, .collateral-box__top-up, .collateral-box__withdraw
+			.collateral-box__info, .collateral-box__top-up, .collateral__button-box
 				display none
 			.notification
 				&.t-1

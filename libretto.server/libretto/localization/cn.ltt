@@ -312,28 +312,17 @@ def cn = <locale lang="cn">
   <string id="collateral-box__top-up-title-2">
     风险状态变化
   </string>
-  <string id="collateral-box__top-up-title-3">
-    发送 <label data-type="top-up-amount" data-currency="BTC">0.1</label> 至此比特币地址以降低抵押物清算风险：
-  </string>
+
   <string id="collateral__notification--returned-BTC"> 
     抵押物已退回至您的比特币地址
   </string>
 
-  <string id="collateral-box__withdraw-header">
-    提款
-  </string>
 
-  <string id="collateral-box__withdraw-title-1">
-    输入比特币地址用以接收抵押物
-  </string>
 
   <string id="collateral__button">
     提出抵押物
   </string>
 
-  <string id="collateral__notification--t-1">
-    偿清该贷款后即可提出抵押物
-  </string>
 
   <string id="repay-box__info-title--1">
     贷款余额
