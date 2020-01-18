@@ -644,7 +644,7 @@
 	margin-top 10px
 
 
-.w-c-input__title, .repay-box__refill-title, .repay-box__repay-title, .collateral-box__top-up-title, .collateral-box__withdraw-title
+.repay-box__refill-title, .repay-box__repay-title, .collateral-box__top-up-title, .collateral-box__withdraw-title
 	margin-bottom: 5px;
 	font-family: Futura PT;
 	font-style: normal;
@@ -1298,7 +1298,7 @@ a.link--transaction
 
 
 
-.collateral-content__history--top-up, .collateral-content__history--withdraw, .repay-content__history--refill, .repay-content__history--repay, .withdraw-content__history
+.collateral-content__history--top-up, .collateral-content__history--withdraw, .repay-content__history--refill, .repay-content__history--repay
 	margin-top 10px
 
 
@@ -1339,7 +1339,7 @@ a.link--transaction
 	color: #221B48;
 .title--change-password
 	margin-left 40px
-.withdraw__button-box, .repay__button-box, .collateral__button-box
+.repay__button-box, .collateral__button-box
 	display unquote('flex');
 	.button--yellow
 		margin 15px 30px 10px 30px
@@ -1412,7 +1412,7 @@ a.link--transaction
 			margin 20px
 
 
-.withdraw-content__title, .r-b-info-box__title, .repay-content__title, .c-b-info-box__title
+.r-b-info-box__title, .repay-content__title, .c-b-info-box__title
 	font-family: Futura PT;
 	font-style: normal;
 	font-weight: 600;
@@ -1420,21 +1420,6 @@ a.link--transaction
 	line-height: 18px;
 	color: #FFFFFF;
 
-.withdraw-content__inputs-box
-	display unquote('flex')
-	@media screen and (max-width 959px)
-		display block
-.w-c-inputs-box__elem
-	display unquote('flex')
-	flex 1
-	padding-top 10px
-	flex-direction: column;
-	justify-content: space-between;
-	&:last-child
-		flex 2	
-		margin-left 20px
-		@media screen and (max-width 959px)
-			margin-left 0
 		
 		
 
@@ -1547,15 +1532,6 @@ a.link--transaction
 			height 19px
 			width 100%
 			transform: translate(-20px, 0);
-	&.tab-withdraw
-		&:before
-			background url("/images/arrow--repay-withdraw--gray.svg")
-			background-size: contain;
-			background-repeat: no-repeat;
-			background-position: center;
-			transform: rotate(180deg) translate(0,15px)
-			@media screen and (max-width 959px)
-				transform: rotate(180deg) translate(20px,0)
 	&.tab-repay
 		&:before
 			background url("/images/arrow--repay-withdraw--gray.svg")
@@ -1587,15 +1563,6 @@ a.link--transaction
 		margin 40px 0
 		width 100vw
 		min-width 320px
-	&[data-withdraw="1"]
-		.withdraw-box
-			.notification
-				display none
-	&[data-withdraw="2"]
-		.withdraw-box
-			.withdraw-content__title, .count, .withdraw-content__inputs-box, .withdraw__button-box, .withdraw-content__history
-				display none
-
 	&[data-repay="1"]
 		.repay-box
 			.notification
@@ -1641,25 +1608,6 @@ a.link--transaction
 			.notification
 				&.t-1
 					display none
-	&[data-action="withdraw"]
-		.tab-withdraw
-			background: #4776E6;
-			font-weight: 600;
-			font-size: 14px;
-			line-height: 21px;
-			color: #FFFFFF;
-			span
-				border none
-			&:before
-				background url("/images/arrow--repay-withdraw.svg")
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
-				transform: rotate(180deg) translate(0,15px)
-				@media screen and (max-width 959px)
-					transform: rotate(180deg) translate(20px,0)
-		.withdraw-box
-			display unquote('flex')
 	&[data-action="repay"]
 		.tab-repay
 			background: #4776E6;
@@ -1694,14 +1642,7 @@ a.link--transaction
 			display unquote('flex')
 
 
-.withdraw-box, .collateral-box
-	.notification
-			margin 0 0 15px 0
-.repay-box
-	.notification
-		margin 0
-
-.withdraw-box, .repay-box, .collateral-box
+.repay-box, .collateral-box
 	display none
 	background: linear-gradient(180deg, #4776E6 0%, #5754E9 100%);
 	box-shadow: 0px 8px 25px rgba(113, 98, 231, 0.7);
@@ -1724,10 +1665,14 @@ a.link--transaction
 		color: #FFFFFF;
 		&:before
 			margin 5px auto auto -30px
-.withdraw-box
-	border-radius 0 5px 5px 5px
-	@media screen and (max-width 959px)
-		border-radius 0
+.collateral-box
+	.notification
+			margin 0 0 15px 0
+.repay-box
+	border-radius: 0 5px 5px 5px;
+	.notification
+		margin 0
+
 
 
 

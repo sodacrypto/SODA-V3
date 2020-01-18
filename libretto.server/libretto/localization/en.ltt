@@ -155,10 +155,6 @@ def en = <locale lang="en">
     SODA is an open-source service.
   </string>
 
-  <string id="withdraw-content__history-title"> 
-    Withdrawals History
-  </string>
-
 
   <string id="support__text"> 
     Any problems or questions? Contact us
@@ -212,9 +208,6 @@ def en = <locale lang="en">
   <string id="w-r-loan-status__title"> 
     Current status
   </string>
-  <string id="withdraw__title"> 
-    Withdraw
-  </string>
   <string id="repay__title"> 
     Repay
   </string>
@@ -224,9 +217,6 @@ def en = <locale lang="en">
   <string id="w-r-loan-deals__title"> 
     Monitor your loan details
   </string>
-  <string id="withdraw__title-loan-balance"> 
-    Loan Balance
-  </string>
   <string id="repay__left-title"> 
     Left
   </string>
@@ -234,22 +224,7 @@ def en = <locale lang="en">
     Repayments History:
   </string>
 
-  <string id="w-c-input__title--DAI-to-withdraw"> 
-    Amount of DAI to withdraw
-  </string>
-  <string id="w-c-input__placeholder--DAI-to-withdraw"> 
-    Enter amount
-  </string>
-  <string id="w-c-input__title--e-address-to-receive-DAI"> 
-    Ethereum-address that you want to receive DAI to
-  </string>
 
-  <string id="w-c-input__placeholder--e-address-to-receive-DAI"> 
-    Ethereum-address
-  </string>
-  <string id="withdraw__button"> 
-    Withdraw DAI
-  </string>
   <string id="repay-content__input-title--send-DAI"> 
     Send DAI to this Ethereum-address to repay the loan (partly or fully)
   </string>
@@ -297,9 +272,6 @@ def en = <locale lang="en">
   <string id="detail-box__title--liquidation-price"> 
     Liquidation Price
   </string>    
-  <string id="withdraw__notification--loan-is-repaid"> 
-    Loan is closed. You can now withdraw your collateral on the “Collateral” tab.
-  </string>
 
   <string id="repay__notification--t-1"> 
     Refill the balance to the amount that is needed for repayment. You can also use your balance for partial repayments if you want to recount your loan interest.

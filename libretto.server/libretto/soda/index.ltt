@@ -508,42 +508,12 @@ def sections() = {
 
 				<div class="box-withdraw-repay-collateral" data-type="active-loan-info" data-action="repay" data-withdraw="1" data-repay="1" data-collateral="1">
 					<div class="box-withdraw-repay-collateral__tabs">
-						<div class="box-withdraw-repay-collateral__tab tab-withdraw" data-type="withdraw">#{locale("withdraw__title")}</div>
 						<div class="box-withdraw-repay-collateral__tab tab-repay" data-type="repay">#{locale("repay__title")}</div>
 						<div class="box-withdraw-repay-collateral__tab tab-collateral" data-type="collateral">#{locale("collateral__title")}</div>
 					</div>
 					#{
 						//туууууууууууууууууууууууууууут
 					}
-					<form id="loan-withdraw" class="withdraw-box">
-						#{
-							notification("neutral", locale("withdraw__notification--loan-is-repaid"))
-						}
-						<div class="withdraw-content__title add-colon">#{locale("withdraw__title-loan-balance")}</div>
-						<div data-type="loan-balance" class="count" data-currency="DAI">10000.77</div>
-						<div class="withdraw-content__inputs-box">
-							<div class="w-c-inputs-box__elem">
-								<div class="w-c-input__title add-colon">#{locale("w-c-input__title--DAI-to-withdraw")}</div>
-								<label class="input-box">
-									<input autocomplete="off" required="" name="amount" type="number" step="any" class="input" placeholder=#{localeText("w-c-input__placeholder--DAI-to-withdraw")}/>
-								</label>
-							</div>
-							<div class="w-c-inputs-box__elem">
-								<div class="w-c-input__title add-colon">#{locale("w-c-input__title--e-address-to-receive-DAI")}</div>
-								<label class="input-box">
-									<input required="" name="to" type="text" class="input" placeholder=#{localeText("w-c-input__placeholder--e-address-to-receive-DAI")}/>
-								</label>
-							</div>
-						</div>
-						<div class="withdraw__button-box">
-							<button name="submit" class="button--yellow">#{locale("withdraw__button")}</button>
-						</div>
-						<div class="withdraw-content__history">
-							<div class="withdraw-content__title add-colon">#{locale("withdraw-content__history-title")}</div>
-							<div class="history-transactions"/>
-						</div>
-					</form>	
-
 
 					<form id="loan-repay" class="repay-box">
 						<input type="hidden" name="id"/>

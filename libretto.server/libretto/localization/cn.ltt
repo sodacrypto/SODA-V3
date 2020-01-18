@@ -155,10 +155,6 @@ def cn = <locale lang="cn">
     SODA是一项开源的服务
   </string>
 
-  <string id="withdraw-content__history-title"> 
-    提款历史
-  </string>
-
 
   <string id="support__text"> 
     有任何问题或疑问？联系我们
@@ -211,9 +207,6 @@ def cn = <locale lang="cn">
   <string id="w-r-loan-status__title"> 
     当前状态
   </string>
-  <string id="withdraw__title"> 
-    提款
-  </string>
   <string id="repay__title"> 
     偿还
   </string>
@@ -223,9 +216,6 @@ def cn = <locale lang="cn">
   <string id="w-r-loan-deals__title"> 
     监控贷款详情
   </string>
-  <string id="withdraw__title-loan-balance"> 
-    贷款余额
-  </string>
   <string id="repay__left-title"> 
     剩余应还
   </string>
@@ -233,22 +223,7 @@ def cn = <locale lang="cn">
     偿还历史
   </string>
 
-  <string id="w-c-input__title--DAI-to-withdraw"> 
-    提出DAI数量
-  </string>
-  <string id="w-c-input__placeholder--DAI-to-withdraw"> 
-    输入数量
-  </string>
-  <string id="w-c-input__title--e-address-to-receive-DAI"> 
-    接收DAI的以太坊地址
-  </string>
 
-  <string id="w-c-input__placeholder--e-address-to-receive-DAI"> 
-    以太坊地址
-  </string>
-  <string id="withdraw__button"> 
-    提出DAI
-  </string>
   <string id="repay-content__input-title--send-DAI"> 
     发送DAI至此以太坊地址用以偿还贷款（可部分或全额）
   </string>
@@ -296,9 +271,6 @@ def cn = <locale lang="cn">
   <string id="detail-box__title--liquidation-price"> 
     清算价格
   </string>    
-  <string id="withdraw__notification--loan-is-repaid"> 
-    贷款已关闭。您可以在“抵押物”标签页中提出抵押物。
-  </string>
 
   <string id="repay__notification--t-1"> 
     将余额填充到还款所需的金额。如果您想计算您的贷款利息，也可以将余额用于部分还款。
