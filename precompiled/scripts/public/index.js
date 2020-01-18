@@ -215,6 +215,21 @@ function start([address, web3, chainID]){
 				document.getElementById('state-line-take').dataset.status = 3
 			)
 	})
+
+	handlers.create('loan-repay',function(e){
+		e.preventDefault()
+		const id = this.id.value
+		const token = contracts[this.token.value]
+		const borrow = contracts[`Borrow${this.token.value}`]
+		const amount = (this.amount.value * 1e18).toFixed()
+		this.submit.classList.add('loading')
+		approve(token, address, borrow._address, amount)
+			.then(() => borrow.methods.repay(id, amount).send() )
+			.then(tx => {
+				console.log(tx)
+				this.submit.classList.remove('loading')
+			})
+	})
 	subsciptions.push(
 		BorrowDAI.events.LoanIssued({fromBlock:0, filter:{borrower:address}}, (err,y,z) => {
 			const {id, borrower, amount, collateral} = y.returnValues
@@ -276,16 +291,25 @@ function start([address, web3, chainID]){
 					this.classList.add("selected")
 					select.classList.remove("open")
 					document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
-				
+					
+					DAI.methods.balanceOf(address).call()
+						.then( x => (x/1e18).toFixed(4) )
+						.then( amount => 
+							document.querySelector('[data-type=loan-user-balance]')
+								.innerText = amount
+						)
 					document.forms['loan-repay'].id.value = id
 					document.forms['loan-repay'].token.value = 'DAI'
 					document.getElementById('state-line').dataset.status = 'waiting'
-						// loan.state == 0 ? 5 :
-						// loan.loanAmount != amount ? 4 :3
 					document.querySelector('[data-type=active-loan-info]')
 						.classList.remove('hide')
-					BorrowDAI.methods.loan(id).call().then(loan => {
-						console.log(loan)
+					Promise.all([
+						BorrowDAI.methods.loan(id).call(),
+						BorrowDAI.methods.interestAmount(id).call()
+					]).then(([loan, interest]) => {
+						document.querySelectorAll('[data-type=loan-debt]').forEach(
+								x => x.innerText = ((loan.loanAmount - -interest) / 1e18).toFixed(4)
+							)
 						document.getElementById('state-line')
 							.dataset.status =
 								loan.state == 0 ? 5 :
@@ -323,10 +347,8 @@ document.querySelectorAll('[data-type=active-loan-info]').forEach(block => {
 	})
 })
 
-document.forms['loan-repay'].addEventListener('submit', function(e){
-	e.preventDefault()
-
-})
+document.forms['loan-repay'].addEventListener('submit', 
+	handlers.get('loan-repay'))
 
 document.querySelectorAll('.select').forEach(select => {
 	select.querySelector('.select__selected').addEventListener('click', function(event){
