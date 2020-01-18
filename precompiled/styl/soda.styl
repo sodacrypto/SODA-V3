@@ -1059,6 +1059,9 @@ for $i in 1..states-count
 	border-bottom: 1px solid #C2C0CB;
 	overflow: hidden;
 	td
+		&.link
+			position: relative;
+			max-width: 100px;
 		font-family: Futura PT;
 		font-style: normal;
 		font-weight: 600;
@@ -1079,8 +1082,8 @@ a.link--transaction
 	text-decoration none
 	border-bottom: 1px dashed #4A4469;
 	white-space: nowrap;
-	max-width: 100px;
-	text-overflow: clip;
+	max-width: 100%;
+	text-overflow: ellipsis;
 	overflow: hidden;
 	display: block;
 	&:before

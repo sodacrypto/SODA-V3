@@ -610,8 +610,8 @@ def sections() = {
 									<td>
 										12
 									</td>
-									<td>
-										<a href="/" class="link--transaction">testlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlink</a>
+									<td class="link">
+										<a href="/" class="link--transaction">0xbadbe0693cf26d93552d06cc35390b838eb3a1bc848cd8d22d554cf040cc541d</a>
 									</td>
 									<td>
 										done
