@@ -301,12 +301,15 @@ function start([address, web3, chainID]){
 					document.forms['loan-repay'].id.value = id
 					document.forms['loan-repay'].token.value = 'DAI'
 					document.getElementById('state-line').dataset.status = 'waiting'
-					document.querySelector('[data-type=active-loan-info]')
-						.classList.remove('hide')
+					document.querySelectorAll('[data-type=active-loan-info]').forEach(
+							x=>x.classList.remove('hide')
+						)
 					Promise.all([
 						BorrowDAI.methods.loan(id).call(),
 						BorrowDAI.methods.interestAmount(id).call()
 					]).then(([loan, interest]) => {
+						document.querySelector('.box-withdraw-repay-collateral')
+							.dataset.repay = loan.state > 0 ? 1 : 2
 						document.querySelectorAll('[data-type=loan-debt]').forEach(
 								x => x.innerText = ((loan.loanAmount - -interest) / 1e18).toFixed(4)
 							)
