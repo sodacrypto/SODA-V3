@@ -156,10 +156,6 @@ def ru = <locale lang="ru">
     SODA — сервис с открытым исходным кодом.
   </string>
 
-  <string id="withdraw-content__history-title"> 
-    История выводов
-  </string>
-
 
   <string id="support__text"> 
     Есть вопросы или возникли проблемы? Напишите нам
@@ -212,9 +208,6 @@ def ru = <locale lang="ru">
   <string id="w-r-loan-status__title"> 
     Текущий статус
   </string>
-  <string id="withdraw__title"> 
-    Вывести
-  </string>
   <string id="repay__title"> 
     Вернуть
   </string>
@@ -224,9 +217,6 @@ def ru = <locale lang="ru">
   <string id="w-r-loan-deals__title"> 
     Следите за данными по займу
   </string>
-  <string id="withdraw__title-loan-balance"> 
-    Баланс
-  </string>
   <string id="repay__left-title"> 
     Осталось
   </string>
@@ -234,22 +224,7 @@ def ru = <locale lang="ru">
     История возвратов:
   </string>
 
-  <string id="w-c-input__title--DAI-to-withdraw"> 
-    Сумма DAI к выводу
-  </string>
-  <string id="w-c-input__placeholder--DAI-to-withdraw"> 
-    Введите сумму
-  </string>
-  <string id="w-c-input__title--e-address-to-receive-DAI"> 
-    Ethereum-адрес, на который Вы получите DAI
-  </string>
 
-  <string id="w-c-input__placeholder--e-address-to-receive-DAI"> 
-    Ethereum-адрес
-  </string>
-  <string id="withdraw__button"> 
-    Вывести DAI
-  </string>
   <string id="repay-content__input-title--send-DAI"> 
     Отправьте DAI на данный Ethereum-адрес для погашения займа (частично или полностью)
   </string>
@@ -297,9 +272,6 @@ def ru = <locale lang="ru">
   <string id="detail-box__title--liquidation-price"> 
     Ликвидация залога (цена BTC)
   </string>    
-  <string id="withdraw__notification--loan-is-repaid"> 
-    Займ полностью погашаен. Выведите Ваш залог в BTC на вкладке: Залог.
-  </string>
 
   <string id="repay__notification--t-1"> 
     Пополните Ваш баланс на SODA до суммы, необходимой для возврата займа. Вы также можете пополнить баланс для частичного возврата займа, если Вы хотите снизить Ваш суточный процент.
