@@ -274,28 +274,20 @@ def en = <locale lang="en">
   </string>    
 
   <string id="repay__notification--t-1"> 
-    Refill the balance to the amount that is needed for repayment. You can also use your balance for partial repayments if you want to recount your loan interest.
-  </string>
-  <string id="repay__notification--t-2"> 
     Your balance is enough to fully repay your loan and withdraw the collateral!
   </string> 
-  <string id="repay__notification--t-3"> 
+  <string id="repay__notification--t-2"> 
     This loan is successfully paid off. You can now withdraw your collateral on the “Collateral” tab.
   </string> 
 
-  <string id="repay-content__history-title-1">
+  <string id="repay-content__history-title">
     History
   </string>
   <string id="repay-content__history-title-2">
     Repayments History
   </string>
 
-  <string id="repay-box__refill-header">
-    Refill
-  </string>
-  <string id="repay-box__refill-title">
-    Send DAI to this Ethereum-address to refill your balance (<label data-type="loan-refill" data-currency="DAI">10.322</label> to full loan repayment)
-  </string>
+
   <string id="repay-box__repay-header">
     Repay
   </string>
@@ -348,9 +340,6 @@ def en = <locale lang="en">
   </string>
   <string id="repay-box__info-title--2">
     To repay
-  </string>
-  <string id="repay-box__info-title--3">
-    Amount to Refill
   </string>
   <string id="collateral-box__info-title--1">
     Collateral

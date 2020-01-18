@@ -274,28 +274,20 @@ def ru = <locale lang="ru">
   </string>    
 
   <string id="repay__notification--t-1"> 
-    Пополните Ваш баланс на SODA до суммы, необходимой для возврата займа. Вы также можете пополнить баланс для частичного возврата займа, если Вы хотите снизить Ваш суточный процент.
-  </string>
-  <string id="repay__notification--t-2"> 
     Вашего баланса на SODA достаточно, чтобы полностью погасить займ и вывести Ваш залог в BTC!
   </string> 
-  <string id="repay__notification--t-3"> 
+  <string id="repay__notification--t-2"> 
     Займ полностью погашаен. Выведите Ваш залог в BTC на вкладке: Залог.
   </string> 
 
-  <string id="repay-content__history-title-1">
+  <string id="repay-content__history-title">
     История
   </string>
   <string id="repay-content__history-title-2">
     История возвратов
   </string>
 
-  <string id="repay-box__refill-header">
-    Пополнить баланс
-  </string>
-  <string id="repay-box__refill-title">
-    Отправьте DAI на данный Ethereum-адрес для пополнения баланса (<label data-type="loan-refill" data-currency="DAI">10.322</label> для полного возврата займа)
-  </string>
+
   <string id="repay-box__repay-header">
     Вернуть
   </string>
@@ -348,9 +340,6 @@ def ru = <locale lang="ru">
   </string>
   <string id="repay-box__info-title--2">
     Осталось вернуть
-  </string>
-  <string id="repay-box__info-title--3">
-    Сумма для пополнения
   </string>
   <string id="collateral-box__info-title--1">
     Залог

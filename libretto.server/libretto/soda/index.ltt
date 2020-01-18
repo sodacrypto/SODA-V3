@@ -506,7 +506,7 @@ def sections() = {
 					</div>					
 				</div>
 
-				<div class="box-withdraw-repay-collateral" data-type="active-loan-info" data-action="repay" data-withdraw="1" data-repay="1" data-collateral="1">
+				<div class="box-withdraw-repay-collateral" data-type="active-loan-info" data-action="repay" data-repay="1" data-collateral="1">
 					<div class="box-withdraw-repay-collateral__tabs">
 						<div class="box-withdraw-repay-collateral__tab tab-repay" data-type="repay">#{locale("repay__title")}</div>
 						<div class="box-withdraw-repay-collateral__tab tab-collateral" data-type="collateral">#{locale("collateral__title")}</div>
@@ -527,37 +527,14 @@ def sections() = {
 								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--2")}</div>
 								<div data-type="loan-debt" class="count" data-currency="DAI">...</div>
 							</div>
-							<div class="r-b-info-box">
-								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--3")}</div>
-								<div data-type="loan-refill" class="count" data-currency="DAI">...</div>
-							</div>
+							<div class="r-b-info-box"></div>
 						</div>
 						#{
 							notification("neutral t-1", locale("repay__notification--t-1"))
-						
-							notification("neutral t-2", locale("repay__notification--t-2"))
-						
-							notification("neutral t-3", locale("repay__notification--t-3"))
-							()
 						}
-
-						<!--div class="repay-box__refill">
-							<h3 class="repay-box__refill-header">#{locale("repay-box__refill-header")}</h3>
-							<div class="repay-box__refill-title add-colon">#{locale("repay-box__refill-title")}</div>
-							<div></div>
-							#{
-								inputWithCopy((),"","refill-address")
-							}
-							
-							<div class="repay-content__history--refill hide">
-								<div class="repay-content__title add-colon">#{locale("repay-content__history-title-1")}</div>
-								<div class="history-transactions">
-									<div class="history-transaction">
-										<a href=#{"/"+localization/currentLocale} class="link--transaction">tetetetettest</a>
-									</div>										
-								</div>
-							</div>
-						</div-->
+						#{
+							notification("neutral t-2", locale("repay__notification--t-2"))
+						}
 
 
 						<div class="repay-box__repay">
@@ -578,10 +555,10 @@ def sections() = {
 								<button name="submit" class="button--yellow">#{locale("repay__button")}</button>
 							</div>
 							
-							<div class="repay-content__history--repay">
-								<div class="repay-content__title add-colon">#{locale("repay-content__history-title-2")}</div>
-								<div class="history-transactions"/>
-							</div>
+						</div>
+						<div class="repay-content__history--repay">
+							<div class="repay-content__title add-colon">#{locale("repay-content__history-title-2")}</div>
+							<div class="history-transactions"/>
 						</div>
 
 
@@ -623,7 +600,7 @@ def sections() = {
 								}
 
 								<div class="collateral-content__history--top-up hide">
-									<div class="repay-content__title add-colon">#{locale("repay-content__history-title-1")}</div>
+									<div class="repay-content__title add-colon">#{locale("repay-content__history-title")}</div>
 									<div class="history-transactions">
 										<div class="history-transaction">тут будет таблица <a href=#{"/"+localization/currentLocale} class="link--transaction">tetetetettest</a></div>										
 									</div>
@@ -651,7 +628,7 @@ def sections() = {
 
 						</div>
 						<div class="collateral-content__history--withdraw">
-							<div class="repay-content__title add-colon">#{locale("repay-content__history-title-1")}</div>
+							<div class="repay-content__title add-colon">#{locale("repay-content__history-title")}</div>
 							<div class="history-transactions">
 								<div class="history-transaction" data-attr="collateral-withdraw-info" />
 							</div>

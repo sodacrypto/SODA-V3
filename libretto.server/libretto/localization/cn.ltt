@@ -272,29 +272,22 @@ def cn = <locale lang="cn">
     清算价格
   </string>    
 
+
   <string id="repay__notification--t-1"> 
-    将余额填充到还款所需的金额。如果您想计算您的贷款利息，也可以将余额用于部分还款。
-  </string>
-  <string id="repay__notification--t-2"> 
     您的余额足以偿还您的贷款并可提出抵押物！
   </string> 
-  <string id="repay__notification--t-3"> 
+  <string id="repay__notification--t-2"> 
     该贷款已成功偿还。您现在可以在“抵押物”标签页中提出抵押物。
   </string> 
 
-  <string id="repay-content__history-title-1">
+  <string id="repay-content__history-title">
     历史
   </string>
   <string id="repay-content__history-title-2">
     偿还历史
   </string>
 
-  <string id="repay-box__refill-header">
-    填充
-  </string>
-  <string id="repay-box__refill-title">
-    发送DAI至此以太坊地址以进行余额充值 (全额偿清还差<label data-type="loan-refill" data-currency="DAI">10.322</label>)
-  </string>
+
   <string id="repay-box__repay-header">
     偿还
   </string>
@@ -347,9 +340,6 @@ def cn = <locale lang="cn">
   </string>
   <string id="repay-box__info-title--2">
     偿还
-  </string>
-  <string id="repay-box__info-title--3">
-    填充数量
   </string>
   <string id="collateral-box__info-title--1">
     抵押物
