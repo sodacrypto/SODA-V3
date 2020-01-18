@@ -39,7 +39,8 @@ def lk = jetx/out: {
 		</style>
 
 		<body>
-			<template id="js_template__loan">#{loanHistory}</template>
+			<template id="js_template__loans-history-card">#{loanHistory}</template>
+			<template id="js_template__select-option">#{selectOption}</template>
 			<div class="overlay"></div>
 			<div class="connection-pop-up pop-up">
 				<!--div class="pop-up__content">
@@ -476,7 +477,7 @@ def sections() = {
 				}
 
 
-				<div id="state-line" class="w-r-loan-status-box" data-status=#{}>
+				<div id="state-line" class="w-r-loan-status-box" data-status=#{0}>
 					<div class="w-r-loan-status__title add-colon">#{locale("w-r-loan-status__title")}</div>
 					<div class="withdraw-repay__storyline-status-titles">
 						<h3 class="withdraw-repay__storyline--status-title">(1/5) #{locale("loan-history__status-1")}</h3>
@@ -505,7 +506,7 @@ def sections() = {
 					</div>					
 				</div>
 
-				<div class="box-withdraw-repay-collateral hide" data-type="active-loan-info" data-action="withdraw" data-withdraw="1" data-repay="1" data-collateral="1">
+				<div class="box-withdraw-repay-collateral" data-type="active-loan-info" data-action="repay" data-withdraw="1" data-repay="1" data-collateral="1">
 					<div class="box-withdraw-repay-collateral__tabs">
 						<div class="box-withdraw-repay-collateral__tab tab-withdraw" data-type="withdraw">#{locale("withdraw__title")}</div>
 						<div class="box-withdraw-repay-collateral__tab tab-repay" data-type="repay">#{locale("repay__title")}</div>
@@ -545,6 +546,8 @@ def sections() = {
 
 
 					<form id="loan-repay" class="repay-box">
+						<input type="hidden" name="id"/>
+						<input type="hidden" name="token"/>
 						<div class="repay-box__info">
 							<div class="r-b-info-box">
 								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--1")}</div>
@@ -561,15 +564,14 @@ def sections() = {
 						</div>
 						#{
 							notification("neutral t-1", locale("repay__notification--t-1"))
-						}
-						#{
+						
 							notification("neutral t-2", locale("repay__notification--t-2"))
-						}
-						#{
+						
 							notification("neutral t-3", locale("repay__notification--t-3"))
+							()
 						}
 
-						<div class="repay-box__refill">
+						<!--div class="repay-box__refill">
 							<h3 class="repay-box__refill-header">#{locale("repay-box__refill-header")}</h3>
 							<div class="repay-box__refill-title add-colon">#{locale("repay-box__refill-title")}</div>
 							<div></div>
@@ -585,7 +587,7 @@ def sections() = {
 									</div>										
 								</div>
 							</div>
-						</div>
+						</div-->
 
 
 						<div class="repay-box__repay">
@@ -693,9 +695,22 @@ def sections() = {
 	)
 }
 
+def selectOption = <div class="select__elem">
+	<div class="select-elem-box">
+		<div class="count" data-currency="DAI" data-prop="amount"/>
+		<div class="select-date-title" data-prop="taken" data-title=#{localeText("loan-history__stats-title--taken")}/>
+	</div>
+	<div class="select-elem__status hide-on-all-computers js-withdrawal-icon" data-status="3"></div>
+	<div class="select-elem-box hide-on-phone">
+		<div class="select-elem-min-title">#{localeText("loan-history__stats-title--collateral-status")}</div>
+		<div class="select-elem-status">
+			<span data-prop="security"/>%
+		</div>
+	</div>
+</div>
 
 def monitorLoan(currency) = {
-	<div class="w-r-loan-deals-box hide" data-type="active-loan-info">
+	<div class="w-r-loan-deals-box" data-type="active-loan-info">
 					<h3 class="w-r-loan-deals__title">#{locale("w-r-loan-deals__title")}</h3>
 					<div class="w-r-loan-deals__content">
 						<div class="details__min-header">#{locale("details__min-header--INTEREST")}</div>

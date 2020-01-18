@@ -16,6 +16,12 @@ Date.prototype.toMyString = function(){
 	})
 }
 
+const templates = new class {
+	get(name){
+		return document.importNode(document.getElementById(`js_template__${name}`).content.firstChild, true)
+	}
+}
+
 const enableEhereum = () => {
 	const web3 = new Web3(ethereum)
 	Promise.all([
@@ -218,7 +224,8 @@ function start([address, web3, chainID]){
 				contracts.BorrowDAI.methods.interestAmount(id).call(),
 				Price.methods.latestAnswer().call()
 			]).then(([loan, block, interest, price]) => {
-				const card = document.importNode(document.getElementById('js_template__loan').content.firstChild, true)
+				const card = templates.get('loans-history-card')
+				const security = (loan.collateralAmount * price * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
 				card.querySelector('[data-prop=amount]').innerText = (amount / 1e18).toFixed(2)
 				card.dataset.taken = block.timestamp
 				card.dataset.status = 
@@ -228,8 +235,7 @@ function start([address, web3, chainID]){
 					new Date(block.timestamp * 1e3).toMyString()
 				card.querySelector('[data-prop=collateral]').innerText = (loan.collateralAmount / 1e8).toFixed(8)		
 				card.querySelector('[data-prop=interest]').innerText = interest / 1e18		
-				card.querySelector('[data-prop=security]').innerText = 
-					(loan.collateralAmount * price * 1e4 / (interest + loan.loanAmount)).toFixed(2) 		
+				card.querySelector('[data-prop=security]').innerText = security 		
 
 				const container = document.querySelector('.loans-history__container')
 				if(container.childElementCount == 0) container.appendChild(card)
@@ -250,6 +256,54 @@ function start([address, web3, chainID]){
 						this.classList.toggle('show')
 					}))
 
+				
+				const selectContent = document.querySelector("#loan-select .select__content")
+				const option = templates.get('select-option')
+				option.querySelector('[data-prop=amount]').innerText = 
+					(amount / 1e18).toFixed(2)
+				option.querySelector('[data-prop=taken]').innerText = 
+					new Date(block.timestamp * 1e3).toMyString()
+				option.dataset.taken = block.timestamp
+				option.querySelector('[data-prop=security]').innerText = security
+
+				option.addEventListener('click', function(){
+					const selected = document.importNode(this, true)
+					const select = document.querySelector('.select')
+					selected.classList.remove('selected')
+					select.querySelector('.select__selected').innerHTML = ""
+					select.querySelector('.select__selected').appendChild(selected)
+					select.querySelectorAll('.select__content .select__elem').forEach(x => x.classList.remove("selected"))
+					this.classList.add("selected")
+					select.classList.remove("open")
+					document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
+				
+					document.forms['loan-repay'].id.value = id
+					document.forms['loan-repay'].token.value = 'DAI'
+					document.getElementById('state-line').dataset.status = 'waiting'
+						// loan.state == 0 ? 5 :
+						// loan.loanAmount != amount ? 4 :3
+					document.querySelector('[data-type=active-loan-info]')
+						.classList.remove('hide')
+					BorrowDAI.methods.loan(id).call().then(loan => {
+						console.log(loan)
+						document.getElementById('state-line')
+							.dataset.status =
+								loan.state == 0 ? 5 :
+								loan.loanAmount != amount ? 4 :3
+					})
+				})
+				if(selectContent.childElementCount == 0) selectContent.appendChild(option)
+				else {
+					let cur = selectContent.firstElementChild
+					while(
+						cur.nextElementSibling && 
+						cur.dataset.taken > block.timestamp
+					) cur = cur.nextElementSibling
+					if(cur.dataset.taken > block.timestamp)
+						selectContent.appendChild(option)
+					else selectContent.insertBefore(option, cur)
+				} 
+
 			})
 		})
 	)
@@ -260,6 +314,37 @@ document.forms.loan.amount.addEventListener('change', handlers.get('loan-params-
 document.forms.loan.amount.addEventListener('keyup', handlers.get('loan-params-recount'));
 document.forms.loan.addEventListener('submit', handlers.get('loan-submit'));
 document.forms.loan.querySelector('[data-action=cancel]').addEventListener('click', handlers.get('loan-cancel'));
+
+document.querySelectorAll('[data-type=active-loan-info]').forEach(block => {
+	block.querySelectorAll('.box-withdraw-repay-collateral__tab').forEach(tab => {
+		tab.addEventListener('click', () => {
+			block.dataset.action = tab.dataset.type
+		})
+	})
+})
+
+document.forms['loan-repay'].addEventListener('submit', function(e){
+	e.preventDefault()
+
+})
+
+document.querySelectorAll('.select').forEach(select => {
+	select.querySelector('.select__selected').addEventListener('click', function(event){
+		if (select.querySelector('.select__content:empty')) return 
+
+		document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
+		const overlay = document.createElement("div")
+		document.body.appendChild(overlay)
+		overlay.classList.add("overlay-dyn")
+		overlay.addEventListener('click', function(event){
+			document.querySelectorAll(".select").forEach(x => x.classList.remove("open"))
+			document.body.removeChild(overlay)
+		})
+		
+		this.parentNode.classList.add("open")
+		// document.querySelector('.overlay').classList.toggle("open")
+	})
+})
 
 document.querySelectorAll(".lang-box").forEach(x => x.addEventListener('click', function(){
 	if (document.querySelectorAll('.overlay-dyn'))
@@ -276,8 +361,6 @@ document.querySelectorAll(".lang-box").forEach(x => x.addEventListener('click', 
 	this.querySelector(".lang-dropdown").classList.add("open")
 
 }))
-
-
 
 document.querySelectorAll('[data-page]').forEach(
 	x => x.addEventListener('click', function(){
