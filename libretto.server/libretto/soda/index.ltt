@@ -602,9 +602,22 @@ def sections() = {
 
 						<div class="collateral-content__history--withdraw">
 							<div class="repay-content__title add-colon">#{locale("repay-content__history-title")}</div>
-							<div class="history-transactions">
-								<div class="history-transaction" data-attr="collateral-withdraw-info" />
-							</div>
+							<table class="history-transactions">
+								<tr class="history-transaction">
+									<td>
+										12/12/2020
+									</td>
+									<td>
+										12
+									</td>
+									<td>
+										<a href="/" class="link--transaction">testlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlinktestlink</a>
+									</td>
+									<td>
+										done
+									</td>
+								</tr>
+							</table>
 						</div>							
 					</form>			
 				</div>

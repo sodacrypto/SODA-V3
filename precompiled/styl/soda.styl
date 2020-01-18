@@ -1054,17 +1054,18 @@ for $i in 1..states-count
 	margin-top: 10px;
 .history-transaction
 	min-height 40px
-	font-family: Futura PT;
-	font-style: normal;
-	font-weight: 600;
-	font-size: 12px;
-	line-height: 18px;
-	color: #4A4469;
-	padding: 11px;
 	box-sizing: border-box;
 	word-wrap: break-word;
 	border-bottom: 1px solid #C2C0CB;
 	overflow: hidden;
+	td
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 18px;
+		color: #4A4469;
+		padding: 11px;
 	&:last-child
 		border-bottom none
 a.link--transaction
@@ -1077,6 +1078,11 @@ a.link--transaction
 	padding-left 15px
 	text-decoration none
 	border-bottom: 1px dashed #4A4469;
+	white-space: nowrap;
+	max-width: 100px;
+	text-overflow: clip;
+	overflow: hidden;
+	display: block;
 	&:before
 		content ""
 		position absolute
@@ -1300,6 +1306,9 @@ a.link--transaction
 
 .collateral-content__history--top-up, .collateral-content__history--withdraw, .repay-content__history--repay
 	margin-top 10px
+	display: unquote('flex');
+	flex-direction: column;
+		
 
 
 .w-r-loan-selector-box, .w-r-loan-status-box, .w-r-loan-deals-box
