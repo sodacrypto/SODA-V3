@@ -431,6 +431,7 @@ span.bold
 				transform: rotate(180deg);
 .select-elem-box
 	flex 1
+	position relative
 	&:last-child
 		text-align: end;
 .select-date-title
@@ -441,6 +442,7 @@ span.bold
 	line-height: 15px;
 	color: #9A97AB;
 	margin: 5px 20px;
+	white-space: nowrap;
 	&:before
 		content attr(data-title)
 		font-weight 600
