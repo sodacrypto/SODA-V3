@@ -2,6 +2,25 @@ require('ion-rangeslider');
 const Web3 = require('web3')
 const BN = Web3.utils.BN
 
+String.prototype.toBigIntString = function (precision = 0){
+	const [head, tail=''] = this.split('.')
+	const buffer = [head,tail.slice(0,precision)]
+	for(let i = 0; i < precision - tail.length; i++) buffer.push(0)
+	return buffer.join('')
+} 
+
+// String.prototype.fromBigIntString = function (precision = 0){
+// 	if(precision == 0) return this.toString()
+// 	if(precision < 0 ) throw "negative precision"
+// 	const head = this.slice(0, -precision )
+// 	const tail = this.slice( -precision)
+// 	const buffer = [head, '.']
+
+// 	for(let i = 0; i < precision - tail.length; i++) buffer.push(0)
+// 	buffer.push(tail)
+// 	return buffer.join('')
+// } 
+
 const subsciptions = []
 
 Date.prototype.toMyString = function(){
@@ -38,13 +57,13 @@ const event_reduplicator = new function(){
 function setSecurity(security, status, sv){
 	if(!sv.classList.contains('security-view'))
 		throw "wrong security-view"
-	const state  =
-		status == 0 ? 'repaid' : 
-		status == 2 ? 'liqudated' : 
-		security < 110 ?  'liquidation' :
-		security < 180 ?  'danger' :
-		security < 250 ?  'safe' :
-						  'very-safe'
+	const state = sv.dataset.state =
+		status == 0    ? 'repaid' : 
+		status == 2    ? 'liqudated' : 
+		security < 110 ? 'liquidation' :
+		security < 180 ? 'danger' :
+		security < 250 ? 'safe' :
+						 'very-safe'
 	
 	sv.querySelector('.security-view__amount').innerText = 
 		parseFloat(security) ? security : null
@@ -240,8 +259,9 @@ function start([address, web3, chainID]){
 				document.forms.loan.loan_token.value
 		})
 		handlers.create('loan-start-process',function(){
-			const {lastPrice, apr, poolBalance} = params
-			const amount = (document.forms.loan.amount.value * 1e18).toFixed()
+			const {lastPrice} = params
+			const amount = document.forms.loan.amount.value.toBigIntString(18)
+			console.log(amount)
 			const security = $("#security-range").data('from')
 			const collateral = Math.ceil(amount * security / lastPrice / 1e12).toFixed()
 			const _BTC = contracts[document.forms.loan.collateral_token.value]
@@ -267,7 +287,7 @@ function start([address, web3, chainID]){
 			const id = this.id.value
 			const token = contracts[this.token.value]
 			const borrow = contracts[`Borrow${this.token.value}`]
-			const amount = (this.amount.value * 1e18).toFixed()
+			const amount = this.amount.value.toBigIntString(18)
 			this.submit.classList.add('loading')
 			approve(token, address, borrow._address, amount)
 				.then(() => borrow.methods.repay(id, amount).send() )
