@@ -1168,6 +1168,9 @@ for $i in 1..states-count
 		&.link
 			position: relative;
 			max-width: 100px;
+			@media screen and (max-width 959px)
+				max-width 70px
+			
 		font-family: Futura PT;
 		font-style: normal;
 		font-weight: 600;
@@ -1177,6 +1180,48 @@ for $i in 1..states-count
 		padding: 11px;
 	&:last-child
 		border-bottom none
+	&[data-state="load"]
+		.state
+			position relative
+			width: 40px;
+			&:before
+				content ''
+				background url("/images/load.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				position absolute
+				height 100%
+				width: 20px;
+				transform: translate(50%, -50%);
+	&[data-state="success"]
+		.state
+			width: 40px;
+			position relative
+			&:before
+				content ''
+				background url("/images/success-2.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				position absolute
+				height 100%
+				width: 20px;
+				transform: translate(50%, -50%);
+	&[data-state="canselled"]
+		.state
+			position relative
+			width: 40px;
+			&:before
+				content ''
+				background url("/images/canselled.svg")
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				position absolute
+				height 100%
+				width: 20px;
+				transform: translate(50%, -50%);
 a.link--transaction
 	font-family: Futura PT;
 	font-style: normal;

@@ -612,7 +612,7 @@ def sections() = {
 						<div class="collateral-content__history--withdraw">
 							<div class="repay-content__title add-colon">#{locale("repay-content__history-title")}</div>
 							<table class="history-transactions">
-								<tr class="history-transaction">
+								<tr class="history-transaction" data-state="load">
 									<td>
 										12/12/2020
 									</td>
@@ -622,9 +622,7 @@ def sections() = {
 									<td class="link">
 										<a href="/" class="link--transaction">0xbadbe0693cf26d93552d06cc35390b838eb3a1bc848cd8d22d554cf040cc541d</a>
 									</td>
-									<td>
-										done
-									</td>
+									<td class="state"></td>
 								</tr>
 							</table>
 						</div>							
