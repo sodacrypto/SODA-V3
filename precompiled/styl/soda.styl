@@ -815,6 +815,8 @@ label[data-currency]
 
 
 .select span
+	&.security-view__amount
+		display none
 	&.security-view__amount, &.security-view__label
 		border-radius: 2px;
 		font-family: Futura PT;
@@ -826,7 +828,7 @@ label[data-currency]
 			display none
 		&[data-state="repaid"]
 			padding: 2px 4px;
-			background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+			background: #a3a1b4
 			color: #FFFFFF;
 		&[data-state="liquidation"]
 			padding: 2px 4px;
@@ -836,22 +838,39 @@ label[data-currency]
 			padding: 2px 4px;
 			color #FFF
 			background #EC930F;
+		&[data-state="safe"]
+			padding: 2px 4px;
+			color #FFF
+			background #19cea8//#7cb342
+		&[data-state="very-safe"]
+			padding: 2px 4px;
+			color #FFF
+			background #07a886//#2e7d32;	
 	&.security-view
 		@media screen and (max-width 959px)
-			&[data-state="safe"], &[data-state="very-safe"]
+			&[data-state]
 				&:before
-					content ""
-					background url("/images/success.svg")
-					background-size: contain;
-					background-repeat: no-repeat;
-					background-position center
 					position: absolute;
 					height: 100%;
 					width 15px
 					box-sizing: border-box;
 					padding: 2px 4px;
 					margin-top -5px
-					right 40px
+					right 20px
+			&[data-state="safe"]
+				&:before
+					content ""
+					background url("/images/success-safe.svg")
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position center
+			&[data-state="very-safe"]
+				&:before
+					content ""
+					background url("/images/success-very-safe.svg")
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position center
 			&[data-state="repaid"]
 				&:before
 					content ""
@@ -859,13 +878,6 @@ label[data-currency]
 					background-size: contain;
 					background-repeat: no-repeat;
 					background-position center
-					position: absolute;
-					height: 100%;
-					width 15px
-					box-sizing: border-box;
-					padding: 2px 4px;
-					margin-top -5px
-					right 40px
 			&[data-state="liquidation"]
 				&:before
 					content ""
@@ -873,13 +885,6 @@ label[data-currency]
 					background-size: contain;
 					background-repeat: no-repeat;
 					background-position center
-					position: absolute;
-					height: 100%;
-					width 15px
-					box-sizing: border-box;
-					padding: 2px 4px;
-					margin-top -5px
-					right 40px
 			&[data-state="danger"]
 				&:before
 					content ""
@@ -887,18 +892,6 @@ label[data-currency]
 					background-size: contain;
 					background-repeat: no-repeat;
 					background-position center
-					position: absolute;
-					height: 100%;
-					width 15px
-					box-sizing: border-box;
-					padding: 2px 4px;
-					margin-top -5px
-					right 40px
-		
-		
-	
-
-
 
 
 //-->loan
@@ -1170,7 +1163,6 @@ for $i in 1..states-count
 			max-width: 100px;
 			@media screen and (max-width 959px)
 				max-width 70px
-			
 		font-family: Futura PT;
 		font-style: normal;
 		font-weight: 600;
@@ -1180,48 +1172,40 @@ for $i in 1..states-count
 		padding: 11px;
 	&:last-child
 		border-bottom none
-	&[data-state="load"]
+	.state
+		position relative
+		width: 40px;
+	&[data-state]
 		.state
-			position relative
-			width: 40px;
+			&:before
+				position absolute
+				height 100%
+				width: 20px;
+				transform: translate(50%, -50%);
+		&[data-state="load"]
+		.state
 			&:before
 				content ''
 				background url("/images/load.svg")
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
-				position absolute
-				height 100%
-				width: 20px;
-				transform: translate(50%, -50%);
 	&[data-state="success"]
 		.state
-			width: 40px;
-			position relative
 			&:before
 				content ''
 				background url("/images/success-2.svg")
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
-				position absolute
-				height 100%
-				width: 20px;
-				transform: translate(50%, -50%);
 	&[data-state="canselled"]
 		.state
-			position relative
-			width: 40px;
 			&:before
 				content ''
 				background url("/images/canselled.svg")
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
-				position absolute
-				height 100%
-				width: 20px;
-				transform: translate(50%, -50%);
 a.link--transaction
 	font-family: Futura PT;
 	font-style: normal;
