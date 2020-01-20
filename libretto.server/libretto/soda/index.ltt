@@ -336,7 +336,7 @@ def loanHistory =
 	</div>
 	<div class="loan-history__wd-block">#{locale("loan-history__wd-block")}</div>
 	<div class="loan-history__button-box">
-		<button class="button--yellow">#{locale("loan-history__button--withdraw-and-repay")}</button>
+		<button data-prop="goto-button" class="button--yellow">#{locale("loan-history__button--withdraw-and-repay")}</button>
 	</div>
 	<div class="loan-history__status-bar hide-on-all-computers">
 		<div class="loan-history__header">
@@ -580,9 +580,9 @@ def sections() = {
 							</div>
 							<div class="c-b-info-box">
 								<div class="c-b-info-box__title add-colon">#{locale("collateral-box__info-title--2")}</div>
-								<div data-attr="loan-security" class="count">Safe (170%)</div>
+								<div data-attr="loan-security" class="count">#{security}</div>
 							</div>
-							<div class="r-b-info-box"></div>
+							<!--div class="r-b-info-box"/-->
 						</div>
 						#{
 							notification("neutral t-2", locale("collateral__notification--returned-BTC"))
