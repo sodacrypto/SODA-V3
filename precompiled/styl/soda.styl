@@ -607,11 +607,11 @@
 		margin-top 15px
 .loan-take-form__content
 	display unquote('flex')
-	margin-left 40px
+	margin 20px
 	&.min-fix
 		margin-top 15px
-	.button--yellow 
-		margin 0px 40px 30px 0
+	@media screen and (max-width 959px)
+		margin 10px 0
 
 .loan-take-form__header
 	font-family: Futura PT;
@@ -805,11 +805,111 @@ label[data-currency]
 	color: #221B48;
 	display none
 
+
+
+
+
+
+
+
+
+
+.select span
+	&.security-view__amount, &.security-view__label
+		border-radius: 2px;
+		font-family: Futura PT;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 12px;
+		@media screen and (max-width 959px)
+			display none
+		&[data-state="repaid"]
+			padding: 2px 4px;
+			background: linear-gradient(90deg, #4776E6 0%, #5754E9 100%);
+			color: #FFFFFF;
+		&[data-state="liquidation"]
+			padding: 2px 4px;
+			background: #E50000;
+			color: #FFFFFF;
+		&[data-state="danger"]
+			padding: 2px 4px;
+			color #FFF
+			background #EC930F;
+	&.security-view
+		@media screen and (max-width 959px)
+			&[data-state="safe"], &[data-state="very-safe"]
+				&:before
+					content ""
+					background url("/images/success.svg")
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position center
+					position: absolute;
+					height: 100%;
+					width 15px
+					box-sizing: border-box;
+					padding: 2px 4px;
+					margin-top -5px
+					right 40px
+			&[data-state="repaid"]
+				&:before
+					content ""
+					background url("/images/closed.svg")
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position center
+					position: absolute;
+					height: 100%;
+					width 15px
+					box-sizing: border-box;
+					padding: 2px 4px;
+					margin-top -5px
+					right 40px
+			&[data-state="liquidation"]
+				&:before
+					content ""
+					background url("/images/liquidation.svg")
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position center
+					position: absolute;
+					height: 100%;
+					width 15px
+					box-sizing: border-box;
+					padding: 2px 4px;
+					margin-top -5px
+					right 40px
+			&[data-state="danger"]
+				&:before
+					content ""
+					background url("/images/danger.svg")
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position center
+					position: absolute;
+					height: 100%;
+					width 15px
+					box-sizing: border-box;
+					padding: 2px 4px;
+					margin-top -5px
+					right 40px
+		
+		
+	
+
+
+
+
 //-->loan
 
 states-count = 5
 status-after-which-the-output-is-activated = 3
 // tuuuut
+
+.select__elem[data-state=\'{states-count}\']
+	.count
+		color #9a97ab
 
 for $i in 1..states-count
 	.select-elem__status[data-status=\'{$i}\']
@@ -1571,7 +1671,7 @@ a.link--transaction
 .box-withdraw-repay-collateral
 	display unquote('flex')
 	flex-direction: column;
-	margin 0 40px
+	margin 0 40px 30px 40px
 	@media screen and (max-width 959px)
 		margin 40px 0
 		width 100vw

@@ -297,7 +297,7 @@ def Int daiToString = (this div 1000000000000000000.0).util/plainString
 def Int stampToDate = date/Date(this*1000).s"#{date}/#{month}/#{year} #{hour}:#{min}"
 def Int btcToString = (this div 100000000.0).util/plainString
 
-def security = <span class="security-view">
+def security = <span class="security-view" data-state=#{}>
 	<span class="security-view__label" data-state="repaid">#{locale("security-state--repaid")}</span>
 	<span class="security-view__label" data-state="liquidation">#{locale("security-state--liquidation")}</span>
 	<span class="security-view__label" data-state="danger">#{locale("security-state--danger")}</span>
@@ -642,9 +642,9 @@ def selectOption = <div class="select__elem" data-state="">
 		<div class="count" data-currency="DAI" data-prop="amount"/>
 		<div class="select-date-title" data-prop="taken" data-title=#{localeText("loan-history__stats-title--taken")}/>
 	</div>
-	<div class="select-elem__status hide-on-all-computers js-withdrawal-icon" data-status="3"></div>
-	<div class="select-elem-box hide-on-phone">
-		<div class="select-elem-min-title">#{localeText("loan-history__stats-title--collateral-status")}</div>
+	<!--div class="select-elem__status hide-on-all-computers js-withdrawal-icon" data-status="3"></div-->
+	<div class="select-elem-box">
+		<div class="select-elem-min-title hide-on-phone">#{localeText("loan-history__stats-title--collateral-status")}</div>
 		<div class="select-elem-status">#{security}</div>
 	</div>
 </div>

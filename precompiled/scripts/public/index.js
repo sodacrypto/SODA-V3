@@ -38,7 +38,7 @@ const event_reduplicator = new function(){
 function setSecurity(security, status, sv){
 	if(!sv.classList.contains('security-view'))
 		throw "wrong security-view"
-	const state  =
+	const state  = sv.dataset.state = 
 		status == 0 ? 'repaid' : 
 		status == 2 ? 'liqudated' : 
 		security < 110 ?  'liquidation' :
