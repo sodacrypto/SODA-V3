@@ -94,9 +94,7 @@ function changeAccountsHandler(accounts){
 	}
 }
 
-const params = {
-	lastPrice:0
-}
+const params = {}
 const info = {
 	DAI:  require('../static/contracts/DAI.json'),
 	testBTC:  require('../static/contracts/DeFiBTC.json'),
@@ -206,8 +204,8 @@ function start([address, web3, chainID]){
 			})
 		updater.push(() => Price.methods.latestAnswer().call(),
 			value => {
-				params.lastPrice = value / 1e8
-				console.log("btc price:",params.lastPrice)	
+				params.lastPrice = value
+				console.log("btc price:",value / 1e8)	
 				handlers.get('loan-params-recount').call()		
 			})
 		updater.push(() => Borrow.methods.lastRate().call(), rate => {
@@ -241,9 +239,10 @@ function start([address, web3, chainID]){
 		})
 		handlers.create('loan-params-recount', () => {
 			const {lastPrice, apr, poolBalance} = params
-			const amount = document.forms.loan.amount.value || poolBalance / 1e18
+			const amount = parseFloat(document.forms.loan.amount.value.toString()) || (poolBalance / 1e18)
+			console.log(document.forms.loan.amount.value.toBigIntString(18))
 			const security = $("#security-range").data('from')
-			const requiredCollateral = (Math.ceil(amount * security / lastPrice * 100) /10000).toFixed(4)
+			const requiredCollateral = (Math.ceil(amount * security / lastPrice * 1e10) /10000).toFixed(4)
 			document.getElementById('loan-amount-2').innerText = amount
 			document.getElementById('collateral-amount-2').innerText = requiredCollateral
 			document.getElementById('required-collateral').innerText = requiredCollateral
@@ -263,14 +262,20 @@ function start([address, web3, chainID]){
 			const amount = document.forms.loan.amount.value.toBigIntString(18)
 			console.log(amount)
 			const security = $("#security-range").data('from')
-			const collateral = Math.ceil(amount * security / lastPrice / 1e12).toFixed()
+			const collateral = new BN(amount)
+				.mul(new BN(security))
+				.div(new BN(lastPrice))
+				.div(new BN(1e4))
+				.add(new BN(1))
+				.toString()
+			console.log(collateral)
 			const _BTC = contracts[document.forms.loan.collateral_token.value]
 			const _Borrow = contracts['Borrow'+document.forms.loan.loan_token.value]
 			this.classList.add('loading')
 			document.querySelector('.consent__cansel-box').classList.add('hide')
 
 			document.getElementById('state-line-take').dataset.status = 'waiting'
-			approve(_BTC, address, _Borrow._address, amount)
+			approve(_BTC, address, _Borrow._address, collateral)
 				.then(()=>
 					document.getElementById('state-line-take').dataset.status = 1
 				)
