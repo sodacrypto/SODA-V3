@@ -961,45 +961,45 @@ for $i in 1..states-count
 				// 	padding-top 5px
 				.loan-history__button-box
 					display none
-				.loan-history__icon-status--for-mobile
-					@media screen and (max-width 959px)
-						height 20px
-						width 20px
-						background url("/images/closed.svg")
-						background-size: contain;
-						background-repeat: no-repeat;
-						position absolute
-						right: 20px
-						top: 24px	
+				// .loan-history__icon-status--for-mobile
+				// 	@media screen and (max-width 959px)
+				// 		height 20px
+				// 		width 20px
+				// 		background url("/images/closed.svg")
+				// 		background-size: contain;
+				// 		background-repeat: no-repeat;
+				// 		position absolute
+				// 		right: 20px
+				// 		top: 24px	
 			if $i == $j
 				.loan-history-header__status:nth-child({$i})
 					display unquote('block')
 				.withdraw-repay__storyline--status-title:nth-child({$i})
 					display unquote('block')
 			if $i < status-after-which-the-output-is-activated
-				.loan-history__icon-status--for-mobile
-					@media screen and (max-width 959px)
-						height 20px
-						width 20px
-						background url("/images/waiting.svg")
-						background-size: contain;
-						background-repeat: no-repeat;
-						position absolute
-						right: 20px
-						top: 24px					
+				// .loan-history__icon-status--for-mobile
+				// 	@media screen and (max-width 959px)
+				// 		height 20px
+				// 		width 20px
+				// 		background url("/images/waiting.svg")
+				// 		background-size: contain;
+				// 		background-repeat: no-repeat;
+				// 		position absolute
+				// 		right: 20px
+				// 		top: 24px					
 				.loan-history__button-box
 					display none
 			else if ($i >= status-after-which-the-output-is-activated && $i != states-count)
-				.loan-history__icon-status--for-mobile
-					@media screen and (max-width 959px)
-						height 20px
-						width 20px
-						background url("/images/success.svg")
-						background-size: contain;
-						background-repeat: no-repeat;
-						position absolute
-						right: 20px
-						top: 24px	
+				// .loan-history__icon-status--for-mobile
+				// 	@media screen and (max-width 959px)
+				// 		height 20px
+				// 		width 20px
+				// 		background url("/images/success.svg")
+				// 		background-size: contain;
+				// 		background-repeat: no-repeat;
+				// 		position absolute
+				// 		right: 20px
+				// 		top: 24px	
 				.loan-history__wd-block
 					display none
 			else				
@@ -1045,6 +1045,9 @@ for $i in 1..states-count
 	flex 1
 	display: unquote('flex')
 	margin-bottom: 10px;
+	@media screen and (max-width 959px)
+		flex-direction: column;
+		margin 0
 	&:last-child
 		margin-bottom: 0;
 .stats-box__elem
@@ -1070,6 +1073,7 @@ for $i in 1..states-count
 	font-size: 12px;
 	line-height: 18px;
 	color: #9A97AB;
+	white-space: nowrap;
 .stats-elem__content
 	font-family: Futura PT;
 	font-style: normal;
