@@ -407,9 +407,6 @@ def sections() = {
 				</div>
 
 
-				#{
-					notification("error hide", locale("take-loan__notification--neutral"), "js-take-loan-error-box-js")
-				}
 
 				#{takeLoanCalculatorLk}
 				
@@ -417,6 +414,9 @@ def sections() = {
 					<button data-action="receive" class="button--yellow">#{locale("loan-take-form__button--receive-DAI")}</button>
 				</div>
 				<div class="take-loan--consent">
+					#{
+						notification("error hide", locale("take-loan__error-4001"), "js-take-loan-error-box-js")
+					}
 					<div class="consent__main">		
 						<div class="loan-take-form">
 							<h2 class="loan-take-form__header">#{locale("loan-take-form__header")}</h2>
@@ -534,7 +534,7 @@ def sections() = {
 							</div>
 							<div class="r-b-info-box">
 								<div class="r-b-info-box__title add-colon">#{locale("repay-box__info-title--1")}</div>
-								<div data-type="loan-user-balance" class="count" data-currency="DAI">...</div>
+								<div data-attr="loan-interest" class="count" data-currency="DAI">...</div>
 							</div>
 							<div class="r-b-info-box"></div>
 						</div>
@@ -572,7 +572,7 @@ def sections() = {
 
 
 					</form>			
-					<form id="collateral-withdraw"  class="collateral-box">
+					<form id="collateral-topup"  class="collateral-box">
 						<div class="collateral-box__info">
 							<div class="c-b-info-box">
 								<div class="c-b-info-box__title add-colon">#{locale("collateral-box__info-title--1")}</div>
@@ -594,12 +594,12 @@ def sections() = {
 								<div class="c-b-top-up__elem">
 									<div class="collateral-box__top-up-title add-colon">#{locale("collateral-box__top-up-title-1")}</div>
 									<label class="input-box" data-currency="BTC">
-										<input data-attr="topUpCounter" step="0.00001" placeholder=#{localeText("w-c-input__placeholder--DAI-to-withdraw")} type="number" class="input"/>
+										<input data-attr="topUpCounter" name="amount" step="0.00001" placeholder=#{localeText("w-c-input__placeholder--DAI-to-withdraw")} type="number" class="input"/>
 									</label>
 								</div>
 								<div class="c-b-top-up__elem">
 									<div class="collateral-box__top-up-title add-colon">#{locale("collateral-box__top-up-title-2")}</div>
-									<div data-attr="riskAfterTopUp" class="count"/>									
+									<div data-attr="riskAfterTopUp" class="count">#{security}</div>									
 								</div>
 							</div>
 					
@@ -655,7 +655,7 @@ def monitorLoan(currency) = {
 						<div class="details-box">
 							<div class="detail-box">
 								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--loan-is-active-for")}</div>
-								<div data-attr="loan-duration" class="detail-box__content">7 days</div>
+								<div data-attr="loan-duration" class="detail-box__content with-currency" data-currency="days">7</div>
 							</div>
 							<div class="detail-box">
 								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--interest-to-be-paid")}</div>
@@ -670,7 +670,7 @@ def monitorLoan(currency) = {
 								<div data-attr="apr"  class="detail-box__content add-percent">3.0</div>
 							</div>
 						</div>
-						<div class="details__min-header">#{locale("details__min-header-COLLATERAL")}</div>
+						<!--div class="details__min-header">#{locale("details__min-header-COLLATERAL")}</div>
 						<div class="details-box">
 							<div class="detail-box">
 								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--collateral-BTC")}</div>
@@ -688,13 +688,17 @@ def monitorLoan(currency) = {
 								<div></div>
 								<div class="detail-box__content"></div>
 							</div>
-						</div>						
+						</div-->						
 						
 						<div class="details__min-header">#{locale("details__min-header-RISKS")}</div>
 						<div class="details-box">
 							<div class="detail-box">
+								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--collateral-BTC")}</div>
+								<div data-attr="SBTC-amount" class="detail-box__content with-currency" data-currency="BTC">0.15</div>
+							</div>
+							<div class="detail-box">
 								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--risk-status")}</div>
-								<div data-attr="loan-security" class="detail-box__content">...</div>
+								<div data-attr="loan-security" class="detail-box__content">#{security}</div>
 							</div>
 							<div class="detail-box">
 								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--real-time-BTC-price")}</div>
@@ -703,10 +707,6 @@ def monitorLoan(currency) = {
 							<div class="detail-box">
 								<div class="detail-box__title text-default add-colon">#{locale("detail-box__title--liquidation-price")}</div>
 								<div data-attr="liquidation-price" class="detail-box__content add-dollar" >...</div>
-							</div>
-							<div class="detail-box">
-								<div></div>
-								<div class="detail-box__content"></div>
 							</div>
 						</div>
 					</div>

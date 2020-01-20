@@ -89,9 +89,8 @@ def en = <locale lang="en">
     No collateral lock-up / KYC
   </string>
 
-  <string id="take-loan__notification--neutral"> 
-    Interest for the loan period will be automatically
-    paid from your collateral in Bitcoins (BTC)
+  <string id="take-loan__error-4001"> 
+    MetaMask Tx Signature: User denied transaction signature.
   </string>  
   <string id="calculator__title--you-are-borrowing"> 
     You are borrowing
@@ -246,18 +245,18 @@ def en = <locale lang="en">
     Interest to Be Paid
   </string>
   <string id="detail-box__title--DAI-daily-borrow-rate"> 
-    DAI Daily Borrow Rate
+    Daily Borrow Rate
   </string>
   <string id="detail-box__title--DAI-APR"> 
-    DAI APR
+    APR
   </string>
 
   <!--     Collateral      -->
   <string id="detail-box__title--collateral-BTC"> 
-    Collateral (BTC)
+    Collateral
   </string>
   <string id="detail-box__title--collateral-DAI"> 
-    Collateral (DAI)
+    Collateral
   </string>
   <string id="detail-box__title--collateral-interest"> 
     Collateral Minus Interest
@@ -324,7 +323,7 @@ def en = <locale lang="en">
 
 
   <string id="repay-box__info-title--1">
-    Your Balance
+    Interest
   </string>
   <string id="repay-box__info-title--2">
     To repay

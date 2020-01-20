@@ -88,9 +88,8 @@ def cn = <locale lang="cn">
     无抵押锁定 / KYC
   </string>
 
-  <string id="take-loan__notification--neutral"> 
-    Interest for the loan period will be automatically
-    paid from your collateral in Bitcoins (BTC)
+  <string id="take-loan__error-4001"> 
+    MetaMask Tx Signature: User denied transaction signature.
   </string>  
   <string id="calculator__title--you-are-borrowing"> 
     您正在借入
@@ -325,7 +324,7 @@ def cn = <locale lang="cn">
 
 
   <string id="repay-box__info-title--1">
-    Your balance
+    Interest
   </string>
   <string id="repay-box__info-title--2">
     偿还
