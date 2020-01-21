@@ -174,7 +174,7 @@ if(ethereum) {
 
 const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 	.then(([token, id]) => [id, contracts['Borrow'+token], contracts[token], token])
-	.then(([id, Borrow, Erc20], token) => Promise.all([
+	.then(([id, Borrow, Erc20, token]) => Promise.all([
 		Borrow.methods.loan(id).call(),
 		Borrow.methods.interestAmount(id).call(),
 		Borrow.methods.lastRate().call(),
@@ -198,6 +198,37 @@ const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 			document.querySelectorAll('[data-type=active-loan-info]').forEach(
 				x=>x.classList.add('hide')
 			)
+			const repayHisoryContainer = document
+				.querySelector('.repay-content__history--repay .history-transactions')
+			const collateralHisoryContainer = document
+				.querySelector('.collateral-content__history--withdraw .history-transactions')
+			repayHisoryContainer.innerHTML = null
+			collateralHisoryContainer.innerHTML = null
+			Borrow.getPastEvents('LoanRepayment',{
+				filter: {id},
+				fromBlock: 0
+			})
+			.then(arr => arr.forEach(event => {
+				const {interestAmount, repaymentAmount} = event.returnValues
+				const amount = new BN(interestAmount)
+					.add(new BN(repaymentAmount))
+					.div(new BN("1".toBigIntString(16)) )
+					.toString() / 100
+				const hash = event.transactionHash
+				const row = templates.get('history-transaction')
+				row.querySelector('[data-attr=time]').innerText = 'now' 
+				row.querySelector('[data-attr=tx]').innerText = hash 
+				row.querySelector('[data-attr=tx]').href = {
+					1: `https://etherscan.io/tx/${hash}`,
+					3: `https://ropsten.etherscan.io/tx/${hash}`
+				}[params.chainID] 
+				row.querySelector('[data-attr=amount]').innerText = amount 
+				row.querySelector('[data-attr=amount]').dataset.currency = token 
+				row.dataset.state = 'success'
+				console.log(event.id, event)
+				repayHisoryContainer.appendChild(row)
+				collateralHisoryContainer.appendChild( document.importNode(row,true) )
+			}))
 			r()
 		})
 	]))
@@ -273,7 +304,7 @@ const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 function start([address, web3, chainID]){
 	params.address = address
 	params.loan_issue = new Map()
-
+	params.chainID = chainID
 	console.log('connected with:', address)
 	const loanTypes = ['DAI']
 	const collateralTypes = ['testBTC']
