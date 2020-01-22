@@ -311,7 +311,7 @@ def loanHistory =
 <div data-loan-id=#{} class="loan-history" data-status="1">
 	<div class="loan-history__main">
 		<div class="loan-history__icon-status--for-mobile"/>
-		<div class="count" data-currency="DAI" data-prop="amount" >123</div>
+		<div class="count" data-prop="amount" >123</div>
 		<div class="loan-main__stats">
 			<div class="stats-box">
 				<div class="stats-box__elem">
@@ -326,11 +326,11 @@ def loanHistory =
 			<div class="stats-box">
 				<div class="stats-box__elem hide-on-phone">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--daily-interest")}</div>
-					<div class="stats-elem__content" data-prop="interest"/>
+					<div class="stats-elem__content with-currency" data-prop="interest"/>
 				</div>
 				<div class="stats-box__elem hide-on-phone">
 					<div class="stats-elem__title add-colon">#{locale("loan-history__stats-title--collateral")}</div>
-					<div class="stats-elem__content" data-prop="collateral"/>
+					<div class="stats-elem__content with-currency" data-prop="collateral"/>
 				</div>
 			</div>
 		</div>
@@ -540,7 +540,7 @@ def sections() = {
 							<div class="r-b-info-box"></div>
 						</div>
 						#{
-							notification("neutral t-1", locale("repay__notification--t-1"))
+							//notification("neutral t-1", locale("repay__notification--t-1"))
 						}
 						#{
 							notification("neutral t-2", locale("repay__notification--t-2"))

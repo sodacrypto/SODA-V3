@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.16;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/ownership/Ownable.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
@@ -22,12 +22,12 @@ contract SODABorrow is Ownable {
         uint lastRepay;
     }
 
-    event Liquidation(uint indexed id, uint collateralAmount, string cause);
-    event LoanIssued(uint indexed id, address indexed borrower, uint amount, uint collateral);
+    event Liquidation(uint indexed id, uint amount, IERC20 token, string cause);
+    event LoanIssued(uint indexed id, address indexed borrower, uint amount);
     event LoanRepayment(uint indexed id, uint interestAmount, uint repaymentAmount);
-    event CollateralReturned(uint indexed id, uint collateralAmount);
-    event CollateralReplenishment(uint indexed id, uint amount);
-    event AnableCollateralToken(IERC20 indexed token);
+    event CollateralReturned(uint indexed id, uint collateralAmount, IERC20 token);
+    event CollateralReplenishment(uint indexed id, uint amount, IERC20 token);
+    event EnableCollateralToken(IERC20 indexed token);
     event DisableCollateralToken(IERC20 indexed token);
     
     mapping(address => bool) public isAvailableBTCToken;
@@ -49,16 +49,16 @@ contract SODABorrow is Ownable {
         ratesHistory[now / 1 days] = lastRate = value;
     }
     
-    function borrow(address borrower, uint amount, uint collateral, IERC20 collateralToken) public returns(uint loan_id) {
+    function borrow(uint amount, uint collateral, IERC20 collateralToken) public returns(uint loan_id) {
         require(isAvailableBTCToken[address(collateralToken)], "token is not available");
         require(pool.token().balanceOf(address(pool)) >= amount, "too large, loan pool has no funds");
-        require(collateralToken.balanceOf(borrower) >= collateral, "insufficient funds");
-        require(collateralToken.allowance(borrower, address(this)) >= collateral, "insufficient funds. use approve");
+        require(collateralToken.balanceOf(msg.sender) >= collateral, "insufficient funds");
+        require(collateralToken.allowance(msg.sender, address(this)) >= collateral, "insufficient funds. use approve");
         require(collateral.mul( uint(btcPriceAggregator.latestAnswer()) ).mul(1e4) > amount.mul(135), "too low collateral");
 
         loan_id = nextID++;
         loan[loan_id] = Loan(
-            borrower,
+            msg.sender,
             LoanState.Active,
             collateralToken,
             collateral,
@@ -67,9 +67,10 @@ contract SODABorrow is Ownable {
             lastRate,
             now.div(1 days)
         );
-        collateralToken.transferFrom(borrower, address(this), collateral);
-        pool.send(borrower, amount);
-        emit LoanIssued( loan_id, borrower, amount, collateral);
+        collateralToken.transferFrom(msg.sender, address(this), collateral);
+        pool.send(msg.sender, amount);
+        emit LoanIssued( loan_id, msg.sender, amount);
+        emit CollateralReplenishment(loan_id, collateral, collateralToken);
     }
     
     function repay(uint loan_id, uint amount) public {
@@ -89,7 +90,7 @@ contract SODABorrow is Ownable {
             pool.token().transferFrom(_loan.borrower, address(pool), _loan.loanAmount);
             _loan.collateralToken.transfer(_loan.borrower, _loan.collateralAmount);
             emit LoanRepayment(loan_id, interest, _loan.loanAmount);
-            emit CollateralReturned(loan_id, _loan.collateralAmount);
+            emit CollateralReturned(loan_id, _loan.collateralAmount, _loan.collateralToken);
             _loan.state = LoanState.Repaid;
             _loan.loanAmount = 0;
             _loan.collateralAmount = 0;
@@ -101,7 +102,7 @@ contract SODABorrow is Ownable {
         require(_loan.state == LoanState.Active, "the loan isn't active");
         _loan.collateralToken.transferFrom(_loan.borrower, address(this), amount);
         _loan.collateralAmount = _loan.collateralAmount.add(amount); 
-        emit CollateralReplenishment(loan_id, amount);
+        emit CollateralReplenishment(loan_id, amount, _loan.collateralToken);
     }
     
     function liquidate(uint loan_id) public {
@@ -133,7 +134,7 @@ contract SODABorrow is Ownable {
         require(isAvailableBTCToken[BTCToken] != available);
         isAvailableBTCToken[BTCToken] = available;
         if(available)
-            emit AnableCollateralToken(IERC20(BTCToken));
+            emit EnableCollateralToken(IERC20(BTCToken));
         else
             emit DisableCollateralToken(IERC20(BTCToken));
     }
@@ -144,7 +145,7 @@ contract SODABorrow is Ownable {
         _loan.loanAmount = 0;
         _loan.collateralAmount = 0;
         _loan.state = LoanState.Liquidated;
-        emit Liquidation(loan_id, _loan.collateralAmount, message);
+        emit Liquidation(loan_id, _loan.collateralAmount, _loan.collateralToken, message);
     }
 }
 
