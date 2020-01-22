@@ -172,70 +172,68 @@ if(ethereum) {
 
 
 
-const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
-	.then(([token, id]) => [id, contracts['Borrow'+token], contracts[token], token])
-	.then(([id, Borrow, Erc20, token]) => Promise.all([
+const showLoan = window.showLoan = function(_id){
+	const [token, id] = _id.split('_')
+	const Borrow = contracts['Borrow'+token]
+	const Erc20 = contracts[token]
+
+	const select = document.querySelector('#loan-select .select')
+	const option = select.querySelector(`.select__content .select__elem[data-loan-id=${_id}]`)
+	const selected = document.importNode(option, true)
+	selected.classList.remove('selected')
+	select.dataset.selected = _id
+	select.querySelector('.select__selected').innerHTML = ""
+	select.querySelector('.select__selected').appendChild(selected)
+	select.querySelectorAll('.select__content .select__elem').forEach(x => x.classList.remove("selected"))
+	option.classList.add("selected")
+	select.classList.remove("open")
+	document.querySelector('.overlay').classList.remove('open');
+	document.querySelector('.loans-history').classList.remove('open');
+	document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
+	document.getElementById('state-line').dataset.status = 'waiting'
+	document.querySelectorAll('[data-type=active-loan-info]').forEach(
+		x=>x.classList.add('hide')
+	)
+	const repayHisoryContainer = document
+		.querySelector('.repay-content__history--repay .history-transactions')
+	const collateralHisoryContainer = document
+		.querySelector('.collateral-content__history--withdraw .history-transactions')
+	repayHisoryContainer.innerHTML = null
+	collateralHisoryContainer.innerHTML = null
+
+	Borrow.getPastEvents('LoanRepayment',{
+		filter: {id},
+		fromBlock: 0
+	})
+	.then(arr => arr.forEach(event => {
+		const {collateralAmount} = event.returnValues
+		const amount = (collateralAmount / 1e8).toFixed(4)
+		const hash = event.transactionHash
+		const row = templates.get('history-transaction')
+		params.web3.eth.getBlock(event.blockNumber)
+			.then(x => new Date(x.timestamp * 1000).toMyString() )
+			.then(taken => row.querySelector('[data-attr=time]').innerText = taken)
+		row.querySelector('[data-attr=tx]').innerText = hash 
+		row.querySelector('[data-attr=tx]').href = {
+			1: `https://etherscan.io/tx/${hash}`,
+			3: `https://ropsten.etherscan.io/tx/${hash}`
+		}[params.chainID] 
+		row.querySelector('[data-attr=amount]').innerText = amount 
+		row.querySelector('[data-attr=amount]').dataset.currency = token 
+		row.dataset.state = 'success'
+		collateralHisoryContainer.prepend(row)
+	}))
+
+	Promise.all([
 		Borrow.methods.loan(id).call(),
 		Borrow.methods.interestAmount(id).call(),
 		Borrow.methods.lastRate().call(),
-		Erc20.methods.balanceOf(params.address).call(),
-		token,
-		new Promise(r => { 
-			const select = document.querySelector('#loan-select .select')
-			const option = select.querySelector(`.select__content .select__elem[data-loan-id=${_id}]`)
-			const selected = document.importNode(option, true)
-			selected.classList.remove('selected')
-			select.dataset.selected = _id
-			select.querySelector('.select__selected').innerHTML = ""
-			select.querySelector('.select__selected').appendChild(selected)
-			select.querySelectorAll('.select__content .select__elem').forEach(x => x.classList.remove("selected"))
-			option.classList.add("selected")
-			select.classList.remove("open")
-			document.querySelector('.overlay').classList.remove('open');
-			document.querySelector('.loans-history').classList.remove('open');
-			document.querySelectorAll('.overlay-dyn').forEach(x => document.body.removeChild(x))
-			document.getElementById('state-line').dataset.status = 'waiting'
-			document.querySelectorAll('[data-type=active-loan-info]').forEach(
-				x=>x.classList.add('hide')
-			)
-			const repayHisoryContainer = document
-				.querySelector('.repay-content__history--repay .history-transactions')
-			const collateralHisoryContainer = document
-				.querySelector('.collateral-content__history--withdraw .history-transactions')
-			repayHisoryContainer.innerHTML = null
-			collateralHisoryContainer.innerHTML = null
-			Borrow.getPastEvents('LoanRepayment',{
-				filter: {id},
-				fromBlock: 0
-			})
-			.then(arr => arr.forEach(event => {
-				const {interestAmount, repaymentAmount} = event.returnValues
-				const amount = new BN(interestAmount)
-					.add(new BN(repaymentAmount))
-					.div(new BN("1".toBigIntString(16)) )
-					.toString() / 100
-				const hash = event.transactionHash
-				const row = templates.get('history-transaction')
-				row.querySelector('[data-attr=time]').innerText = 'now' 
-				row.querySelector('[data-attr=tx]').innerText = hash 
-				row.querySelector('[data-attr=tx]').href = {
-					1: `https://etherscan.io/tx/${hash}`,
-					3: `https://ropsten.etherscan.io/tx/${hash}`
-				}[params.chainID] 
-				row.querySelector('[data-attr=amount]').innerText = amount 
-				row.querySelector('[data-attr=amount]').dataset.currency = token 
-				row.dataset.state = 'success'
-				console.log(event.id, event)
-				repayHisoryContainer.appendChild(row)
-				collateralHisoryContainer.appendChild( document.importNode(row,true) )
-			}))
-			r()
-		})
-	]))
+		Erc20.methods.balanceOf(params.address).call()
+	])
 	.then(([loan, interest, apy, balance]) => {
-		const token = 'test'
-		const collateralToken = Object.entries(contracts).filter(x=>x[1]._address == loan.collateralToken)[0][0]
-		const security = (loan.collateralAmount * params.lastPrice * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
+		const collateralToken = Object.entries(contracts)
+			.filter(x=>x[1]._address == loan.collateralToken)[0][0]
+		const security = (loan.collateralAmount * params.lastPrice * 1e4 / (+interest + loan.loanAmount)).toFixed(2)
 		const amount = params.loan_issue.get(_id).returnValues.amount
 		const wth = document.querySelector('.box-withdraw-repay-collateral')
 		wth.dataset.repay = wth.dataset.collateral = loan.state == 1 ? 1 : 2
@@ -249,9 +247,9 @@ const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 		document.querySelector('[data-attr=loan-duration]').innerText =
 			((Date.now() / 1000 - loan.taken) / 3600 / 24).toFixed()
 		document.querySelector('[data-attr=liquidation-price]').innerText = 
-			(1.1*(loan.loanAmount - -interest) / 1e10 / loan.collateralAmount ).toFixed(2)
+			(1.1*(+loan.loanAmount + interest) / 1e10 / loan.collateralAmount ).toFixed(2)
 		document.querySelectorAll('[data-type=loan-debt]').forEach( x=>{
-			x.innerText = ((loan.loanAmount - -interest) / 1e18).toFixed(4)
+			x.innerText = ((+loan.loanAmount + interest) / 1e18).toFixed(4)
 			x.dataset.currency = token
 		})
 		document.querySelectorAll('[data-attr=loan-interest]').forEach(x => {
@@ -267,9 +265,43 @@ const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 				output.dataset.currency = collateralToken
 			})
 		document.getElementById('state-line').dataset.status =
-				loan.state == 0 ? 5 :
+				loan.state == 2 ? 5 :
 				loan.loanAmount != amount ? 4 :3
-		document.forms['loan-repay'].amount.rebuild()
+		document.forms['loan-repay'].rebuild()
+		document.forms['loan-repay'].addEventListener('submit', function(e){
+			e.preventDefault()
+			const [token,id] = document.querySelector("#loan-select .select")
+				.dataset.selected.split('_')
+			const Erc20 = contracts[token]
+			const Borrow = contracts[`Borrow${token}`]
+			const amount = this.amount.value.toBigIntString(18)
+			this.submit.classList.add('loading')
+			const repayHisoryContainer = document
+				.querySelector('.repay-content__history--repay .history-transactions')
+			const row = templates.get('history-transaction')
+			approve(Erc20, address, Borrow._address, amount)
+				.then(() => Borrow.methods.repay(id, amount).send( (err, hash) => {
+					if(!err){
+						this.reset() 
+						row.querySelector('[data-attr=time]').innerText = new Date().toMyString() 
+						row.querySelector('[data-attr=tx]').innerText = hash 
+						row.querySelector('[data-attr=tx]').href = {
+							1: `https://etherscan.io/tx/${hash}`,
+							3: `https://ropsten.etherscan.io/tx/${hash}`
+						}[params.chainID] 
+						row.querySelector('[data-attr=amount]')
+							.innerText = (amount / 1e18).toFixed(2)
+						row.querySelector('[data-attr=amount]').dataset.currency = type 
+						row.dataset.state = 'loading'
+						repayHisoryContainer.prepend(row)
+					}
+					this.submit.classList.remove('loading')
+				}))
+				.then(tx => {
+					console.log(tx)
+					repayHisoryContainer.removeChild(row)
+				})
+		})
 		document.forms['loan-repay'].amount.parentElement.dataset.currency = token
 		document.forms['collateral-topup'].amount.rebuild()
 		document.forms['collateral-topup'].amount.parentElement.dataset.currency = collateralToken
@@ -280,8 +312,8 @@ const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 
 		document.forms['collateral-topup'].amount.onkeyup = 
 			document.forms['collateral-topup'].amount.onchange = function (){
-				const collateralAmount = loan.collateralAmount - -this.value * 1e8
-				const security = (collateralAmount * params.lastPrice * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
+				const collateralAmount = +loan.collateralAmount + this.value * 1e8
+				const security = (collateralAmount * params.lastPrice * 1e4 / (+interest + loan.loanAmount)).toFixed(2)
 				setSecurity(security, loan.state, 
 					wth.querySelector('[data-attr=riskAfterTopUp] .security-view'))
 			}
@@ -297,14 +329,37 @@ const showLoan = window.showLoan = _id => Promise.resolve(_id.split('_'))
 				document.querySelector('[data-attr=changed-interest]')
 					.innerText = sub > 0 ? sub.toFixed(6) :0
 			} 
+			Borrow.getPastEvents('LoanIssued',{
+				filter: {id},
+				fromBlock: 0
+			})
+			.then(arr => arr.forEach(event => {
+				const {collateral} = event.returnValues
+				const amount = (-collateral / 1e8).toFixed(8)
+				const hash = event.transactionHash
+				const row = templates.get('history-transaction')
+				params.web3.eth.getBlock(event.blockNumber)
+					.then(x => new Date(x.timestamp * 1000).toMyString() )
+					.then(taken => row.querySelector('[data-attr=time]').innerText = taken)
+				row.querySelector('[data-attr=tx]').innerText = hash 
+				row.querySelector('[data-attr=tx]').href = {
+					1: `https://etherscan.io/tx/${hash}`,
+					3: `https://ropsten.etherscan.io/tx/${hash}`
+				}[params.chainID] 
+				row.querySelector('[data-attr=amount]').innerText = amount 
+				row.querySelector('[data-attr=amount]').dataset.currency = collateralToken 
+				row.dataset.state = 'success'
+				collateralHisoryContainer.prepend(row)
+			}))
 	})
 
-
+}
 
 function start([address, web3, chainID]){
 	params.address = address
 	params.loan_issue = new Map()
 	params.chainID = chainID
+	params.web3 = web3
 	console.log('connected with:', address)
 	const loanTypes = ['DAI']
 	const collateralTypes = ['testBTC']
@@ -446,25 +501,13 @@ function start([address, web3, chainID]){
 				})
 		})
 
-		handlers.create('loan-repay',function(e){
-			e.preventDefault()
-			const [token,id] = document.querySelector("#loan-select .select")
-				.dataset.selected.split('_')
-			const Erc20 = contracts[token]
-			const Borrow = contracts[`Borrow${token}`]
-			const amount = this.amount.value.toBigIntString(18)
-			this.submit.classList.add('loading')
-			approve(Erc20, address, Borrow._address, amount)
-				.then(() => Borrow.methods.repay(id, amount).send( () => this.reset() ) )
-				.then(tx => {
-					console.log(tx)
-					this.submit.classList.remove('loading')
-				})
-		})
 		subsciptions.push(
 			Borrow.events.LoanRepayment({fromBlock:'latest', filter:{borrower:address}}, (err, event) => {
 				if(event_reduplicator.check(event)) return;
 				const {id, interestAmount, repaymentAmount} = event.returnValues
+
+
+
 				Promise.all([
 					Borrow.methods.loan(id).call(),
 					Price.methods.latestAnswer().call()
@@ -473,7 +516,7 @@ function start([address, web3, chainID]){
 					const container = document.querySelector('.loans-history__container')
 					const card = container.querySelector(`[data-loan-id=${type}_${id}]`)
 					const security = (loan.collateralAmount * price * 1e4 / loan.loanAmount).toFixed(2)
-					card.dataset.status = loan.state == 0 ? 5 : 4
+					card.dataset.status = loan.state == 2 ? 5 : 4
 					card.querySelector('[data-prop=collateral]').innerText = (loan.collateralAmount / 1e8).toFixed(8)		
 					card.querySelector('[data-prop=interest]').innerText = 0
 						
@@ -500,7 +543,7 @@ function start([address, web3, chainID]){
 
 					select.querySelectorAll(`[data-loan-id=${type}_${id}]`)
 						.forEach(option => {
-							option.dataset.state = loan.state == 0 ? 5 : 4 
+							option.dataset.state = loan.state == 2 ? 5 : 4 
 							setSecurity( security, loan.state, option.querySelector('.security-view') )
 						})
 
@@ -524,14 +567,14 @@ function start([address, web3, chainID]){
 						document.querySelectorAll('[data-type=loan-debt]').forEach(
 							x => x.innerText = (loan.loanAmount / 1e18).toFixed(4)
 						)
-						const security = (loan.collateralAmount * params.lastPrice * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
+						const security = (loan.collateralAmount * params.lastPrice * 1e4 / (+interest + loan.loanAmount)).toFixed(2)
 						const wth = document.querySelector('.box-withdraw-repay-collateral')
 						wth.dataset.repay = wth.dataset.collateral = loan.state == 1 ? 1 : 2
 						wth.classList.remove('hide')
 						if(loan.state != 1) document.querySelector('.w-r-loan-deals-box')
 							.classList.add('hide')
 						setSecurity(security, loan.state, wth.querySelector('[data-attr=loan-security] .security-view'))
-		
+										
 					}
 				})
 			})
@@ -550,12 +593,12 @@ function start([address, web3, chainID]){
 				]).then(([loan, block, interest, price]) => {
 					params.lastPrice = price
 					const card = templates.get('loans-history-card')
-					const security = (loan.collateralAmount * price * 1e4 / (interest - -loan.loanAmount)).toFixed(2)
+					const security = (loan.collateralAmount * price * 1e4 / (+interest + loan.loanAmount)).toFixed(2)
 					card.querySelector('[data-prop=amount]').innerText = (amount / 1e18).toFixed(2)
 					card.dataset.loanId = `${type}_${id}`
 					card.dataset.taken = block.timestamp
 					card.dataset.status = 
-						loan.state == 0 ? 5 :
+						loan.state == 2 ? 5 :
 						loan.loanAmount != amount ? 4 :3
 					card.querySelector('[data-prop=taken]').innerText =
 						new Date(block.timestamp * 1e3).toMyString()
@@ -596,7 +639,7 @@ function start([address, web3, chainID]){
 					option.dataset.loanId = `${type}_${id}`
 					
 					option.dataset.state = 
-						loan.state == 0 ? 5 :
+						loan.state == 2 ? 5 :
 						loan.loanAmount != amount ? 4 :3
 					option.addEventListener('click', function(){
 						showLoan(`${type}_${id}`)
@@ -624,6 +667,7 @@ function start([address, web3, chainID]){
 
 	})
 }
+
 document.querySelector('[data-action=js-process-loan]')
 	.addEventListener('click', handlers.get('loan-start-process'))
 document.forms.loan.amount.addEventListener('change', handlers.get('loan-params-recount'));
@@ -639,7 +683,7 @@ document.querySelectorAll('[data-type=active-loan-info]').forEach(block => {
 	})
 })
 
-document.forms['loan-repay'].addEventListener('submit', handlers.get('loan-repay'))
+
 
 document.querySelectorAll('.select').forEach(select => {
 	select.querySelector('.select__selected').addEventListener('click', function(event){

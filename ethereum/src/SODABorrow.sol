@@ -10,7 +10,7 @@ interface AggregatorInterface { function latestAnswer() external view returns (i
 contract SODABorrow is Ownable {
     using SafeMath for uint;
         
-    enum LoanState {Repaid, Active, Liquidated}
+    enum LoanState {None, Active, Repaid, Liquidated}
     struct Loan {
         address borrower;
         LoanState state;
@@ -22,9 +22,10 @@ contract SODABorrow is Ownable {
         uint lastRepay;
     }
 
-    event Liquidation(uint indexed id, string cause);
+    event Liquidation(uint indexed id, uint collateralAmount, string cause);
     event LoanIssued(uint indexed id, address indexed borrower, uint amount, uint collateral);
     event LoanRepayment(uint indexed id, uint interestAmount, uint repaymentAmount);
+    event CollateralReturned(uint indexed id, uint collateralAmount);
     event CollateralReplenishment(uint indexed id, uint amount);
     event AnableCollateralToken(IERC20 indexed token);
     event DisableCollateralToken(IERC20 indexed token);
@@ -73,6 +74,7 @@ contract SODABorrow is Ownable {
     
     function repay(uint loan_id, uint amount) public {
         Loan storage _loan = loan[loan_id];
+        require(_loan.state == LoanState.Active, "the loan isn't active");
         uint interest = interestAmount(loan_id);
         require(amount >= interest, "the amount of payment must exceed the interest");
         pool.token().transferFrom(_loan.borrower, address(this), interest);
@@ -86,8 +88,11 @@ contract SODABorrow is Ownable {
         } else {
             pool.token().transferFrom(_loan.borrower, address(pool), _loan.loanAmount);
             _loan.collateralToken.transfer(_loan.borrower, _loan.collateralAmount);
-            delete loan[loan_id];
             emit LoanRepayment(loan_id, interest, _loan.loanAmount);
+            emit CollateralReturned(loan_id, _loan.collateralAmount);
+            _loan.state = LoanState.Repaid;
+            _loan.loanAmount = 0;
+            _loan.collateralAmount = 0;
         }
     }
     
@@ -137,8 +142,9 @@ contract SODABorrow is Ownable {
         Loan storage _loan = loan[loan_id];
         _loan.collateralToken.transfer(owner(), _loan.collateralAmount);
         _loan.loanAmount = 0;
+        _loan.collateralAmount = 0;
         _loan.state = LoanState.Liquidated;
-        emit Liquidation(loan_id, message);
+        emit Liquidation(loan_id, _loan.collateralAmount, message);
     }
 }
 

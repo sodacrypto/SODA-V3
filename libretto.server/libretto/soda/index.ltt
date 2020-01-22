@@ -568,7 +568,7 @@ def sections() = {
 						</div>
 						<div class="repay-content__history--repay">
 							<div class="repay-content__title add-colon">#{locale("repay-content__history-title-2")}</div>
-							<div class="history-transactions"/>
+							<table class="history-transactions"/>
 						</div>
 
 
@@ -626,7 +626,7 @@ def sections() = {
 def historyTransaction = <tr class="history-transaction" data-state="load">
 	<td data-attr="time"/>
 	<td data-attr="amount" class="with-currency"/>
-	<td class="link"><a data-attr="tx" class="link--transaction"/></td>
+	<td class="link"><a target="_blank" data-attr="tx" class="link--transaction"/></td>
 	<td class="state"/>
 </tr>
 
