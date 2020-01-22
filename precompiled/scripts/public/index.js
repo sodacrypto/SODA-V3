@@ -72,8 +72,8 @@ function setSecurity(security, status, sv){
 	if(!sv.classList.contains('security-view'))
 		throw "wrong security-view"
 	const state = sv.dataset.state =
-		status == 0    ? 'repaid' : 
-		status == 2    ? 'liqudated' : 
+		status == 2    ? 'repaid' : 
+		status == 3    ? 'liqudated' : 
 		security < 110 ? 'liquidation' :
 		security < 180 ? 'danger' :
 		security < 250 ? 'safe' :
